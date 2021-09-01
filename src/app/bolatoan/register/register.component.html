@@ -1,0 +1,80 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <mat-card class="mt20">
+                    <form (ngSubmit) = "formSubmit()">
+
+                        <mat-form-field class="full-width" appearance = "outline">
+                            <mat-label>Username</mat-label>
+                            <input  placeholder="Username"
+                            [(ngModel)]="user.username"
+                            name="username"
+                            class="form-control"
+                            MatInput
+                            >
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance = "outline">
+                            <mat-label>Full name</mat-label>
+                            <input  placeholder="Full Name" 
+                            [(ngModel)]="user.fullname"
+                            name="fullname"
+                            class="form-control"
+                            MatInput
+                            >
+                        </mat-form-field>
+                        
+                        <mat-form-field class="full-width" appearance = "outline">
+                            <mat-label>Password</mat-label>
+                            <input  placeholder="Password"
+                            [(ngModel)]="user.password"
+                            name="password"
+                            class="form-control"
+                            MatInput
+                            type="password"
+                            >
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance = "outline">
+                            <mat-label>Email</mat-label>
+                            <input  placeholder="Email"
+                            [(ngModel)]="user.email"
+                            name="email"
+                            class="form-control"
+                            MatInput
+                            >
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance = "outline">
+                            <mat-label>Phone</mat-label>
+                            <input  placeholder="Phone"
+                            [(ngModel)]="user.phone"
+                            name="phone"
+                            class="form-control"
+                            MatInput
+                            >
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance = "outline">
+                            <mat-label>Address</mat-label>
+                            <input  placeholder="Address"
+                            [(ngModel)]="user.address"
+                            name="address"
+                            class="form-control"
+                            MatInput
+                            >
+                        </mat-form-field>
+                        <div class="container text-center">
+                            <button type = "submit" mat-raised-button color = "primary" class="mr20">submit</button>
+                            <button type="reset" mat-raised-button color = "accent">reset</button>
+                        </div>
+                    </form>
+                </mat-card>
+               {{user|json}}
+
+            </div>
+        </div>
+    </div>
+</div>
+
