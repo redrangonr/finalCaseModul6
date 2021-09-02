@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {TokenService} from '../../authentication/service/token.service';
+import {TokenService} from '../../../authentication/service/token.service';
 
 @Component({
   selector: 'app-admin',
