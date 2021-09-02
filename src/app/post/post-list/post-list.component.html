@@ -1,0 +1,26 @@
+<p>post-list works!</p>
+<table>
+  <tr>
+    <td>id</td>
+    <td>title</td>
+    <td>image</td>
+    <td>status</td>
+    <td>description</td>
+    <td>content</td>
+    <td>date</td>
+    <td>userId</td>
+    <td></td>
+  </tr>
+  <tr *ngFor="let item of posts">
+    <td>{{item.id}}</td>
+    <td>{{item.title}}</td>
+    <td><img width="100px" src="{{item.image}}" alt=""></td>
+    <td>{{item.status}}</td>
+    <td>{{item.description}}</td>
+    <td [innerHTML]="item.content"></td>
+    <td>{{item.date}}</td>
+    <td>{{item.user.id}}</td>
+    <td><a routerLink="/post/view/{{item.id}}">get info</a></td>
+  </tr>
+</table>
+
