@@ -4,7 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {DetalComponent} from './detail/detal.component';
 import {ContactComponent} from './contact/contact.component';
 import {AboutUSComponent} from './about-us/about-us.component';
-import {ErrorComponent} from "./error/error.component";
+import {ErrorComponent} from './error/error.component';
 
 const routes: Routes = [
   {
@@ -24,9 +24,13 @@ const routes: Routes = [
     component: AboutUSComponent
   },
   {
-    path: '**',
-    component: ErrorComponent
-  }
+    path: 'post',
+    loadChildren: () => import('./post/post.module').then(module => module.PostModule)
+  },
+  // {
+  //   path: '**',
+  //   component: ErrorComponent
+  // },
 ];
 
 @NgModule({
