@@ -1,0 +1,32 @@
+<a class="hover" (click)="open(content)"ngbTooltip="Login"><b>Login</b><img src="https://cdn-icons-png.flaticon.com/128/2170/2170091.png" width="30" height="30"></a>
+<ng-template #content id="modal"  let-modal>
+  <div></div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><img src="https://img.icons8.com/material-outlined/2x/key--v2.gif"width="55" height="55"></h4>
+    <button type="button" class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="alert alert-danger">{{status}}</div>
+      <div class="mb-3">
+        <label>UserName</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1"><img src="https://img.icons8.com/fluency/2x/username.png" width="20" height="20"></span>
+          <input type="text" formControlName="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Password</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon"><img src="https://img.icons8.com/ultraviolet/2x/forgot-password.png" width="20" height="20"></span>
+          <input type="password" formControlName="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!loginForm.valid" class="btn btn-success">Login</button>
+      </div>
+    </form>
+  </div>
+</ng-template>

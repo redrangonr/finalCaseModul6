@@ -18,62 +18,12 @@
   <link rel="stylesheet" href="/assets/css/themify-icons.css">
   <link rel="shortcut icon" href="/assets/images/shortcut_logo.png">
 </head>
+<!--NavBar--------------------------------------------------------------------------------------->
+
 <body>
 <div id="main">
-  <header>
-    <div class="header-wrapper">
-      <div class="container">
-        <div class="header-menu">
-          <div class="row no-gutters align-items-center justify-content-center">
-            <div class="col-4 col-md-2"><a class="logo" href="index.html"><img src="assets/images/logo.png" alt="logo"></a></div>
-            <div class="col-8 col-md-8">
-              <div class="mobile-menu"><a href="#" id="showMenu"><i class="fas fa-bars"></i></a></div>
-              <nav class="navigation">
-                <ul>
-                  <li class="nav-item"><a class="pisen-nav-link active" href="index.html">Home</a><i class="submenu-opener fas fa-plus"></i>
-                    <ul class="sub-menu">
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="index.html">Blog classic</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_masonry.html">Blog masonry</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_2col.html">Blog 2 column</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_news.html">BLog news</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_agency.html">Blog agency</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_story.html">Blog story</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_metro_full.html">Blog Metro Fullwidth</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_metro.html">Blog Metro</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_creative.html">Blog Creative</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_crypto.html">Blog crypto</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item"><a class="pisen-nav-link" href="">Features</a><i class="submenu-opener fas fa-plus"></i>
-                    <ul class="sub-menu">
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="shop_sidebar_3col.html">Shop 3 column with sidebar</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="shop_4col.html">Shop 4 column</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="shop_5col.html">Shop 5 column</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="shop_checkout.html">Checkout</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="shop_cart.html">Cart</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_detail.html">Blog detail</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_detail_02.html">Blog detail 02</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="blog_detail_sidebar.html">Blog Detail sidebar</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="404_error.html">404 Error</a></li>
-                      <li class="sub-menu_item"><a class="sub-menu-link" href="coming_soon.html">Coming Soon</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item"><a class="pisen-nav-link" href="about_us.html">About us</a></li>
-                  <li class="nav-item"><a class="pisen-nav-link" href="contact.html">Contact</a></li>
-                </ul>
-              </nav>
-            </div>
-            <div class="col-0 col-xl-2">
-              <div class="menu-function">
-                <div id="search"><a class="search-btn" href="#"><i class="fas fa-search"></i></a></div>
-                <div class="social-contact"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </header><!--End header-->
+  <app-navbar></app-navbar>
+  <!--End header-->
   <section class="posts blog-agency">
     <div class="container">
       <div class="blog-news_bundle new-news-bundle">
@@ -83,7 +33,7 @@
               <div class="post-detail">
                 <div class="post-credit">
                   <div class="post-tag"><a href="index.html">sport</a></div>
-                </div><a class="post-title title" routerLink='/detail'>Watch Olympic Channel: Home of Team USA</a>
+                </div><a class="post-title title" routerLink='/detail' >Watch Olympic Channel: Home of Team USA</a>
                 <div class="post-credit">
                   <div class="author">
                     <h5 class="author-name">Lucas Norman</h5>
@@ -93,61 +43,55 @@
               <div class="post-overlay"></div>
             </div>
           </div>
-          <div class="col-12">
-            <div class="post-classic-bundle_slide">
-              <div class="post-classic-tib mini-post" style="background-image: url('assets/images/blog_agency/news-small-bundle-1.png')">
-                <div class="post-detail">
-                  <div class="post-credit">
-                    <div class="post-tag"><a href="index.html">tech</a></div>
-                  </div><a class="post-title title" >How Our App Gets You Speaking A Language </a>
-                  <div class="post-credit">
-                    <div class="author">
-                      <h5 class="author-name">Lucas Norman</h5>
+          <div class="row">
+            <div class="col-3" style="float: left">
+              <div class="post-classic-bundle_slide">
+                <div class="post-classic-tib mini-post" style="background-image: url('https://t3.ftcdn.net/jpg/03/26/29/80/240_F_326298060_H8q4dX60uO9kuU7WDG1VsksvZqqsJnlR.jpg'); border-radius: 44px">
+                  <div class="post-detail">
+                    <div class="post-credit">
+                      <div class="post-tag"><a href="index.html">PHP</a></div>
                     </div>
                   </div>
                 </div>
-                <div class="post-overlay"></div>
-              </div>
-              <div class="post-classic-tib mini-post" style="background-image: url('assets/images/blog_agency/news-small-bundle-2.png')">
-                <div class="post-detail">
-                  <div class="post-credit">
-                    <div class="post-tag"><a href="index.html">tech</a></div>
-                  </div><a class="post-title title" >Ecotourism in Thailand: 5 Beautiful Destinations</a>
-                  <div class="post-credit">
-                    <div class="author">
-                      <h5 class="author-name">Lucas Norman</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-overlay"></div>
-              </div>
-              <div class="post-classic-tib mini-post" style="background-image: url('assets/images/blog_agency/news-small-bundle-3.png')">
-                <div class="post-detail">
-                  <div class="post-credit">
-                    <div class="post-tag"><a href="index.html">tech</a></div>
-                  </div><a class="post-title title" >This $99 Drone Is The Most Incredible </a>
-                  <div class="post-credit">
-                    <div class="author">
-                      <h5 class="author-name">Lucas Norman</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-overlay"></div>
-              </div>
-              <div class="post-classic-tib mini-post" style="background-image: url('assets/images/blog_agency/news-small-bundle-2.png')">
-                <div class="post-detail">
-                  <div class="post-credit">
-                    <div class="post-tag"><a href="index.html">tech</a></div>
-                  </div><a class="post-title title" >Ecotourism in Thailand: 5 Beautiful Destinations</a>
-                  <div class="post-credit">
-                    <div class="author">
-                      <h5 class="author-name">Lucas Norman</h5>
-                    </div>
-                  </div>
-                </div>
-                <div class="post-overlay"></div>
               </div>
             </div>
+            <!------------------->
+            <div class="col-3">
+              <div class="post-classic-bundle_slide">
+                <div class="post-classic-tib mini-post" style="background-image: url('https://t3.ftcdn.net/jpg/01/01/54/90/240_F_101549015_hEhXoiDu2XykjWnHEQASkozzc1QFdawB.jpg'); border-radius: 44px">
+                  <div class="post-detail">
+                    <div class="post-credit">
+                      <div class="post-tag"><a href="index.html">Java</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--------------------->
+            <div class="col-3">
+              <div class="post-classic-bundle_slide">
+                <div class="post-classic-tib mini-post" style="background-image: url('https://t4.ftcdn.net/jpg/04/43/80/11/240_F_443801148_NZ5dgr3cos0WzsOHtQsWrZoCc8jR6ctl.jpg'); border-radius: 44px">
+                  <div class="post-detail">
+                    <div class="post-credit">
+                      <div class="post-tag"><a href="index.html">Python</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--------------------->
+            <div class="col-3" >
+              <div class="post-classic-bundle_slide" >
+                <div class="post-classic-tib mini-post" style="background-image: url('https://t4.ftcdn.net/jpg/02/27/02/49/240_F_227024978_JspEkpwHJx6NEcBFY55Fm77DsuExTm0d.jpg'); border-radius: 44px">
+                  <div class="post-detail">
+                    <div class="post-credit">
+                      <div class="post-tag"><a href="index.html">HTML</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--------------------->
           </div>
         </div>
       </div>

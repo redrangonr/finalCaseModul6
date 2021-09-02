@@ -4,11 +4,13 @@ import {HomeComponent} from './home/home.component';
 import {DetalComponent} from './detail/detal.component';
 import {ContactComponent} from './contact/contact.component';
 import {AboutUSComponent} from './about-us/about-us.component';
-import {ErrorComponent} from "./error/error.component";
+import {ErrorComponent} from './error/error.component';
 
 const routes: Routes = [
+  {path: 'admin', loadChildren: () => import('./admin/module/admin.module').then(module => module.AdminModule)},
+  {path: 'login', loadChildren: () => import('./authentication/module/login.module').then(module => module.LoginModule)},
   {
-    path: '',
+    path: 'home',
     component: HomeComponent
   },
   {
@@ -23,10 +25,10 @@ const routes: Routes = [
     path: 'about',
     component: AboutUSComponent
   },
-  {
-    path: '**',
-    component: ErrorComponent
-  }
+  // {
+  //   path: '**',
+  //   component: ErrorComponent
+  // }
 ];
 
 @NgModule({

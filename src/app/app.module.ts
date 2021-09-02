@@ -8,7 +8,12 @@ import { DetalComponent } from './detail/detal.component';
 import { AboutUSComponent } from './about-us/about-us.component';
 import { ErrorComponent } from './error/error.component';
 import { ContactComponent } from './contact/contact.component';
-
+import { AdminComponent } from './admin/component/admin.component';
+import {AdminModule} from './admin/module/admin.module';
+import { LoginComponent } from './authentication/component/login/login.component';
+import {LoginModule} from './authentication/module/login.module';
+import { UserManagementComponent } from './admin/component/user-list/user-management.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +23,13 @@ import { ContactComponent } from './contact/contact.component';
     AboutUSComponent,
     ErrorComponent,
     ContactComponent,
+    UserManagementComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
