@@ -8,6 +8,7 @@ import { DetalComponent } from './detail/detal.component';
 import { AboutUSComponent } from './about-us/about-us.component';
 import { ErrorComponent } from './error/error.component';
 import { ContactComponent } from './contact/contact.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { ContactComponent } from './contact/contact.component';
     AboutUSComponent,
     ErrorComponent,
     ContactComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
