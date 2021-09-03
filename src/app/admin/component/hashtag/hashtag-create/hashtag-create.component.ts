@@ -40,6 +40,5 @@ export class HashtagCreateComponent implements OnInit {
       name: this.hashtagForm.value.name,
       image: this.hashtagForm.value.image
     }
-
   }
 }
