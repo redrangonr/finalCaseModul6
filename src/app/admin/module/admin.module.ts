@@ -3,23 +3,30 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import {AdminComponent} from '../component/admin-home/admin.component';
-import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbButtonsModule, NgbNavModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {AppModule} from '../../app.module';
 import {UserManagementComponent} from '../component/user-list/user-management.component';
+import {UserEditComponent} from '../component/user-edit/user-edit.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    UserEditComponent
   ],
-  exports: [
-    AdminComponent
-  ],
+    exports: [
+        AdminComponent,
+        UserManagementComponent
+    ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     NgbNavModule,
+    NgbButtonsModule,
+    NgbTooltipModule,
+    ReactiveFormsModule,
   ]
 })
 export class AdminModule { }

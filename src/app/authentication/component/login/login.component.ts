@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password,
     };
     this.loginService.login(loginForm).subscribe(data =>{
+      console.log(data)
       if (data.token != undefined){
         this.tokenService.setToken(data.token)
         this.tokenService.setName(data.name)
@@ -78,10 +79,12 @@ export class LoginComponent implements OnInit {
       }
     },err =>{
       console.log(err.status)
-      if (err.status== '400'){
+      if (err.status== '401'){
         console.log('Sai tk');
         this.status = 'Please check your account or password'
         this.loginForm.reset()
+      }if (err.status == '400'){
+        this.status = 'Your account has been lock'
       }
     });
   }

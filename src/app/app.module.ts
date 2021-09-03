@@ -14,6 +14,7 @@ import { LoginComponent } from './authentication/component/login/login.component
 import {LoginModule} from './authentication/module/login.module';
 import { UserManagementComponent } from './admin/component/user-list/user-management.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { UserEditComponent } from './admin/component/user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,10 @@ import { NavbarComponent } from './navbar/navbar.component';
     BrowserModule,
     AppRoutingModule,
     LoginModule,
-    AdminModule,
   ],
   providers: [],
-  exports: [
-  ],
+    exports: [
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
