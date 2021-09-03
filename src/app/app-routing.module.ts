@@ -5,6 +5,8 @@ import {DetalComponent} from './detail/detal.component';
 import {ContactComponent} from './contact/contact.component';
 import {AboutUSComponent} from './shared-module/about-us/about-us.component';
 import {ErrorComponent} from './shared-module/error/error.component';
+import {AboutUSComponent} from './shared-module/about-us/about-us.component';
+import {ErrorComponent} from './shared-module/error/error.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 
 const routes: Routes = [
