@@ -18,7 +18,7 @@
     <td>{{item.status}}</td>
     <td>{{item.description}}</td>
     <td [innerHTML]="item.content"></td>
-    <td>{{item.date}}</td>
+    <td>{{item.date | date :'short' }}</td>
     <td>{{item.user.id}}</td>
     <td><a routerLink="/post/view/{{item.id}}">get info</a></td>
   </tr>
