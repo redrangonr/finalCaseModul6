@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserManagementService} from '../../service/user-management.service';
-import {User} from '../../model/user';
+import {UserManagementService} from '../../../service/user-management.service';
+import {User} from '../../../model/user';
 
 @Component({
   selector: 'app-user-management',
@@ -10,6 +10,11 @@ import {User} from '../../model/user';
 export class UserManagementComponent implements OnInit {
   users: User[] = [];
   roleName: string = '';
+  page = 1;
+  count = 0;
+  tableSize = 8;
+  tableSizesArr = [4, 8, 12];
+  currentIndex = 1;
   constructor(private userService: UserManagementService) { }
 
   ngOnInit(): void {
@@ -23,5 +28,15 @@ export class UserManagementComponent implements OnInit {
       this.roleName = this.users[0].roles[0].name;
       console.log(this.roleName)
     } )
+  }
+  tabSize(event: any) {
+    this.page = event;
+    this.getAll();
+  }
+
+  tableData(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getAll();
   }
 }

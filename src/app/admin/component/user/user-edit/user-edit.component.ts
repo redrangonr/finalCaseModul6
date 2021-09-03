@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {UserManagementService} from '../../service/user-management.service';
+import {UserManagementService} from '../../../service/user-management.service';
 import {ParamMap, Router} from '@angular/router';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {User} from '../../model/user';
+import {User} from '../../../model/user';
 
 @Component({
   selector: 'app-user-edit',

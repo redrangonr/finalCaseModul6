@@ -16,10 +16,10 @@ export class UserManagementService {
   findById(id: number): Observable<User>{
     return this.http.get<User>(`${API_URL}/api/auth/admin/users/${id}`);
   }
-  update(id: number, user: User): Observable<any>{
+  update(id: number, user: User): Observable<User>{
     return this.http.put<User>(`${API_URL}/api/auth/admin/users/${id}`,user)
   }
-  delete(id: number): Observable<any>{
+  delete(id: number): Observable<User>{
     return this.http.delete<User>(`${API_URL}//api/auth/admin/users/${id}`)
   }
 }
