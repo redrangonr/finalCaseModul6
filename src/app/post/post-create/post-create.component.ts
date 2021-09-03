@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../../service/post.service';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-post-create',
@@ -19,9 +20,9 @@ export class PostCreateComponent implements OnInit {
   // @ts-ignore
   downloadURL: Observable<string>;
   post: FormGroup = new FormGroup({
-    title: new FormControl(),
+    title: new FormControl('', Validators.required),
     image: new FormControl(),
-    status: new FormControl('public'),
+    status: new FormControl(),
     description: new FormControl(),
     content: new FormControl(),
     date: new FormControl(),
@@ -30,7 +31,8 @@ export class PostCreateComponent implements OnInit {
   tinymceinit: any;
 
   constructor(private postService: PostService,
-              private storage: AngularFireStorage) {
+              private storage: AngularFireStorage,
+              private router: Router) {
     this.tinymceinit = {
       height: 500,
       plugins: [
@@ -83,14 +85,13 @@ export class PostCreateComponent implements OnInit {
   create() {
     const newPost = this.post.value;
     newPost.user = {id: 1};
-    newPost.date = new Date();
+    // @ts-ignore
+    newPost.date =  new Date();
     newPost.image = this.fb;
-    if (newPost.status === null){
-      newPost.status = 'public';
-    }
     console.log(newPost);
     this.postService.create(newPost).subscribe(data => {
-      alert('success');
+      // this.router.navigate(['/post/list']);
+      this.post.reset();
     });
   }
   // tslint:disable-next-line:typedef
