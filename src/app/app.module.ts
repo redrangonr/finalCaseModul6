@@ -21,6 +21,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 import { SlideHashtagComponent } from './home/slide-hashtag/slide-hashtag.component';
 import {NavbarComponent} from './shared-module/navbar/navbar.component';
+import { RegisterComponent } from './authentication/component/register/register.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {NavbarComponent} from './shared-module/navbar/navbar.component';
     SignupEmailAdsComponent,
     UserDetailComponent,
     NavbarComponent,
+    RegisterComponent,
   ],
     imports: [
         BrowserModule,

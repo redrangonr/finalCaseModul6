@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LoginForm} from '../model/login-form';
 import {JwtResponse} from '../model/jwt-response';
+import { RegisterForm } from '../model/register-form';
 const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,9 @@ export class LoginService {
   constructor(private http: HttpClient) { }
   login(login: LoginForm):Observable<JwtResponse>{
     return this.http.post<JwtResponse>(API_URL+'/api/auth/signin', login);
+  }
+
+  register(register: any):Observable<any>{
+    return this.http.post(API_URL+'/api/auth/signup', register);
   }
 }

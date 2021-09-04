@@ -22,6 +22,16 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
+
+  registerForm: FormGroup = new FormGroup({
+    username: new FormControl('', Validators.required),
+    fullname: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    phone: new FormControl('',Validators.required,),
+    address: new FormControl('',Validators.required),
+  })
+
   status = 'Please login your account';
   constructor(
               private loginService: LoginService,
@@ -36,9 +46,26 @@ export class LoginComponent implements OnInit {
   {
     this.modalService.open(content ,{ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
+    
     }, (reason) => {
       this.closeResult = `${this.getDismissReason(reason)}`;
+     
     });
+
+    
+  }
+
+  openRegister( content:any){
+    this.modalService.open(content ,{ariaLabelledBy: 'modal-basic-test'}).result.then((result) => {
+      console.log(result)
+      this.closeResult = `Closed with: ${result}`;
+    
+    }, (reason) => {
+      console.log(reason)
+      this.closeResult = `${this.getDismissReason(reason)}`;
+     
+    });
+  
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -87,5 +114,27 @@ export class LoginComponent implements OnInit {
         this.status = 'Your account has been lock'
       }
     });
+  }
+
+
+  register() {
+    const registerForm = {
+      username: this.registerForm.value.username,
+      fullname: this.registerForm.value.fullname,
+      password: this.registerForm.value.password,
+      email: this.registerForm.value.email,
+      phone: this.registerForm.value.phone,
+      address: this.registerForm.value.address,
+    }
+    this.loginService.register(registerForm).subscribe(
+      (data: any) => {
+      alert('sai roi')
+        this.registerForm.reset()
+      },
+      (err: any) => {
+        alert('err')
+        this.registerForm.reset()
+      }
+    )
   }
 }
