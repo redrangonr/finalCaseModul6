@@ -5,6 +5,7 @@ import {DetalComponent} from './detail/detal.component';
 import {ContactComponent} from './contact/contact.component';
 import {AboutUSComponent} from './about-us/about-us.component';
 import {ErrorComponent} from './error/error.component';
+import {ListPostComponent} from "./user/list-post/list-post.component";
 
 const routes: Routes = [
   {
@@ -26,7 +27,10 @@ const routes: Routes = [
   {
     path: 'post',
     loadChildren: () => import('./post/post.module').then(module => module.PostModule)
-  },
+  }, {
+    path: 'user',
+    component: ListPostComponent
+  }
   // {
   //   path: '**',
   //   component: ErrorComponent

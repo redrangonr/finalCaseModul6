@@ -25,4 +25,8 @@ export class PostService {
   get(id: number): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/posts/' + id);
   }
+  getPostUser(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL+ '/posts/'+localStorage.getItem("id"))
+  }
+
 }

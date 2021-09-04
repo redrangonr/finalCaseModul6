@@ -15,6 +15,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
 import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
+import { ListPostComponent } from './user/list-post/list-post.component';
 
 
 
@@ -28,6 +29,7 @@ import {AngularFireModule} from '@angular/fire';
     ErrorComponent,
     ContactComponent,
     NavbarComponent,
+    ListPostComponent,
   ],
   imports: [
     BrowserModule,
