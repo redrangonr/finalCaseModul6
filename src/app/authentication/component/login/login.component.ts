@@ -128,7 +128,7 @@ export class LoginComponent implements OnInit {
     }
     this.loginService.register(registerForm).subscribe(
       (data: any) => {
-      alert('sai roi')
+      alert('okie')
         this.registerForm.reset()
       },
       (err: any) => {
