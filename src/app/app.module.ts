@@ -4,17 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { DetailComponent } from './detail/detail.component';
-import { AboutUSComponent } from './about-us/about-us.component';
-import { ErrorComponent } from './error/error.component';
+import { DetalComponent } from './detail/detal.component';
 import { ContactComponent } from './contact/contact.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
 import {PostModule} from './post/post.module';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {environment} from '../environments/environment';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
+import {NavbarComponent} from './shared-module/navbar/navbar.component';
+import {LoginModule} from './authentication/module/login.module';
+import {UserDetailComponent} from './user-detail/user-detail.component';
+import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -23,11 +24,10 @@ import {AngularFireModule} from '@angular/fire';
   declarations: [
     AppComponent,
     HomeComponent,
-    DetailComponent,
-    AboutUSComponent,
-    ErrorComponent,
+    DetalComponent,
     ContactComponent,
     NavbarComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +36,9 @@ import {AngularFireModule} from '@angular/fire';
     PostModule,
     EditorModule,
     AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud')
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    LoginModule,
+    NgbNavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,17 +12,20 @@ export class PostService {
 
   constructor(private httpClient: HttpClient) { }
   getAll(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(API_URL + '/posts');
+    return this.httpClient.get<Post[]>(API_URL + '/api/posts');
   }
 
   create(post: Post): Observable<any> {
-    return this.httpClient.post<Post>(API_URL + '/posts/create', post);
+    return this.httpClient.post<Post>(API_URL + '/api/posts/create', post);
   }
 
   delete(id: number): Observable<any> {
-    return this.httpClient.delete<any>(API_URL + '/posts/delete/' + id);
+    return this.httpClient.delete<any>(API_URL + '/api/posts/delete/' + id);
   }
   get(id: number): Observable<any> {
-    return this.httpClient.get<any>(API_URL + '/posts/' + id);
+    return this.httpClient.get<any>(API_URL + '/api/posts/' + id);
+  }
+  findByTitle(title: string): Observable<any> {
+    return this.httpClient.get<any>(API_URL + '/api/posts/search/' + title);
   }
 }

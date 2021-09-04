@@ -23,7 +23,7 @@ export class PostCreateComponent implements OnInit {
   post: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
     image: new FormControl(),
-    status: new FormControl(),
+    status: new FormControl('public'),
     description: new FormControl(),
     content: new FormControl('', [Validators.required]),
     date: new FormControl(),
@@ -92,21 +92,26 @@ export class PostCreateComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   create() {
-    const newPost = this.post.value;
-    newPost.user = {id: 1};
     // @ts-ignore
-    newPost.date = new Date();
-    newPost.image = this.fb;
-    console.log(newPost);
-    if (newPost.title.trim() === '') {
-      alert('title null');
-    } else if (newPost.content.trim() === '') {
-      alert('content null');
-    } else {
-      this.postService.create(newPost).subscribe(() => {
-        // this.router.navigate(['/post/list']);
-        this.post.reset();
-      });
+    if (sessionStorage.getItem('Id_key')) {
+      const newPost = this.post.value;
+      newPost.user = {id: sessionStorage.getItem('Id_key')};
+      // @ts-ignore
+      newPost.date = new Date();
+      newPost.image = this.fb;
+      console.log(newPost);
+      if (newPost.title.trim() === '') {
+        alert('title null');
+      } else if (newPost.content.trim() === '') {
+        alert('content null');
+      } else {
+        this.postService.create(newPost).subscribe(() => {
+          // this.router.navigate(['/post/list']);
+          this.post.reset();
+        });
+      }
+    }else {
+      console.log('qq, đăng nhập đê');
     }
   }
 

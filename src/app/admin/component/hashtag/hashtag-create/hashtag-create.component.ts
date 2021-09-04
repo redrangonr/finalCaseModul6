@@ -20,6 +20,7 @@ export class HashtagCreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  // tslint:disable-next-line:typedef
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -35,11 +36,12 @@ export class HashtagCreateComponent implements OnInit {
       return '';
     }
   }
+  // tslint:disable-next-line:typedef
   create(){
     const hashtag = {
       name: this.hashtagForm.value.name,
       image: this.hashtagForm.value.image
-    }
+    };
 
   }
 }
