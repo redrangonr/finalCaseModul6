@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../../service/post.service';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {Router} from '@angular/router';
+
 
 @Component({
   selector: 'app-post-create',
@@ -20,11 +21,11 @@ export class PostCreateComponent implements OnInit {
   // @ts-ignore
   downloadURL: Observable<string>;
   post: FormGroup = new FormGroup({
-    title: new FormControl('', Validators.required),
+    title: new FormControl('', [Validators.required]),
     image: new FormControl(),
     status: new FormControl(),
     description: new FormControl(),
-    content: new FormControl(),
+    content: new FormControl('', [Validators.required]),
     date: new FormControl(),
     user: new FormControl()
   });
@@ -77,23 +78,38 @@ export class PostCreateComponent implements OnInit {
         input.click();
       }
     };
+    console.log(this.getTitle());
   }
 
   ngOnInit(): void {
   }
+
+  // tslint:disable-next-line:typedef
+  getTitle() {
+    // @ts-ignore
+    return this.post.get('title');
+  }
+
   // tslint:disable-next-line:typedef
   create() {
     const newPost = this.post.value;
     newPost.user = {id: 1};
     // @ts-ignore
-    newPost.date =  new Date();
+    newPost.date = new Date();
     newPost.image = this.fb;
     console.log(newPost);
-    this.postService.create(newPost).subscribe(data => {
-      // this.router.navigate(['/post/list']);
-      this.post.reset();
-    });
+    if (newPost.title.trim() === '') {
+      alert('title null');
+    } else if (newPost.content.trim() === '') {
+      alert('content null');
+    } else {
+      this.postService.create(newPost).subscribe(() => {
+        // this.router.navigate(['/post/list']);
+        this.post.reset();
+      });
+    }
   }
+
   // tslint:disable-next-line:typedef
   // @ts-ignore
   // tslint:disable-next-line:typedef

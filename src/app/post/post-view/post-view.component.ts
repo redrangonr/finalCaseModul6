@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PostService} from '../../service/post.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Post} from '../../model/post';
+
 
 @Component({
   selector: 'app-post-view',
@@ -9,6 +11,9 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./post-view.component.css']
 })
 export class PostViewComponent implements OnInit {
+  postInstand: Post = {
+    user: {}
+  };
   post: FormGroup = new FormGroup({
     id: new FormControl(),
     title: new FormControl(),
@@ -47,6 +52,20 @@ export class PostViewComponent implements OnInit {
         date: new FormControl(data.date),
         user: new FormControl(data.user.id)
       });
+      this.postInstand = {
+        id: data.id,
+        title: data.title,
+        image: data.image,
+        status: data.status,
+        description: data.description,
+        content: data.content,
+        date: data.date,
+        user: data.user
+      };
+      if (this.postInstand.image === null) {
+        this.postInstand.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
+      }
+      console.log(this.postInstand);
     });
   }
 
