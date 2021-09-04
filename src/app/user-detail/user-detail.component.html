@@ -11,6 +11,9 @@
             <img src="{{avatar}}" width="100%" height="100px" alt="" style="border-radius: 150px;border: #caf4ff solid; height: 305px">
             <form>
               <div class="form-group ">
+            <img src="{{avatar}}" width="100%" height="100px" alt="" style="border-radius: 44px;border: #caf4ff solid">
+            <form>
+              <div class="form-group">
                 <label for="exampleFormControlFile1"></label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
               </div>
@@ -19,6 +22,7 @@
           <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">{{name}}</h4>
           <br>
           <p class="sm-width-95 sm-margin-auto"></p>
+          <p class="sm-width-95 sm-margin-auto">We are proud of child student. We teaching great activities and best program for your kids.</p>
           <div class="margin-20px-top team-single-icons">
             <ul class="no-margin">
               <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
@@ -27,6 +31,7 @@
               <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
             </ul>
           </div>
+        </div>
         </div>
       </div>
       <div class="col-lg-8 col-md-7">
@@ -207,7 +212,7 @@
                   </div>
                 </form>
               </div>
-            </ng-template>
+              </ng-template>
           </li>
           <li [ngbNavItem]="2">
             <a ngbNavLink><img src="https://img.icons8.com/ios/2x/single-choice--v2.gif" height="25" width="25"> <b> My Post</b></a>
@@ -223,7 +228,7 @@
           </li>
         </ul>
         <div [ngbNavOutlet]="nav" class="mt-2"></div>
-
+        <pre>Active: {{ active }}</pre>
 <!--        <div class="team-single-text padding-50px-left sm-no-padding-left">-->
 <!--          <div class="contact-info-section margin-40px-tb">-->
 <!--      -->

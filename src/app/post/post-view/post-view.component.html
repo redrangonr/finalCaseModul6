@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Index</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-  <meta name="keywords" content="blog, business, clean, clear, cooporate, creative, design web, flat, marketing, minimal, portfolio, shop, shopping, unique">
-  <meta name="author" content="PISEN | Deer Creative Theme">
-<!--  <link rel="stylesheet" href="/assets/css/style.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/slick.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/jquery-ui.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/custom_bootstrap.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/fontawesome.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/elegant.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/plyr.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/aos.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/animate.css">-->
-<!--  <link rel="stylesheet" href="/assets/css/themify-icons.css">-->
-<!--  <link rel="shortcut icon" href="/assets/images/shortcut_logo.png">-->
-</head>
-<body>
+<p>post-view works!</p>
+
 <div id="main">
 
   <section class="blog-detail">
@@ -26,21 +7,22 @@
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
           <div class="post-block">
-            <h1 class="blog-detail-title">The Personality Trait That Makes People Happier</h1>
+            <h1 class="blog-detail-title" >{{postInstand.title}}</h1>
             <div class="blog-credit">
               <div class="blog-credit_wrapper">
-                <h5>Travel</h5>
-                <p>May 19, 2019</p>
+                <h5>Hashtag</h5>
+                <p>{{postInstand.date | date : ' EEEE,  dd-mm-yyyy,  hh:mm OOOO'}}</p>
               </div>
-            </div><img class="blog-cover img-fluid" src="assets/images/blog_detail/blog-cover-1.png" alt="blog image">
-            <p class="blog-pragraph"> <span>P</span>sum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+            </div><img style="width: 970px; height: 550px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
+            <h4>{{postInstand.description}}</h4>
+            <br>
+            <p class="blog-pragraph" [innerHTML]="postInstand.content"></p>
             <div class="blog-quote">
-              <q>Technology is nothing. What&apos;s important is that you have a faith in people, that they&apos;re basically good and smart, and if you give them tools, they&apos;ll do wonderful things with them</q>
-              <p class="quote-author">Steven Jobs </p>
+              <q> end !!!</q>
+              <a href="#id-author-info" style="text-decoration: none" class="quote-author">{{postInstand.user.name}}</a>
             </div>
             <div class="row">
-              <div class="col-12 col-sm-6"><img class="img-fluid" src="assets/images/homepage2/post-1.png" alt="post image"></div>
-              <div class="col-12 col-sm-6"><img class="img-fluid" src="assets/images/homepage2/post-2.png" alt="post image"></div>
+              <div class="col-12"><img style="height: 150px;width: 970px" src="https://media0.giphy.com/media/xUOrwafTKBZR78xeyQ/200w.webp?cid=ecf05e476zxax8udkxpqo58eh92dxti6v5rpq4x7xkznf8ra&rid=200w.webp&ct=g" ></div>
             </div>
             <h3 class="post-title">You Can Buy For Less Than A College Degree</h3>
             <p class="blog-pragraph">Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com</p>
@@ -58,35 +40,38 @@
               </div>
             </div>
           </div>
-          <div class="another-posts"><a class="arrow-control arrow-prev" href="blog_detail.html"><i class="arrow_left"></i></a><a class="arrow-control arrow-next" href="blog_detail.html"><i class="arrow_right"></i></a>
-            <div class="row no-gutters">
-              <div class="col-12 col-md-6"><a href=""></a>
-                <div class="another-post_block prev-post">
-                  <div class="post-mini-img text-left"><a href="blog_detail.html"><img src="assets/images/blog_detail/post-mini-img-1.png" alt="post image"></a></div>
-                  <div class="post-title">
-                    <p>Previous post</p><a href="blog_detail.html">The Personality Trait That Makes People Happier</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-md-6">
-                <div class="another-post_block text-right next-post">
-                  <div class="post-title">
-                    <p>Next post</p><a href="blog_detail.html">The Personality Trait That Makes People Happier</a>
-                  </div>
-                  <div class="post-mini-img text-right"><a href="blog_detail.html"><img src="assets/images/blog_detail/post-mini-img-2.png" alt="post image"></a></div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <!--          <div class="another-posts"><a class="arrow-control arrow-prev" href="blog_detail.html"><i class="arrow_left"></i></a><a class="arrow-control arrow-next" href="blog_detail.html"><i class="arrow_right"></i></a>-->
+          <!--            <div class="row no-gutters">-->
+          <!--              <div class="col-12 col-md-6"><a href=""></a>-->
+          <!--                <div class="another-post_block prev-post">-->
+          <!--                  <div class="post-mini-img text-left"><a href="blog_detail.html"><img src="assets/images/blog_detail/post-mini-img-1.png" alt="post image"></a></div>-->
+          <!--                  <div class="post-title">-->
+          <!--                    <p>Previous post</p><a href="blog_detail.html">The Personality Trait That Makes People Happier</a>-->
+          <!--                  </div>-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--              <div class="col-12 col-md-6">-->
+          <!--                <div class="another-post_block text-right next-post">-->
+          <!--                  <div class="post-title">-->
+          <!--                    <p>Next post</p><a href="blog_detail.html">The Personality Trait That Makes People Happier</a>-->
+          <!--                  </div>-->
+          <!--                  <div class="post-mini-img text-right"><a href="blog_detail.html"><img src="assets/images/blog_detail/post-mini-img-2.png" alt="post image"></a></div>-->
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
           <div class="post-author-detail">
             <div class="row no-gutters align-items-center">
               <div class="col-sm-5 col-md-3">
-                <div class="author-avatar"><img src="assets/images/blog_detail/post-author-avatar.png" alt="avatar"></div>
+
+                <!--                author description-->
+
+                <div class="author-avatar"><img src="https://img.icons8.com/ios-filled/2x/user.png"></div>
               </div>
               <div class="col-sm-7 col-md-9">
-                <div class="author-info">
-                  <h5>Shane Lynch</h5>
-                  <p>Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum bore et dolore magna aliqua. </p>
+                <div  class="author-info">
+                  <h5 id="id-author-info">{{postInstand.user.name}}</h5>
+                  <p>This is something about author </p>
                   <div class="author-social"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
                 </div>
               </div>
@@ -113,32 +98,32 @@
       </div>
     </div>
   </section><!--End posts-->
-  <section class="instagram">
-    <div class="container">
-      <div class="instagram-posts"><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/1.png" alt="instagram post">
-        <div class="instagram-post_block"><i class="fab fa-instagram"></i>
-          <p>Pisen_Instagram</p>
-        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/2.png" alt="instagram post">
-        <div class="instagram-post_block"><i class="fab fa-instagram"></i>
-          <p>Pisen_Instagram</p>
-        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/3.png" alt="instagram post">
-        <div class="instagram-post_block"><i class="fab fa-instagram"></i>
-          <p>Pisen_Instagram</p>
-        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/4.png" alt="instagram post">
-        <div class="instagram-post_block"><i class="fab fa-instagram"></i>
-          <p>Pisen_Instagram</p>
-        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/5.png" alt="instagram post">
-        <div class="instagram-post_block"><i class="fab fa-instagram"></i>
-          <p>Pisen_Instagram</p>
-        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/3.png" alt="instagram post">
-        <div class="instagram-post_block"><i class="fab fa-instagram"></i>
-          <p>Pisen_Instagram</p>
-        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/2.png" alt="instagram post">
-        <div class="instagram-post_block"><i class="fab fa-instagram"></i>
-          <p>Pisen_Instagram</p>
-        </div></a></div>
-    </div>
-  </section><!--End instagram-->
+  <!--  <section class="instagram">-->
+  <!--    <div class="container">-->
+  <!--      <div class="instagram-posts"><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/1.png" alt="instagram post">-->
+  <!--        <div class="instagram-post_block"><i class="fab fa-instagram"></i>-->
+  <!--          <p>Pisen_Instagram</p>-->
+  <!--        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/2.png" alt="instagram post">-->
+  <!--        <div class="instagram-post_block"><i class="fab fa-instagram"></i>-->
+  <!--          <p>Pisen_Instagram</p>-->
+  <!--        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/3.png" alt="instagram post">-->
+  <!--        <div class="instagram-post_block"><i class="fab fa-instagram"></i>-->
+  <!--          <p>Pisen_Instagram</p>-->
+  <!--        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/4.png" alt="instagram post">-->
+  <!--        <div class="instagram-post_block"><i class="fab fa-instagram"></i>-->
+  <!--          <p>Pisen_Instagram</p>-->
+  <!--        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/5.png" alt="instagram post">-->
+  <!--        <div class="instagram-post_block"><i class="fab fa-instagram"></i>-->
+  <!--          <p>Pisen_Instagram</p>-->
+  <!--        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/3.png" alt="instagram post">-->
+  <!--        <div class="instagram-post_block"><i class="fab fa-instagram"></i>-->
+  <!--          <p>Pisen_Instagram</p>-->
+  <!--        </div></a><a class="instagram-img_block" href="https://www.instagram.com/"><img src="assets/images/instagram/2.png" alt="instagram post">-->
+  <!--        <div class="instagram-post_block"><i class="fab fa-instagram"></i>-->
+  <!--          <p>Pisen_Instagram</p>-->
+  <!--        </div></a></div>-->
+  <!--    </div>-->
+  <!--  </section>&lt;!&ndash;End instagram&ndash;&gt;-->
   <footer>
     <div class="container">
       <div class="row">
@@ -207,5 +192,3 @@
   <script src="assets/js/jquery.countdown.min.js"></script>
   <script src="assets/js/main.js"></script>
 </div>
-</body>
-</html>

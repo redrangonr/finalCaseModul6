@@ -7,13 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { DetalComponent } from './detail/detal.component';
 import { AboutUSComponent } from './shared-module/about-us/about-us.component';
 import { ErrorComponent } from './shared-module/error/error.component';
-import { ContactComponent } from './contact/contact.component';
 import { AdminComponent } from './admin/component/admin-home/admin.component';
 import {AdminModule} from './admin/module/admin.module';
 import { LoginComponent } from './authentication/component/login/login.component';
-import {LoginModule} from './authentication/module/login.module';
 import { UserManagementComponent } from './admin/component/user/user-list/user-management.component';
-import { NavbarComponent } from './shared-module/navbar/navbar.component';
 import { UserEditComponent } from './admin/component/user/user-edit/user-edit.component';
 import { HashtagListComponent } from './admin/component/hashtag/hashtag-list/hashtag-list.component';
 import { HashtagCreateComponent } from './admin/component/hashtag/hashtag-create/hashtag-create.component';
@@ -30,14 +27,22 @@ import { SignupEmailAdsComponent } from './home/signup-email-ads/signup-email-ad
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import {NgbNavModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ContactComponent } from './contact/contact.component';
+import {HttpClientModule} from '@angular/common/http';
+import {PostModule} from './post/post.module';
+import {EditorModule} from '@tinymce/tinymce-angular';
+import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import {NavbarComponent} from './shared-module/navbar/navbar.component';
+import {LoginModule} from './authentication/module/login.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DetalComponent,
-    AboutUSComponent,
-    ErrorComponent,
     ContactComponent,
     NavbarComponent,
     AdsComponent,
@@ -48,7 +53,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     RecentPostComponent,
     SignupEmailAdsComponent,
     UserDetailComponent,
-
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,13 @@ import {ReactiveFormsModule} from '@angular/forms';
     NgbNavModule,
     ReactiveFormsModule,
     NgbTooltipModule,
+    HttpClientModule,
+    PostModule,
+    EditorModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    LoginModule,
+    NgbNavModule
   ],
   providers: [],
     exports: [
