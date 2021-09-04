@@ -20,6 +20,7 @@ import { HashtagCreateComponent } from './admin/component/hashtag/hashtag-create
 import { HashtagDeleteComponent } from './admin/component/hashtag/hashtag-delete/hashtag-delete.component';
 import { HashtagEditComponent } from './admin/component/hashtag/hashtag-edit/hashtag-edit.component';
 import { AdsComponent } from './shared-module/ads/ads.component';
+import { SlideHashtagComponent } from './shared-module/slide-hashtag/slide-hashtag.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { AdsComponent } from './shared-module/ads/ads.component';
     ContactComponent,
     NavbarComponent,
     AdsComponent,
+    SlideHashtagComponent,
 
   ],
   imports: [
