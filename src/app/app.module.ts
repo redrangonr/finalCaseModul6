@@ -21,6 +21,7 @@ import { HashtagDeleteComponent } from './admin/component/hashtag/hashtag-delete
 import { HashtagEditComponent } from './admin/component/hashtag/hashtag-edit/hashtag-edit.component';
 import { AdsComponent } from './shared-module/ads/ads.component';
 import { SlideHashtagComponent } from './shared-module/slide-hashtag/slide-hashtag.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SlideHashtagComponent } from './shared-module/slide-hashtag/slide-hasht
     BrowserModule,
     AppRoutingModule,
     LoginModule,
+    NgxPaginationModule,
   ],
   providers: [],
     exports: [

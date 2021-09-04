@@ -1,1 +1,24 @@
-<p>slide-hashtag works!</p>
+<div class="row">
+  <div class="col-2 ml-7 text-center" *ngFor="let hashtag of hashtags | paginate :{
+        itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+  }">
+    <div class="post-classic-bundle_slide">
+      <div class="post-classic-tib mini-post">
+        <img src="{{hashtag.image}}" width="100%" height="80%"style="border-radius: 10px">
+          <div class="post-detail">
+            <div class="post-credit">
+              <div class="post-tag">
+                <a href="#">{{hashtag.name}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="d-flex justify-content-center">
+  <pagination-controls previousLabel="Back" nextLabel="Next" (pageChange)="tabSize($event)" >
+  </pagination-controls>
+</div>
