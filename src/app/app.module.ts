@@ -11,7 +11,6 @@ import {AdminModule} from './admin/module/admin.module';
 import { LoginComponent } from './authentication/component/login/login.component';
 import {LoginModule} from './authentication/module/login.module';
 import { AdsComponent } from './shared-module/ads/ads.component';
-import { SlideHashtagComponent } from './shared-module/slide-hashtag/slide-hashtag.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { HotNewComponent } from './home/hot-new/hot-new.component';
 import { AboutUsHomeComponent } from './home/about-us-home/about-us-home.component';
@@ -20,6 +19,8 @@ import { RecentPostComponent } from './home/recent-post/recent-post.component';
 import { SignupEmailAdsComponent } from './home/signup-email-ads/signup-email-ads.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
+import { SlideHashtagComponent } from './home/slide-hashtag/slide-hashtag.component';
+import {NavbarComponent} from './shared-module/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
     RecentPostComponent,
     SignupEmailAdsComponent,
     UserDetailComponent,
+    NavbarComponent,
   ],
     imports: [
         BrowserModule,
