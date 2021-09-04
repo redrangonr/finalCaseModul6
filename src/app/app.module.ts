@@ -22,6 +22,13 @@ import { HashtagEditComponent } from './admin/component/hashtag/hashtag-edit/has
 import { AdsComponent } from './shared-module/ads/ads.component';
 import { SlideHashtagComponent } from './shared-module/slide-hashtag/slide-hashtag.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { HotNewComponent } from './home/hot-new/hot-new.component';
+import { AboutUsHomeComponent } from './home/about-us-home/about-us-home.component';
+import { FollowUsHomeComponent } from './home/follow-us-home/follow-us-home.component';
+import { RecentPostComponent } from './home/recent-post/recent-post.component';
+import { SignupEmailAdsComponent } from './home/signup-email-ads/signup-email-ads.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,14 +41,21 @@ import {NgxPaginationModule} from 'ngx-pagination';
     NavbarComponent,
     AdsComponent,
     SlideHashtagComponent,
+    HotNewComponent,
+    AboutUsHomeComponent,
+    FollowUsHomeComponent,
+    RecentPostComponent,
+    SignupEmailAdsComponent,
+    UserDetailComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    LoginModule,
-    NgxPaginationModule,
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        LoginModule,
+        NgxPaginationModule,
+        NgbNavModule,
+    ],
   providers: [],
     exports: [
     ],
