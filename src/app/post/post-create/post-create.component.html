@@ -46,19 +46,15 @@
 <!--</form>-->
 
 
-
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="container">
 
   <!-- Breadcrumb -->
-  <nav aria-label="breadcrumb" class="main-breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-      <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Profile Settings</li>
-    </ol>
-  </nav>
+
   <!-- /Breadcrumb -->
 
   <div class="row gutters-sm">
@@ -112,16 +108,16 @@
             <hr>
 
 
+
             <form [formGroup]="post" (ngSubmit)="create()">
               <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" formControlName="title"  id="title" aria-describedby="fullNameHelp" placeholder="Enter your title" >
-<!--                  <p  *ngIf="post.get('title')?.errors?.required">sfdsds</p>-->
+                <small  id="fullNameHelp" class="form-text text-muted">Your name may appear around here where you are mentioned. You can change or remove it at any time.</small>
               </div>
               <div class="form-group">
                 <label for="bio">Description</label>
                 <textarea class="form-control autosize" formControlName="description" id="bio" placeholder="Write something about your post" style="overflow: hidden; overflow-wrap: break-word; resize: none; height: 62px;"></textarea>
-                <small  id="fullNameHelp" class="form-text text-muted">If the description is left blank, it will default to the first 300 characters of content</small>
               </div>
               <div class="form-group">
 
@@ -139,7 +135,7 @@
                 <div class="col-6">
                   <label for="status">Status</label>
                 <select id="status"  class="form-control" id="status" formControlName="status">
-                  <option [selected]="true" value="public">Public</option>
+                  <option value="public">Public</option>
                   <option value="private">Private</option>
                 </select>
                 </div>
@@ -294,21 +290,3 @@
 </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <h4>Check Message</h4>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>

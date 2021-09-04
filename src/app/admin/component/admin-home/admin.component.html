@@ -1,0 +1,76 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <span class="profile-name" style="font-size: 40px"><img src="https://image.flaticon.com/icons/png/128/1421/1421191.png" height="60" width="60" style="border: #caf4ff solid; border-radius: 44px">&nbsp;<b>Blogger Managment</b></span>
+    <div>
+      <img src="{{avatar}}" height="40px" width="40px" style="border-radius: 44px; float: right">
+      <a style="margin-right: 20px"><b>{{name}}</b></a>
+    </div>
+  </div>
+</nav>
+<br>
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
+  <div class="profile-page tx-13">
+    <div class="row profile-body">
+      <!-- left wrapper start -->
+      <div class="d-none d-md-block col-md-4 col-xl-2 left-wrapper" >
+        <div class="card rounded" style="height: 750px ; background-color: #e9ecef; border-radius: 5px">
+          <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-2">
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- left wrapper end -->
+      <!-- middle wrapper start -->
+      <div class="col-md-8 col-xl-7 middle-wrapper">
+        <div class="row">
+          <div class="col-md-12 grid-margin" style="border-radius: 5px; height: 750px">
+            <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+              <li [ngbNavItem]="1">
+                <a ngbNavLink><img src="https://img.icons8.com/ios/2x/name--v2.gif" width="30"height="30"> User Management</a>
+                <ng-template ngbNavContent>
+                  <br>
+                  <app-user-management></app-user-management>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="2">
+                <a ngbNavLink><img src="https://img.icons8.com/pastel-glyph/2x/pen--v2.gif" width="30" height="30"> Post Management</a>
+                <ng-template ngbNavContent>
+                  <p>Quản lý Bài Viết</p>
+                </ng-template>
+              </li>
+              <li [ngbNavItem]="3">
+                <a ngbNavLink><img src="https://img.icons8.com/ios/2x/price-tag--v2.gif" height="30" width="30">Hashtag Management</a>
+                <ng-template ngbNavContent>
+                  <app-hashtag-list></app-hashtag-list>
+                </ng-template>
+              </li>
+            </ul>
+
+            <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+            <pre>Active: {{ active }}</pre>
+          </div>
+        </div>
+      </div>
+      <!-- middle wrapper end -->
+      <!-- right wrapper start -->
+      <div class="d-none d-xl-block col-xl-3 right-wrapper">
+        <div class="row">
+          <div class="col-md-12 grid-margin">
+            <div class="card rounded">
+              <div class="card-body" style="background-color: #e9ecef; height: 750px; border-radius: 5px">
+                <router-outlet></router-outlet>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- right wrapper end -->
+    </div>
+  </div>
+</div>

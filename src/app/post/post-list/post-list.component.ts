@@ -22,5 +22,21 @@ export class PostListComponent implements OnInit {
       this.posts = data;
     });
   }
+  // tslint:disable-next-line:typedef
+  findByTitle() {
+    // @ts-ignore
+    const title = document.getElementById('search').value;
+    this.postService.findByTitle(title).subscribe(data => {
+      console.log(data);
+      // tslint:disable-next-line:no-conditional-assignment
+      if (data.length === 0) {
+        alert('ko thấy');
+      }else {
+        this.posts = data;
+      }
+    });
+  }
+
+
 
 }

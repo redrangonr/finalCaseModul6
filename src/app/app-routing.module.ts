@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from './home/home.component';
-import {DetailComponent} from './detail/detail.component';
+import {DetalComponent} from './detail/detal.component';
 import {ContactComponent} from './contact/contact.component';
-import {AboutUSComponent} from './about-us/about-us.component';
-import {ErrorComponent} from './error/error.component';
+import {UserDetailComponent} from './user-detail/user-detail.component';
+
+
 
 const routes: Routes = [
   {
@@ -13,20 +14,28 @@ const routes: Routes = [
   },
   {
     path: 'detail',
-    component: DetailComponent
+    component: DetalComponent
   },
   {
     path: 'contact',
     component: ContactComponent
   },
   {
-    path: 'about',
-    component: AboutUSComponent
-  },
-  {
     path: 'post',
     loadChildren: () => import('./post/post.module').then(module => module.PostModule)
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/module/admin.module').then(module => module.AdminModule)
+  },
+  {
+    path: 'home',
+  component: HomeComponent
+  },
+  {
+    path: 'user/:id',
+    component: UserDetailComponent
+  }
   // {
   //   path: '**',
   //   component: ErrorComponent

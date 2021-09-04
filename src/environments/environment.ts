@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/api',
+  apiUrl: 'http://localhost:8080',
   firebaseConfig : {
     apiKey: 'AIzaSyAM-qhtCY_3ImAYqu276-YpyFPhD4lNrfY',
     authDomain: 'test0109-9fa17.firebaseapp.com',
