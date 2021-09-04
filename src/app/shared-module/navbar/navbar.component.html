@@ -11,7 +11,7 @@
           </a></div>
           <div class="col-0 col-xl-5">
             <ul>
-              <li class="nav-item"><a class="pisen-nav-link active" href="#">New Post</a><i class="submenu-opener fas fa-plus"></i>
+              <li class="nav-item"><a class="pisen-nav-link active" href="#">List Post</a><i class="submenu-opener fas fa-plus"></i>
                 <ul class="sub-menu">
                   <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
                 </ul>
@@ -26,24 +26,29 @@
                   <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
                 </ul>
               </li>
+              <li class="nav-item"><a class="pisen-nav-link active" href="#">Viết bài</a><i class="submenu-opener fas fa-plus"></i>
+                <ul class="sub-menu">
+                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
           <div class="col-3 col-md-5">
             <nav class="navigation">
               <ul>
                 <li class="nav-item" ><a class="pisen-nav-link">{{name}}</a></li>
-                <li class="nav-item" [hidden]="!avatar"><a class="pisen-nav-link"><img src="{{avatar}}" width="80" height="40" style="border-radius: 44px;border: #005cbf solid"></a></li>
+                <li class="nav-item" [hidden]="!avatar"><a class="pisen-nav-link"><img src="{{avatar}}" width="40" height="40" style="border-radius: 44px;border: #005cbf solid"></a></li>
                 <li class="nav-item dropdown" style="float: right" [hidden]="!token">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdowns" role="button"
                      data-bs-toggle="dropdown" aria-expanded="false">
                     <img src="https://img.icons8.com/ios/2x/settings--v2.gif" width="30" height="30" class="rounded-circle mt-2" alt="" style="margin:15px;">
                   </a>
                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#" >Logout</a></li>
+                    <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
                     <li>
                       <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Infomation</a></li>
+                    <li><a class="dropdown-item" routerLink="/user/{{id}}" >Infomation</a></li>
                   </ul>
                 </li>
                 <div id="login" style="float: right; margin-top: 14px" [hidden]="token">
