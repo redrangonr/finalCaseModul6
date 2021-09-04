@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { DetalComponent } from './detail/detal.component';
+import { DetailComponent } from './detail/detail.component';
 import { AboutUSComponent } from './about-us/about-us.component';
 import { ErrorComponent } from './error/error.component';
 import { ContactComponent } from './contact/contact.component';
@@ -23,7 +23,7 @@ import {AngularFireModule} from '@angular/fire';
   declarations: [
     AppComponent,
     HomeComponent,
-    DetalComponent,
+    DetailComponent,
     AboutUSComponent,
     ErrorComponent,
     ContactComponent,
