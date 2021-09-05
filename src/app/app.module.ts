@@ -33,9 +33,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {NavbarComponent} from './shared-module/navbar/navbar.component';
 import {LoginModule} from './authentication/module/login.module';
-import { ErrorComponent } from './shared-module/error/error.component';
 import { SlideHashtagComponent } from './home/slide-hashtag/slide-hashtag.component';
-import { AboutUSComponent } from './shared-module/about-us/about-us.component';
 
 
 @NgModule({
@@ -43,8 +41,6 @@ import { AboutUSComponent } from './shared-module/about-us/about-us.component';
     AppComponent,
     HomeComponent,
     DetalComponent,
-    AboutUSComponent,
-    ErrorComponent,
     ContactComponent,
     NavbarComponent,
     AdsComponent,
