@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
   firebaseConfig : {
-    apiKey: 'AIzaSyAM-qhtCY_3ImAYqu276-YpyFPhD4lNrfY',
+  apiKey: 'AIzaSyAM-qhtCY_3ImAYqu276-YpyFPhD4lNrfY',
     authDomain: 'test0109-9fa17.firebaseapp.com',
     databaseURL: 'https://test0109-9fa17-default-rtdb.firebaseio.com/',
     projectId: 'test0109-9fa17',
@@ -14,7 +14,7 @@ export const environment = {
     messagingSenderId: '396200100098',
     appId: '1:396200100098:web:e8e0f20e404be9b027021b',
     measurementId: 'G-HD3FTZ8ZTG'
-  }
+}
 };
 
 /*
@@ -24,4 +24,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

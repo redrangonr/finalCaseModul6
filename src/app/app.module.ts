@@ -15,6 +15,7 @@ import { HashtagCreateComponent } from './admin/component/hashtag/hashtag-create
 import { HashtagDeleteComponent } from './admin/component/hashtag/hashtag-delete/hashtag-delete.component';
 import { HashtagEditComponent } from './admin/component/hashtag/hashtag-edit/hashtag-edit.component';
 import { AdsComponent } from './shared-module/ads/ads.component';
+import { SlideHashtagComponent } from './shared-module/slide-hashtag/slide-hashtag.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { HotNewComponent } from './home/hot-new/hot-new.component';
 import { AboutUsHomeComponent } from './home/about-us-home/about-us-home.component';
@@ -33,7 +34,6 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {NavbarComponent} from './shared-module/navbar/navbar.component';
 import {LoginModule} from './authentication/module/login.module';
-import { SlideHashtagComponent } from './home/slide-hashtag/slide-hashtag.component';
 
 
 @NgModule({
@@ -51,7 +51,7 @@ import { SlideHashtagComponent } from './home/slide-hashtag/slide-hashtag.compon
     RecentPostComponent,
     SignupEmailAdsComponent,
     UserDetailComponent,
-
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
