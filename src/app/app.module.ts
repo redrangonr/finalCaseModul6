@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DetalComponent } from './detail/detal.component';
-import { AboutUSComponent } from './shared-module/about-us/about-us.component';
-import { ErrorComponent } from './shared-module/error/error.component';
 import { AdminComponent } from './admin/component/admin-home/admin.component';
 import {AdminModule} from './admin/module/admin.module';
 import { LoginComponent } from './authentication/component/login/login.component';
@@ -17,7 +15,6 @@ import { HashtagCreateComponent } from './admin/component/hashtag/hashtag-create
 import { HashtagDeleteComponent } from './admin/component/hashtag/hashtag-delete/hashtag-delete.component';
 import { HashtagEditComponent } from './admin/component/hashtag/hashtag-edit/hashtag-edit.component';
 import { AdsComponent } from './shared-module/ads/ads.component';
-import { SlideHashtagComponent } from './shared-module/slide-hashtag/slide-hashtag.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { HotNewComponent } from './home/hot-new/hot-new.component';
 import { AboutUsHomeComponent } from './home/about-us-home/about-us-home.component';
@@ -36,6 +33,9 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {NavbarComponent} from './shared-module/navbar/navbar.component';
 import {LoginModule} from './authentication/module/login.module';
+import { ErrorComponent } from './shared-module/error/error.component';
+import { SlideHashtagComponent } from './home/slide-hashtag/slide-hashtag.component';
+import { AboutUSComponent } from './shared-module/about-us/about-us.component';
 
 
 @NgModule({
