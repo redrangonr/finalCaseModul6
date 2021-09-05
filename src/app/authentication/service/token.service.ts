@@ -11,10 +11,8 @@ const ID_KEY = 'Id_key';
 export class TokenService {
   private roles: Array<string> = [];
   constructor() { }
-<<<<<<< HEAD
-=======
+
   // tslint:disable-next-line:typedef
->>>>>>> 83bc2022c7df455263a061e01b47943ee52fc64a
   public setAvartar(avatar: string){
     window.sessionStorage.removeItem(AVATAR_KEY);
     window.sessionStorage.setItem(AVATAR_KEY, avatar);
@@ -23,10 +21,7 @@ export class TokenService {
     // @ts-ignore
     return window.sessionStorage.getItem(AVATAR_KEY);
   }
-<<<<<<< HEAD
-=======
-  // tslint:disable-next-line:typedef
->>>>>>> 83bc2022c7df455263a061e01b47943ee52fc64a
+
   public setToken(token: string){
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
@@ -39,21 +34,13 @@ export class TokenService {
     // @ts-ignore
     return window.sessionStorage.getItem(ID_KEY);
   }
-<<<<<<< HEAD
   public setId(id: number){
     window.sessionStorage.removeItem(ID_KEY);
     // @ts-ignore
     window.sessionStorage.setItem(ID_KEY,id);
   }
-=======
+
   // tslint:disable-next-line:typedef
-  public setId(id: number){
-    window.sessionStorage.removeItem(ID_KEY);
-    // @ts-ignore
-    window.sessionStorage.setItem(ID_KEY, id);
-  }
-  // tslint:disable-next-line:typedef
->>>>>>> 83bc2022c7df455263a061e01b47943ee52fc64a
   public setUserName(username: string){
     window.sessionStorage.removeItem(USERNAME_KEY);
     window.sessionStorage.setItem(USERNAME_KEY, username);
@@ -62,23 +49,20 @@ export class TokenService {
     // @ts-ignore
     return window.sessionStorage.getItem(USERNAME_KEY);
   }
-<<<<<<< HEAD
-=======
-  // tslint:disable-next-line:typedef
->>>>>>> 83bc2022c7df455263a061e01b47943ee52fc64a
+
   public setName(name: string){
     window.sessionStorage.removeItem(NAME_KEY);
     window.sessionStorage.setItem(NAME_KEY, name);
   }
   public getName(): string {
     // @ts-ignore
-<<<<<<< HEAD
     return window.sessionStorage.getItem(NAME_KEY)
   }
   public setRoles(roles: string[]){
     window.sessionStorage.removeItem(ROLE_KEY);
     window.sessionStorage.setItem(ROLE_KEY,JSON.stringify(roles));
   }
+  // @ts-ignore
   public getRoles(): string[]{
     this.roles = [];
     if(sessionStorage.getItem(TOKEN_KEY)){
@@ -86,23 +70,11 @@ export class TokenService {
       JSON.parse(sessionStorage.getItem(ROLE_KEY)).forEach(role =>{
         this.roles.push(role.authority);
       })
-=======
-    return window.sessionStorage.getItem(NAME_KEY);
+
+    // @ts-ignore
+      return window.sessionStorage.getItem(NAME_KEY);
   }
   // tslint:disable-next-line:typedef
-  public setRoles(roles: string[]){
-    window.sessionStorage.removeItem(ROLE_KEY);
-    window.sessionStorage.setItem(ROLE_KEY, JSON.stringify(roles));
-  }
-  public getRoles(): string[]{
-    this.roles = [];
-    if (sessionStorage.getItem(TOKEN_KEY)){
-      // @ts-ignore
-      JSON.parse(sessionStorage.getItem(ROLE_KEY)).forEach(role => {
-        this.roles.push(role.authority);
-      });
->>>>>>> 83bc2022c7df455263a061e01b47943ee52fc64a
-    }
-    return this.roles;
-  }
+
+}
 }

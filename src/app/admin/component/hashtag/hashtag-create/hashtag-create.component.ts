@@ -20,10 +20,8 @@ export class HashtagCreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-<<<<<<< HEAD
-=======
+
   // tslint:disable-next-line:typedef
->>>>>>> 83bc2022c7df455263a061e01b47943ee52fc64a
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -39,19 +37,11 @@ export class HashtagCreateComponent implements OnInit {
       return '';
     }
   }
-<<<<<<< HEAD
-=======
-  // tslint:disable-next-line:typedef
->>>>>>> 83bc2022c7df455263a061e01b47943ee52fc64a
+
   create(){
     const hashtag = {
       name: this.hashtagForm.value.name,
       image: this.hashtagForm.value.image
-<<<<<<< HEAD
     }
-=======
-    };
->>>>>>> 83bc2022c7df455263a061e01b47943ee52fc64a
-
-  }
+  };
 }
