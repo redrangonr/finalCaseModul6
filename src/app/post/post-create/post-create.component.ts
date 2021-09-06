@@ -34,6 +34,8 @@ export class PostCreateComponent implements OnInit {
   });
   tinymceinit: any;
   hashtags: any;
+  notification = '';
+  notificationImg = '';
 
   constructor(private postService: PostService,
               private storage: AngularFireStorage,
@@ -111,14 +113,18 @@ export class PostCreateComponent implements OnInit {
       newPost.image = this.fb;
       console.log(newPost);
       if (newPost.title.trim() === '') {
-        alert('title null');
+       this.notification = 'Thiếu title';
+       this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
       } else if (newPost.content.trim() === '') {
-        alert('content null');
+        this.notification = 'Thiếu content';
+        this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
       } else {
         this.postService.create(newPost).subscribe(() => {
           // this.router.navigate(['/post/list']);
           this.post.reset();
         });
+        this.notification = 'success';
+        this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
       }
     }else {
       console.log('qq, đăng nhập đê');

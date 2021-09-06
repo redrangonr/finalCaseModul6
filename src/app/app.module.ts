@@ -81,6 +81,7 @@ import { TopNewPostComponent } from './home/top-new-post/top-new-post.component'
   ],
   providers: [],
     exports: [
+        NavbarComponent
     ],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,8 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 
 
+
+
 @NgModule({
   declarations: [
     PostListComponent,
@@ -22,7 +24,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
     CommonModule,
     PostRoutingModule,
     ReactiveFormsModule,
-    EditorModule
+    EditorModule,
   ]
 })
 export class PostModule { }
