@@ -18,13 +18,13 @@ export class PostCreateComponent implements OnInit {
   // @ts-ignore
   selectedFile: File = null;
   // @ts-ignore
-  fb;
+  fb = '';
   // @ts-ignore
   downloadURL: Observable<string>;
   // @ts-ignore
   post: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
-    image: new FormControl(),
+    image: new FormControl(''),
     status: new FormControl('public'),
     description: new FormControl(),
     content: new FormControl('', [Validators.required]),
@@ -164,7 +164,7 @@ export class PostCreateComponent implements OnInit {
   reset() {
     this.post = new FormGroup({
       title: new FormControl('', [Validators.required]),
-      image: new FormControl(),
+      image: new FormControl(''),
       status: new FormControl('public'),
       description: new FormControl(),
       content: new FormControl('', [Validators.required]),

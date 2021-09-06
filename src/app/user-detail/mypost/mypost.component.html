@@ -6,7 +6,7 @@
       <div  class="post-credit">
         <div class="row">
           <div class="col-6"><div style="margin-left: 100px" class="post-tag"><a style="text-decoration: none" class="fa fa-tag" href="index.html">{{item.hashtag.name}}</a></div></div>
-          <div class="col-6"><button routerLink="/post/edit/{{item.id}}" class="btn btn-sm btn-outline-primary" style="float: right">Edit</button></div>
+          <div class="col-6"><button routerLink="/post/edit/{{item.id}}" class="btn btn-sm btn-outline-primary" style="float: right">Edit</button>  <button (click)="getIdPost(item.id)" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="float: right">Delete</button></div>
         </div>
 
       </div ><div style="margin-left: 100px"><h6 style="cursor: pointer" routerLink="/post/view/{{item.id}}"  class="post-title">{{item.title}}</h6></div>
@@ -17,6 +17,28 @@
         </div>
       </div>
     </div></div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{notification}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div align="center"><img src="{{notificationImg}}" alt=""></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="deletePost(idPost)"  class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+      </div>
     </div>
   </div>
 </div>
