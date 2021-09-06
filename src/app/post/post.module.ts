@@ -8,6 +8,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { PostCreateComponent } from './post-create/post-create.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {PostEditComponent} from './post-edit/post-edit.component';
 
 
 
@@ -16,7 +17,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
   declarations: [
     PostListComponent,
     PostViewComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    PostEditComponent
   ],
   exports: [
     PostListComponent

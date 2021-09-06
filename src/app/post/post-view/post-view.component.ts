@@ -12,7 +12,8 @@ import {Post} from '../../model/post';
 })
 export class PostViewComponent implements OnInit {
   postInstand: Post = {
-    user: {}
+    user: {},
+    hashtag: {}
   };
   post: FormGroup = new FormGroup({
     id: new FormControl(),
@@ -26,6 +27,8 @@ export class PostViewComponent implements OnInit {
   });
   // @ts-ignore
   id: number;
+  // @ts-ignore
+  idUser = +sessionStorage.getItem('Id_key');
 
   constructor(private postService: PostService,
               private activatedRoute: ActivatedRoute,
