@@ -8,7 +8,7 @@
             <h1 class="blog-detail-title" >{{postInstand.title}}</h1>
             <div class="blog-credit">
               <div class="blog-credit_wrapper">
-                <h5>Hashtag</h5>
+                <h5>#{{postInstand.hashtag.name}}</h5>
                 <p>{{postInstand.date | date : ' EEEE,  dd-mm-yyyy,  hh:mm OOOO'}}</p>
               </div>
             </div><img style="width: 970px; height: 550px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
