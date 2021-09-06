@@ -12,7 +12,7 @@ export class PostService {
 
   constructor(private httpClient: HttpClient) { }
   getAll(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(API_URL + '/api/posts');
+    return this.httpClient.get<Post[]>(API_URL + '/api/posts/public');
   }
 
   create(post: Post): Observable<any> {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../../service/post.service';
 import {Post} from '../../model/post';
+import {HashtagService} from '../../admin/service/hashtag.service';
+import {Hashtag} from '../../admin/model/hashtag';
 
 @Component({
   selector: 'app-post-list',
@@ -14,10 +16,12 @@ export class PostListComponent implements OnInit {
   tableSize = 10 ;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
-  constructor(private postService: PostService) { }
+  hashtags: Hashtag[] = []
+  constructor(private postService: PostService, private hashtagService: HashtagService) { }
 
   ngOnInit(): void {
     this.getAll();
+    this.getAllHashtag()
   }
   // tslint:disable-next-line:typedef
   getAll() {
@@ -26,6 +30,14 @@ export class PostListComponent implements OnInit {
       this.posts = data;
     });
   }
+
+  getAllHashtag(){
+    this.hashtagService.getAll().subscribe(data=>{
+      // @ts-ignore
+      this.hashtags = data
+    })
+  }
+
   // tslint:disable-next-line:typedef
   findByTitle() {
     // @ts-ignore

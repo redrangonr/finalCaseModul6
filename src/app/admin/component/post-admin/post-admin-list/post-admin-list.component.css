@@ -64,7 +64,7 @@ body{
   font-size: 18px;
   color: #ffffff;
   content: '\F2F9';
-  font-family: "Material-Design-Iconic-Font";
+  font-family: "Material-Design-Iconic-Font", serif;
 }
 
 .filter-result .job-box {
