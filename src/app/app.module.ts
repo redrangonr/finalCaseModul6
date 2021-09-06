@@ -15,7 +15,6 @@ import { HashtagCreateComponent } from './admin/component/hashtag/hashtag-create
 import { HashtagDeleteComponent } from './admin/component/hashtag/hashtag-delete/hashtag-delete.component';
 import { HashtagEditComponent } from './admin/component/hashtag/hashtag-edit/hashtag-edit.component';
 import { AdsComponent } from './shared-module/ads/ads.component';
-import { SlideHashtagComponent } from './shared-module/slide-hashtag/slide-hashtag.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { HotNewComponent } from './home/hot-new/hot-new.component';
 import { AboutUsHomeComponent } from './home/about-us-home/about-us-home.component';
@@ -25,7 +24,6 @@ import { SignupEmailAdsComponent } from './home/signup-email-ads/signup-email-ad
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import {NgbNavModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ContactComponent } from './contact/contact.component';
 import {HttpClientModule} from '@angular/common/http';
 import {PostModule} from './post/post.module';
 import {EditorModule} from '@tinymce/tinymce-angular';
@@ -34,6 +32,14 @@ import {AngularFireStorageModule} from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire';
 import {NavbarComponent} from './shared-module/navbar/navbar.component';
 import {LoginModule} from './authentication/module/login.module';
+import { SlideHashtagComponent } from './home/slide-hashtag/slide-hashtag.component';
+import { PostListComponent } from './post/post-list/post-list.component';
+import { PostAdminListComponent } from './admin/component/post-admin/post-admin-list/post-admin-list.component';
+import { PostAdminEditComponent } from './admin/component/post-admin/post-admin-edit/post-admin-edit.component';
+import { FooterComponent } from './home/footer/footer.component';
+import { InstaramComponent } from './home/instaram/instaram.component';
+import { RecentViewComponent } from './home/recent-view/recent-view.component';
+import { TopNewPostComponent } from './home/top-new-post/top-new-post.component';
 
 
 @NgModule({
@@ -41,7 +47,6 @@ import {LoginModule} from './authentication/module/login.module';
     AppComponent,
     HomeComponent,
     DetalComponent,
-    ContactComponent,
     NavbarComponent,
     AdsComponent,
     SlideHashtagComponent,
@@ -51,7 +56,12 @@ import {LoginModule} from './authentication/module/login.module';
     RecentPostComponent,
     SignupEmailAdsComponent,
     UserDetailComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    FooterComponent,
+    InstaramComponent,
+    RecentViewComponent,
+    TopNewPostComponent,
+
   ],
   imports: [
     BrowserModule,

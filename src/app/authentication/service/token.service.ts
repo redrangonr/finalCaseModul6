@@ -70,11 +70,8 @@ export class TokenService {
       JSON.parse(sessionStorage.getItem(ROLE_KEY)).forEach(role =>{
         this.roles.push(role.authority);
       })
-
-    // @ts-ignore
-      return window.sessionStorage.getItem(NAME_KEY);
+      return this.roles
   }
-  // tslint:disable-next-line:typedef
 
 }
 }
