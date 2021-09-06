@@ -131,11 +131,11 @@ export class LoginComponent implements OnInit {
       this.loginService.register(registerForm).subscribe(
         (data) => {
           if (data.message == 'nouser'){
-            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Username is duplicate</span>'
+            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Username is duplicate !</span>'
           }if (data.message == 'noemail'){
-            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Email is duplicate</span>'
+            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Email is duplicate !</span>'
           }if (data.message == 'yes'){
-            this.statusRegister = '<span  class="alert alert-success"><img src="../../../../assets/images/success.gif" width="35" height="35"> Success</span> '
+            this.statusRegister = '<span  class="alert alert-success"><img src="../../../../assets/images/success.gif" width="35" height="35"> Success </span> '
           }
         }, err=> {
           console.log(err)
