@@ -110,7 +110,11 @@ export class PostCreateComponent implements OnInit {
       // @ts-ignore
       newPost.date = new Date();
       newPost.hashtag = {id: this.post.value.hashtag};
-      newPost.image = this.fb;
+      if (newPost.image === '') {
+        newPost.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
+      }else {
+        newPost.image = this.fb;
+      }
       console.log(newPost);
       if (newPost.title.trim() === '') {
        this.notification = 'Thiếu title';

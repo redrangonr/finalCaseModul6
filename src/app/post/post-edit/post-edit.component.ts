@@ -156,6 +156,7 @@ export class PostEditComponent implements OnInit {
     const newPost: Post = this.post.value;
     newPost.id = this.idPost;
     newPost.hashtag = {id: +this.post.value.hashtag};
+    newPost.image = this.fb;
 
     // @ts-ignore
     if (newPost.title.trim() === '') {
