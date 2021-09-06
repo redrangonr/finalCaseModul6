@@ -11,6 +11,8 @@ const ID_KEY = 'Id_key';
 export class TokenService {
   private roles: Array<string> = [];
   constructor() { }
+
+  // tslint:disable-next-line:typedef
   public setAvartar(avatar: string){
     window.sessionStorage.removeItem(AVATAR_KEY);
     window.sessionStorage.setItem(AVATAR_KEY, avatar);
@@ -19,6 +21,7 @@ export class TokenService {
     // @ts-ignore
     return window.sessionStorage.getItem(AVATAR_KEY);
   }
+
   public setToken(token: string){
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
@@ -36,6 +39,8 @@ export class TokenService {
     // @ts-ignore
     window.sessionStorage.setItem(ID_KEY,id);
   }
+
+  // tslint:disable-next-line:typedef
   public setUserName(username: string){
     window.sessionStorage.removeItem(USERNAME_KEY);
     window.sessionStorage.setItem(USERNAME_KEY, username);
@@ -44,6 +49,7 @@ export class TokenService {
     // @ts-ignore
     return window.sessionStorage.getItem(USERNAME_KEY);
   }
+
   public setName(name: string){
     window.sessionStorage.removeItem(NAME_KEY);
     window.sessionStorage.setItem(NAME_KEY, name);
@@ -56,6 +62,7 @@ export class TokenService {
     window.sessionStorage.removeItem(ROLE_KEY);
     window.sessionStorage.setItem(ROLE_KEY,JSON.stringify(roles));
   }
+  // @ts-ignore
   public getRoles(): string[]{
     this.roles = [];
     if(sessionStorage.getItem(TOKEN_KEY)){
@@ -63,7 +70,8 @@ export class TokenService {
       JSON.parse(sessionStorage.getItem(ROLE_KEY)).forEach(role =>{
         this.roles.push(role.authority);
       })
-    }
-    return this.roles;
+      return this.roles
   }
+
+}
 }
