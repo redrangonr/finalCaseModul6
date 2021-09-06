@@ -11,6 +11,10 @@ export class PostListComponent implements OnInit {
   posts: Post[] = [];
 
   constructor(private postService: PostService) { }
+  page = 1;
+  count = 0;
+  tableSize = 8;
+
 
   ngOnInit(): void {
     this.getAll();
@@ -20,6 +24,7 @@ export class PostListComponent implements OnInit {
     // @ts-ignore
     this.postService.getAll().subscribe(data => {
       this.posts = data;
+
     });
   }
   // tslint:disable-next-line:typedef
@@ -37,6 +42,15 @@ export class PostListComponent implements OnInit {
     });
   }
 
+  tabSize(event: any) {
+    this.page = event;
+    this.getAll();
+  }
 
+  tableData(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getAll();
+  }
 
 }

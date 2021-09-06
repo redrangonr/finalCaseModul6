@@ -1,131 +1,85 @@
-<br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
 <br>
 <br>
 <br>
 <br>
 
-<div style="background:white; margin-top:20px;margin-left: 40px; margin-right: 20px">
-  <div class="col-md-12">
-    <div class="page-people-directory">
-      <div class="row">
+<div class="container">
+  <div class="row">
+  </div>
 
-        <div class="col-md-9">
-          <div class="well">
-
-            <div class="row">
-              <div class="col-md-9">
-
-<!--                <form>-->
-                  <input (change)="findByTitle()" class="form-control"  id="search" type="search">
-                  <i class="fa fa-search"></i>
-<!--                </form>-->
-                <button (click)="getAll()"> all</button>
-
-              </div>
-            </div>
-          </div>
-          <br>
+  <div class="row">
+    <div class="col-lg-12 mx-auto">
+      <div class="career-search mb-60">
+        <form action="#" class="career-form mb-60">
           <div class="row">
-            <div class="col-md-6">
-              <h3>All Post</h3>
+            <div class="col-md-6 col-lg-9 my-3">
+              <div class="input-group position-relative ">
+                <input type="text" class="form-control" placeholder="Enter Your " style="height: 48px;width: 200px">
+              </div>
+            </div>
+
+
+            <div class="col-md-6 col-lg-3 my-3">
+              <button type="button" class="btn btn-lg btn-block btn-light btn-custom" id="contact-submit" (click)="getAll()">
+                Search
+              </button>
             </div>
           </div>
+        </form>
 
-          <div class="list-group contact-group" *ngFor="let item of posts">
-            <a [routerLink]="['/view/'+ item.id]" class="list-group-item">
-              <div class="media">
-                <div class="pull-left">
-                  <img style="width: 60px;height: 60px;border-radius: 50%" src="{{item.image}}" alt="...">
-                </div>
-                <div class="media-body">
-                  <h3 class="media-heading" style="margin-left: 10px">{{item.user.name}} <small>{{item.date}}</small></h3>
-                  <div class="media-content">
-                    <h5 style="margin-left: 10px"> {{item.title}}</h5>
-
-                    <!--                    <ul class="list-unstyled">-->
-                    <!--                      <li><i class="fa fa-skype"></i> jdoe.doe</li>-->
-                    <!--                      <li><i class="fa fa-mobile"></i> +63 912 212 2451</li>-->
-                    <!--                      <li><i class="fa fa-envelope-o"></i> joedoe@email.com</li>-->
-                    <!--                    </ul>-->
-                  </div>
-                </div>
+        <div class="filter-result">
+          <div class="job-box d-md-flex align-items-center justify-content-between mb-30" *ngFor="let post of posts | paginate: { itemsPerPage: tableSize,currentPage: page,totalItems: count }">
+            <div class="job-left my-4 d-md-flex align-items-center flex-wrap" routerLink="/detail">
+              <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                <img src="{{post.image}}" width="60" height="60" style="border-radius: 44px">
               </div>
-            </a>
-            <hr>
-          </div>
+              <div class="job-content">
+                <h5 style="margin-left: 30px"><a style="text-decoration: none; color: #495057" href="#">{{post.title}}</a></h5>
+                <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+                  <li class="mr-md-4">
+                    <i class="fa fa-user"></i> {{post.user.name}}
+                  </li>
+                  <li class="mr-md-4">
+                    <i class="fa fa-tag"></i> {{post.hashtag.name}}
+                  </li>
+                  <li class="mr-md-4">
+                    <i class="fa fa-clock"></i> {{post.date | date}}
+                  </li>
+                  <li class="mr-md-4">
+                    <i class="fa fa-street-view"></i>View more ...
+                  </li>
+                </ul>
+              </div>
+            </div>
 
-          <div class="pull-right">
-            <ul class="pagination pagination-split pagination-sm pagination-contact">
-              <li class="disabled"><a href="#"><i class="fa fa-angle-left"></i></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-            </ul>
           </div>
         </div>
-
-
-        <div class="col-md-3">
-          <br>
-          <h5><b>My Favorites</b></h5>
-          <div class="list-group people-group">
-            <a href="#" class="list-group-item">
-              <div class="media">
-                <div class="pull-left">
-                  <img class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="...">
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">John Wayne</h4>
-                  <small>Software Engineer</small>
-                </div>
-              </div>
-            </a>
-            <hr>
-            <a href="#" class="list-group-item">
-              <div class="media">
-                <div class="pull-left">
-                  <img class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="...">
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Jane Dane</h4>
-                  <small>Software Engineer</small>
-                </div>
-              </div>
-            </a>
-            <hr>
-            <a href="#" class="list-group-item">
-              <div class="media">
-                <div class="pull-left">
-                  <img class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="...">
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Juan Dela Cruz</h4>
-                  <small>Software Engineer</small>
-                </div>
-              </div>
-            </a>
-            <hr>
-            <a href="#" class="list-group-item">
-              <div class="media">
-                <div class="pull-left">
-                  <img class="img-circle" src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="...">
-                </div>
-                <div class="media-body">
-                  <h4 class="media-heading">Jose Cruz</h4>
-                  <small>Software Engineer</small>
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-
-
       </div>
 
+      <!-- START Pagination -->
+<!--      <nav aria-label="Page navigation">-->
+<!--        <ul class="pagination pagination-reset justify-content-center">-->
+<!--          <li class="page-item disabled">-->
+<!--            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">-->
+<!--              <i class="zmdi zmdi-long-arrow-left"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--          <li class="page-item"><a class="page-link" href="#">1</a></li>-->
+<!--          <li class="page-item d-none d-md-inline-block"><a class="page-link" href="#">2</a></li>-->
+<!--          <li class="page-item d-none d-md-inline-block"><a class="page-link" href="#">3</a></li>-->
+<!--          <li class="page-item"><a class="page-link" href="#">...</a></li>-->
+<!--          <li class="page-item"><a class="page-link" href="#">8</a></li>-->
+<!--          <li class="page-item">-->
+<!--            <a class="page-link" href="#">-->
+<!--              <i class="zmdi zmdi-long-arrow-right"></i>-->
+<!--            </a>-->
+<!--          </li>-->
+<!--        </ul>-->
+<!--      </nav>-->
+      <!-- END Pagination -->
     </div>
   </div>
+  <pagination-controls previousLabel="Back" nextLabel="Next" (pageChange)="tabSize($event)">
+  </pagination-controls>
 </div>

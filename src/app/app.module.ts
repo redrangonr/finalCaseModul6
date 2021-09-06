@@ -16,6 +16,7 @@ import {NavbarComponent} from './shared-module/navbar/navbar.component';
 import {LoginModule} from './authentication/module/login.module';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxPaginationModule} from 'ngx-pagination'
 
 
 
@@ -38,7 +39,8 @@ import {NgbNavModule} from '@ng-bootstrap/ng-bootstrap';
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     LoginModule,
-    NgbNavModule
+    NgbNavModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
