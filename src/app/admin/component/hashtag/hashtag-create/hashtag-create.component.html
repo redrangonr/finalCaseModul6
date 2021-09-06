@@ -10,13 +10,16 @@
       <div class="mb-3">
         <b>Name</b>
         <div class="input-group">
-          <span class="input-group-text" id="basic-addon2"><img src="https://cdn-icons-png.flaticon.com/128/1629/1629507.png" width="28" height="28"></span>
+          <span class="input-group-text" id="basic-addon2"><img src="https://cdn-icons-png.flaticon.com/128/1629/1629507.png" width="24" height="24"></span>
           <input type="text" formControlName="name" class="form-control" placeholder="Username" aria-label="Name" aria-describedby="basic-addon2">
         </div>
       </div>
       <div class="mb-3">
         <b for="formFile" class="form-label">Image</b>
-        <input class="form-control" formControlName="image" type="file" id="formFile">
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon3"><img src="https://cdn-icons-png.flaticon.com/128/4305/4305513.png" width="24" height="24"></span>
+          <input class="form-control" formControlName="image" type="file" id="formFile">
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-outline-info" (click)="modal.close('Save click')" style="width: 100px">Save</button>

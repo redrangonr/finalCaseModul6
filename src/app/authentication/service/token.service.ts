@@ -11,6 +11,7 @@ const ID_KEY = 'Id_key';
 export class TokenService {
   private roles: Array<string> = [];
   constructor() { }
+
   // tslint:disable-next-line:typedef
   public setAvartar(avatar: string){
     window.sessionStorage.removeItem(AVATAR_KEY);
@@ -20,7 +21,7 @@ export class TokenService {
     // @ts-ignore
     return window.sessionStorage.getItem(AVATAR_KEY);
   }
-  // tslint:disable-next-line:typedef
+
   public setToken(token: string){
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
@@ -33,12 +34,12 @@ export class TokenService {
     // @ts-ignore
     return window.sessionStorage.getItem(ID_KEY);
   }
-  // tslint:disable-next-line:typedef
   public setId(id: number){
     window.sessionStorage.removeItem(ID_KEY);
     // @ts-ignore
-    window.sessionStorage.setItem(ID_KEY, id);
+    window.sessionStorage.setItem(ID_KEY,id);
   }
+
   // tslint:disable-next-line:typedef
   public setUserName(username: string){
     window.sessionStorage.removeItem(USERNAME_KEY);
@@ -48,28 +49,29 @@ export class TokenService {
     // @ts-ignore
     return window.sessionStorage.getItem(USERNAME_KEY);
   }
-  // tslint:disable-next-line:typedef
+
   public setName(name: string){
     window.sessionStorage.removeItem(NAME_KEY);
     window.sessionStorage.setItem(NAME_KEY, name);
   }
   public getName(): string {
     // @ts-ignore
-    return window.sessionStorage.getItem(NAME_KEY);
+    return window.sessionStorage.getItem(NAME_KEY)
   }
-  // tslint:disable-next-line:typedef
   public setRoles(roles: string[]){
     window.sessionStorage.removeItem(ROLE_KEY);
-    window.sessionStorage.setItem(ROLE_KEY, JSON.stringify(roles));
+    window.sessionStorage.setItem(ROLE_KEY,JSON.stringify(roles));
   }
+  // @ts-ignore
   public getRoles(): string[]{
     this.roles = [];
-    if (sessionStorage.getItem(TOKEN_KEY)){
+    if(sessionStorage.getItem(TOKEN_KEY)){
       // @ts-ignore
-      JSON.parse(sessionStorage.getItem(ROLE_KEY)).forEach(role => {
+      JSON.parse(sessionStorage.getItem(ROLE_KEY)).forEach(role =>{
         this.roles.push(role.authority);
-      });
-    }
-    return this.roles;
+      })
+      return this.roles
   }
+
+}
 }
