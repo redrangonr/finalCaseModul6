@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { PostRoutingModule } from './post-routing.module';
 import { PostListComponent } from './post-list/post-list.component';
 import { PostViewComponent } from './post-view/post-view.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PostCreateComponent } from './post-create/post-create.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 
 
@@ -15,16 +16,18 @@ import {EditorModule} from '@tinymce/tinymce-angular';
   declarations: [
     PostListComponent,
     PostViewComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    PostEditComponent
   ],
   exports: [
     PostListComponent
   ],
-  imports: [
-    CommonModule,
-    PostRoutingModule,
-    ReactiveFormsModule,
-    EditorModule,
-  ]
+    imports: [
+        CommonModule,
+        PostRoutingModule,
+        ReactiveFormsModule,
+        EditorModule,
+        FormsModule,
+    ]
 })
 export class PostModule { }

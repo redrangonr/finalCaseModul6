@@ -22,6 +22,9 @@ export class PostService {
   delete(id: number): Observable<any> {
     return this.httpClient.delete<any>(API_URL + '/api/posts/delete/' + id);
   }
+  edit(post: Post): Observable<any> {
+    return this.httpClient.put<any>(API_URL + '/api/posts/edit', post);
+  }
   get(id: number): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/posts/' + id);
   }
