@@ -8,7 +8,7 @@
 
         <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center" style="border-radius: 10px;background-color: #eff2f5">
           <div class="team-single-img">
-            <img src="{{avatar}}" width="100%" height="100px" alt="" style="border-radius: 150px;border: #caf4ff solid; height: 305px">
+            <img src="{{avatar}}" width="86%" height="100" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
             <form>
               <div class="form-group ">
                 <label for="exampleFormControlFile1"></label>
@@ -88,7 +88,9 @@
                   <b>Address</b>
                   <div class="input-group">
                     <span class="input-group-text" id="basic-addon7"><img src="https://img.icons8.com/ios-filled/2x/address.png" width="20" height="20"></span>
-                    <input type="text" formControlName="address" class="form-control" placeholder="Address" aria-label="Address" aria-describedby="basic-addon7" >
+                      <select class="form-control" formControlName="address">
+                          <option *ngFor="let address of addresses" value="{{address.name}}">{{address.name}}</option>
+                      </select>
                   </div>
                 </div>
                 <div class="mb-3" hidden>

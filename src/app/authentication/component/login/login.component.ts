@@ -2,8 +2,10 @@ import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {LoginService} from '../../service/login.service';
 import {TokenService} from '../../service/token.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import {RegisterForm} from '../../model/register-form';
+import {error} from 'protractor';
 
 @Component({
   selector: 'app-login',
@@ -14,29 +16,41 @@ export class LoginComponent implements OnInit {
   // @ts-ignore
   content: any;
   closeResult = '';
+  submitted = false;
+  addresses : any[] = [];
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
   status :any = 'Please login your account';
+  statusRegister: any ='';
 
-  registerForm: FormGroup = new FormGroup({
-    username: new FormControl('', Validators.required),
-    fullname: new FormControl('',Validators.required),
-    password: new FormControl('',Validators.required),
-    email: new FormControl('',Validators.required),
-    phone: new FormControl('',Validators.required,),
-    address: new FormControl('',Validators.required),
+  registerForm : any = this.fb.group({
+    username: ['', Validators.required ],
+    name: ['', Validators.required ],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    email: ['', [Validators.required, Validators.email]],
   })
 
   constructor(
               private loginService: LoginService,
               private tokenService: TokenService,
               private router: Router,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.getAddress()
+  }
+
+  get f() {return this.registerForm.controls; }
+
+  getAddress(){
+    this.loginService.getAddress().subscribe(data =>{
+      this.addresses = data
+      console.log(data[0].name)
+    })
   }
 
   open(content: any)
@@ -101,24 +115,32 @@ export class LoginComponent implements OnInit {
       }
     })
   }
+  isValidated(register: RegisterForm ){
+    return register.name != '' && register.username != '' && register.email != '' && register.password != '' && register.roles != []
+  }
   register() {
-    const registerForm = {
+    this.submitted = true;
+    const registerForm : any = {
       username: this.registerForm.value.username,
-      fullname: this.registerForm.value.fullname,
+      name: this.registerForm.value.name,
       password: this.registerForm.value.password,
       email: this.registerForm.value.email,
-      phone: this.registerForm.value.phone,
-      address: this.registerForm.value.address,
+      roles: ["user"]
     }
-    this.loginService.register(registerForm).subscribe(
-      (data: any) => {
-        alert('sai roi')
-        this.registerForm.reset()
-      },
-      (err: any) => {
-        alert('err')
-        this.registerForm.reset()
-      }
-    )
+    if (this.isValidated(registerForm)) {
+      this.loginService.register(registerForm).subscribe(
+        (data) => {
+          if (data.message == 'nouser'){
+            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Username is duplicate !</span>'
+          }if (data.message == 'noemail'){
+            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Email is duplicate !</span>'
+          }if (data.message == 'yes'){
+            this.statusRegister = '<span  class="alert alert-success"><img src="../../../../assets/images/success.gif" width="35" height="35"> Success </span> '
+          }
+        }, err=> {
+          console.log(err)
+        }
+      )
+    }
   }
 }
