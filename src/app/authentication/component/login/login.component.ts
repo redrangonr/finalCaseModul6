@@ -2,8 +2,9 @@ import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {LoginService} from '../../service/login.service';
 import {TokenService} from '../../service/token.service';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
+import {CustomvalidationServiceService} from '../../service/customvalidation-service.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   status :any = 'Please login your account';
 
-  registerForm: FormGroup = new FormGroup({
+  registerForm = this.fb.group({
     username: new FormControl('', Validators.required),
     fullname: new FormControl('',Validators.required),
     password: new FormControl('',Validators.required),
@@ -34,7 +35,9 @@ export class LoginComponent implements OnInit {
               private loginService: LoginService,
               private tokenService: TokenService,
               private router: Router,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              private fb: FormBuilder,
+              private customValidator: CustomvalidationServiceService) { }
 
   ngOnInit(): void {
   }
