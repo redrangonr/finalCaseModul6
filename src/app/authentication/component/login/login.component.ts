@@ -25,12 +25,12 @@ export class LoginComponent implements OnInit {
 
   registerForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
-    fullname: new FormControl('',Validators.required),
-    password: new FormControl('',Validators.required),
-    email: new FormControl('',Validators.required),
-    phone: new FormControl('',Validators.required,),
-    address: new FormControl('',Validators.required),
-  })
+    fullname: new FormControl('', Validators.required),
+    password: new FormControl('', Validators.required),
+    email: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required, ),
+    address: new FormControl('', Validators.required),
+  });
 
   status = 'Please login your account';
   constructor(
@@ -41,31 +41,32 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  open(content:any)
+  // tslint:disable-next-line:typedef
+  open(content: any)
   {
-    this.modalService.open(content ,{ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
-    
+
     }, (reason) => {
       this.closeResult = `${this.getDismissReason(reason)}`;
-     
+
     });
 
-    
+
   }
 
-  openRegister( content:any){
-    this.modalService.open(content ,{ariaLabelledBy: 'modal-basic-test'}).result.then((result) => {
-      console.log(result)
+  // tslint:disable-next-line:typedef
+  openRegister( content: any){
+    this.modalService.open(content , {ariaLabelledBy: 'modal-basic-test'}).result.then((result) => {
+      console.log(result);
       this.closeResult = `Closed with: ${result}`;
-    
+
     }, (reason) => {
-      console.log(reason)
+      console.log(reason);
       this.closeResult = `${this.getDismissReason(reason)}`;
-     
+
     });
-  
+
   }
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -77,46 +78,56 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // tslint:disable-next-line:typedef
   login(){
     const loginForm = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password,
     };
-    this.loginService.login(loginForm).subscribe(data =>{
-      console.log(data)
+    this.loginService.login(loginForm).subscribe(data => {
+      console.log(data);
+      // tslint:disable-next-line:triple-equals
       if (data.token != undefined){
-        this.tokenService.setToken(data.token)
-        this.tokenService.setName(data.name)
-        this.tokenService.setUserName(data.username)
-        this.tokenService.setId(data.id)
-        this.tokenService.setAvartar(data.avatar)
-        this.tokenService.setRoles(data.roles)
+        this.tokenService.setToken(data.token);
+        this.tokenService.setName(data.name);
+        this.tokenService.setUserName(data.username);
+        this.tokenService.setId(data.id);
+        this.tokenService.setAvartar(data.avatar);
+        this.tokenService.setRoles(data.roles);
+        // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.tokenService.getRoles().length; i++) {
+          // tslint:disable-next-line:triple-equals
           if (this.tokenService.getRoles()[i] == 'ADMIN'){
+            // tslint:disable-next-line:only-arrow-functions typedef
             this.router.navigate(['/admin']).then(function(){
-              location.reload()
-            })
+              location.reload();
+            });
           }
+          // tslint:disable-next-line:triple-equals
           if (this.tokenService.getRoles()[i] == 'USER'){
+            // tslint:disable-next-line:only-arrow-functions typedef
             this.router.navigate(['/home']).then(function(){
-              location.reload()
-            })
+              location.reload();
+            });
           }
         }
       }
-    },err =>{
-      console.log(err.status)
-      if (err.status== '401'){
+    }, err => {
+      console.log(err.status);
+      // tslint:disable-next-line:triple-equals
+      if (err.status == '401'){
         console.log('Sai tk');
-        this.status = 'Please check your account or password'
-        this.loginForm.reset()
+        this.status = 'Please check your account or password';
+        this.loginForm.reset();
+        // tslint:disable-next-line:align triple-equals
       }if (err.status == '400'){
-        this.status = 'Your account has been lock'
+        this.status = 'Your account has been lock';
       }
     });
   }
 
 
+  // tslint:disable-next-line:typedef
   register() {
     const registerForm = {
       username: this.registerForm.value.username,
@@ -125,16 +136,16 @@ export class LoginComponent implements OnInit {
       email: this.registerForm.value.email,
       phone: this.registerForm.value.phone,
       address: this.registerForm.value.address,
-    }
+    };
     this.loginService.register(registerForm).subscribe(
       (data: any) => {
-      alert('okie')
-        this.registerForm.reset()
+      alert('okie');
+      this.registerForm.reset();
       },
       (err: any) => {
-        alert('err')
-        this.registerForm.reset()
+        alert('err');
+        this.registerForm.reset();
       }
-    )
+    );
   }
 }
