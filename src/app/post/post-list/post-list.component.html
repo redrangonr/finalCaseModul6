@@ -31,7 +31,11 @@
             </div>
           </div>
 
-          <div class="list-group contact-group" *ngFor="let item of posts">
+          <div class="list-group contact-group" *ngFor="let item of posts | paginate :{
+        itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+  }">
             <a [routerLink]="['/view/'+ item.id]" class="list-group-item">
               <div class="media">
                 <div class="pull-left">
@@ -121,7 +125,10 @@
             </a>
           </div>
         </div>
-
+        <div class="d-flex justify-content-center">
+          <pagination-controls previousLabel="" nextLabel="" (pageChange)="tabSize($event)">
+          </pagination-controls>
+        </div>
 
 
       </div>
@@ -129,3 +136,4 @@
     </div>
   </div>
 </div>
+

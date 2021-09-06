@@ -3,6 +3,7 @@ import {UserManagementService} from '../admin/service/user-management.service';
 import {TokenService} from '../authentication/service/token.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {LoginService} from '../authentication/service/login.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -10,6 +11,7 @@ import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
+  addresses: any[] = [];
   active = 1;
   id = this.tokenService.getId()
   name = this.tokenService.getName()
@@ -31,7 +33,7 @@ export class UserDetailComponent implements OnInit {
     timeCreated: new FormControl('')
   })
   closeResult = '';
-  constructor(private modalService: NgbModal,private userService: UserManagementService, private tokenService: TokenService) { }
+  constructor(private modalService: NgbModal,private userService: UserManagementService, private tokenService: TokenService, private loginService: LoginService) { }
   getUser(id: number){
     return this.userService.findById(id).subscribe((data)=>{
       this.userForm = new FormGroup({
@@ -51,6 +53,13 @@ export class UserDetailComponent implements OnInit {
       console.log()
     })
   }
+
+  getAddress(){
+    this.loginService.getAddress().subscribe(data=>{
+      this.addresses = data
+    })
+  }
+
   updateInfo() {
     const userUpdate: any = {
       id: this.id,
@@ -79,6 +88,7 @@ export class UserDetailComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.getUser(this.id)
+    this.getAddress()
   }
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

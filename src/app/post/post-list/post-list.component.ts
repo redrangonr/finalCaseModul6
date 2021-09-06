@@ -9,7 +9,11 @@ import {Post} from '../../model/post';
 })
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
-
+  page = 1;
+  count = 0;
+  tableSize = 10 ;
+  tableSizesArr = [4, 8, 12];
+  currentIndex = 1;
   constructor(private postService: PostService) { }
 
   ngOnInit(): void {
@@ -36,7 +40,13 @@ export class PostListComponent implements OnInit {
       }
     });
   }
-
-
-
+  tabSize(event: any) {
+    this.page = event;
+    this.getAll();
+  }
+  tableData(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.getAll();
+  }
 }
