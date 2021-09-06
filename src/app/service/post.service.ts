@@ -28,4 +28,7 @@ export class PostService {
   findByTitle(title: string): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/posts/search/' + title);
   }
+  findAllByUserId(id: number): Observable<any> {
+    return this.httpClient.get<any>(API_URL + '/api/posts/user/' + id);
+  }
 }

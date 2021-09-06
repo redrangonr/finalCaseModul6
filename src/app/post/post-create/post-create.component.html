@@ -45,7 +45,6 @@
 <!--  </table>-->
 <!--</form>-->
 
-
 <br>
 <br>
 <br>
@@ -122,9 +121,9 @@
               <div class="form-group">
 
                 <div class="row">
-                  <div class="col-6">
-                    <label for="file1">Image</label>
-                <input  class="form-control" type="file"
+                  <div class="col-4">
+                    <label style="width: 220px" class="btn btn-outline-primary mt-4" for="file1">Image</label>
+                    <input hidden class="form-control" type="file"
                        id="file1"
                        #userPhoto
                        (change)="onFileSelected($event)"
@@ -132,7 +131,12 @@
                        autocomplete="off"
                 />
                 </div>
-                <div class="col-6">
+                  <div class="col-4">
+                    <label for="hashtag">Hashtag</label>
+                    <select  id="hashtag" class="form-control" formControlName="hashtag" >
+                      <option *ngFor="let item of hashtags" value="{{item.id}}">{{item.name}}</option></select>
+                  </div>
+                <div class="col-4">
                   <label for="status">Status</label>
                 <select id="status"  class="form-control" id="status" formControlName="status">
                   <option value="public">Public</option>
@@ -152,7 +156,7 @@
               <div class="form-group small text-muted">
                 All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
               </div>
-              <button type="submit"  class="btn btn-primary">Save</button>
+              <button type="submit"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
               <button   type="reset" class="btn btn-secondary ml-2">Reset Changes</button>
             </form>
           </div>
@@ -283,6 +287,26 @@
             </form>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{notification}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <div align="center"><img src="{{notificationImg}}" alt=""></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
       </div>
     </div>
   </div>

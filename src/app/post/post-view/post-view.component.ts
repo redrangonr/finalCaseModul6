@@ -60,7 +60,8 @@ export class PostViewComponent implements OnInit {
         description: data.description,
         content: data.content,
         date: data.date,
-        user: data.user
+        user: data.user,
+        hashtag: data.hashtag
       };
       if (this.postInstand.image === null) {
         this.postInstand.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';

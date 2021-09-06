@@ -7,4 +7,5 @@ export interface Post {
   content?: string;
   date?: any;
   user?: any;
+  hashtag?: any;
 }

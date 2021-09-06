@@ -10,6 +10,8 @@ import {EditorModule} from '@tinymce/tinymce-angular';
 import {NgxPaginationModule} from 'ngx-pagination';
 
 
+
+
 @NgModule({
   declarations: [
     PostListComponent,
