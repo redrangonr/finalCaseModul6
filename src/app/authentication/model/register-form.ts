@@ -1,8 +1,7 @@
 export interface RegisterForm {
-    username?:String;
-    fullname?:String;
-    password?:String;
-    email?:String;
-    phone?:String;
-    address?:String;
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+  roles: any[];
 }

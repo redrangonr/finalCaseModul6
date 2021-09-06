@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LoginForm} from '../model/login-form';
 import {JwtResponse} from '../model/jwt-response';
-import { RegisterForm } from '../model/register-form';
+import {RegisterForm} from '../model/register-form';
 const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
@@ -15,8 +15,10 @@ export class LoginService {
   login(login: LoginForm):Observable<JwtResponse>{
     return this.http.post<JwtResponse>(API_URL+'/api/auth/signin', login);
   }
-
-  register(register: any):Observable<any>{
+  register(register: RegisterForm):Observable<any>{
     return this.http.post(API_URL+'/api/auth/signup', register);
+  }
+  getAddress():Observable<any>{
+    return this.http.get<any>('https://provinces.open-api.vn/api/')
   }
 }
