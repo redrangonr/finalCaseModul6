@@ -122,9 +122,9 @@
               <div class="form-group">
 
                 <div class="row">
-                  <div class="col-6">
-                    <label for="file1">Image</label>
-                <input  class="form-control" type="file"
+                  <div class="col-4">
+                    <label style="width: 220px" class="btn btn-outline-primary mt-4" for="file1">Image</label>
+                    <input hidden class="form-control" type="file"
                        id="file1"
                        #userPhoto
                        (change)="onFileSelected($event)"
@@ -132,7 +132,12 @@
                        autocomplete="off"
                 />
                 </div>
-                <div class="col-6">
+                  <div class="col-4">
+                    <label for="hashtag">Hashtag</label>
+                    <select  id="hashtag" class="form-control" formControlName="hashtag" >
+                      <option *ngFor="let item of hashtags" value="{{item.id}}">{{item.name}}</option></select>
+                  </div>
+                <div class="col-4">
                   <label for="status">Status</label>
                 <select id="status"  class="form-control" id="status" formControlName="status">
                   <option value="public">Public</option>

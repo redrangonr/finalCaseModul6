@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {HashtagService} from '../../admin/service/hashtag.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class PostCreateComponent implements OnInit {
   fb;
   // @ts-ignore
   downloadURL: Observable<string>;
+  // @ts-ignore
   post: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
     image: new FormControl(),
@@ -27,13 +29,20 @@ export class PostCreateComponent implements OnInit {
     description: new FormControl(),
     content: new FormControl('', [Validators.required]),
     date: new FormControl(),
-    user: new FormControl()
+    user: new FormControl(),
+    hashtag: new FormControl('1')
   });
   tinymceinit: any;
+  hashtags: any;
 
   constructor(private postService: PostService,
               private storage: AngularFireStorage,
-              private router: Router) {
+              private router: Router,
+              private hashtagService: HashtagService) {
+    this.hashtagService.getAll().subscribe(data => {
+      this.hashtags = data;
+      // console.log(this.hashtags);
+    });
     this.tinymceinit = {
       height: 500,
       plugins: [
@@ -78,7 +87,7 @@ export class PostCreateComponent implements OnInit {
         input.click();
       }
     };
-    console.log(this.getTitle());
+    // console.log(this.getTitle());
   }
 
   ngOnInit(): void {
@@ -98,6 +107,7 @@ export class PostCreateComponent implements OnInit {
       newPost.user = {id: sessionStorage.getItem('Id_key')};
       // @ts-ignore
       newPost.date = new Date();
+      newPost.hashtag = {id: this.post.value.hashtag};
       newPost.image = this.fb;
       console.log(newPost);
       if (newPost.title.trim() === '') {
