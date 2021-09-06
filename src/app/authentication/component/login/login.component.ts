@@ -1,12 +1,9 @@
 import {Component, HostListener, Input, OnInit} from '@angular/core';
 import {LoginService} from '../../service/login.service';
 import {TokenService} from '../../service/token.service';
-import {Router} from '@angular/router';
-import {LoginForm} from '../../model/login-form';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {error} from 'protractor';
-import {Template} from '@angular/compiler/src/render3/r3_ast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +19,17 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  status = 'Please login your account';
+  status :any = 'Please login your account';
+
+  registerForm: FormGroup = new FormGroup({
+    username: new FormControl('', Validators.required),
+    fullname: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    phone: new FormControl('',Validators.required,),
+    address: new FormControl('',Validators.required),
+  })
+
   constructor(
               private loginService: LoginService,
               private tokenService: TokenService,
@@ -32,7 +39,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // tslint:disable-next-line:typedef
   open(content: any)
   {
     this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -51,46 +57,68 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // tslint:disable-next-line:typedef
+
   login(){
     const loginForm = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password,
     };
-    this.loginService.login(loginForm).subscribe(data => {
-      console.log(data);
-      if (data.token !== undefined){
-        this.tokenService.setToken(data.token);
-        this.tokenService.setName(data.name);
-        this.tokenService.setUserName(data.username);
-        this.tokenService.setId(data.id);
-        this.tokenService.setAvartar(data.avatar);
-        this.tokenService.setRoles(data.roles);
-        // tslint:disable-next-line:prefer-for-of
+    this.loginService.login(loginForm).subscribe(data =>{
+      if (data.token){
+        this.tokenService.setToken(data.token)
+        this.tokenService.setName(data.name)
+        this.tokenService.setUserName(data.username)
+        this.tokenService.setId(data.id)
+        this.tokenService.setAvartar(data.avatar)
+        this.tokenService.setRoles(data.roles)
+        console.log(this.tokenService.setRoles(data.roles))
         for (let i = 0; i < this.tokenService.getRoles().length; i++) {
-          if (this.tokenService.getRoles()[i] === 'ADMIN'){
-            // tslint:disable-next-line:only-arrow-functions typedef
-            this.router.navigate(['/admin']).then(function(){
-              location.reload();
-            });
+          console.log(this.tokenService.getRoles()[i])
+          if (this.tokenService.getRoles()[i] == 'ADMIN'){
+           this.router.navigate(['/admin']).then(function(){
+             location.reload();
+           })
           }
-          // tslint:disable-next-line:triple-equals
           if (this.tokenService.getRoles()[i] == 'USER'){
-            // tslint:disable-next-line:only-arrow-functions typedef
-              location.reload();
+            location.reload()
           }
         }
       }
-    }, err => {
-      console.log(err.status);
-      if (err.status === 401 ){
+    },err => {
+      console.log(err.status)
+      console.log(err)
+      console.log(err.statusText)
+      if (err.status == '401' || err.status == '400') {
         console.log('Sai tk');
-        this.status = 'Please check your account or password';
-        this.loginForm.reset();
-        // tslint:disable-next-line:align
-      }if (err.status === '400'){
-        this.status = 'Your account has been lock';
+        this.status = ' <img src="../assets/images/wrong' +
+          '.gif" width="30" height="30"> Please check your account or password'
+        this.loginForm.reset()
       }
-    });
+      if (err.status == '423') {
+        // @ts-ignore
+        this.status = `<img src="../assets/images/lock.gif" width="30" height="30"> Your account has been locked`
+        this.loginForm.reset()
+      }
+    })
+  }
+  register() {
+    const registerForm = {
+      username: this.registerForm.value.username,
+      fullname: this.registerForm.value.fullname,
+      password: this.registerForm.value.password,
+      email: this.registerForm.value.email,
+      phone: this.registerForm.value.phone,
+      address: this.registerForm.value.address,
+    }
+    this.loginService.register(registerForm).subscribe(
+      (data: any) => {
+        alert('sai roi')
+        this.registerForm.reset()
+      },
+      (err: any) => {
+        alert('err')
+        this.registerForm.reset()
+      }
+    )
   }
 }
