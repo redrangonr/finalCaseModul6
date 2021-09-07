@@ -8,5 +8,4 @@ export interface Post {
   date?: any;
   hashtag?: any;
   user?: any;
-  hashtag?: any;
 }

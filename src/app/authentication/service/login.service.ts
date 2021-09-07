@@ -14,7 +14,4 @@ export class LoginService {
   login(login: LoginForm):Observable<JwtResponse>{
     return this.http.post<JwtResponse>(API_URL+'/api/auth/signin', login);
   }
-  register(register: any):Observable<any>{
-    return this.http.post(API_URL+'/api/auth/signup', register);
-  }
 }

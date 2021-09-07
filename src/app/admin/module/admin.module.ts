@@ -13,9 +13,6 @@ import {HashtagCreateComponent} from '../component/hashtag/hashtag-create/hashta
 import {HashtagDeleteComponent} from '../component/hashtag/hashtag-delete/hashtag-delete.component';
 import {HashtagEditComponent} from '../component/hashtag/hashtag-edit/hashtag-edit.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {PostAdminEditComponent} from '../component/post-admin/post-admin-edit/post-admin-edit.component';
-import {PostListComponent} from '../../post/post-list/post-list.component';
-import {PostAdminListComponent} from '../component/post-admin/post-admin-list/post-admin-list.component';
 
 
 @NgModule({
@@ -27,14 +24,11 @@ import {PostAdminListComponent} from '../component/post-admin/post-admin-list/po
     HashtagCreateComponent,
     HashtagDeleteComponent,
     HashtagEditComponent,
-    PostAdminEditComponent,
-    PostAdminListComponent
   ],
-  exports: [
-    AdminComponent,
-    UserManagementComponent,
-    PostAdminListComponent
-  ],
+    exports: [
+        AdminComponent,
+        UserManagementComponent
+    ],
     imports: [
         CommonModule,
         AdminRoutingModule,

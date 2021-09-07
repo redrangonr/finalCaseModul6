@@ -1,5 +1,5 @@
-<a data-bs-popper="modal" class="hover" (click)="open(content)"ngbTooltip="Login"><b>Login</b><img src="https://cdn-icons-png.flaticon.com/128/2170/2170091.png" width="30" height="30"></a>
-<b>/</b><a class="hover" (click)="open(content1)"ngbTooltip="Register"><b> Register</b> <img src="https://cdn-icons-png.flaticon.com/128/5525/5525487.png" height="30" width="30"></a>
+<a class="hover" (click)="open(content)"ngbTooltip="Login"><b>Login</b><img src="https://cdn-icons-png.flaticon.com/128/2170/2170091.png" width="30" height="30"></a>
+<b>/</b><a class="hover" (click)="open(content)"ngbTooltip="Register"><b> Register</b> <img src="https://cdn-icons-png.flaticon.com/128/5525/5525487.png" height="30" width="30"></a>
 <ng-template #content id="modal"  let-modal>
   <div></div>
   <div class="modal-header">
@@ -10,7 +10,7 @@
   </div>
   <div class="modal-body">
     <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <div [innerHTML]="status" class="alert alert-danger"></div>
+      <div class="alert alert-danger">{{status}}</div>
       <div class="mb-3">
         <label>UserName</label>
         <div class="input-group">
@@ -28,70 +28,6 @@
       <div class="modal-footer">
         <button [disabled]="!loginForm.valid" class="btn btn-success">Login</button>
       </div>
-    </form>
-  </div>
-</ng-template>
-<!--- register---->
-<ng-template #content1 id="modal1"  let-modal>
-  <div></div>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-test"><img src="https://img.icons8.com/material-outlined/2x/key--v2.gif"width="55" height="55"></h4>
-    <button type="button" class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
-      <i class="fa fa-times"></i>
-    </button>
-  </div>
-
-  <div class="modal-body">
-    <form [formGroup]="registerForm" (ngSubmit)  = "register()">
-      <div class="mb-3">
-        <label>UserName</label>
-        <div class="input-group">
-          <span class="input-group-text" id="newUsername"><img src="https://img.icons8.com/fluency/2x/username.png" width="20" height="20"></span>
-          <input type="text" formControlName="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="newUsername">
-        </div>
-      </div>
-      <div class="mb-3">
-        <label>Full name</label>
-        <div class="input-group">
-          <span class="input-group-text" id="newName"><img src="https://img.icons8.com/color/48/000000/name--v2.png" width="20" height="20"></span>
-          <input type="text" formControlName="fullname" class="form-control" placeholder="Full name" aria-label="Full name" aria-describedby="newName">
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label>Password</label>
-        <div class="input-group">
-          <span class="input-group-text" id="newPassword"><img src="https://img.icons8.com/ultraviolet/2x/forgot-password.png" width="20" height="20"></span>
-          <input type="password" formControlName="password" formControlName="password" class="form-control" placeholder="Password" aria-label="newPassword" aria-describedby="basic-addon1">
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label>email</label>
-        <div class="input-group">
-          <span class="input-group-text" id="newEmail"><img src="https://img.icons8.com/bubbles/50/000000/email--v1.png" width="20" height="20"></span>
-          <input type="text" formControlName="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="newEmail">
-        </div>
-      </div>
-
-      <div class="mb-3">
-        <label>Phone</label>
-        <div class="input-group">
-          <span class="input-group-text" id="newPhone"><img src="https://img.icons8.com/ios/50/000000/apple-phone.png" width="20" height="20" /></span>
-          <input type="text" formControlName="phone" class="form-control" placeholder="NumberPhone" aria-label="Username" aria-describedby="newPhone">
-        </div>
-      </div>
-      <div class="mb-3">
-        <label>address</label>
-        <div class="input-group">
-          <span class="input-group-text" id="newAddress"><img src="https://img.icons8.com/ultraviolet/40/000000/address.png" width="20" height="20"></span>
-          <input type="text" formControlName="address" class="form-control" placeholder="Address" aria-label="Username" aria-describedby="newAddress">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button [disabled]="!registerForm.valid" class="btn btn-success">Register</button>
-      </div>
-
     </form>
   </div>
 </ng-template>

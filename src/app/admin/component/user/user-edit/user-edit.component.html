@@ -64,26 +64,20 @@
           <input type="text" formControlName="timeCreated" class="form-control" placeholder="TimeCreate" aria-label="TimeCreate" aria-describedby="basic-addon1" readonly>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="mb-3">
-            <b>Role</b>
-            <select formControlName="roles" class="form-select" aria-label="Default select example">
-              <option value="1">ADMIN</option>
-              <option value="2">PM</option>
-              <option value="3">USER</option>
-            </select>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="mb-3">
-            <b>Status</b>
-            <select formControlName="status" class="form-select" aria-label="Default select example">
-              <option value="1">Active</option>
-              <option value="2">Lock</option>
-            </select>
-          </div>
-        </div>
+      <div class="mb-3">
+        <b>Role</b>
+        <select formControlName="roles" class="form-select" aria-label="Default select example">
+          <option value="1">ADMIN</option>
+          <option value="2">PM</option>
+          <option value="3">USER</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <b>Status</b>
+        <select formControlName="status" class="form-select" aria-label="Default select example">
+          <option value="1">Active</option>
+          <option value="2">Lock</option>
+        </select>
       </div>
       <div class="modal-footer">
         <button class="btn btn-outline-info" (click)="modal.close('Save click')" style="width: 100px">Save</button>
@@ -153,25 +147,19 @@
       <input type="text" formControlName="timeCreated" class="form-control" placeholder="TimeCreate" aria-label="TimeCreate" aria-describedby="basic-addon1" readonly>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="mb-3" disabled="true">
-        <b>Role</b>
-        <select formControlName="roles" class="form-select" aria-label="Default select example"  onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;">
-          <option value="1">ADMIN</option>
-          <option value="2">PM</option>
-          <option value="3">USER</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="mb-3" disabled="true">
-        <b>Status</b>
-        <select formControlName="status" class="form-select" aria-label="Default select example" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;" >
-          <option value="1">Active</option>
-          <option value="2">Lock</option>
-        </select>
-      </div>
-    </div>
+  <div class="mb-3" disabled="true">
+    <b>Role</b>
+    <select formControlName="roles" class="form-select" aria-label="Default select example"  onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;">
+      <option value="1">ADMIN</option>
+      <option value="2">PM</option>
+      <option value="3">USER</option>
+    </select>
+  </div>
+  <div class="mb-3" disabled="true">
+    <b>Status</b>
+    <select formControlName="status" class="form-select" aria-label="Default select example" onfocus="this.defaultIndex=this.selectedIndex;" onchange="this.selectedIndex=this.defaultIndex;" >
+      <option value="1">Active</option>
+      <option value="2">Lock</option>
+    </select>
   </div>
 </form>

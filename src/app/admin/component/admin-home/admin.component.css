@@ -34,7 +34,6 @@ body{
 .profile-page .profile-header .cover figure img {
   border-radius: .25rem .25rem 0 0;
   width: 100%;
-
 }
 
 @media (max-width: 767px) {
