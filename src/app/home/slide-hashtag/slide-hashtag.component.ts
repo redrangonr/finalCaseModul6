@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {Hashtag} from '../../admin/model/hashtag';
-import {PostService} from '../../service/post.service';
+import {PostService} from '../../post/service/post.service';
 import {Post} from '../../model/post';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PostService} from '../../../service/post.service';
+import {PostService} from '../../../post/service/post.service';
 import {Post} from '../../../model/post';
 import {Hashtag} from '../../../admin/model/hashtag';
 import {HashtagService} from '../../../admin/service/hashtag.service';
