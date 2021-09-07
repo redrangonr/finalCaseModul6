@@ -30,7 +30,7 @@ const routes: Routes = [
     loadChildren: () => import('./admin/module/admin.module').then(module => module.AdminModule)
   },
   {
-    path: 'home',
+    path: '',
   component: HomeComponent
   },
   // {

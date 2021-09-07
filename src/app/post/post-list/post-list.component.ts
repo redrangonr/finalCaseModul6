@@ -27,8 +27,22 @@ export class PostListComponent implements OnInit {
   getAll() {
     // @ts-ignore
     this.postService.getAll().subscribe(data => {
+      console.log(data)
       this.posts = data;
     });
+  }
+
+  getAllByHashtag(){
+   // @ts-ignore
+    const id = document.getElementById('selectHashtag').value;
+    if (id == ''){
+      return this.getAll();
+    }
+    this.postService.findAllByHashtag(id).subscribe(data =>{
+      // @ts-ignore
+      this.posts = data
+    })
+
   }
 
   getAllHashtag(){
