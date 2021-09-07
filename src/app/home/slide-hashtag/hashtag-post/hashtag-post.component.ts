@@ -19,7 +19,7 @@ export class HashtagPostComponent implements OnInit {
   currentIndex = 1;
   hashtags: Hashtag[] = []
   tag: Hashtag = {} ;
-  id: any =0
+  id: any = 0
   constructor(private postService: PostService, private hashtagService: HashtagService,private activateRoute: ActivatedRoute ) {
     this.activateRoute.paramMap.subscribe((data: ParamMap)=>{
       // @ts-ignore
@@ -35,7 +35,7 @@ export class HashtagPostComponent implements OnInit {
   //   })
   // }
   reload(){
-    this.ngOnInit();
+
   }
   getPost(id: any){
     this.postService.findAllByHashtag(id).subscribe(data =>{
@@ -64,5 +64,4 @@ export class HashtagPostComponent implements OnInit {
     this.tableSize = event.target.value;
     this.page = 1;
   }
-
 }

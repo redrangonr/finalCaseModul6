@@ -39,10 +39,9 @@
 
             <div class="filter-result">
               <div class="job-box d-md-flex align-items-center justify-content-between mb-30" *ngFor="let post of posts | paginate :{
-        itemsPerPage: tableSize,
+                itemsPerPage: tableSize,
                 currentPage: page,
-                totalItems: count
-  }">
+                totalItems: count }">
                 <div class="col-md-2">
                   <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
                     <img src="{{post.image}}" width="100" height="100" style="border-radius: 10px">
@@ -79,7 +78,9 @@
       </div>
     </div>
     <div class="col-md-3">
-      <div class="card-header" style="background-color: #8eb9b9 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px "></div>
+      <div class="card-header" style="background-color: #8eb9b9 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
+        <i class="fa fa-tag" style="width: 100; height: 100"></i>
+      </div>
       <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 150px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
         <div class="row">
           <div class="col-md-6">
@@ -93,8 +94,7 @@
       </div>
       <div class="card-header"  style="background-color: #8eb9b9 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px "></div>
       <div class="card-body" style="background-color: #f3f5f5; height: 550px;" >
-        <a *ngFor="let hashtag of hashtags" class="btn btn-outline-secondary" style="margin-left: 5px; margin-bottom: 5px" routerLink="/post/hashtag/{{hashtag.id}}" (click)="reload()"><i class="fa fa-tag">{{hashtag.name}}</i></a>
-
+        <a *ngFor="let hashtag of hashtags" class="btn btn-outline-secondary" style="margin-left: 5px; margin-bottom: 5px" routerLink="/post/hashtag/{{hashtag.id}}"><i class="fa fa-tag">{{hashtag.name}}</i></a>
       </div>
       </div>
   </div>
