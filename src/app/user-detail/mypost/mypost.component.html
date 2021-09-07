@@ -1,0 +1,54 @@
+
+<div class="col-12 col-md-6 col-lg-12 mt-3" *ngFor="let item of myPost | paginate : {itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count}">
+  <div class="post-mini_block">
+    <div class="row">
+    <div class="col-3"><img style="height: 150px; width: 260px" src="{{item.image}}" alt="post image"></div>
+    <div class="col-9"><div class="post-detail">
+      <div  class="post-credit">
+        <div class="row">
+          <div class="col-6"><div style="margin-left: 100px" class="post-tag"><a style="text-decoration: none" class="fa fa-tag" href="index.html">{{item.hashtag.name}}</a></div></div>
+          <div class="col-6"><button routerLink="/post/edit/{{item.id}}" class="btn btn-sm btn-outline-primary" style="float: right">Edit</button>  <button (click)="getIdPost(item.id)" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="float: right">Delete</button></div>
+        </div>
+
+      </div ><div style="margin-left: 100px"><h6 style="cursor: pointer" routerLink="/post/view/{{item.id}}"  class="post-title">{{item.title}}</h6></div>
+      <p style="margin-left: 100px" class="post-describe">{{item.description}}</p>
+      <div style="margin-left: 100px" class="post-credit">
+        <div class="author">
+          <p class="author-name">{{item.date | date: ' EEEE,  dd-MM-yyyy hh:mm'}}   ({{item.status}})</p>
+        </div>
+      </div>
+    </div></div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify" style="margin-left: 35%" >
+  <pagination-controls previousLabel="" nextLabel="" (pageChange)="tabSize($event)">
+  </pagination-controls>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{notification}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div align="center"><img src="{{notificationImg}}" alt=""></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="deletePost(idPost)"  class="btn btn-danger" data-bs-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

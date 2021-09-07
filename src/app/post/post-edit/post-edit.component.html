@@ -1,3 +1,4 @@
+<p>post-edit works!</p>
 <!--<p>post-create works!</p>-->
 <!--<form [formGroup]="post" (ngSubmit)="create()">-->
 <!--  <table>-->
@@ -79,6 +80,7 @@
           </nav>
         </div>
       </div>
+      <div class=""><img  style="width: 100%"  src="{{fb}}" alt=""></div>
     </div>
     <div class="col-md-8">
       <div class="card">
@@ -101,6 +103,7 @@
             </li>
           </ul>
         </div>
+
         <div class="card-body tab-content">
           <div class="tab-pane active" id="profile">
             <h6>CREATE YOUR POST</h6>
@@ -108,7 +111,7 @@
 
 
 
-            <form [formGroup]="post" (ngSubmit)="create()">
+            <form [formGroup]="post" (ngSubmit)="update()">
               <div class="form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" formControlName="title"  id="title" aria-describedby="fullNameHelp" placeholder="Enter your title" >
@@ -124,25 +127,25 @@
                   <div class="col-4">
                     <label style="width: 220px" class="btn btn-outline-primary mt-4" for="file1">Image</label>
                     <input hidden class="form-control" type="file"
-                       id="file1"
-                       #userPhoto
-                       (change)="onFileSelected($event)"
-                       name="image"
-                       autocomplete="off"
-                />
-                </div>
+                           id="file1"
+                           #userPhoto
+                           (change)="onFileSelected($event)"
+                           name="image"
+                           autocomplete="off"
+                    />
+                  </div>
                   <div class="col-4">
                     <label for="hashtag">Hashtag</label>
                     <select  id="hashtag" class="form-control" formControlName="hashtag" >
                       <option *ngFor="let item of hashtags" value="{{item.id}}">{{item.name}}</option></select>
                   </div>
-                <div class="col-4">
-                  <label for="status">Status</label>
-                <select id="status"  class="form-control" id="status" formControlName="status">
-                  <option value="public">Public</option>
-                  <option value="private">Private</option>
-                </select>
-                </div>
+                  <div class="col-4">
+                    <label for="status">Status</label>
+                    <select id="status"  class="form-control" id="status" formControlName="status">
+                      <option value="public">Public</option>
+                      <option value="private">Private</option>
+                    </select>
+                  </div>
                 </div>
               </div>
 
@@ -157,9 +160,12 @@
                 All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
               </div>
               <button type="submit"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Save</button>
-              <button   type="button" (click)="reset()" class="btn btn-secondary ml-2">Reset Changes</button>
+              <button   type="button" (click)="getById(idPost)" class="btn btn-secondary ml-2" >Reset Changes</button>
             </form>
           </div>
+
+
+
           <div class="tab-pane" id="account">
             <h6>ACCOUNT SETTINGS</h6>
             <hr>
@@ -287,6 +293,7 @@
             </form>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -306,10 +313,11 @@
         <div align="center"><img src="{{notificationImg}}" alt=""></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+        <button routerLink="{{navigateTo}}" type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
       </div>
     </div>
   </div>
 </div>
+
 
 

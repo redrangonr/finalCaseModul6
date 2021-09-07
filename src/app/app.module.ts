@@ -5,23 +5,44 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { DetalComponent } from './detail/detal.component';
-
-
 import { AdminComponent } from './admin/component/admin-home/admin.component';
 import {AdminModule} from './admin/module/admin.module';
 import { LoginComponent } from './authentication/component/login/login.component';
-import {LoginModule} from './authentication/module/login.module';
 import { UserManagementComponent } from './admin/component/user/user-list/user-management.component';
-import { NavbarComponent } from './shared-module/navbar/navbar.component';
 import { UserEditComponent } from './admin/component/user/user-edit/user-edit.component';
 import { HashtagListComponent } from './admin/component/hashtag/hashtag-list/hashtag-list.component';
 import { HashtagCreateComponent } from './admin/component/hashtag/hashtag-create/hashtag-create.component';
 import { HashtagDeleteComponent } from './admin/component/hashtag/hashtag-delete/hashtag-delete.component';
 import { HashtagEditComponent } from './admin/component/hashtag/hashtag-edit/hashtag-edit.component';
 import { AdsComponent } from './shared-module/ads/ads.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { HotNewComponent } from './home/hot-new/hot-new.component';
+import { AboutUsHomeComponent } from './home/about-us-home/about-us-home.component';
+import { FollowUsHomeComponent } from './home/follow-us-home/follow-us-home.component';
+import { RecentPostComponent } from './home/recent-post/recent-post.component';
+import { SignupEmailAdsComponent } from './home/signup-email-ads/signup-email-ads.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import {NgbNavModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
-import {SlideHashtagComponent} from "./slide-hashtag/slide-hashtag.component";
-import {NgxPaginationModule} from "ngx-pagination";
+import {HttpClientModule} from '@angular/common/http';
+import {PostModule} from './post/post.module';
+import {EditorModule} from '@tinymce/tinymce-angular';
+import {environment} from '../environments/environment';
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire';
+import {NavbarComponent} from './shared-module/navbar/navbar.component';
+import {LoginModule} from './authentication/module/login.module';
+import { SlideHashtagComponent } from './home/slide-hashtag/slide-hashtag.component';
+import { PostListComponent } from './post/post-list/post-list.component';
+import { PostAdminListComponent } from './admin/component/post-admin/post-admin-list/post-admin-list.component';
+import { PostAdminEditComponent } from './admin/component/post-admin/post-admin-edit/post-admin-edit.component';
+import { FooterComponent } from './home/footer/footer.component';
+import { InstaramComponent } from './home/instaram/instaram.component';
+import { RecentViewComponent } from './home/recent-view/recent-view.component';
+import { TopNewPostComponent } from './home/top-new-post/top-new-post.component';
+import {MypostComponent} from './user-detail/mypost/mypost.component';
+import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';
+
 
 @NgModule({
   declarations: [
@@ -31,16 +52,40 @@ import {NgxPaginationModule} from "ngx-pagination";
     NavbarComponent,
     AdsComponent,
     SlideHashtagComponent,
+    HotNewComponent,
+    AboutUsHomeComponent,
+    FollowUsHomeComponent,
+    RecentPostComponent,
+    SignupEmailAdsComponent,
+    UserDetailComponent,
+    UserDetailComponent,
+    FooterComponent,
+    InstaramComponent,
+    RecentViewComponent,
+    TopNewPostComponent,
+    MypostComponent,
+    HashtagPostComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LoginModule,
-    ReactiveFormsModule,
     NgxPaginationModule,
+    NgbNavModule,
+    ReactiveFormsModule,
+    NgbTooltipModule,
+    HttpClientModule,
+    PostModule,
+    EditorModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    LoginModule,
+    NgbNavModule
   ],
   providers: [],
     exports: [
+        NavbarComponent
     ],
   bootstrap: [AppComponent]
 })

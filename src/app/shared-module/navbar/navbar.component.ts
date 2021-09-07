@@ -18,10 +18,25 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  logout(){
+  logout() {
     sessionStorage.clear()
-    this.router.navigate(['/home']).then(function(){
+    this.router.navigate(['/home']).then(function() {
       location.reload();
     })
+  }
+    checkLogin()
+    {
+    if (sessionStorage.getItem('Id_key')) {
+      this.router.navigate(['/post/create']);
+    }else {
+    }
+  }
+
+    check(){
+    if (sessionStorage.getItem('Id_key')) {
+      return false;
+    }else {
+      return true;
+    }
   }
 }

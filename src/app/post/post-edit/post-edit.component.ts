@@ -1,46 +1,55 @@
 import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../service/post.service';
-import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {finalize} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {HashtagService} from '../../admin/service/hashtag.service';
-
+import {finalize} from 'rxjs/operators';
+import {Post} from '../../model/post';
 
 @Component({
-  selector: 'app-post-create',
-  templateUrl: './post-create.component.html',
-  styleUrls: ['./post-create.component.css']
+  selector: 'app-post-edit',
+  templateUrl: './post-edit.component.html',
+  styleUrls: ['./post-edit.component.css']
 })
-export class PostCreateComponent implements OnInit {
+export class PostEditComponent implements OnInit {
+  idUser = sessionStorage.getItem('Id_key');
   title = 'cloudsSorage';
+  notification = '';
+  notificationImg = '';
   // @ts-ignore
   selectedFile: File = null;
   // @ts-ignore
-  fb = '';
+  fb;
   // @ts-ignore
   downloadURL: Observable<string>;
   // @ts-ignore
   post: FormGroup = new FormGroup({
     title: new FormControl('', [Validators.required]),
-    image: new FormControl(''),
+    image: new FormControl(),
     status: new FormControl('public'),
     description: new FormControl(),
     content: new FormControl('', [Validators.required]),
     date: new FormControl(),
     user: new FormControl(),
-    hashtag: new FormControl('1')
+    hashtag: new FormControl()
   });
   tinymceinit: any;
   hashtags: any;
-  notification = '';
-  notificationImg = '';
+  // @ts-ignore
+  idPost: number;
+  navigateTo = '';
 
   constructor(private postService: PostService,
               private storage: AngularFireStorage,
               private router: Router,
-              private hashtagService: HashtagService) {
+              private hashtagService: HashtagService,
+              private activatedRouter: ActivatedRoute) {
+    this.activatedRouter.paramMap.subscribe(data => {
+      // @ts-ignore
+      this.idPost = +data.get('id');
+    });
     this.hashtagService.getAll().subscribe(data => {
       this.hashtags = data;
       // console.log(this.hashtags);
@@ -89,6 +98,8 @@ export class PostCreateComponent implements OnInit {
         input.click();
       }
     };
+    // @ts-ignore
+    this.getById(this.idPost);
     // console.log(this.getTitle());
   }
 
@@ -96,49 +107,25 @@ export class PostCreateComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  getTitle() {
-    // @ts-ignore
-    return this.post.get('title');
+  getById(id: number) {
+    this.postService.get(id).subscribe(data => {
+      this.post = new FormGroup({
+        title: new FormControl(data.title),
+        image: new FormControl(data.image),
+        status: new FormControl(data.status),
+        description: new FormControl(data.description),
+        content: new FormControl(data.content),
+        date: new FormControl(data.date),
+        user: new FormControl(data.user),
+        hashtag: new FormControl(data.hashtag.id)
+      });
+      this.fb = data.image;
+    });
   }
 
-  // tslint:disable-next-line:typedef
-  create() {
-    // @ts-ignore
-    if (sessionStorage.getItem('Id_key')) {
-      const newPost = this.post.value;
-      newPost.user = {id: sessionStorage.getItem('Id_key')};
-      // @ts-ignore
-      newPost.date = new Date();
-      newPost.hashtag = {id: this.post.value.hashtag};
-      newPost.image = this.fb;
-      if (newPost.image === '') {
-        newPost.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
-      }
-      console.log(newPost);
-      if (newPost.title.trim() === '') {
-       this.notification = 'Thiếu title';
-       this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
-      } else if (newPost.content.trim() === '') {
-        this.notification = 'Thiếu content';
-        this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
-      } else {
-        this.postService.create(newPost).subscribe(() => {
-          // this.router.navigate(['/post/list']);
-          this.post.reset();
-        });
-        this.notification = 'success';
-        this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
-      }
-    }else {
-      console.log('qq, đăng nhập đê');
-    }
-  }
-
-  // tslint:disable-next-line:typedef
   // @ts-ignore
   // tslint:disable-next-line:typedef
   onFileSelected(event) {
-
     const n = Date.now();
     const file = event.target.files[0];
     const filePath = `RoomsImages/${n}`;
@@ -163,17 +150,42 @@ export class PostCreateComponent implements OnInit {
         }
       });
   }
+
   // tslint:disable-next-line:typedef
-  reset() {
-    this.post = new FormGroup({
-      title: new FormControl('', [Validators.required]),
-      image: new FormControl(''),
-      status: new FormControl('public'),
-      description: new FormControl(),
-      content: new FormControl('', [Validators.required]),
-      date: new FormControl(),
-      user: new FormControl(),
-      hashtag: new FormControl('1')
-    });
+  update() {
+    const newPost: Post = this.post.value;
+    newPost.id = this.idPost;
+    newPost.hashtag = {id: +this.post.value.hashtag};
+    newPost.image = this.fb;
+
+    // @ts-ignore
+    if (newPost.title.trim() === '') {
+      this.notification = 'Thiếu title';
+      this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
+      this.navigateTo = '/post/edit/' + this.idPost;
+    } else { // @ts-ignore
+      if (newPost.content.trim() === '') {
+        this.notification = 'Thiếu content';
+        this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
+        this.navigateTo = '/post/edit/' + this.idPost;
+      } else {
+        this.postService.edit(newPost).subscribe(data => {
+          console.log(data);
+          this.notification = 'success';
+          this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
+          this.navigateTo = '/user/' + this.idUser;
+          // this.router.navigate(['/user/' + this.idUser]);
+        });
+      }
+    }
+    console.log(newPost);
   }
+  // tslint:disable-next-line:typedef
+  // reset() {
+  //   this.getById(this.idPost);
+  //   this.notification = ' reset done ';
+  //   this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
+  //   this.navigateTo = '/post/edit/' + this.idPost;
+  // }
+
 }
