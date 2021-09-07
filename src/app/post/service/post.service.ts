@@ -35,7 +35,13 @@ export class PostService {
   findAllByUserId(id: number): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/posts/user/' + id);
   }
-  findAllByHashtag(id: number):Observable<Hashtag> {
-    return this.httpClient.get<Hashtag>(API_URL + '/api/posts/search/hashtag/'+ id)
+  findAllByHashtag(id: number): Observable<Hashtag> {
+    return this.httpClient.get<Hashtag>(API_URL + '/api/posts/search/hashtag/' + id);
+  }
+  findMyPostByTitle(id: number, title: string): Observable<any> {
+    return this.httpClient.get<any>(API_URL + '/api/posts/search/' + id + '/' + title);
+  }
+  findMyPostByHashtag(userId: number, hashtagId: number): Observable<any> {
+    return this.httpClient.get<any>(API_URL + '/api/posts/user/' + userId + '/' + hashtagId);
   }
 }
