@@ -4,6 +4,7 @@ import {Post} from '../../model/post';
 import {updatePlaceholderMap} from '@angular/compiler/src/render3/view/i18n/util';
 import {HashtagService} from '../../admin/service/hashtag.service';
 
+// @ts-ignore
 @Component({
   selector: 'app-mypost',
   templateUrl: './mypost.component.html',
@@ -79,5 +80,11 @@ export class MypostComponent implements OnInit {
   changeBoderColor() {
     // @ts-ignore
     document.getElementById('search').style.borderColor = 'green';
+  }
+  // tslint:disable-next-line:typedef
+  findMyPostByHashtag(userId: number, hashtagId: number) {
+    this.postService.findMyPostByHashtag(userId, hashtagId).subscribe(data => {
+      this.myPost = data;
+    });
   }
 }

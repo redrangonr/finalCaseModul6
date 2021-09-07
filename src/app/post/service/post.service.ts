@@ -41,4 +41,7 @@ export class PostService {
   findMyPostByTitle(id: number, title: string): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/posts/search/' + id + '/' + title);
   }
+  findMyPostByHashtag(userId: number, hashtagId: number): Observable<any> {
+    return this.httpClient.get<any>(API_URL + '/api/posts/user/' + userId + '/' + hashtagId);
+  }
 }
