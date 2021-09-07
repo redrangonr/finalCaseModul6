@@ -12,10 +12,19 @@ export class AdminComponent implements OnInit {
   id = this.tokenService.getId()
   avatar = this.tokenService.getAvatar()
   token = this.tokenService.getToken()
-  role = this.tokenService.getRoles()
+  role: any = this.tokenService.getRoles()
   username = this.tokenService.getUserName()
   active = 1;
-  constructor(private tokenService: TokenService, private router: Router) { }
+  constructor(private tokenService: TokenService, private router: Router) {
+    this.checkRole()
+  }
+
+  checkRole(){
+    if (this.role[0] !== 'ADMIN'){
+      this.router.navigate(['/home'])
+    }
+    console.log(this.role[0])
+  }
 
   ngOnInit(): void {
     console.log(this.role)
@@ -29,6 +38,5 @@ export class AdminComponent implements OnInit {
       })
     }
   }
-
 
 }

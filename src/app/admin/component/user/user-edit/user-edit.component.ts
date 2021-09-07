@@ -5,6 +5,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {User} from '../../../model/user';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-user-edit',
@@ -12,6 +13,7 @@ import {User} from '../../../model/user';
   styleUrls: ['./user-edit.component.css']
 })
 export class UserEditComponent implements OnInit {
+  idAdmin = sessionStorage.getItem('Id_key')
   userForm: FormGroup = new FormGroup({
     id: new FormControl(''),
     name: new FormControl(''),
@@ -79,9 +81,12 @@ export class UserEditComponent implements OnInit {
       });
     })
   }
+
   ngOnInit(): void {
     this.getUser(this.id)
+    console.log(this.idAdmin)
   }
+
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -89,6 +94,7 @@ export class UserEditComponent implements OnInit {
       this.closeResult = `${this.getDismissReason(reason)}`;
     });
   }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -98,4 +104,5 @@ export class UserEditComponent implements OnInit {
       return '';
     }
   }
+
 }

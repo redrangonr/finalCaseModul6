@@ -1,0 +1,105 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+<div class="container">
+  <div class="row">
+    <div class="col-md-9" style="height: 1000px">
+      <div class="row">
+        <div class="col-lg-12 mx-auto">
+          <div class="career-search mb-60">
+            <form action="#" class="career-form mb-60">
+              <div class="row">
+                <div class="col-md-6 col-lg-3 my-3" style="float: left;">
+                  <div class="select-container">
+                    <select class="custom-select">
+                      <option selected="">Sort By</option>
+                      <option value="1">Title</option>
+                      <option value="2">Username</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-3 my-3"></div>
+
+                <div class="col-md-6 col-lg-5 my-3">
+                  <div class="input-group ">
+                    <input type="text" class="form-control" placeholder="Enter Your Keywords" id="keywords" style="height: 48px; margin-left: 50px; float: right">
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-1 my-3" >
+                  <button type="button" class="btn btn-secondary" style="width: 100px; height: 47px; float: right" id="contact-submit">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div class="filter-result">
+              <div class="job-box d-md-flex align-items-center justify-content-between mb-30" *ngFor="let post of posts | paginate :{
+        itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+  }">
+                <div class="col-md-2">
+                  <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
+                    <img src="{{post.image}}" width="100" height="100" style="border-radius: 10px">
+                  </div>
+                </div>
+                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
+                  <div class="row">
+                    <div class="col-md-12 mr-1">
+                      <h5 class="content" style="margin-left: 30px"><a class="content" style="text-decoration: none; color: #495057" href="#" routerLink="/view/{{post.id}}">{{post.title}}</a></h5>
+                    </div>
+                  </div>
+                  <div class="job-content">
+                    <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
+
+                      <li class="mr-md-4">
+                        <i class="fa fa-user"></i> {{post.user.name}}
+                      </li>
+
+                      <li class="mr-md-4">
+                        <i class="fa fa-tag"></i> {{post.hashtag.name}}
+                      </li>
+                      <li class="mr-md-4">
+                        <i class="fa fa-clock"></i> {{post.date | date}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- START Pagination -->
+        </div>
+        <!-- END Pagination -->
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-header" style="background-color: #8eb9b9 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px "></div>
+      <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 150px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
+        <div class="row">
+          <div class="col-md-6">
+            <span><img src="{{tag.image}}" width="120" height="120" style="border-radius: 10px; border: #767c7c solid"></span>
+          </div>
+          <div class="col-md-6">
+            <h4><i class="fa fa-tag" style="margin-top: 20px; color: #495057" > {{tag.name}}</i></h4>
+            <h4><i class="fa fa-puzzle-piece" style="margin-top: 20px; color: #495057" > ({{posts.length}})</i></h4>
+          </div>
+        </div>
+      </div>
+      <div class="card-header"  style="background-color: #8eb9b9 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px "></div>
+      <div class="card-body" style="background-color: #f3f5f5; height: 550px;" >
+        <a *ngFor="let hashtag of hashtags" class="btn btn-outline-secondary" style="margin-left: 5px; margin-bottom: 5px" routerLink="/post/hashtag/{{hashtag.id}}" (click)="reload()"><i class="fa fa-tag">{{hashtag.name}}</i></a>
+
+      </div>
+      </div>
+  </div>
+</div>
+<div class="d-flex justify" style="margin-left: 35%" >
+  <pagination-controls previousLabel="" nextLabel="" (pageChange)="tabSize($event)">
+  </pagination-controls>
+</div>
