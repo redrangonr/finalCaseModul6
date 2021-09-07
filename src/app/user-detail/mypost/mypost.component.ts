@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../../post/service/post.service';
 import {Post} from '../../model/post';
+import {updatePlaceholderMap} from '@angular/compiler/src/render3/view/i18n/util';
 
 @Component({
   selector: 'app-mypost',
@@ -10,7 +11,7 @@ import {Post} from '../../model/post';
 export class MypostComponent implements OnInit {
   page = 1;
   count = 0;
-  tableSize = 3 ;
+  tableSize = 10 ;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   myPost: Post[] = [];
@@ -44,6 +45,19 @@ export class MypostComponent implements OnInit {
     });
   }
   // tslint:disable-next-line:typedef
+  searchByTitle() {
+    // @ts-ignore
+    const title = document.getElementById('search').value.trim();
+    if (title === '') {
+      // @ts-ignore
+      document.getElementById('search').style.borderColor = 'red';
+    }else {
+      this.postService.findMyPostByTitle(this.idUser, title).subscribe(data => {
+        this.myPost = data;
+      });
+    }
+  }
+  // tslint:disable-next-line:typedef
   getIdPost(id: any) {
     this.idPost = id;
   }
@@ -54,5 +68,10 @@ export class MypostComponent implements OnInit {
   tableData(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
+  }
+  // tslint:disable-next-line:typedef
+  changeBoderColor() {
+    // @ts-ignore
+    document.getElementById('search').style.borderColor = 'green';
   }
 }
