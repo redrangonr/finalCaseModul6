@@ -1,0 +1,99 @@
+<a data-bs-popper="modal" class="hover" (click)="open(content)"ngbTooltip="Login"><b>Login</b><img src="https://cdn-icons-png.flaticon.com/128/2170/2170091.png" width="30" height="30"></a>
+<b>/</b><a class="hover" (click)="open(content1)"ngbTooltip="Register"><b> Register</b> <img src="https://cdn-icons-png.flaticon.com/128/5525/5525487.png" height="30" width="30"></a>
+<ng-template #content id="modal"  let-modal>
+  <div></div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title"><img src="https://img.icons8.com/material-outlined/2x/key--v2.gif"width="55" height="55"></h4>
+    <button type="button" class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div [innerHTML]="status" class="alert alert-danger"></div>
+      <div class="mb-3">
+        <label>UserName</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1"><img src="https://img.icons8.com/fluency/2x/username.png" width="20" height="20"></span>
+          <input type="text" formControlName="username" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label>Password</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon"><img src="https://img.icons8.com/ultraviolet/2x/forgot-password.png" width="20" height="20"></span>
+          <input type="password" formControlName="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="!loginForm.valid" class="btn btn-success">Login</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+<!--- register---->
+<ng-template #content1 id="modal1"  let-modal>
+  <div></div>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-test"><img src="https://img.icons8.com/color/2x/installing-updates--v2.gif"width="55" height="55"></h4>
+    <span [innerHTML]="statusRegister"></span>
+    <button type="button" class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
+      <i class="fa fa-times"></i>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="registerForm" (ngSubmit)  = "register()">
+      <div class="form-row">
+        <div class="form-group col">
+          <div class="form-group">
+            <label>Username</label>
+            <div class="input-group">
+              <span class="input-group-text" id="newUsername"><img src="https://img.icons8.com/fluency/2x/username.png" width="20" height="20"></span>
+              <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username" />
+              <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Username is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Name</label>
+            <div class="input-group">
+              <span class="input-group-text" id="newName"><img src="https://img.icons8.com/officel/2x/collaborator-male.png" width="20" height="20"></span>
+              <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" placeholder="Name" />
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Name is required</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <div class="input-group">
+              <span class="input-group-text" id="newPassword"><img src="https://img.icons8.com/ultraviolet/2x/forgot-password.png" width="20" height="20"></span>
+              <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" />
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Your password must be longer than 6 characters</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <div class="input-group">
+              <span class="input-group-text" id="newEmail"><img src="https://cdn-icons-png.flaticon.com/128/893/893257.png" width="20" height="20"></span>
+                <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email" />
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">Email is required</div>
+                  <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                </div>
+              </div>
+            </div>
+           </div>
+         </div>
+      <div class="modal-footer">
+        <button class="btn btn-success">Register</button>
+      </div>
+
+    </form>
+  </div>
+</ng-template>

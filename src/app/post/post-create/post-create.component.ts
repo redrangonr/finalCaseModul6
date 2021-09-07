@@ -1,9 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../../service/post.service';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
+import {Router} from '@angular/router';
+import {HashtagService} from '../../admin/service/hashtag.service';
+
 
 @Component({
   selector: 'app-post-create',
@@ -15,22 +18,33 @@ export class PostCreateComponent implements OnInit {
   // @ts-ignore
   selectedFile: File = null;
   // @ts-ignore
-  fb;
+  fb = '';
   // @ts-ignore
   downloadURL: Observable<string>;
+  // @ts-ignore
   post: FormGroup = new FormGroup({
-    title: new FormControl(),
-    image: new FormControl(),
+    title: new FormControl('', [Validators.required]),
+    image: new FormControl(''),
     status: new FormControl('public'),
     description: new FormControl(),
-    content: new FormControl(),
+    content: new FormControl('', [Validators.required]),
     date: new FormControl(),
-    user: new FormControl()
+    user: new FormControl(),
+    hashtag: new FormControl('1')
   });
   tinymceinit: any;
+  hashtags: any;
+  notification = '';
+  notificationImg = '';
 
   constructor(private postService: PostService,
-              private storage: AngularFireStorage) {
+              private storage: AngularFireStorage,
+              private router: Router,
+              private hashtagService: HashtagService) {
+    this.hashtagService.getAll().subscribe(data => {
+      this.hashtags = data;
+      // console.log(this.hashtags);
+    });
     this.tinymceinit = {
       height: 500,
       plugins: [
@@ -75,24 +89,51 @@ export class PostCreateComponent implements OnInit {
         input.click();
       }
     };
+    // console.log(this.getTitle());
   }
 
   ngOnInit(): void {
   }
+
+  // tslint:disable-next-line:typedef
+  getTitle() {
+    // @ts-ignore
+    return this.post.get('title');
+  }
+
   // tslint:disable-next-line:typedef
   create() {
-    const newPost = this.post.value;
-    newPost.user = {id: 1};
-    newPost.date = new Date();
-    newPost.image = this.fb;
-    if (newPost.status === null){
-      newPost.status = 'public';
+    // @ts-ignore
+    if (sessionStorage.getItem('Id_key')) {
+      const newPost = this.post.value;
+      newPost.user = {id: sessionStorage.getItem('Id_key')};
+      // @ts-ignore
+      newPost.date = new Date();
+      newPost.hashtag = {id: this.post.value.hashtag};
+      newPost.image = this.fb;
+      if (newPost.image === '') {
+        newPost.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
+      }
+      console.log(newPost);
+      if (newPost.title.trim() === '') {
+       this.notification = 'Thiếu title';
+       this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
+      } else if (newPost.content.trim() === '') {
+        this.notification = 'Thiếu content';
+        this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
+      } else {
+        this.postService.create(newPost).subscribe(() => {
+          // this.router.navigate(['/post/list']);
+          this.post.reset();
+        });
+        this.notification = 'success';
+        this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
+      }
+    }else {
+      console.log('qq, đăng nhập đê');
     }
-    console.log(newPost);
-    this.postService.create(newPost).subscribe(data => {
-      alert('success');
-    });
   }
+
   // tslint:disable-next-line:typedef
   // @ts-ignore
   // tslint:disable-next-line:typedef
@@ -121,5 +162,18 @@ export class PostCreateComponent implements OnInit {
           console.log(url);
         }
       });
+  }
+  // tslint:disable-next-line:typedef
+  reset() {
+    this.post = new FormGroup({
+      title: new FormControl('', [Validators.required]),
+      image: new FormControl(''),
+      status: new FormControl('public'),
+      description: new FormControl(),
+      content: new FormControl('', [Validators.required]),
+      date: new FormControl(),
+      user: new FormControl(),
+      hashtag: new FormControl('1')
+    });
   }
 }
