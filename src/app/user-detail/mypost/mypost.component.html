@@ -1,5 +1,7 @@
 
-<div class="col-12 col-md-6 col-lg-12 mt-3" *ngFor="let item of myPost">
+<div class="col-12 col-md-6 col-lg-12 mt-3" *ngFor="let item of myPost | paginate : {itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count}">
   <div class="post-mini_block">
     <div class="row">
     <div class="col-3"><img style="height: 150px; width: 260px" src="{{item.image}}" alt="post image"></div>
@@ -14,12 +16,16 @@
       <p style="margin-left: 100px" class="post-describe">{{item.description}}</p>
       <div style="margin-left: 100px" class="post-credit">
         <div class="author">
-          <p class="author-name">{{item.date | date: ' EEEE,  dd-mm-yyyy hh:mm'}}   ({{item.status}})</p>
+          <p class="author-name">{{item.date | date: ' EEEE,  dd-MM-yyyy hh:mm'}}   ({{item.status}})</p>
         </div>
       </div>
     </div></div>
     </div>
   </div>
+</div>
+<div class="d-flex justify" style="margin-left: 35%" >
+  <pagination-controls previousLabel="" nextLabel="" (pageChange)="tabSize($event)">
+  </pagination-controls>
 </div>
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {PostService} from '../../service/post.service';
+import {PostService} from '../../post/service/post.service';
 import {Post} from '../../model/post';
 
 @Component({
@@ -8,6 +8,11 @@ import {Post} from '../../model/post';
   styleUrls: ['./mypost.component.css']
 })
 export class MypostComponent implements OnInit {
+  page = 1;
+  count = 0;
+  tableSize = 3 ;
+  tableSizesArr = [4, 8, 12];
+  currentIndex = 1;
   myPost: Post[] = [];
   // @ts-ignore
   idUser: number;
@@ -41,5 +46,13 @@ export class MypostComponent implements OnInit {
   // tslint:disable-next-line:typedef
   getIdPost(id: any) {
     this.idPost = id;
+  }
+  // tslint:disable-next-line:typedef
+  tabSize(event: any) {
+    this.page = event;
+  }
+  tableData(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
   }
 }
