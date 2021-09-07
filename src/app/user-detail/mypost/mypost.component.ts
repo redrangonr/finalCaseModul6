@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PostService} from '../../post/service/post.service';
 import {Post} from '../../model/post';
 import {updatePlaceholderMap} from '@angular/compiler/src/render3/view/i18n/util';
+import {HashtagService} from '../../admin/service/hashtag.service';
 
 @Component({
   selector: 'app-mypost',
@@ -21,11 +22,16 @@ export class MypostComponent implements OnInit {
   notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
   // @ts-ignore
   idPost: number;
+  hasgtags: any;
 
-  constructor(private postService: PostService) {
+  constructor(private postService: PostService,
+              private hashtagService: HashtagService) {
     // @ts-ignore
     this.idUser = +sessionStorage.getItem('Id_key');
     this.getMyPost(this.idUser);
+    this.hashtagService.getAll().subscribe(data => {
+      this.hasgtags = data;
+    });
 
   }
 
