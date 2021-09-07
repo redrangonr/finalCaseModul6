@@ -10,7 +10,7 @@
           <div class="post-detail">
             <div class="post-credit" style="background-color: #f56b6b; border-radius: 5px">
               <div class="post-tag">
-                <a style="text-decoration: none"  href="#">{{hashtag.name}}</a>
+                <a style="text-decoration: none"  (click)="getPostByHashtag(hashtag.id)">{{hashtag.name}}</a>
               </div>
             </div>
           </div>

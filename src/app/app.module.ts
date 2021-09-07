@@ -41,6 +41,7 @@ import { InstaramComponent } from './home/instaram/instaram.component';
 import { RecentViewComponent } from './home/recent-view/recent-view.component';
 import { TopNewPostComponent } from './home/top-new-post/top-new-post.component';
 import {MypostComponent} from './user-detail/mypost/mypost.component';
+import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import {MypostComponent} from './user-detail/mypost/mypost.component';
     RecentViewComponent,
     TopNewPostComponent,
     MypostComponent,
+    HashtagPostComponent,
 
   ],
   imports: [
