@@ -20,6 +20,9 @@ export class UserManagementService {
     return this.http.put<any>(`${API_URL}/api/auth/admin/users/${id}`,user)
   }
   delete(id: number): Observable<User>{
-    return this.http.delete<User>(`${API_URL}//api/auth/admin/users/${id}`)
+    return this.http.delete<User>(`${API_URL}/api/auth/admin/users/${id}`)
+  }
+  searchByUserName(username: string):Observable<User>{
+    return this.http.get<User>(`${API_URL}/api/auth/admin/users/search/${username}`)
   }
 }

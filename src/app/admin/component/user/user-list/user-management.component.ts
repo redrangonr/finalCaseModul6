@@ -28,6 +28,15 @@ export class UserManagementComponent implements OnInit {
       console.log(this.roleName)
     } )
   }
+  findByUsername(){
+    // @ts-ignore
+    const key = document.getElementById('key').value
+    this.userService.searchByUserName(key).subscribe(data =>{
+      // @ts-ignore
+      this.users = data;
+    })
+  }
+
   tabSize(event: any) {
     this.page = event;
     this.getAll();

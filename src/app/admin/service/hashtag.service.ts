@@ -18,6 +18,9 @@ export class HashtagService {
   findById(id: number): Observable<Hashtag>{
     return this.http.get<Hashtag>(`${API_URL}/api/auth/hashtags/${id}`);
   }
+  create(hashtag: Hashtag): Observable<Hashtag>{
+    return this.http.post<Hashtag>(API_URL+"/api/auth/hashtags",hashtag)
+  }
   update(id: number, hastag: Hashtag): Observable<Hashtag>{
     return this.http.put<Hashtag>(`${API_URL}/api/auth/hashtags/${id}`,hastag)
   }

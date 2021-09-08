@@ -18,9 +18,17 @@
         <b for="formFile" class="form-label">Image</b>
         <div class="input-group">
           <span class="input-group-text" id="basic-addon3"><img src="https://cdn-icons-png.flaticon.com/128/4305/4305513.png" width="24" height="24"></span>
-          <input class="form-control" formControlName="image" type="file" id="formFile">
+          <input type="file"
+                 id="file"
+                 class="form-control"
+                 #userPhoto
+                 (change)="onFileSelected($event)"
+                 name="image"
+                 autocomplete="off"
+          />
         </div>
       </div>
+      <img [hidden]="!fb" src="{{this.fb}}" width="100px" height="100px" style="border-radius: 10px">
       <div class="modal-footer">
         <button class="btn btn-outline-info" (click)="modal.close('Save click')" style="width: 100px">Save</button>
       </div>
