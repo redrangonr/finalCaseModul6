@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {DetalComponent} from './detail/detal.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
+import {HashtagPostComponent} from './home/slide-hashtag/hashtag-post/hashtag-post.component';
 
 
 
@@ -31,8 +32,9 @@ const routes: Routes = [
   },
   {
     path: '',
-  component: HomeComponent
+    component: HomeComponent
   },
+  { path: 'post/hashtag/:id', component: HashtagPostComponent},
   // {
   //   path: '**',
   //   component: ErrorComponent

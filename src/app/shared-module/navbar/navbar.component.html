@@ -12,24 +12,12 @@
           <div class="col-0 col-xl-5">
             <ul>
               <li class="nav-item"><a class="pisen-nav-link active" routerLink="/post/list">List Post</a><i class="submenu-opener fas fa-plus"></i>
-                <ul class="sub-menu">
-                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
-                </ul>
               </li>
               <li class="nav-item"><a class="pisen-nav-link active" href="#">Trending</a><i class="submenu-opener fas fa-plus"></i>
-                <ul class="sub-menu">
-                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
-                </ul>
               </li>
               <li class="nav-item"><a class="pisen-nav-link active" href="#">HashTag</a><i class="submenu-opener fas fa-plus"></i>
-                <ul class="sub-menu">
-                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
-                </ul>
               </li>
               <li class="nav-item"><a class="pisen-nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="checkLogin()" >Viết bài</a><i class="submenu-opener fas fa-plus"></i>
-                <ul class="sub-menu">
-                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
-                </ul>
               </li>
 
             </ul>
@@ -57,7 +45,7 @@
                   <img src="https://img.icons8.com/ios/2x/settings&#45;&#45;v2.gif" width="35" height="35" class="rounded-circle mt-2" alt="" style="margin:10px;">
                   <ul class="sub-menu">
                     <li class="sub-menu_item"><a class="sub-menu-link"  routerLink="/user/{{id}}">Information</a></li>
-                    <li class="sub-menu_item"><a class="sub-menu-link" (click)="logout()">Logout</a></li>
+                    <li class="sub-menu_item"> <a class="sub-menu-link" (click)="logout()">Logout</a> </li>
                   </ul>
                 </li>
                 <div id="login" style="float: right; margin-top: 14px" [hidden]="token">

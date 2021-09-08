@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {PostService} from '../../service/post.service';
+import {PostService} from '../service/post.service';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
@@ -115,19 +115,18 @@ export class PostCreateComponent implements OnInit {
         newPost.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
       }
       console.log(newPost);
-      if (newPost.title.trim() === '') {
+      if (newPost.title.trim() === '' || newPost.title === null) {
        this.notification = 'Thiếu title';
        this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
-      } else if (newPost.content.trim() === '') {
+      } else if (newPost.content.trim() === '' || newPost.content === null) {
         this.notification = 'Thiếu content';
         this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
       } else {
         this.postService.create(newPost).subscribe(() => {
-          // this.router.navigate(['/post/list']);
-          this.post.reset();
         });
         this.notification = 'success';
         this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
+        this.reset();
       }
     }else {
       console.log('qq, đăng nhập đê');
@@ -166,7 +165,7 @@ export class PostCreateComponent implements OnInit {
   // tslint:disable-next-line:typedef
   reset() {
     this.post = new FormGroup({
-      title: new FormControl('', [Validators.required]),
+      title: new FormControl(''),
       image: new FormControl(''),
       status: new FormControl('public'),
       description: new FormControl(),
