@@ -6,15 +6,15 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
   firebaseConfig : {
-  apiKey: 'AIzaSyAM-qhtCY_3ImAYqu276-YpyFPhD4lNrfY',
-    authDomain: 'test0109-9fa17.firebaseapp.com',
-    databaseURL: 'https://test0109-9fa17-default-rtdb.firebaseio.com/',
-    projectId: 'test0109-9fa17',
-    storageBucket: 'test0109-9fa17.appspot.com',
-    messagingSenderId: '396200100098',
-    appId: '1:396200100098:web:e8e0f20e404be9b027021b',
-    measurementId: 'G-HD3FTZ8ZTG'
-}
+    apiKey: "AIzaSyCRvtiFJzNJXRHL5rZN-gfbB_xBhQB-7F8",
+    authDomain: "project1-e4298.firebaseapp.com",
+    databaseURL: "https://project1-e4298-default-rtdb.firebaseio.com",
+    projectId: "project1-e4298",
+    storageBucket: "project1-e4298.appspot.com",
+    messagingSenderId: "901016527082",
+    appId: "1:901016527082:web:400ee2022ffd6d9a7e7793",
+    measurementId: "G-17NTG28YS5"
+  }
 };
 
 /*

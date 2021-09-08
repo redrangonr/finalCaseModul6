@@ -31,7 +31,13 @@ export class PostListComponent implements OnInit {
       this.posts = data;
     });
   }
-
+  searchByTitle(){
+    // @ts-ignore
+    const title = document.getElementById('keywords').value;
+    this.postService.findByTitle(title).subscribe(data=>{
+      this.posts = data
+    })
+  }
   getAllByHashtag(){
    // @ts-ignore
     const id = document.getElementById('selectHashtag').value;
@@ -74,5 +80,10 @@ export class PostListComponent implements OnInit {
     this.tableSize = event.target.value;
     this.page = 1;
     this.getAll();
+  }
+  infoPost(id: any){
+    this.postService.get(id).subscribe(data=>{
+    })
+
   }
 }
