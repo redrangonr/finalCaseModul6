@@ -1,3 +1,4 @@
+<br xmlns="http://www.w3.org/1999/html">
 <br>
 <br>
 <br>
@@ -12,7 +13,7 @@
           <div class="career-search mb-60">
             <form action="#" class="career-form mb-60">
               <div class="row">
-                <div class="col-md-6 col-lg-3 my-3">
+                <div class="col-md-6 col-lg-3 my-3" style="float: left;">
                   <div class="select-container">
                     <select class="custom-select">
                       <option selected="">Sort By</option>
@@ -21,76 +22,104 @@
                     </select>
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-3 my-3">
-                  <div class="select-container">
-                    <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select">
-                      <option value="">Select Hashtag</option>
-                      <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
-                    </select>
+                  <div class="col-md-6 col-lg-3 my-3">
+                    <div class="select-container">
+                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select">
+                        <option value="">Select Hashtag</option>
+                        <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="col-md-6 col-lg-5 my-3">
+                  <div class="input-group ">
+                    <input type="text" class="form-control" placeholder="Enter Title ..." id="keywords" style="height: 48px; margin-left: 50px; float: right">
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-3 my-3">
-                  <div class="input-group position-relative">
-                    <input type="text" class="form-control" placeholder="Enter Your Keywords" id="keywords" style="height: 48px">
-                  </div>
-                </div>
-                <div class="col-md-6 col-lg-3 my-3" style="width: 120px">
-                  <button type="button" class="btn btn-lg btn-block btn-light btn-custom" id="contact-submit">
-                    Search
+                <div class="col-md-6 col-lg-1 my-3" >
+                  <button type="button" class="btn btn-secondary" (click)="searchByTitle()" style="width: 80px; height: 47px; float: right" id="contact-submit">
+                    <i class="fa fa-search"></i>
                   </button>
                 </div>
               </div>
             </form>
-
-            <div class="filter-result">
-              <div class="job-box d-md-flex align-items-center justify-content-between mb-30" *ngFor="let post of posts | paginate :{
+          </div>
+        </div>
+      </div>
+      <h3 style="margin-top: 30px" class="text-secondary text-center" *ngIf="posts.length == 0 "> Không có kết quả bạn muốn tìm <img src="https://img.icons8.com/ios/2x/nerd--v3.gif" height="40" width="40" ></h3>
+      <div class="card mb-2" *ngFor="let post of posts | paginate :{
         itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
   }">
-                <div class="col-md-2">
-                  <div class="img-holder mr-md-4 mb-md-0 mb-4 mx-auto mx-md-0 d-md-none d-lg-flex">
-                    <img src="{{post.image}}" width="100" height="100" style="border-radius: 10px">
-                  </div>
-                </div>
-                <div class="job-left my-4 d-md-flex align-items-center flex-wrap">
-                  <div class="row">
-                    <div class="col-md-12 mr-1">
-                      <h5 class="content" style="margin-left: 30px"><a class="content" style="text-decoration: none; color: #495057" href="#" routerLink="/view/{{post.id}}">{{post.title}}</a></h5>
-                    </div>
-                  </div>
-                  <div class="job-content">
-                    <ul class="d-md-flex flex-wrap text-capitalize ff-open-sans">
-
-                      <li class="mr-md-4">
-                        <i class="fa fa-user"></i> {{post.user.name}}
-                      </li>
-
-                      <li class="mr-md-4">
-                        <i class="fa fa-tag"></i> {{post.hashtag.name}}
-                      </li>
-                      <li class="mr-md-4">
-                        <i class="fa fa-clock"></i> {{post.date | date}}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+        <div class="card-body p-2 p-sm-3" style="background-color: #f3f5f5" >
+          <div class="media forum-item">
+            <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="{{post.user.avatar}}" class="mr-3 rounded-circle" width="100" height="100" style="border: #707477 solid" /></a>
+            <div class="media-body">
+              <h5 style="color: #495057"><a style="text-decoration: none" data-toggle="collapse" data-target=".forum-content" class="content">{{post.title}}</a></h5>
+              <p class="content text-secondary">
+                {{post.description}}
+              </p>
+              <p class="text-muted"><a><i class="fa fa-user"> {{post.user.name}}</i></a> &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i class="fa fa-tag"> {{post.hashtag.name}}</i></a></span>
+                &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i class="fa fa-clock"> {{post.date | date}}</i></a></span>
+                &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i class="fa fa-eye"> View more ...</i></a></span>
+              </p>
+            </div>
+            <div class="text-muted small text-center align-self-center">
+              <span class="d-none d-sm-inline-block"><i class="fa fa-rate"></i> 19</span>
+              <span><i class="far fa-comment ml-2" ></i> 3</span>
             </div>
           </div>
-          <!-- START Pagination -->
         </div>
-        <!-- END Pagination -->
       </div>
     </div>
+
     <div class="col-md-3">
-      <div class="card-header" style="background-color: #8eb9b9 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px "></div>
-      <div class="card-body" style="background-color: #f3f5f5; height: 1000px;">
+      <div class="card-header" style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
+        <div class="row">
+          <div class="col-md-4">
+            <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
+          </div>
+          <div class="col-md-4 mt-3">
+          </div>
+          <div class="col-md-4">
+            <i class="fa fa-circle-notch" style="width: 100; height: 100; float: right"></i>
+          </div>
+        </div>
+      </div>
+      <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 290px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
+        <div class="row">
+          <div class="col-md-12 " id="time">
+            <ngb-datepicker style="margin-left: 20px" #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+<!--            <hr/>-->
+            <button class="btn btn-sm btn-outline-primary" style="margin-left: 20px;" (click)="selectToday()">Select Today</button>
+<!--            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>-->
+<!--            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>-->
+<!--            <hr/>-->
+<!--            <pre>Month: {{ date.month }}.{{ date.year }}</pre>-->
+<!--            <pre>Model: {{ model | json }}</pre>-->
+          </div>
+          <p>
+        </div>
+      </div>
+      <div class="card-header"  style="background-color: #c0e8e8 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
+        <div class="row">
+          <div class="col-md-4">
+            <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
+          </div>
+          <div class="col-md-4 mt-3">
+          </div>
+          <div class="col-md-4">
+            <i class="fa fa-circle-notch" style="width: 100; height: 100; float: right"></i>
+          </div>
+        </div>
+      </div>
+      <div class="card-body" style="background-color: #f3f5f5; height: 700px;" >
       </div>
     </div>
   </div>
 </div>
 <div class="d-flex justify" style="margin-left: 35%" >
-  <pagination-controls previousLabel="" nextLabel="" (pageChange)="tabSize($event)">
+  <pagination-controls previousLabel="Back" nextLabel="Next" (pageChange)="tabSize($event)">
   </pagination-controls>
 </div>
+

@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   name = this.tokenService.getName()
   userName = this.tokenService.getUserName()
   avatar = this.tokenService.getAvatar()
-  roles = this.tokenService.getRoles()
+  roles: any = this.tokenService.getRoles()
   token = this.tokenService.getToken()
   constructor(private router: Router, private tokenService: TokenService) { }
 
