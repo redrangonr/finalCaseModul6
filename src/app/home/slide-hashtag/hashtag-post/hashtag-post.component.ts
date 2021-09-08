@@ -14,7 +14,7 @@ export class HashtagPostComponent implements OnInit {
   posts: Post[] = [];
   page = 1;
   count = 0;
-  tableSize = 10 ;
+  tableSize = 3 ;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = []
@@ -66,9 +66,13 @@ export class HashtagPostComponent implements OnInit {
   }
   tabSize(event: any) {
     this.page = event;
+    this.getPost(this.id);
   }
   tableData(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
+    this.getPost(this.id);
   }
+
+
 }
