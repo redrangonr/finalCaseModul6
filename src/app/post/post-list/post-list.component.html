@@ -66,7 +66,7 @@
             </div>
             <div class="text-muted small text-center align-self-center">
               <span class="d-none d-sm-inline-block"><i class="fa fa-rate"></i> 19</span>
-              <span><i class="far fa-comment ml-2"></i> 3</span>
+              <span><i class="far fa-comment ml-2" ></i> 3</span>
             </div>
           </div>
         </div>
@@ -74,7 +74,7 @@
     </div>
 
     <div class="col-md-3">
-      <div class="card-header" style="background-color: #8eb9b9 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
+      <div class="card-header" style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
         <div class="row">
           <div class="col-md-4">
             <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
@@ -86,15 +86,22 @@
           </div>
         </div>
       </div>
-      <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 150px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
+      <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 290px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
         <div class="row">
-          <div class="col-md-6" id="info-left">
+          <div class="col-md-12 " id="time">
+            <ngb-datepicker style="margin-left: 20px" #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+<!--            <hr/>-->
+            <button class="btn btn-sm btn-outline-primary" style="margin-left: 20px;" (click)="selectToday()">Select Today</button>
+<!--            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>-->
+<!--            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>-->
+<!--            <hr/>-->
+<!--            <pre>Month: {{ date.month }}.{{ date.year }}</pre>-->
+<!--            <pre>Model: {{ model | json }}</pre>-->
           </div>
-          <div class="col-md-6" id="info-right">
-          </div>
+          <p>
         </div>
       </div>
-      <div class="card-header"  style="background-color: #8eb9b9 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
+      <div class="card-header"  style="background-color: #c0e8e8 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
         <div class="row">
           <div class="col-md-4">
             <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>

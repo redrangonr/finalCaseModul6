@@ -3,6 +3,7 @@ import {PostService} from '../service/post.service';
 import {Post} from '../../model/post';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {Hashtag} from '../../admin/model/hashtag';
+import {NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-post-list',
@@ -17,8 +18,16 @@ export class PostListComponent implements OnInit {
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = []
-  constructor(private postService: PostService, private hashtagService: HashtagService) { }
-
+  // @ts-ignore
+  model: NgbDateStruct;
+  // @ts-ignore
+  date: {year: number, month: number};
+  constructor(private postService: PostService, private hashtagService: HashtagService, private calendar: NgbCalendar) {
+    this.selectToday()
+  }
+  selectToday() {
+    this.model = this.calendar.getToday();
+  }
   ngOnInit(): void {
     this.getAll();
     this.getAllHashtag()
