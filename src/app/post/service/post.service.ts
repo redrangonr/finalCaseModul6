@@ -44,4 +44,7 @@ export class PostService {
   findMyPostByHashtag(userId: number, hashtagId: number): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/posts/user/' + userId + '/' + hashtagId);
   }
+  findByDate(time: string):Observable<Post>{
+    return this.httpClient.get<Post>(API_URL+'/api/posts/search/times/'+time)
+  }
 }

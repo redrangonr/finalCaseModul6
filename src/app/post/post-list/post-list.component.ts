@@ -18,16 +18,14 @@ export class PostListComponent implements OnInit {
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = []
-  // @ts-ignore
-  model: NgbDateStruct;
-  // @ts-ignore
-  date: {year: number, month: number};
+  displayMonths = 2;
+  navigation = 'select';
+  showWeekNumbers = false;
+  outsideDays = 'visible';
   constructor(private postService: PostService, private hashtagService: HashtagService, private calendar: NgbCalendar) {
-    this.selectToday()
+
   }
-  selectToday() {
-    this.model = this.calendar.getToday();
-  }
+
   ngOnInit(): void {
     this.getAll();
     this.getAllHashtag()
@@ -93,6 +91,18 @@ export class PostListComponent implements OnInit {
   infoPost(id: any){
     this.postService.get(id).subscribe(data=>{
     })
+  }
+  finByTime(){
+    // @ts-ignore
 
+    const time = document.getElementById('time').value;
+    if (time==''){
+      location.reload()
+    }
+    console.log(time)
+    this.postService.findByDate(time).subscribe(data=>{
+      // @ts-ignore
+      this.posts = data
+    })
   }
 }

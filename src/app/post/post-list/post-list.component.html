@@ -3,7 +3,6 @@
 <br>
 <br>
 <br>
-<br>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
 <div class="container">
   <div class="row">
@@ -15,31 +14,41 @@
               <div class="row">
                 <div class="col-md-6 col-lg-3 my-3" style="float: left;">
                   <div class="select-container">
-                    <select class="custom-select">
-                      <option selected="">Sort By</option>
-                      <option value="1">Title</option>
-                      <option value="2">Username</option>
-                    </select>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <input class="form-control" (change)="finByTime()" placeholder="yyyy-mm-dd"
+                                 name="dp" [displayMonths]="displayMonths" [navigation]="navigation" [outsideDays]="outsideDays"
+                                 [showWeekNumbers]="showWeekNumbers" ngbDatepicker #d="ngbDatepicker" style="height: 49px" id="time">
+                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                  <div class="col-md-6 col-lg-3 my-3">
-                    <div class="select-container">
-                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select">
-                        <option value="">Select Hashtag</option>
+                  <div class="col-md-4 col-lg-3 my-3">
+                    <div>
+                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select" style="background-color: #abd5cf; margin-left: 75px; width: 85%">
+                        <option value="">Select Category</option>
                         <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
                       </select>
                     </div>
                   </div>
-                <div class="col-md-6 col-lg-5 my-3">
+                <div class="col-md-6 col-lg-6 my-3">
                   <div class="input-group ">
+
                     <input type="text" class="form-control" placeholder="Enter Title ..." id="keywords" style="height: 48px; margin-left: 50px; float: right">
+                    <button type="button" class="btn btn-outline-secondary" (click)="searchByTitle()" style="width: 80px; height: 48px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">
+                      <i class="fa fa-search"></i>
+                    </button>
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-1 my-3" >
-                  <button type="button" class="btn btn-secondary" (click)="searchByTitle()" style="width: 80px; height: 47px; float: right" id="contact-submit">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </div>
+<!--                <div class="col-md-6 col-lg-1 my-3" >-->
+<!--                  <button type="button" class="btn btn-outline-secondary" (click)="searchByTitle()" style="width: 80px; height: 47px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">-->
+<!--                    <i class="fa fa-search"></i>-->
+<!--                  </button>-->
+<!--                </div>-->
               </div>
             </form>
           </div>
@@ -88,17 +97,9 @@
       </div>
       <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 290px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
         <div class="row">
-          <div class="col-md-12 " id="time">
-            <ngb-datepicker style="margin-left: 20px" #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-<!--            <hr/>-->
-            <button class="btn btn-sm btn-outline-primary" style="margin-left: 20px;" (click)="selectToday()">Select Today</button>
-<!--            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>-->
-<!--            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>-->
-<!--            <hr/>-->
-<!--            <pre>Month: {{ date.month }}.{{ date.year }}</pre>-->
-<!--            <pre>Model: {{ model | json }}</pre>-->
+          <div class="col-md-12">
+
           </div>
-          <p>
         </div>
       </div>
       <div class="card-header"  style="background-color: #c0e8e8 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
