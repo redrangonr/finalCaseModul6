@@ -30,7 +30,7 @@ export class PostService {
     return this.httpClient.get<any>(API_URL + '/api/posts/' + id);
   }
   findByTitle(title: string): Observable<any> {
-    return this.httpClient.get<any>(API_URL + '/api/posts/search/' + title);
+    return this.httpClient.get<any>(API_URL + '/api/posts/search/public' + title);
   }
   findAllByUserId(id: number): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/posts/user/' + id);
@@ -47,4 +47,5 @@ export class PostService {
   findTop(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(API_URL + '/api/posts/search/date/'+ 4)
   }
+
 }

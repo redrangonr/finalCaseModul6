@@ -38,6 +38,7 @@ export class PostListComponent implements OnInit {
       this.posts = data
     })
   }
+
   getAllByHashtag(){
    // @ts-ignore
     const id = document.getElementById('selectHashtag').value;

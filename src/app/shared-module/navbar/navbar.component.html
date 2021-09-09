@@ -45,7 +45,8 @@
                   <img src="https://img.icons8.com/ios/2x/settings&#45;&#45;v2.gif" width="35" height="35" class="rounded-circle mt-2" alt="" style="margin:10px;">
                   <ul class="sub-menu">
                     <li class="sub-menu_item"><a class="sub-menu-link"  routerLink="/user/{{id}}">Information</a></li>
-                    <li class="sub-menu_item"> <a class="sub-menu-link" (click)="logout()">Logout</a> </li>
+                    <li *ngIf="roles =='ADMIN'" class="sub-menu_item"><a class="sub-menu-link"  routerLink="/admin">{{roles}}</a></li>
+                    <li class="sub-menu_item"><a class="sub-menu-link" (click)="logout()">Logout</a></li>
                   </ul>
                 </li>
                 <div id="login" style="float: right; margin-top: 14px" [hidden]="token">
