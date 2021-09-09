@@ -6,6 +6,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import {finalize} from 'rxjs/operators';
 import {Router} from '@angular/router';
 import {HashtagService} from '../../admin/service/hashtag.service';
+import {TokenService} from '../../authentication/service/token.service';
 
 
 @Component({
@@ -37,7 +38,8 @@ export class PostCreateComponent implements OnInit {
   notification = '';
   notificationImg = '';
 
-  constructor(private postService: PostService,
+  constructor(private tokenService: TokenService,
+              private postService: PostService,
               private storage: AngularFireStorage,
               private router: Router,
               private hashtagService: HashtagService) {
@@ -89,7 +91,14 @@ export class PostCreateComponent implements OnInit {
         input.click();
       }
     };
+    this.blockLink();
     // console.log(this.getTitle());
+  }
+
+  blockLink(){
+    if (!this.tokenService.getToken()){
+      this.router.navigate(['/home'])
+    }
   }
 
   ngOnInit(): void {
