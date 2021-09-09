@@ -57,7 +57,7 @@ export class UserDetailComponent implements OnInit {
     })
 
     // @ts-ignore
-    this.getUser(this.id)
+    this.getUser(this.id);
   }
 
   blockLink(){
