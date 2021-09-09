@@ -7,6 +7,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {finalize} from 'rxjs/operators';
 import {Post} from '../../model/post';
+import {TokenService} from '../../authentication/service/token.service';
 
 @Component({
   selector: 'app-post-edit',
@@ -45,7 +46,8 @@ export class PostEditComponent implements OnInit {
               private storage: AngularFireStorage,
               private router: Router,
               private hashtagService: HashtagService,
-              private activatedRouter: ActivatedRoute) {
+              private activatedRouter: ActivatedRoute,
+              private tokenService: TokenService) {
     this.activatedRouter.paramMap.subscribe(data => {
       // @ts-ignore
       this.idPost = +data.get('id');
@@ -101,6 +103,13 @@ export class PostEditComponent implements OnInit {
     // @ts-ignore
     this.getById(this.idPost);
     // console.log(this.getTitle());
+    this.blockLink();
+  }
+
+  blockLink(){
+    if (!this.tokenService.getToken()){
+      this.router.navigate(['/home'])
+    }
   }
 
   ngOnInit(): void {
