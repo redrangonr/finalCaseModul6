@@ -3,6 +3,7 @@
 <br>
 <br>
 <br>
+<br>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
 <div class="container">
   <div class="row">
@@ -17,11 +18,60 @@
                     <form class="form-inline">
                       <div class="form-group">
                         <div class="input-group">
-                          <input class="form-control" (change)="finByTime()" placeholder="yyyy-mm-dd"
-                                 name="dp" [displayMonths]="displayMonths" [navigation]="navigation" [outsideDays]="outsideDays"
-                                 [showWeekNumbers]="showWeekNumbers" ngbDatepicker #d="ngbDatepicker" style="height: 49px" id="time">
-                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
-                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>
+<!--                          <input class="form-control" (change)="finByTime()" placeholder="yyyy-mm-dd"-->
+<!--                                 name="dp" [displayMonths]="displayMonths" [navigation]="navigation" [outsideDays]="outsideDays"-->
+<!--                                 [showWeekNumbers]="showWeekNumbers" ngbDatepicker #d="ngbDatepicker" style="height: 49px" id="time">-->
+<!--                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>-->
+<!--                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>-->
+                          <form class="form-inline">
+                            <div class="form-group hidden">
+                              <div class="input-group">
+                                <input name="datepicker"
+                                       class="form-control"
+                                       ngbDatepicker
+                                       #datepicker="ngbDatepicker"
+                                       [autoClose]="'outside'"
+                                       (dateSelect)="onDateSelection($event)"
+                                       [displayMonths]="2"
+                                       [dayTemplate]="t"
+                                       outsideDays="hidden"
+                                       [startDate]="fromDate!" hidden>
+<!--                                       tabindex="-1" hidden>-->
+                                <ng-template #t let-date let-focused="focused">
+        <span class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null">
+          {{ date.day }}
+        </span>
+                                </ng-template>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input #dpFromDate
+                                       class="form-control" placeholder="yyyy-mm-dd"
+                                       name="dpFromDate"
+                                       [value]="formatter.format(fromDate)"
+                                       (input)="fromDate = validateInput(fromDate, dpFromDate.value)" style="width: 120px; height: 49px" id="time1">
+                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                              </div>
+                            </div>
+                            <div class="form-group ml-2">
+                              <div class="input-group">
+                                <input #dpToDate
+                                       class="form-control" placeholder="yyyy-mm-dd"
+                                       name="dpToDate"
+                                       [value]="formatter.format(toDate)"
+                                       (input)="toDate = validateInput(toDate, dpToDate.value)"  style="width: 120px; height: 49px" id="time2">
+                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>
+                              </div>
+                            </div>
+                          </form>
+                          <hr/>
                         </div>
                       </div>
                     </form>
@@ -29,7 +79,7 @@
                 </div>
                   <div class="col-md-4 col-lg-3 my-3">
                     <div>
-                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select" style="background-color: #abd5cf; margin-left: 75px; width: 85%">
+                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select" style="background-color: #abd5cf; margin-left: 130px; width: 70%">
                         <option value="">Select Category</option>
                         <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
                       </select>

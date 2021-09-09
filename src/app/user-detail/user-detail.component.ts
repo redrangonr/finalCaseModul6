@@ -22,6 +22,7 @@ export class UserDetailComponent implements OnInit {
   selectedFile: File = null;
   // @ts-ignore
   fb;
+  update:any = 80;
   // @ts-ignore
   downloadURL: Observable<string>;
   addresses: any[] = [];
@@ -81,8 +82,20 @@ export class UserDetailComponent implements OnInit {
         status: new FormControl(data.status),
         timeCreated: new FormControl(data.timeCreated)
       })
-      console.log()
+      if (data.address == null && data.phone == null){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 80%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">80%</div>`
+      }
+      if (data.address != null || data.phone != null){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>`
+      }if (data.address != null && data.phone != null){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">100%</div>`
+
+      }
     })
+
   }
 
   getAddress(){
@@ -139,9 +152,32 @@ export class UserDetailComponent implements OnInit {
     // @ts-ignore
     this.userService.update(this.id,userUpdate).subscribe(()=>{
       alert("Update success")
-      location.reload()
+      if (this.userForm.value.address != '' || this.userForm.value.phone != ''){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+      }if (this.userForm.value.address != '' && this.userForm.value.phone != ''){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+
+      }
     })
   }
+
+  loadUpdate(){
+    if (this.userForm.value.address == '' || this.userForm.value.phone == ''){
+      // @ts-ignore
+      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+    }
+    if (this.userForm.value.address != '' || this.userForm.value.phone != ''){
+      // @ts-ignore
+      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+    }if (this.userForm.value.address != '' && this.userForm.value.phone != ''){
+      // @ts-ignore
+      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+
+    }
+  }
+
   ngOnInit(): void {
     // @ts-ignore
 
