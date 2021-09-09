@@ -7,6 +7,7 @@ import {LoginService} from '../authentication/service/login.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/internal/operators/finalize';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -25,6 +26,7 @@ export class UserDetailComponent implements OnInit {
   downloadURL: Observable<string>;
   addresses: any[] = [];
   active = 1;
+  idOther = 0;
   id = this.tokenService.getId()
   name = this.tokenService.getName()
   userName = this.tokenService.getUserName()
@@ -45,10 +47,24 @@ export class UserDetailComponent implements OnInit {
     timeCreated: new FormControl('')
   })
   closeResult = '';
-  constructor(private storage: AngularFireStorage,private modalService: NgbModal,private userService: UserManagementService, private tokenService: TokenService, private loginService: LoginService) {
+  constructor(private storage: AngularFireStorage,private modalService: NgbModal,private userService: UserManagementService, private tokenService: TokenService, private loginService: LoginService,
+              private activated: ActivatedRoute, private router: Router) {
+    this.activated.paramMap.subscribe((data: ParamMap)=>{
+      // @ts-ignore
+      this.idOther= +data.get('id');
+      this.blockLink()
+    })
+
     // @ts-ignore
     this.getUser(this.id)
   }
+
+  blockLink(){
+    if (+this.id != this.idOther){
+      this.router.navigate(['/home'])
+    }
+  }
+
   getUser(id: number){
     return this.userService.findById(id).subscribe((data)=>{
       this.userForm = new FormGroup({
