@@ -4,7 +4,7 @@ body{
 
 /* ===== Career ===== */
 .career-form {
-  background-color: #c3e8e8;
+  background-color: #a7e1e1;
   border-radius: 5px;
   padding: 0 16px;
 }
@@ -21,10 +21,33 @@ body{
   padding: 12px 15px;
   color: #fff;
 }
+.form-group.hidden {
+  width: 0;
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+.custom-day.range, .custom-day:hover {
+  background-color: rgb(159, 192, 188);
+  color: white;
+}
+.custom-day.faded {
+  background-color: rgb(192, 224, 220);
+}
 
 
 .career-form .custom-select {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(250, 247, 247, 0.2);
   border: 0;
   padding: 12px 15px;
   color: #544e4e;

@@ -3,7 +3,7 @@ import {PostService} from '../service/post.service';
 import {Post} from '../../model/post';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {Hashtag} from '../../admin/model/hashtag';
-import {NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import {NgbCalendar, NgbDate, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-post-list',
@@ -18,16 +18,16 @@ export class PostListComponent implements OnInit {
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = []
-  // @ts-ignore
-  model: NgbDateStruct;
-  // @ts-ignore
-  date: {year: number, month: number};
-  constructor(private postService: PostService, private hashtagService: HashtagService, private calendar: NgbCalendar) {
-    this.selectToday()
+  hoveredDate: NgbDate | null = null;
+
+  fromDate: NgbDate | null;
+  toDate: NgbDate | null;
+
+  constructor(private postService: PostService, private hashtagService: HashtagService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+    this.fromDate = calendar.getToday();
+    this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
-  selectToday() {
-    this.model = this.calendar.getToday();
-  }
+
   ngOnInit(): void {
     this.getAll();
     this.getAllHashtag()
@@ -93,6 +93,49 @@ export class PostListComponent implements OnInit {
   infoPost(id: any){
     this.postService.get(id).subscribe(data=>{
     })
+  }
+  finByTime(){
+    const hourStart = ' 00:00:00'
+    const hourEnd = ' 23:59:59'
+    // @ts-ignore
+    const dayStart = document.getElementById('time1').value;
+    // @ts-ignore
+    const dayEnd = document.getElementById('time2').value;
+    const timeStart = dayStart+hourStart
+    const timeEnd = dayEnd+hourEnd
+    if (dayStart == '' && dayEnd == '' ){
+      location.reload()
+    }
+    this.postService.findByDate(timeStart,timeEnd).subscribe(data=>{
+      // @ts-ignore
+      this.posts = data
+    })
+  }
+  onDateSelection(date: NgbDate) {
+    if (!this.fromDate && !this.toDate) {
+      this.fromDate = date;
+    } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
+      this.toDate = date;
+    } else {
+      this.toDate = null;
+      this.fromDate = date;
+    }
+  }
 
+  isHovered(date: NgbDate) {
+    return this.fromDate && !this.toDate && this.hoveredDate && date.after(this.fromDate) && date.before(this.hoveredDate);
+  }
+
+  isInside(date: NgbDate) {
+    return this.toDate && date.after(this.fromDate) && date.before(this.toDate);
+  }
+
+  isRange(date: NgbDate) {
+    return date.equals(this.fromDate) || (this.toDate && date.equals(this.toDate)) || this.isInside(date) || this.isHovered(date);
+  }
+
+  validateInput(currentValue: NgbDate | null, input: string): NgbDate | null {
+    const parsed = this.formatter.parse(input);
+    return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
 }

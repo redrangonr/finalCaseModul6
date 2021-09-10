@@ -7,6 +7,7 @@ import {LoginService} from '../authentication/service/login.service';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/internal/operators/finalize';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-detail',
@@ -21,10 +22,12 @@ export class UserDetailComponent implements OnInit {
   selectedFile: File = null;
   // @ts-ignore
   fb;
+  update:any = 80;
   // @ts-ignore
   downloadURL: Observable<string>;
   addresses: any[] = [];
   active = 1;
+  idOther = 0;
   id = this.tokenService.getId()
   name = this.tokenService.getName()
   userName = this.tokenService.getUserName()
@@ -45,10 +48,24 @@ export class UserDetailComponent implements OnInit {
     timeCreated: new FormControl('')
   })
   closeResult = '';
-  constructor(private storage: AngularFireStorage,private modalService: NgbModal,private userService: UserManagementService, private tokenService: TokenService, private loginService: LoginService) {
+  constructor(private storage: AngularFireStorage,private modalService: NgbModal,private userService: UserManagementService, private tokenService: TokenService, private loginService: LoginService,
+              private activated: ActivatedRoute, private router: Router) {
+    this.activated.paramMap.subscribe((data: ParamMap)=>{
+      // @ts-ignore
+      this.idOther= +data.get('id');
+      this.blockLink()
+    })
+
     // @ts-ignore
-    this.getUser(this.id)
+    this.getUser(this.id);
   }
+
+  blockLink(){
+    if (+this.id != this.idOther){
+      this.router.navigate(['/home'])
+    }
+  }
+
   getUser(id: number){
     return this.userService.findById(id).subscribe((data)=>{
       this.userForm = new FormGroup({
@@ -65,8 +82,20 @@ export class UserDetailComponent implements OnInit {
         status: new FormControl(data.status),
         timeCreated: new FormControl(data.timeCreated)
       })
-      console.log()
+      if (data.address == null && data.phone == null){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 80%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">80%</div>`
+      }
+      if (data.address != null || data.phone != null){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>`
+      }if (data.address != null && data.phone != null){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">100%</div>`
+
+      }
     })
+
   }
 
   getAddress(){
@@ -123,9 +152,32 @@ export class UserDetailComponent implements OnInit {
     // @ts-ignore
     this.userService.update(this.id,userUpdate).subscribe(()=>{
       alert("Update success")
-      location.reload()
+      if (this.userForm.value.address != '' || this.userForm.value.phone != ''){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+      }if (this.userForm.value.address != '' && this.userForm.value.phone != ''){
+        // @ts-ignore
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+
+      }
     })
   }
+
+  loadUpdate(){
+    if (this.userForm.value.address == '' || this.userForm.value.phone == ''){
+      // @ts-ignore
+      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+    }
+    if (this.userForm.value.address != '' || this.userForm.value.phone != ''){
+      // @ts-ignore
+      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+    }if (this.userForm.value.address != '' && this.userForm.value.phone != ''){
+      // @ts-ignore
+      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
+
+    }
+  }
+
   ngOnInit(): void {
     // @ts-ignore
 

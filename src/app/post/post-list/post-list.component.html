@@ -15,31 +15,90 @@
               <div class="row">
                 <div class="col-md-6 col-lg-3 my-3" style="float: left;">
                   <div class="select-container">
-                    <select class="custom-select">
-                      <option selected="">Sort By</option>
-                      <option value="1">Title</option>
-                      <option value="2">Username</option>
-                    </select>
+                    <form class="form-inline">
+                      <div class="form-group">
+                        <div class="input-group">
+<!--                          <input class="form-control" (change)="finByTime()" placeholder="yyyy-mm-dd"-->
+<!--                                 name="dp" [displayMonths]="displayMonths" [navigation]="navigation" [outsideDays]="outsideDays"-->
+<!--                                 [showWeekNumbers]="showWeekNumbers" ngbDatepicker #d="ngbDatepicker" style="height: 49px" id="time">-->
+<!--                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>-->
+<!--                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>-->
+                          <form class="form-inline">
+                            <div class="form-group hidden">
+                              <div class="input-group">
+                                <input name="datepicker"
+                                       class="form-control"
+                                       ngbDatepicker
+                                       #datepicker="ngbDatepicker"
+                                       [autoClose]="'outside'"
+                                       (dateSelect)="onDateSelection($event)"
+                                       [displayMonths]="2"
+                                       [dayTemplate]="t"
+                                       outsideDays="hidden"
+                                       [startDate]="fromDate!" hidden>
+<!--                                       tabindex="-1" hidden>-->
+                                <ng-template #t let-date let-focused="focused">
+        <span class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isRange(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null">
+          {{ date.day }}
+        </span>
+                                </ng-template>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <div class="input-group">
+                                <input #dpFromDate
+                                       class="form-control" placeholder="yyyy-mm-dd"
+                                       name="dpFromDate"
+                                       [value]="formatter.format(fromDate)"
+                                       (input)="fromDate = validateInput(fromDate, dpFromDate.value)" style="width: 120px; height: 49px" id="time1">
+                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                              </div>
+                            </div>
+                            <div class="form-group ml-2">
+                              <div class="input-group">
+                                <input #dpToDate
+                                       class="form-control" placeholder="yyyy-mm-dd"
+                                       name="dpToDate"
+                                       [value]="formatter.format(toDate)"
+                                       (input)="toDate = validateInput(toDate, dpToDate.value)"  style="width: 120px; height: 49px" id="time2">
+                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>
+                              </div>
+                            </div>
+                          </form>
+                          <hr/>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                 </div>
-                  <div class="col-md-6 col-lg-3 my-3">
-                    <div class="select-container">
-                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select">
-                        <option value="">Select Hashtag</option>
+                  <div class="col-md-4 col-lg-3 my-3">
+                    <div>
+                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select" style="background-color: #abd5cf; margin-left: 130px; width: 70%">
+                        <option value="">Select Category</option>
                         <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
                       </select>
                     </div>
                   </div>
-                <div class="col-md-6 col-lg-5 my-3">
+                <div class="col-md-6 col-lg-6 my-3">
                   <div class="input-group ">
+
                     <input type="text" class="form-control" placeholder="Enter Title ..." id="keywords" style="height: 48px; margin-left: 50px; float: right">
+                    <button type="button" class="btn btn-outline-secondary" (click)="searchByTitle()" style="width: 80px; height: 48px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">
+                      <i class="fa fa-search"></i>
+                    </button>
                   </div>
                 </div>
-                <div class="col-md-6 col-lg-1 my-3" >
-                  <button type="button" class="btn btn-secondary" (click)="searchByTitle()" style="width: 80px; height: 47px; float: right" id="contact-submit">
-                    <i class="fa fa-search"></i>
-                  </button>
-                </div>
+<!--                <div class="col-md-6 col-lg-1 my-3" >-->
+<!--                  <button type="button" class="btn btn-outline-secondary" (click)="searchByTitle()" style="width: 80px; height: 47px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">-->
+<!--                    <i class="fa fa-search"></i>-->
+<!--                  </button>-->
+<!--                </div>-->
               </div>
             </form>
           </div>
@@ -88,17 +147,9 @@
       </div>
       <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 290px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
         <div class="row">
-          <div class="col-md-12 " id="time">
-            <ngb-datepicker style="margin-left: 20px" #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-<!--            <hr/>-->
-            <button class="btn btn-sm btn-outline-primary" style="margin-left: 20px;" (click)="selectToday()">Select Today</button>
-<!--            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo()">To current month</button>-->
-<!--            <button class="btn btn-sm btn-outline-primary mr-2" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>-->
-<!--            <hr/>-->
-<!--            <pre>Month: {{ date.month }}.{{ date.year }}</pre>-->
-<!--            <pre>Model: {{ model | json }}</pre>-->
+          <div class="col-md-12">
+
           </div>
-          <p>
         </div>
       </div>
       <div class="card-header"  style="background-color: #c0e8e8 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
