@@ -25,7 +25,7 @@
 <!--                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>-->
                           <form class="form-inline">
                             <div class="form-group hidden">
-                              <div class="input-group">
+                              <div class="input-group" style="margin-top: 50px">
                                 <input name="datepicker"
                                        class="form-control"
                                        ngbDatepicker
@@ -55,8 +55,8 @@
                                        class="form-control" placeholder="yyyy-mm-dd"
                                        name="dpFromDate"
                                        [value]="formatter.format(fromDate)"
-                                       (input)="fromDate = validateInput(fromDate, dpFromDate.value)" style="width: 120px; height: 49px" id="time1">
-                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                                       (input)="fromDate = validateInput(fromDate, dpFromDate.value)" style="width: 120px;  height: 42px" id="time1">
+                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
                               </div>
                             </div>
                             <div class="form-group ml-2">
@@ -65,9 +65,9 @@
                                        class="form-control" placeholder="yyyy-mm-dd"
                                        name="dpToDate"
                                        [value]="formatter.format(toDate)"
-                                       (input)="toDate = validateInput(toDate, dpToDate.value)"  style="width: 120px; height: 49px" id="time2">
-                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
-                                <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>
+                                       (input)="toDate = validateInput(toDate, dpToDate.value)"  style="width: 120px;  height: 42px" id="time2">
+                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>
                               </div>
                             </div>
                           </form>
@@ -79,33 +79,55 @@
                 </div>
                   <div class="col-md-4 col-lg-3 my-3">
                     <div>
-                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select" style="background-color: #abd5cf; margin-left: 130px; width: 70%">
-                        <option value="">Select Category</option>
+                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select" style="background-color: #abd5cf;margin-top: 5px; margin-left: 130px;  height: 42px;width: 70%">
+                        <option value="">Select Categories</option>
                         <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
                       </select>
                     </div>
                   </div>
                 <div class="col-md-6 col-lg-6 my-3">
                   <div class="input-group ">
+                    <div class="ng-autocomplete">
+                      <ng-autocomplete [data]="data"
+                                       [searchKeyword]="keyword"
+                                       (selected)="selectEvent($event)"
+                                       (inputChanged)='onChangeSearch($event)'
+                                       (inputFocused)='onFocused($event)'
+                                       [itemTemplate]="itemTemplate"
+                                       [notFoundTemplate]="notFoundTemplate"
+                                       style="width: 321px;float: left; margin-left: 54px; margin-top: 5px" id="key">
+                      </ng-autocomplete>
 
-                    <input type="text" class="form-control" placeholder="Enter Title ..." id="keywords" style="height: 48px; margin-left: 50px; float: right">
-                    <button type="button" class="btn btn-outline-secondary" (click)="searchByTitle()" style="width: 80px; height: 48px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">
-                      <i class="fa fa-search"></i>
-                    </button>
+                      <ng-template #itemTemplate let-item>
+                        <a href="javascript:void(0)">
+                          <span><img src="{{item.image}}" width="40" height="40" style="border-radius: 44px; border: #4e5454 solid"></span>&nbsp;
+                          <span [innerHTML]="item.title" style="color: #070707"></span>
+                          <a><i class="fa fa-user" [innerHTML]="' ' +item.user.name"> </i></a>
+                          <a href="/post/view/{{item.id}}" style="color: #0b2e13"><i class="fa fa-eye"> View more</i></a>
+                        </a>
+                        <hr>
+                      </ng-template>
+
+                      <ng-template #notFoundTemplate let-notFound>
+                        <div [innerHTML]="notFound"></div>
+                      </ng-template>
+                      <button type="button" class="btn btn-outline-secondary" (click)="reset()" style="width: 80px; margin-top: 5px;height: 42px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">
+                        <i class="fa fa-bolt">All</i>
+                      </button>
+                    </div>
+<!--                    <input type="text" class="form-control" placeholder="Enter Title ..." id="keywords" style="height: 48px; margin-left: 50px; float: right">-->
+
                   </div>
                 </div>
-<!--                <div class="col-md-6 col-lg-1 my-3" >-->
-<!--                  <button type="button" class="btn btn-outline-secondary" (click)="searchByTitle()" style="width: 80px; height: 47px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">-->
-<!--                    <i class="fa fa-search"></i>-->
-<!--                  </button>-->
-<!--                </div>-->
+
+
               </div>
             </form>
           </div>
         </div>
       </div>
       <h3 style="margin-top: 30px" class="text-secondary text-center" *ngIf="posts.length == 0 "> Không có kết quả bạn muốn tìm <img src="https://img.icons8.com/ios/2x/nerd--v3.gif" height="40" width="40" ></h3>
-      <div class="card mb-2" *ngFor="let post of posts | paginate :{
+      <div class="card mb-2" *ngFor="let post of posts  | paginate :{
         itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
@@ -148,7 +170,7 @@
       <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 290px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
         <div class="row">
           <div class="col-md-12">
-
+            <p></p>
           </div>
         </div>
       </div>

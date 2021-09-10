@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserManagementService} from '../admin/service/user-management.service';
 import {TokenService} from '../authentication/service/token.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {LoginService} from '../authentication/service/login.service';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/internal/operators/finalize';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {Observable} from 'rxjs';
+import {finalize} from 'rxjs/internal/operators/finalize';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 
 @Component({
@@ -22,18 +22,18 @@ export class UserDetailComponent implements OnInit {
   selectedFile: File = null;
   // @ts-ignore
   fb;
-  update:any = 80;
+  update: any = 80;
   // @ts-ignore
   downloadURL: Observable<string>;
   addresses: any[] = [];
   active = 1;
   idOther = 0;
-  id = this.tokenService.getId()
-  name = this.tokenService.getName()
-  userName = this.tokenService.getUserName()
-  avatar = this.tokenService.getAvatar()
-  roles = this.tokenService.getRoles()
-  token = this.tokenService.getToken()
+  id = this.tokenService.getId();
+  name = this.tokenService.getName();
+  userName = this.tokenService.getUserName();
+  avatar = this.tokenService.getAvatar();
+  roles = this.tokenService.getRoles();
+  token = this.tokenService.getToken();
   userForm: FormGroup = new FormGroup({
     id: new FormControl(''),
     name: new FormControl(''),
@@ -46,28 +46,35 @@ export class UserDetailComponent implements OnInit {
     address: new FormControl(''),
     status: new FormControl(''),
     timeCreated: new FormControl('')
-  })
+  });
   closeResult = '';
-  constructor(private storage: AngularFireStorage,private modalService: NgbModal,private userService: UserManagementService, private tokenService: TokenService, private loginService: LoginService,
-              private activated: ActivatedRoute, private router: Router) {
-    this.activated.paramMap.subscribe((data: ParamMap)=>{
+
+  constructor(private storage: AngularFireStorage,
+              private modalService: NgbModal,
+              private userService: UserManagementService,
+              private tokenService: TokenService,
+              private loginService: LoginService,
+              private activated: ActivatedRoute,
+              private router: Router,
+              ) {
+    this.activated.paramMap.subscribe((data: ParamMap) => {
       // @ts-ignore
-      this.idOther= +data.get('id');
-      this.blockLink()
-    })
+      this.idOther = +data.get('id');
+      this.blockLink();
+    });
 
     // @ts-ignore
     this.getUser(this.id);
   }
 
-  blockLink(){
-    if (+this.id != this.idOther){
-      this.router.navigate(['/home'])
+  blockLink() {
+    if (+this.id != this.idOther) {
+      this.router.navigate(['/home']);
     }
   }
 
-  getUser(id: number){
-    return this.userService.findById(id).subscribe((data)=>{
+  getUser(id: number) {
+    return this.userService.findById(id).subscribe((data) => {
       this.userForm = new FormGroup({
         id: new FormControl(data.id),
         name: new FormControl(data.name),
@@ -81,29 +88,31 @@ export class UserDetailComponent implements OnInit {
         address: new FormControl(data.address),
         status: new FormControl(data.status),
         timeCreated: new FormControl(data.timeCreated)
-      })
-      if (data.address == null && data.phone == null){
+      });
+      if (!data.address && !data.phone) {
         // @ts-ignore
-        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 80%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">80%</div>`
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 80%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Update 80%</div>`;
       }
-      if (data.address != null || data.phone != null){
+      if (data.address || data.phone) {
         // @ts-ignore
-        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>`
-      }if (data.address != null && data.phone != null){
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Update 90%</div>`;
+      }
+      if (data.address && data.phone) {
         // @ts-ignore
-        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">100%</div>`
+        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">Update 100%</div>`;
 
       }
-    })
+    });
 
   }
 
-  getAddress(){
-    this.loginService.getAddress().subscribe(data=>{
-      this.addresses = data
-    })
+  getAddress() {
+    this.loginService.getAddress().subscribe(data => {
+      this.addresses = data;
+    });
   }
-  updateAvatar(){
+
+  updateAvatar() {
     const userUpdate: any = {
       id: this.id,
       name: this.userForm.value.name,
@@ -120,16 +129,16 @@ export class UserDetailComponent implements OnInit {
       address: this.userForm.value.address,
       status: this.userForm.value.status,
       timeCreated: this.userForm.value.timeCreated,
-    }
+    };
     // @ts-ignore
-    this.userService.update(this.id,userUpdate).subscribe((data)=>{
-      sessionStorage.setItem('Avatar_key',this.fb)
-      alert('Update Success')
-      location.reload()
-    },error => {
-      console.log(error)
-    })
+    this.userService.update(this.id, userUpdate).subscribe((data) => {
+      sessionStorage.setItem('Avatar_key', this.fb);
+      location.reload();
+    }, error => {
+      console.log(error);
+    });
   }
+
   updateInfo() {
     const userUpdate: any = {
       id: this.id,
@@ -147,43 +156,21 @@ export class UserDetailComponent implements OnInit {
       address: this.userForm.value.address,
       status: this.userForm.value.status,
       timeCreated: this.userForm.value.timeCreated,
-    }
-    console.log(userUpdate)
+    };
+    console.log(userUpdate);
     // @ts-ignore
-    this.userService.update(this.id,userUpdate).subscribe(()=>{
-      alert("Update success")
-      if (this.userForm.value.address != '' || this.userForm.value.phone != ''){
-        // @ts-ignore
-        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
-      }if (this.userForm.value.address != '' && this.userForm.value.phone != ''){
-        // @ts-ignore
-        document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
-
-      }
-    })
-  }
-
-  loadUpdate(){
-    if (this.userForm.value.address == '' || this.userForm.value.phone == ''){
-      // @ts-ignore
-      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
-    }
-    if (this.userForm.value.address != '' || this.userForm.value.phone != ''){
-      // @ts-ignore
-      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 90%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
-    }if (this.userForm.value.address != '' && this.userForm.value.phone != ''){
-      // @ts-ignore
-      document.getElementById('updateInfo').innerHTML = `<div class="progress-bar bg-primary" role="progressbar" style="width: 100%"  aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>`
-
-    }
+    this.userService.update(this.id, userUpdate).subscribe(() => {
+      alert("Update Success")
+      location.reload()
+    });
   }
 
   ngOnInit(): void {
     // @ts-ignore
-
-    this.getAddress()
-    this.updateAvatar()
+    this.getAddress();
+    this.updateAvatar();
   }
+
   open(content: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -191,6 +178,7 @@ export class UserDetailComponent implements OnInit {
       this.closeResult = `${this.getDismissReason(reason)}`;
     });
   }
+
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -200,6 +188,7 @@ export class UserDetailComponent implements OnInit {
       return '';
     }
   }
+
   onFileSelected(event: any) {
     var n = Date.now();
     const file = event.target.files[0];
@@ -226,4 +215,5 @@ export class UserDetailComponent implements OnInit {
         }
       });
   }
+
 }

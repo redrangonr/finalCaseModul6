@@ -22,7 +22,7 @@ import { FollowUsHomeComponent } from './home/follow-us-home/follow-us-home.comp
 import { RecentPostComponent } from './home/recent-post/recent-post.component';
 import { SignupEmailAdsComponent } from './home/signup-email-ads/signup-email-ads.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import {NgbNavModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbNavModule, NgbToastModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {PostModule} from './post/post.module';
@@ -42,6 +42,7 @@ import { RecentViewComponent } from './home/recent-view/recent-view.component';
 import { TopNewPostComponent } from './home/top-new-post/top-new-post.component';
 import {MypostComponent} from './user-detail/mypost/mypost.component';
 import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 
 @NgModule({
@@ -67,22 +68,23 @@ import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-
     HashtagPostComponent,
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    LoginModule,
-    NgxPaginationModule,
-    NgbNavModule,
-    ReactiveFormsModule,
-    NgbTooltipModule,
-    HttpClientModule,
-    PostModule,
-    EditorModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-    LoginModule,
-    NgbNavModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        LoginModule,
+        NgxPaginationModule,
+        NgbNavModule,
+        ReactiveFormsModule,
+        NgbTooltipModule,
+        HttpClientModule,
+        PostModule,
+        EditorModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+        LoginModule,
+        NgbNavModule,
+        AutocompleteLibModule
+    ],
   providers: [],
     exports: [
         NavbarComponent

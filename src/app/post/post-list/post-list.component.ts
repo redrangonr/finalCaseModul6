@@ -4,6 +4,10 @@ import {Post} from '../../model/post';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {Hashtag} from '../../admin/model/hashtag';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import {Observable, Subject } from 'rxjs';
+import { startWith } from 'rxjs/internal/operators/startWith';
+import { map } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-post-list',
@@ -23,29 +27,50 @@ export class PostListComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
+  keyword = 'title';
+
+  data: Post[] = [];
+
   constructor(private postService: PostService, private hashtagService: HashtagService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
+
   ngOnInit(): void {
     this.getAll();
     this.getAllHashtag()
+
   }
+
+  selectEvent(item: any) {
+    // do something with selected item
+    console.log(item.title)
+    this.postService.findByTitle(item.title).subscribe(data=>{
+      this.posts = data
+    })
+  }
+
+  onChangeSearch(val: string) {
+    // fetch remote data from here
+    // And reassign the 'data' which is binded to 'data' property.
+  }
+
+  onFocused(e: any){
+    // do something when input is focused
+  }
+
   // tslint:disable-next-line:typedef
   getAll() {
     // @ts-ignore
     this.postService.getAll().subscribe(data => {
       console.log(data)
       this.posts = data;
+      this.data = data
     });
   }
-  searchByTitle(){
-    // @ts-ignore
-    const title = document.getElementById('keywords').value;
-    this.postService.findByTitle(title).subscribe(data=>{
-      this.posts = data
-    })
+  reset(){
+    this.getAll()
   }
   getAllByHashtag(){
    // @ts-ignore
@@ -138,4 +163,5 @@ export class PostListComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
+
 }
