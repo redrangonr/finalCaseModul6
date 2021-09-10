@@ -22,8 +22,8 @@ import { FollowUsHomeComponent } from './home/follow-us-home/follow-us-home.comp
 import { RecentPostComponent } from './home/recent-post/recent-post.component';
 import { SignupEmailAdsComponent } from './home/signup-email-ads/signup-email-ads.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import {NgbNavModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {ReactiveFormsModule} from '@angular/forms';
+import {NgbNavModule, NgbTooltipModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {PostModule} from './post/post.module';
 import {EditorModule} from '@tinymce/tinymce-angular';
@@ -81,7 +81,9 @@ import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-
     AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     LoginModule,
-    NgbNavModule
+    NgbNavModule,
+    FormsModule,
+    NgbTypeaheadModule
   ],
   providers: [],
     exports: [

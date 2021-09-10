@@ -9,7 +9,7 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {PostEditComponent} from './post-edit/post-edit.component';
-import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbDatepickerModule, NgbTooltipModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 import { PostListAuthorComponent } from './post-list-author/post-list-author.component';
 
 
@@ -26,15 +26,16 @@ import { PostListAuthorComponent } from './post-list-author/post-list-author.com
   exports: [
     PostListComponent
   ],
-  imports: [
-    CommonModule,
-    PostRoutingModule,
-    ReactiveFormsModule,
-    EditorModule,
-    NgxPaginationModule,
-    NgbTooltipModule,
-    NgbDatepickerModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        PostRoutingModule,
+        ReactiveFormsModule,
+        EditorModule,
+        NgxPaginationModule,
+        NgbTooltipModule,
+        NgbDatepickerModule,
+        FormsModule,
+        NgbTypeaheadModule
+    ]
 })
 export class PostModule { }
