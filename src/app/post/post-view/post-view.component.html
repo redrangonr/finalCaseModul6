@@ -12,7 +12,7 @@
                 <h5>#{{postInstand.hashtag.name}}</h5>
                 <p>{{postInstand.date | date : ' EEEE,  dd-mm-yyyy,  hh:mm OOOO'}}</p>
               </div>
-            </div><img style="width: 990; height: 550px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
+            </div><img style="width: 990px; height: 550px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
             <h4>{{postInstand.description}}</h4>
             <br>
             <p class="blog-pragraph" [innerHTML]="postInstand.content"></p>
@@ -69,7 +69,7 @@
               </div>
               <div class="col-sm-7 col-md-9">
                 <div  class="author-info">
-                  <h5 id="id-author-info">{{postInstand.user.name}}</h5>
+                  <h5 routerLink="/list/{{postInstand.user.id}}"  id="id-author-info">{{postInstand.user.name}}</h5>
                   <p>This is something about author </p>
                   <div class="author-social"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
                 </div>

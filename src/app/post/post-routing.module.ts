@@ -4,6 +4,7 @@ import {PostListComponent} from './post-list/post-list.component';
 import {PostViewComponent} from './post-view/post-view.component';
 import {PostCreateComponent} from './post-create/post-create.component';
 import {PostEditComponent} from './post-edit/post-edit.component';
+import {PostListAuthorComponent} from './post-list-author/post-list-author.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'edit/:id',
     component: PostEditComponent
+  },
+  {
+    path: 'list/:id',
+    component: PostListAuthorComponent
   }
 ];
 

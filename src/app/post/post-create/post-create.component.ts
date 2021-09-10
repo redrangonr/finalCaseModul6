@@ -95,9 +95,10 @@ export class PostCreateComponent implements OnInit {
     // console.log(this.getTitle());
   }
 
+  // tslint:disable-next-line:typedef
   blockLink(){
     if (!this.tokenService.getToken()){
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']);
     }
   }
 
