@@ -3,6 +3,7 @@ import {PostService} from '../service/post.service';
 import {Post} from '../../model/post';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {Hashtag} from '../../admin/model/hashtag';
+import {LikesService} from "../../services/likes.service";
 
 @Component({
   selector: 'app-post-list',
@@ -17,7 +18,7 @@ export class PostListComponent implements OnInit {
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = []
-  constructor(private postService: PostService, private hashtagService: HashtagService) { }
+  constructor(private postService: PostService, private hashtagService: HashtagService, private likeservice: LikesService) { }
 
   ngOnInit(): void {
     this.getAll();
@@ -85,6 +86,15 @@ export class PostListComponent implements OnInit {
   infoPost(id: any){
     this.postService.get(id).subscribe(data=>{
     })
-
   }
+//  likes
+  getlikesByIdpost(id: any): any{
+   let likes = 1
+    this.likeservice.findLikeByIdPost(id).subscribe(data=>{
+      console.log(data)
+      likes = + data.length;
+    });
+    return likes
+  }
+x
 }

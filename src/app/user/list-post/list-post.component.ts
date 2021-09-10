@@ -15,6 +15,6 @@ export class ListPostComponent implements OnInit {
     this.getList();
   }
 getList(){
-this.postService.getPostUser().subscribe(sucsess=> this.posts = sucsess)
+this.postService.getPostUser().subscribe(sucsess=> {this.posts = sucsess})
 }
 }
