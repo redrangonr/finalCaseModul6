@@ -4,14 +4,14 @@ body{
 
 /* ===== Career ===== */
 .career-form {
-  background-color: #c3e8e8;
+  background-color: #8eb9b9;
   border-radius: 5px;
   padding: 0 16px;
 }
 .content{
   text-overflow: ellipsis;
   overflow: hidden;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   display: -webkit-box;
 }
@@ -22,6 +22,25 @@ body{
   color: #fff;
 }
 
+.career-form .form-control::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: #fff;
+}
+
+.career-form .form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #fff;
+}
+
+.career-form .form-control:-ms-input-placeholder {
+  /* IE 10+ */
+  color: #fff;
+}
+
+.career-form .form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: #fff;
+}
 
 .career-form .custom-select {
   background-color: rgba(255, 255, 255, 0.2);
@@ -51,7 +70,7 @@ body{
   font-size: 18px;
   color: #ffffff;
   content: '\F2F9';
-  font-family: "Material-Design-Iconic-Font", serif;
+  font-family: "Material-Design-Iconic-Font";
 }
 
 .filter-result .job-box {

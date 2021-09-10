@@ -3,7 +3,8 @@
     <div class="container">
       <div class="header-menu">
         <div class="row no-gutters align-items-center justify-content-center">
-          <div class="col-4 col-md-2"><a class="logo" href="#">
+          <div class="col-4 col-md-2"><a class="logo" href="/home">
+            <img src="https://img.icons8.com/color/2x/twitter--v2.gif" width="25" height="25" alt="logo">
             <img src="https://cdn-icons-png.flaticon.com/128/4019/4019932.png" width="40" height="35" alt="logo">
             <img src="https://img.icons8.com/color/2x/a-cute.png" width="40" height="40" alt="logo">
             <img src="https://img.icons8.com/color/2x/t-cute.png" width="40" height="40" alt="logo">
@@ -12,26 +13,13 @@
           <div class="col-0 col-xl-5">
             <ul>
               <li class="nav-item"><a class="pisen-nav-link active" routerLink="/post/list">List Post</a><i class="submenu-opener fas fa-plus"></i>
-                <ul class="sub-menu">
-                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
-                </ul>
               </li>
               <li class="nav-item"><a class="pisen-nav-link active" href="#">Trending</a><i class="submenu-opener fas fa-plus"></i>
-                <ul class="sub-menu">
-                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
-                </ul>
               </li>
               <li class="nav-item"><a class="pisen-nav-link active" href="#">HashTag</a><i class="submenu-opener fas fa-plus"></i>
-                <ul class="sub-menu">
-                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
-                </ul>
               </li>
               <li class="nav-item"><a class="pisen-nav-link active" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="checkLogin()" >Viết bài</a><i class="submenu-opener fas fa-plus"></i>
-                <ul class="sub-menu">
-                  <li class="sub-menu_item"><a class="sub-menu-link" href="#">Post</a></li>
-                </ul>
               </li>
-
             </ul>
           </div>
           <div class="col-3 col-md-5">
@@ -57,6 +45,7 @@
                   <img src="https://img.icons8.com/ios/2x/settings&#45;&#45;v2.gif" width="35" height="35" class="rounded-circle mt-2" alt="" style="margin:10px;">
                   <ul class="sub-menu">
                     <li class="sub-menu_item"><a class="sub-menu-link"  routerLink="/user/{{id}}">Information</a></li>
+                    <li *ngIf="roles =='ADMIN'" class="sub-menu_item"><a class="sub-menu-link"  routerLink="/admin">{{roles}}</a></li>
                     <li class="sub-menu_item"><a class="sub-menu-link" (click)="logout()">Logout</a></li>
                   </ul>
                 </li>

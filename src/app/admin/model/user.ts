@@ -4,7 +4,7 @@ export interface User {
   username: string;
   email: string;
   password: string;
-  roles: string[];
+  roles: any;
   avatar: string;
   phone: string;
   address: string;

@@ -64,13 +64,12 @@
           <input type="text" formControlName="timeCreated" class="form-control" placeholder="TimeCreate" aria-label="TimeCreate" aria-describedby="basic-addon1" readonly>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6">
+      <div class="row" >
+        <div class="col-md-6" *ngIf="idAdmin == '1'">
           <div class="mb-3">
             <b>Role</b>
             <select formControlName="roles" class="form-select" aria-label="Default select example">
               <option value="1">ADMIN</option>
-              <option value="2">PM</option>
               <option value="3">USER</option>
             </select>
           </div>
@@ -108,7 +107,7 @@
     <b>Name</b>
     <div class="input-group">
       <span class="input-group-text" ><img src="https://img.icons8.com/ios-filled/2x/collaborator-male.png" width="20" height="20"></span>
-      <input type="text" formControlName="name" class="form-control" placeholder="Username" aria-label="Name" aria-describedby="basic-addon2" readonly>
+      <input type="text" for  mControlName="name" class="form-control" placeholder="Username" aria-label="Name" aria-describedby="basic-addon2" readonly>
     </div>
   </div>
   <div class="mb-3">

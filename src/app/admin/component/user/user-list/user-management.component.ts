@@ -9,7 +9,7 @@ import {User} from '../../../model/user';
 })
 export class UserManagementComponent implements OnInit {
   users: User[] = [];
-  roleName: string = '';
+  roleName: any = '';
   page = 1;
   count = 0;
   tableSize = 8;
@@ -25,10 +25,18 @@ export class UserManagementComponent implements OnInit {
       // @ts-ignore
       this.users = users;
       // @ts-ignore
-      this.roleName = this.users[0].roles[0].name;
       console.log(this.roleName)
     } )
   }
+  findByUsername(){
+    // @ts-ignore
+    const key = document.getElementById('key').value
+    this.userService.searchByUserName(key).subscribe(data =>{
+      // @ts-ignore
+      this.users = data;
+    })
+  }
+
   tabSize(event: any) {
     this.page = event;
     this.getAll();
