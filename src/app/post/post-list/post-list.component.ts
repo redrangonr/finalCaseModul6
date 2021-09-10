@@ -17,18 +17,18 @@ export class PostListComponent implements OnInit {
   tableSize = 5 ;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
-  hashtags: Hashtag[] = []
+  hashtags: Hashtag[] = [];
   constructor(private postService: PostService, private hashtagService: HashtagService, private likeservice: LikesService) { }
 
   ngOnInit(): void {
     this.getAll();
-    this.getAllHashtag()
+    this.getAllHashtag();
   }
   // tslint:disable-next-line:typedef
   getAll() {
     // @ts-ignore
     this.postService.getAll().subscribe(data => {
-      console.log(data)
+      console.log(data);
       this.posts = data;
     });
   }
@@ -89,12 +89,12 @@ export class PostListComponent implements OnInit {
   }
 //  likes
   getlikesByIdpost(id: any): any{
-   let likes = 1
+   let likes = 0
     this.likeservice.findLikeByIdPost(id).subscribe(data=>{
       console.log(data)
       likes = + data.length;
     });
-    return likes
+
   }
-x
+
 }
