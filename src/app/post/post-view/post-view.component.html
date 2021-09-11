@@ -18,8 +18,14 @@
             <p class="blog-pragraph" [innerHTML]="postInstand.content"></p>
             <div class="blog-quote">
               <q> end !!!</q>
+              <p>count comment = {{postInstand.comment_count}}</p>
+
               <a href="#id-author-info" style="text-decoration: none" class="quote-author">{{postInstand.user.name}}</a>
+
+
             </div>
+
+
             <div class="row">
               <div class="col-12"><img style ="height: 150px;width: 970px" src="https://media0.giphy.com/media/xUOrwafTKBZR78xeyQ/200w.webp?cid=ecf05e476zxax8udkxpqo58eh92dxti6v5rpq4x7xkznf8ra&rid=200w.webp&ct=g" ></div>
             </div>
@@ -69,7 +75,9 @@
               </div>
               <div class="col-sm-7 col-md-9">
                 <div  class="author-info">
+
                   <h5 id="id-author-info">{{postInstand.user.name}}</h5>
+
                   <p>This is something about author </p>
                   <div class="author-social"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
                 </div>
@@ -77,21 +85,30 @@
             </div>
           </div>
           <div class="post-comment">
+            <p>day la comment </p>
+
+            <div *ngFor="let commment of listComment">
+              <div>{{commment.text}}
+                <button (click)="deleteComment(commment.id)">delete</button>
+              </div>
+
+
+            </div>
+          </div>
+          <div class="post-comment">
             <h2>Leave a comment</h2>
-            <form action="">
+
+            <form [formGroup]="commentpost" (ngSubmit)="createComment()" >
               <div class="form-row">
-                <div class="form-group col-md-6">
-                  <input class="input-form trans-bg" id="name" type="text" placeholder="Name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <input class="input-form trans-bg" id="email" type="email" placeholder="Email" required>
-                </div>
               </div>
               <div class="form-group">
-                <textarea class="textarea-form trans-bg" id="messages" name="" cols="30" rows="6" placeholder="Message"></textarea>
+                <textarea formControlName="messages" class="textarea-form trans-bg" id="messages" name="messages" cols="30" rows="6" placeholder="Message"></textarea>
               </div>
-              <button class="normal-btn">Send message</button>
+              <button type = "submit" class="normal-btn">Send message</button>
+
             </form>
+
+
           </div>
         </div>
       </div>

@@ -41,12 +41,12 @@ import { InstaramComponent } from './home/instaram/instaram.component';
 import { RecentViewComponent } from './home/recent-view/recent-view.component';
 import { TopNewPostComponent } from './home/top-new-post/top-new-post.component';
 import {MypostComponent} from './user-detail/mypost/mypost.component';
-import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';
-import { CommentlistComponent } from './commentpost/comment-list/commentlist/commentlist.component';
+import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';;
 import { CommentListComponent } from './commentpost/comment-list/comment-list.component';
 import { CommentCreateComponent } from './commentpost/comment-create/comment-create.component';
 import { CommentEditComponent } from './commentpost/comment-edit/comment-edit.component';
 import { CommentDeleteComponent } from './commentpost/comment-delete/comment-delete.component';
+
 
 
 @NgModule({
@@ -70,11 +70,11 @@ import { CommentDeleteComponent } from './commentpost/comment-delete/comment-del
     TopNewPostComponent,
     MypostComponent,
     HashtagPostComponent,
-    CommentlistComponent,
     CommentListComponent,
     CommentCreateComponent,
     CommentEditComponent,
     CommentDeleteComponent,
+
 
   ],
   imports: [

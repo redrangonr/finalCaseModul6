@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {IComment} from '../../model/comment';
+import {CommmentpostService} from '../../services/commmentpost.service';
 
 @Component({
   selector: 'app-comment-create',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./comment-create.component.css']
 })
 export class CommentCreateComponent implements OnInit {
+  id: any;
+  commentForm: IComment = {
+    text: ''
+  };
 
-  constructor() { }
+  constructor(private commentServicePost: CommmentpostService) {
+  }
 
   ngOnInit(): void {
   }
-
-}
+   }

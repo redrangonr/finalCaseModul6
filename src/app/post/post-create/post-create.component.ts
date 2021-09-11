@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import {HashtagService} from '../../admin/service/hashtag.service';
 
 
+
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
@@ -40,7 +41,8 @@ export class PostCreateComponent implements OnInit {
   constructor(private postService: PostService,
               private storage: AngularFireStorage,
               private router: Router,
-              private hashtagService: HashtagService) {
+              private hashtagService: HashtagService
+                                                 ) {
     this.hashtagService.getAll().subscribe(data => {
       this.hashtags = data;
       // console.log(this.hashtags);

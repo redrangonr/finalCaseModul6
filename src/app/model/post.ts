@@ -8,4 +8,5 @@ export interface Post {
   date?: any;
   user?: any;
   hashtag?: any;
+  comment_count ?: any;
 }
