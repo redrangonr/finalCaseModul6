@@ -40,31 +40,13 @@
   <br>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
   <div class="container">
-<!--    <div class="row justify-content">-->
-<!--      <div class="col-md-2 col-lg-3 mb-30" >-->
-<!--        <div class="team-item">-->
-<!--          <div class="mb-30 position-relative d-flex ">-->
-<!--                            <span class="socials d-inline-block">-->
-<!--                                <a class="fa fa-book" ngbTooltip="Post"></a>-->
-<!--                                <a routerLink="user/edit/{{user.id}}" class="fa fa-info" ngbTooltip="Info"></a>-->
-<!--                            </span>-->
-<!--            <span class="img-holder d-inline-block">-->
-<!--                               <img src="{{user.avatar}}" width="100px" height="100px" style="border-radius: 44px" alt="Team">-->
-<!--                            </span>-->
-<!--          </div>-->
-<!--          <div class="team-content">-->
-<!--            <p><b class="fa fa-user"> {{user.username}}</b></p>-->
-<!--            <a *ngIf="user.status == 1"><img src="https://cdn-icons-png.flaticon.com/512/889/889727.png" width="40" height="40" ngbTooltip="Active"></a>-->
-<!--            <a *ngIf="user.status == 2"><img src="https://cdn-icons-png.flaticon.com/128/889/889731.png" width="40" height="40" ngbTooltip="Lock"></a>-->
-<!--          </div>-->
-<!--        </div>-->
     <div class="member-entry" *ngFor="let user of users | paginate :{
         itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
   }">
       <a routerLink="user/edit/{{user.id}}" class="member-img">
-        <img src="{{user.avatar}}" width="50px" height="70px" style="border-radius: 10px">
+        <img src="{{user.avatar}}" width="50px" height="50px" style="border-radius: 44px">
         <i class="fa fa-forward"></i>
       </a>
       <div class="member-details">

@@ -18,11 +18,6 @@
                     <form class="form-inline">
                       <div class="form-group">
                         <div class="input-group">
-<!--                          <input class="form-control" (change)="finByTime()" placeholder="yyyy-mm-dd"-->
-<!--                                 name="dp" [displayMonths]="displayMonths" [navigation]="navigation" [outsideDays]="outsideDays"-->
-<!--                                 [showWeekNumbers]="showWeekNumbers" ngbDatepicker #d="ngbDatepicker" style="height: 49px" id="time">-->
-<!--                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>-->
-<!--                          <button style="background-color: #8fd7d0; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>-->
                           <form class="form-inline">
                             <div class="form-group hidden">
                               <div class="input-group" style="margin-top: 50px">
@@ -98,8 +93,8 @@
                                        style="width: 321px;float: left; margin-left: 54px; margin-top: 5px" id="key">
                       </ng-autocomplete>
 
-                      <ng-template #itemTemplate let-item>
-                        <a href="javascript:void(0)">
+                      <ng-template #itemTemplate let-item >
+                        <a href="javascript:void(0)" style="height: 115px">
                           <div class="row">
                             <div class="col-md-3">
                               <span><img src="{{item.image}}" width="80" height="80" style="border-radius: 44px; border: #4e5454 solid"></span>&nbsp;
@@ -127,12 +122,8 @@
                         <i class="fa fa-bolt">All</i>
                       </button>
                     </div>
-<!--                    <input type="text" class="form-control" placeholder="Enter Title ..." id="keywords" style="height: 48px; margin-left: 50px; float: right">-->
-
                   </div>
                 </div>
-
-
               </div>
             </form>
           </div>
