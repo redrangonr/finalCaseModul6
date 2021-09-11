@@ -101,10 +101,10 @@
                             </div>
                             <div class="col-md-9">
                               <div class="col-sm-12">
-                                <span class="titleSearch" [innerHTML]="item.title" style="color: #070707"></span>
+                                <span class="titleSearch" ><i [innerHTML]="' ' + item.title" style="color: #070707" class="fa fa-play" aria-hidden="true"> </i></span>
                               </div>
                               <div class="col-sm-12">
-                                <small><i class="fa fa-user" [innerHTML]="' ' +item.user.name"> </i></small>
+                                <small><i class="fa fa-user" [innerHTML]="' ' + item.user.name"> </i></small>
                               </div>
                               <div class="col-sm-12">
                                 <a href="/post/view/{{item.id}}" style="color: #0b2e13; float: left"><i class="fa fa-eye"><small> View more</small></i></a>
@@ -170,14 +170,11 @@
           </div>
         </div>
       </div>
-      <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 290px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
-        <div class="row">
-          <div class="col-md-12">
-            <p></p>
-          </div>
-        </div>
+      <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 350px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
+        <h5 class="topmember" style="text-align: center"><i class="fa fa-chess-king"> Top Post</i></h5>
+
       </div>
-      <div class="card-header"  style="background-color: #c0e8e8 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
+      <div class="card-header"  style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
         <div class="row">
           <div class="col-md-4">
             <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
@@ -190,6 +187,26 @@
         </div>
       </div>
       <div class="card-body" style="background-color: #f3f5f5; height: 700px;" >
+        <h5 class="topmember"style="text-align: center" ><i class="fa fa-chess-king"> Top Member</i></h5>
+        <br>
+        <div class="row" *ngFor="let user of topUser index as i">
+          <div class="col-md-5">
+            <span class="number">{{i+1}} </span>
+            <img *ngIf="i == 0" src="{{user.avatar}}" width="50" height="50" style="border-radius: 44px; border: #f35f05 solid">
+            <img *ngIf="i == 1" src="{{user.avatar}}" width="45" height="45" style="border-radius: 44px">
+            <img *ngIf="i == 2" src="{{user.avatar}}" width="40" height="40" style="border-radius: 44px">
+            <img *ngIf="i == 3" src="{{user.avatar}}" width="35" height="35" style="border-radius: 44px">
+            <img *ngIf="i == 4" src="{{user.avatar}}" width="30" height="30" style="border-radius: 44px">
+          </div>
+          <div class="col-md-7">
+            <br>
+            <span class="fa fa-fire"> {{user.username}}</span>
+          </div>
+          <br>
+          <br>
+          <br>
+        </div>
+        <a href="#" class="text-center">All Member</a>
       </div>
     </div>
   </div>

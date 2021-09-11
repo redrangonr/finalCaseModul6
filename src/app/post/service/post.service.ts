@@ -15,6 +15,11 @@ export class PostService {
   getAll(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(API_URL + '/api/posts/public');
   }
+
+  getAllPostLock(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + '/api/posts/lock');
+  }
+
   getAllOfAdmin(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(API_URL + '/api/posts/public/lock');
   }

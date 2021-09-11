@@ -1,5 +1,7 @@
 <!--<br xmlns="http://www.w3.org/1999/html">-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+      integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous"/>
 <div class="container">
   <div class="row">
     <div class="col-md-12" style="height: 1000px">
@@ -44,8 +46,11 @@
                                        class="form-control" placeholder="yyyy-mm-dd"
                                        name="dpFromDate"
                                        [value]="formatter.format(fromDate)"
-                                       (input)="fromDate = validateInput(fromDate, dpFromDate.value)" style="width: 120px;  height: 42px" id="time1">
-                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                                       (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
+                                       style="width: 120px;  height: 42px" id="time1">
+                                <button style="background-color: #8fd7d0; height: 42px; border: none"
+                                        class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()"
+                                        type="button"><i class="fa fa-calendar-check"></i></button>
                               </div>
                             </div>
                             <div class="form-group ml-2">
@@ -54,9 +59,14 @@
                                        class="form-control" placeholder="yyyy-mm-dd"
                                        name="dpToDate"
                                        [value]="formatter.format(toDate)"
-                                       (input)="toDate = validateInput(toDate, dpToDate.value)"  style="width: 120px;  height: 42px" id="time2">
-                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
-                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>
+                                       (input)="toDate = validateInput(toDate, dpToDate.value)"
+                                       style="width: 120px;  height: 42px" id="time2">
+                                <button style="background-color: #8fd7d0; height: 42px; border: none"
+                                        class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()"
+                                        type="button"><i class="fa fa-calendar-check"></i></button>
+                                <button style="background-color: #8fd7d0; height: 42px; border: none"
+                                        class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button">
+                                  <i class="fa fa-search"></i></button>
                               </div>
                             </div>
                           </form>
@@ -68,9 +78,11 @@
                 </div>
                 <div class="col-md-4 col-lg-3 my-3">
                   <div>
-                    <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select" style="background-color: #abd5cf;margin-top: 5px; margin-left: 130px;  height: 42px;width: 70%">
-                      <option value="">Select Categories</option>
-                      <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
+                    <select (change)="getAllByStatus()" id="selectStatus" class="custom-select"
+                            style="background-color: #abd5cf;margin-top: 5px; margin-left: 130px;  height: 42px;width: 70%">
+                      <option value="">Select Status</option>
+                      <option value="public">Public</option>
+                      <option value="lock">Lock</option>
                     </select>
                   </div>
                 </div>
@@ -87,11 +99,12 @@
                                        style="width: 321px;float: left; margin-left: 54px; margin-top: 5px" id="key">
                       </ng-autocomplete>
 
-                      <ng-template #itemTemplate let-item >
+                      <ng-template #itemTemplate let-item>
                         <a href="javascript:void(0)" style="height: 115px">
                           <div class="row">
                             <div class="col-md-3">
-                              <span><img src="{{item.image}}" width="80" height="80" style="border-radius: 44px; border: #4e5454 solid"></span>&nbsp;
+                              <span><img src="{{item.image}}" width="80" height="80"
+                                         style="border-radius: 44px; border: #4e5454 solid"></span>&nbsp;
                             </div>
                             <div class="col-md-9">
                               <div class="col-sm-12">
@@ -101,7 +114,8 @@
                                 <small><i class="fa fa-user" [innerHTML]="' ' +item.user.name"> </i></small>
                               </div>
                               <div class="col-sm-12">
-                                <a href="/post/view/{{item.id}}" style="color: #0b2e13; float: left"><i class="fa fa-eye"><small> View more</small></i></a>
+                                <a href="/post/view/{{item.id}}" style="color: #0b2e13; float: left"><i
+                                  class="fa fa-eye"><small> View more</small></i></a>
                               </div>
                             </div>
                           </div>
@@ -112,7 +126,9 @@
                       <ng-template #notFoundTemplate let-notFound>
                         <div [innerHTML]="notFound"></div>
                       </ng-template>
-                      <button type="button" class="btn btn-outline-secondary" (click)="reset()" style="width: 80px; margin-top: 5px;height: 42px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">
+                      <button type="button" class="btn btn-outline-secondary" (click)="reset()"
+                              style="width: 80px; margin-top: 5px;height: 42px; float: right;background-color: #8fd7d0; border: none"
+                              id="contact-submit ">
                         <i class="fa fa-bolt">All</i>
                       </button>
                     </div>
@@ -123,33 +139,45 @@
           </div>
         </div>
       </div>
-      <h3 style="margin-top: 30px" class="text-secondary text-center" *ngIf="posts.length == 0 "> Không có kết quả bạn muốn tìm <img src="https://img.icons8.com/ios/2x/nerd--v3.gif" height="40" width="40" ></h3>
+      <h3 style="margin-top: 30px" class="text-secondary text-center" *ngIf="posts.length == 0 "> Không có kết quả bạn
+        muốn tìm <img src="https://img.icons8.com/ios/2x/nerd--v3.gif" height="40" width="40"></h3>
       <div class="card mb-2" *ngFor="let post of posts  | paginate :{
         itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
   }">
-        <div class="card-body p-2 p-sm-3" style="background-color: #f3f5f5" >
+        <div class="card-body p-2 p-sm-3" style="background-color: #f3f5f5">
           <div class="media forum-item">
-            <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="{{post.user.avatar}}" class="mr-3 rounded-circle" width="100" height="100" style="border: #707477 solid" /></a>
+            <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="{{post.user.avatar}}"
+                                                                                 class="mr-3 rounded-circle" width="100"
+                                                                                 height="100"
+                                                                                 style="border: #707477 solid"/></a>
             <div class="media-body">
-              <h5 style="color: #495057"><a routerLink="/post/view/{{post.id}}" style="text-decoration: none" data-toggle="collapse" data-target=".forum-content" class="content">{{post.title}}</a></h5>
+              <h5 style="color: #495057"><a routerLink="/post/view/{{post.id}}" style="text-decoration: none"
+                                            data-toggle="collapse" data-target=".forum-content"
+                                            class="content">{{post.title}}</a></h5>
               <p class="content text-secondary">
                 {{post.description}}
               </p>
-              <p class="text-muted"><a><i class="fa fa-user"> {{post.user.name}}</i></a> &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i class="fa fa-tag"> {{post.hashtag.name}}</i></a></span>
-                &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i class="fa fa-clock"> {{post.date | date}}</i></a></span>
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="float: right" (click)="findPostById(post.id)">
+              <p class="text-muted"><a><i class="fa fa-user"> {{post.user.name}}</i></a> &nbsp;&nbsp;&nbsp; <span
+                class="text-secondary font-weight-bold"><a><i class="fa fa-tag"> {{post.hashtag.name}}</i></a></span>
+                &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i
+                  class="fa fa-clock"> {{post.date | date}}</i></a></span>
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop" style="float: right" (click)="findPostById(post.id)">
                   <i class="fa fa-pen"> Change Status</i>
                 </button>
-                &nbsp;&nbsp;&nbsp; <button *ngIf="post.status == 'public'" type="button" class="btn btn-outline-success" style="float: right"><i class="fa fa-check"> Public</i></button>
-                <button *ngIf="post.status == 'lock'" type="button" class="btn btn-outline-secondary" style="float: right"><i class="fa fa-key"> Lock</i></button>
+                &nbsp;&nbsp;&nbsp;
+                <button *ngIf="post.status == 'public'" type="button" class="btn btn-outline-success"
+                        style="float: right"><i class="fa fa-check"> Public</i></button>
+                <button *ngIf="post.status == 'lock'" type="button" class="btn btn-outline-secondary"
+                        style="float: right"><i class="fa fa-key"> Lock</i></button>
 
               </p>
             </div>
             <div class="text-muted small text-center align-self-center">
               <span class="d-none d-sm-inline-block"><i class="fa fa-rate"></i> 19</span>
-              <span><i class="far fa-comment ml-2" ></i> 3</span>
+              <span><i class="far fa-comment ml-2"></i> 3</span>
             </div>
           </div>
         </div>
@@ -161,14 +189,15 @@
   <br>
   <br>
   <hr>
-  <div class="d-flex justify" style="margin-left: 35%" >
+  <div class="d-flex justify" style="margin-left: 35%">
     <pagination-controls previousLabel="Back" nextLabel="Next" (pageChange)="tabSize($event)">
     </pagination-controls>
   </div>
 </div>
 
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -181,7 +210,7 @@
           <b>{{postForm.value.title}}</b>
           <hr>
           <h3 class="text-center" [innerHTML]="status"></h3>
-<!--          <p>Of: {{postForm.value.user.name}}</p>-->
+          <!--          <p>Of: {{postForm.value.user.name}}</p>-->
           <hr>
 
           <input type="hidden" formControlName="title">
