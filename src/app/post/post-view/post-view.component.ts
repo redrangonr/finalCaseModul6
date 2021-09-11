@@ -72,5 +72,17 @@ export class PostViewComponent implements OnInit {
       console.log(this.postInstand);
     });
   }
+  // tslint:disable-next-line:typedef
+  sendEmail() {
+    // @ts-ignore
+    const email = document.getElementById('receiver-email').value;
+    if (email.trim() === ''){
+      console.log('null');
+    }else {
+      this.postService.shareEmail(this.id, email).subscribe( () => {
+        console.log('ok');
+      });
+    }
+  }
 
 }

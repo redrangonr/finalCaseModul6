@@ -70,4 +70,7 @@ export class PostService {
   findPostAuthorByTitle(id: number, title: string): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/posts/search/author/' + id + '/' + title);
   }
+  shareEmail(id: number, email: string): Observable<any> {
+    return this.httpClient.get<any>(API_URL + '/api/email/' + id + '/' + email);
+  }
 }
