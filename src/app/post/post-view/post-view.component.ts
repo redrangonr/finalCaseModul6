@@ -14,6 +14,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
   styleUrls: ['./post-view.component.css']
 })
 export class PostViewComponent implements OnInit {
+  idUser = sessionStorage.getItem('Id_key');
   postInstand: Post = {
     user: {},
     hashtag: {},
