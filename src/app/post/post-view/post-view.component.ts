@@ -137,18 +137,18 @@ export class PostViewComponent implements OnInit {
     // console.log( this.comments);
   }
 
-  deleteComment(id:any) {
+  deleteComment(id: any) {
     // console.log(id);
     this.commentService.deleteComment(id).subscribe(
-      (data:any) => {
+      (data: any) => {
         // alert("done");
         this.getById(this.id);
         this.getListComment();
-      }, (error:any) => {
-        alert("false");
+      }, (error: any) => {
+        alert('false');
         this.getById(this.id);
         this.getListComment();
       }
-    )
+    );
   }
 }

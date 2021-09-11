@@ -18,7 +18,7 @@
             <p class="blog-pragraph" [innerHTML]="postInstand.content"></p>
             <div class="blog-quote">
               <q> end !!!</q>
-              <p>count comment = {{postInstand.comment_count}}</p>
+<!--              <p>count comment = {{postInstand.comment_count}}</p>-->
 
               <a href="#id-author-info" style="text-decoration: none" class="quote-author">{{postInstand.user.name}}</a>
 
@@ -85,6 +85,7 @@
             </div>
           </div>
           <div class="post-comment">
+            <p>count comment = {{postInstand.comment_count}}</p>
             <p>day la comment </p>
 
             <div *ngFor="let commment of listComment">

@@ -8,10 +8,6 @@ import {CommmentpostService} from '../../services/commmentpost.service';
   styleUrls: ['./comment-create.component.css']
 })
 export class CommentCreateComponent implements OnInit {
-  id: any;
-  commentForm: IComment = {
-    text: ''
-  };
 
   constructor(private commentServicePost: CommmentpostService) {
   }
