@@ -43,6 +43,7 @@ import { TopNewPostComponent } from './home/top-new-post/top-new-post.component'
 import {MypostComponent} from './user-detail/mypost/mypost.component';
 import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { ChangePasswordComponent } from './user-detail/change-password/change-password.component';
 
 
 @NgModule({
@@ -66,6 +67,7 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     TopNewPostComponent,
     MypostComponent,
     HashtagPostComponent,
+    ChangePasswordComponent,
 
   ],
     imports: [

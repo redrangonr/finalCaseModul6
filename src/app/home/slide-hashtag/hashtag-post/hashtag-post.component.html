@@ -103,13 +103,14 @@
         </div>
       </div>
       <div class="card-body" style="background-color: #f3f5f5; height: 700px;" >
-        &nbsp; <h5><i class="fa fa-list" style="color: #404348"> Hashtag List :</i></h5><br>
+        &nbsp; <h5><i class="fa fa-list" style="color: #404348"> Category :</i></h5><br>
         <a *ngFor="let hashtag of hashtags" class="btn btn-outline-secondary" style="margin-left: 5px; margin-bottom: 5px" routerLink="/post/hashtag/{{hashtag.id}}"><i class="fa fa-tag">{{hashtag.name}}</i></a>
       </div>
       </div>
   </div>
+  <div class="d-flex justify" style="margin-left: 35%" >
+    <pagination-controls previousLabel="" nextLabel="" (pageChange)="tabSize($event)">
+    </pagination-controls>
+  </div>
 </div>
-<div class="d-flex justify" style="margin-left: 35%" >
-  <pagination-controls previousLabel="" nextLabel="" (pageChange)="tabSize($event)">
-  </pagination-controls>
-</div>
+

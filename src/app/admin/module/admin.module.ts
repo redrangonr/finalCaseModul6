@@ -16,6 +16,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {PostAdminEditComponent} from '../component/post-admin/post-admin-edit/post-admin-edit.component';
 import {PostListComponent} from '../../post/post-list/post-list.component';
 import {PostAdminListComponent} from '../component/post-admin/post-admin-list/post-admin-list.component';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {PostAdminListComponent} from '../component/post-admin/post-admin-list/po
         NgbTooltipModule,
         ReactiveFormsModule,
         NgxPaginationModule,
+        AutocompleteLibModule,
     ]
 })
 export class AdminModule { }
