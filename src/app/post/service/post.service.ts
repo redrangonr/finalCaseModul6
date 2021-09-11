@@ -47,4 +47,7 @@ export class PostService {
   findByDate(timeStart: string, timeEnd: string):Observable<Post>{
     return this.httpClient.get<Post>(API_URL+'/api/posts/search/times/'+timeStart+'/'+timeEnd)
   }
+  findTop(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + '/api/posts/search/date/'+ 4)
+  }
 }
