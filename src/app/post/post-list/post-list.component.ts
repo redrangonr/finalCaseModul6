@@ -1,15 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {PostService} from '../service/post.service';
 import {Post} from '../../model/post';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {Hashtag} from '../../admin/model/hashtag';
-import {NgbCalendar, NgbDate, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import {Observable, Subject} from 'rxjs';
-import {startWith} from 'rxjs/internal/operators/startWith';
-import {map} from 'rxjs/operators';
-import {FormControl} from '@angular/forms';
-import {UserManagementService} from '../../admin/service/user-management.service';
-import {User} from '../../admin/model/user';
+import {NgbCalendar, NgbDate, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import {LikeService} from "../../services/like.service";
+import {UserManagementService} from "../../admin/service/user-management.service";
+import {User} from "../../admin/model/user";
 
 @Component({
   selector: 'app-post-list',
@@ -18,6 +15,8 @@ import {User} from '../../admin/model/user';
 })
 export class PostListComponent implements OnInit {
   keyword = 'title'
+  id =0;
+ like=0;
   topUser: User[] =[];
   posts: Post[] = [];
   page = 1;
@@ -35,15 +34,15 @@ export class PostListComponent implements OnInit {
               private hashtagService: HashtagService,
               private calendar: NgbCalendar,
               public formatter: NgbDateParserFormatter,
-              private userService: UserManagementService) {
+              private userService: UserManagementService,
+              private likeservice: LikeService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
-
   ngOnInit(): void {
     this.getAll();
-    this.getAllHashtag()
+    this.getAllHashtag();
     this.getTopUser()
   }
 
@@ -167,7 +166,6 @@ export class PostListComponent implements OnInit {
     } else if (this.fromDate && !this.toDate && date && date.after(this.fromDate)) {
       this.toDate = date;
     } else {
-      // @ts-ignore
       this.toDate = null;
       this.fromDate = date;
     }
@@ -189,5 +187,14 @@ export class PostListComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
+  // getlikesByIdpost(id: any): any{
+  //  let a = 0
+  //   this.likeservice.findLikeByIdPost(id).subscribe(data=>{
+  //     console.log(data)
+  //    a = + data.length;
+  //   });
+  //   console.log(a)
+  //   return a
+  // }
 
 }
