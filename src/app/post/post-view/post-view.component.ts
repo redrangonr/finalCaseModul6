@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../service/post.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Post} from '../../model/post';
 
@@ -11,6 +11,10 @@ import {Post} from '../../model/post';
   styleUrls: ['./post-view.component.css']
 })
 export class PostViewComponent implements OnInit {
+  message = '';
+  email = new FormGroup({
+    detail: new FormControl('', [Validators.required, Validators.email])
+  });
   postInstand: Post = {
     user: {},
     hashtag: {}
@@ -71,6 +75,30 @@ export class PostViewComponent implements OnInit {
       }
       console.log(this.postInstand);
     });
+  }
+  // tslint:disable-next-line:typedef
+  sendEmail() {
+
+    if (this.email.controls?.detail.errors?.required) {
+      console.log('required');
+      this.message = 'Please fill in the form ';
+      // @ts-ignore
+    } else if ( this.email.controls?.detail.errors?.email ) {
+      console.log('pattern');
+      this.message = 'Wrong email';
+    } else {
+      this.message = 'Success';
+      this.postService.shareEmail(this.id, this.email.value.detail).subscribe(() => {
+        console.log('ok');
+        // window.location.reload();
+      });
+    }
+  }
+  // tslint:disable-next-line:typedef
+  resetModal() {
+    this.message = '';
+    // @ts-ignore
+    document.getElementById('receiver-email').value = '';
   }
 
 }
