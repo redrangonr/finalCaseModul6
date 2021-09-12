@@ -140,6 +140,22 @@ export class PostAdminListComponent implements OnInit {
 
   }
 
+  getAllByStatus(){
+    // @ts-ignore
+    status = document.getElementById('selectStatus').value
+    if (status == 'public'){
+      this.postService.getAll().subscribe(data =>{
+        this.posts = data
+      })
+    }if (status == 'lock'){
+      this.postService.getAllPostLock().subscribe(data=>{
+        this.posts = data
+      })
+    }if (status == ''){
+      this.getAll()
+    }
+  }
+
   getAllHashtag() {
     this.hashtagService.getAll().subscribe(data => {
       // @ts-ignore
@@ -161,6 +177,8 @@ export class PostAdminListComponent implements OnInit {
       }
     });
   }
+
+
 
   tabSize(event: any) {
     this.page = event;
@@ -186,9 +204,23 @@ export class PostAdminListComponent implements OnInit {
     // @ts-ignore
     const dayEnd = document.getElementById('time2').value;
     const timeStart = dayStart + hourStart;
+    const timeStart1 = dayStart + hourEnd;
+    const timeStartDefault = '2020-01-01' + hourStart;
     const timeEnd = dayEnd + hourEnd;
     if (dayStart == '' && dayEnd == '') {
       location.reload();
+    }
+    if (dayEnd == ''){
+      this.postService.findByDate(timeStart, timeStart1).subscribe(data => {
+        // @ts-ignore
+        this.posts = data;
+      });
+    }
+    if (dayEnd == ''){
+      this.postService.findByDate(timeStartDefault, timeEnd).subscribe(data => {
+        // @ts-ignore
+        this.posts = data;
+      });
     }
     this.postService.findByDate(timeStart, timeEnd).subscribe(data => {
       // @ts-ignore

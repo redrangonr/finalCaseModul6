@@ -1,10 +1,12 @@
-<br xmlns="http://www.w3.org/1999/html">
+<br xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <br>
 <br>
 <br>
 <br>
 <br>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css"
+      integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous"/>
 <div class="container">
   <div class="row">
     <div class="col-md-9" style="height: 1000px">
@@ -31,7 +33,7 @@
                                        [dayTemplate]="t"
                                        outsideDays="hidden"
                                        [startDate]="fromDate!" hidden>
-<!--                                       tabindex="-1" hidden>-->
+                                <!--                                       tabindex="-1" hidden>-->
                                 <ng-template #t let-date let-focused="focused">
         <span class="custom-day"
               [class.focused]="focused"
@@ -50,8 +52,11 @@
                                        class="form-control" placeholder="yyyy-mm-dd"
                                        name="dpFromDate"
                                        [value]="formatter.format(fromDate)"
-                                       (input)="fromDate = validateInput(fromDate, dpFromDate.value)" style="width: 120px;  height: 42px" id="time1">
-                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
+                                       (input)="fromDate = validateInput(fromDate, dpFromDate.value)"
+                                       style="width: 120px;  height: 42px" id="time1">
+                                <button style="background-color: #8fd7d0; height: 42px; border: none"
+                                        class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()"
+                                        type="button"><i class="fa fa-calendar-check"></i></button>
                               </div>
                             </div>
                             <div class="form-group ml-2">
@@ -60,9 +65,14 @@
                                        class="form-control" placeholder="yyyy-mm-dd"
                                        name="dpToDate"
                                        [value]="formatter.format(toDate)"
-                                       (input)="toDate = validateInput(toDate, dpToDate.value)"  style="width: 120px;  height: 42px" id="time2">
-                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()" type="button"><i class="fa fa-calendar-check"></i></button>
-                                <button style="background-color: #8fd7d0; height: 42px; border: none" class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button"><i class="fa fa-search"></i></button>
+                                       (input)="toDate = validateInput(toDate, dpToDate.value)"
+                                       style="width: 120px;  height: 42px" id="time2">
+                                <button style="background-color: #8fd7d0; height: 42px; border: none"
+                                        class="btn btn-outline-secondary calendar" (click)="datepicker.toggle()"
+                                        type="button"><i class="fa fa-calendar-check"></i></button>
+                                <button style="background-color: #8fd7d0; height: 42px; border: none"
+                                        class="btn btn-outline-secondary calendar" (click)="finByTime()" type="button">
+                                  <i class="fa fa-search"></i></button>
                               </div>
                             </div>
                           </form>
@@ -72,14 +82,15 @@
                     </form>
                   </div>
                 </div>
-                  <div class="col-md-4 col-lg-3 my-3">
-                    <div>
-                      <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select" style="background-color: #abd5cf;margin-top: 5px; margin-left: 130px;  height: 42px;width: 70%">
-                        <option value="">Select Categories</option>
-                        <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
-                      </select>
-                    </div>
+                <div class="col-md-4 col-lg-3 my-3">
+                  <div>
+                    <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select"
+                            style="background-color: #abd5cf;margin-top: 5px; margin-left: 130px;  height: 42px;width: 70%">
+                      <option value="">Select Categories</option>
+                      <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
+                    </select>
                   </div>
+                </div>
                 <div class="col-md-6 col-lg-6 my-3">
                   <div class="input-group ">
                     <div class="ng-autocomplete">
@@ -92,33 +103,36 @@
                                        [notFoundTemplate]="notFoundTemplate"
                                        style="width: 321px;float: left; margin-left: 54px; margin-top: 5px" id="key">
                       </ng-autocomplete>
-
-                      <ng-template #itemTemplate let-item >
+                      <ng-template #itemTemplate let-item>
                         <a href="javascript:void(0)" style="height: 115px">
                           <div class="row">
                             <div class="col-md-3">
-                              <span><img src="{{item.image}}" width="80" height="80" style="border-radius: 44px; border: #4e5454 solid"></span>&nbsp;
+                              <span><img src="{{item.image}}" width="80" height="80"
+                                         style="border-radius: 44px; border: #4e5454 solid"></span>&nbsp;
                             </div>
                             <div class="col-md-9">
                               <div class="col-sm-12">
-                                <span class="titleSearch" ><i [innerHTML]="' ' + item.title" style="color: #070707" class="fa fa-play" aria-hidden="true"> </i></span>
+                                <span class="titleSearch"><i [innerHTML]="' ' + item.title" style="color: #070707"
+                                                             class="fa fa-play" aria-hidden="true"> </i></span>
                               </div>
                               <div class="col-sm-12">
                                 <small><i class="fa fa-user" [innerHTML]="' ' + item.user.name"> </i></small>
                               </div>
                               <div class="col-sm-12">
-                                <a href="/post/view/{{item.id}}" style="color: #0b2e13; float: left"><i class="fa fa-eye"><small> View more</small></i></a>
+                                <a href="/post/view/{{item.id}}" style="color: #0b2e13; float: left"><i
+                                  class="fa fa-eye"><small> View more</small></i></a>
                               </div>
                             </div>
                           </div>
                         </a>
                         <hr>
                       </ng-template>
-
                       <ng-template #notFoundTemplate let-notFound>
                         <div [innerHTML]="notFound"></div>
                       </ng-template>
-                      <button type="button" class="btn btn-outline-secondary" (click)="reset()" style="width: 80px; margin-top: 5px;height: 42px; float: right;background-color: #8fd7d0; border: none" id="contact-submit ">
+                      <button type="button" class="btn btn-outline-secondary" (click)="reset()"
+                              style="width: 80px; margin-top: 5px;height: 42px; float: right;background-color: #8fd7d0; border: none"
+                              id="contact-submit ">
                         <i class="fa fa-bolt">All</i>
                       </button>
                     </div>
@@ -129,36 +143,44 @@
           </div>
         </div>
       </div>
-      <h3 style="margin-top: 30px" class="text-secondary text-center" *ngIf="posts.length == 0 "> Không có kết quả bạn muốn tìm <img src="https://img.icons8.com/ios/2x/nerd--v3.gif" height="40" width="40" ></h3>
+      <h3 style="margin-top: 30px" class="text-secondary text-center" *ngIf="posts.length == 0 "> Không có kết quả bạn
+        muốn tìm <img src="https://img.icons8.com/ios/2x/nerd--v3.gif" height="40" width="40"></h3>
       <div class="card mb-2" *ngFor="let post of posts  | paginate :{
         itemsPerPage: tableSize,
                 currentPage: page,
                 totalItems: count
   }">
-        <div class="card-body p-2 p-sm-3" style="background-color: #f3f5f5" >
+        <div class="card-body p-2 p-sm-3" style="background-color: #f3f5f5">
           <div class="media forum-item">
-            <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="{{post.user.avatar}}" class="mr-3 rounded-circle" width="100" height="100" style="border: #707477 solid" /></a>
+            <a href="#" data-toggle="collapse" data-target=".forum-content"><img src="{{post.user.avatar}}"
+                                                                                 class="mr-3 rounded-circle" width="100"
+                                                                                 height="100"
+                                                                                 style="border: #707477 solid"/></a>
             <div class="media-body">
-              <h5 style="color: #495057"><a style="text-decoration: none" data-toggle="collapse" data-target=".forum-content" class="content">{{post.title}}</a></h5>
-              <p class="content text-secondary">
-                {{post.description}}
-              </p>
-              <p class="text-muted"><a><i class="fa fa-user"> {{post.user.name}}</i></a> &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i class="fa fa-tag"> {{post.hashtag.name}}</i></a></span>
-                &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i class="fa fa-clock"> {{post.date | date}}</i></a></span>
-                &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i class="fa fa-eye"> View more ...</i></a></span>
+              <h5 style="color: #445464"><a routerLink="/post/view/{{post.id}}" style="text-decoration: none; color: #343d4f" data-toggle="collapse"
+                                            data-target=".forum-content" class="content"><small><small class="fa fa-play"></small></small> {{post.title}}</a></h5>
+              <small class="content text-secondary">
+                <small class="fa fa-audio-description"></small> {{post.description}}
+              </small>
+              <p class="text-muted"><a><i class="fa fa-user"> {{post.user.name}}</i></a> &nbsp;&nbsp;&nbsp; <span
+                class="text-secondary font-weight-bold"><a><i class="fa fa-tag"> {{post.hashtag.name}}</i></a></span>
+                &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i
+                  class="fa fa-clock"> {{post.date | date}}</i></a></span>
+                &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a style="color: #535960;" routerLink="/post/view/{{post.id}}"><i
+                  class="fa fa-eye" > View more ...</i></a></span>
               </p>
             </div>
             <div class="text-muted small text-center align-self-center">
               <span class="d-none d-sm-inline-block"><i class="fa fa-rate"></i> 19</span>
-              <span><i class="far fa-comment ml-2" ></i> 3</span>
+              <span><i class="far fa-comment ml-2"></i> 3</span>
             </div>
           </div>
         </div>
       </div>
     </div>
-
     <div class="col-md-3">
-      <div class="card-header" style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
+      <div class="card-header"
+           style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
         <div class="row">
           <div class="col-md-4">
             <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
@@ -170,11 +192,13 @@
           </div>
         </div>
       </div>
-      <div class="card-body" id="tag" style="background-color: #f3f5f5; height: 350px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
+      <div class="card-body" id="tag"
+           style="background-color: #f3f5f5; height: 450px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
         <h5 class="topmember" style="text-align: center"><i class="fa fa-chess-king"> Top Post</i></h5>
 
       </div>
-      <div class="card-header"  style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
+      <div class="card-header"
+           style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
         <div class="row">
           <div class="col-md-4">
             <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
@@ -186,21 +210,26 @@
           </div>
         </div>
       </div>
-      <div class="card-body" style="background-color: #f3f5f5; height: 700px;" >
-        <h5 class="topmember"style="text-align: center" ><i class="fa fa-chess-king"> Top Member</i></h5>
+      <div class="card-body" style="background-color: #f3f5f5; height: 600px;">
+        <h5 class="topmember" style="text-align: center"><i class="fa fa-chess-king"> Top Member</i></h5>
         <br>
         <div class="row" *ngFor="let user of topUser index as i">
           <div class="col-md-5">
-            <span class="number">{{i+1}} </span>
-            <img *ngIf="i == 0" src="{{user.avatar}}" width="50" height="50" style="border-radius: 44px; border: #f35f05 solid">
-            <img *ngIf="i == 1" src="{{user.avatar}}" width="45" height="45" style="border-radius: 44px">
-            <img *ngIf="i == 2" src="{{user.avatar}}" width="40" height="40" style="border-radius: 44px">
-            <img *ngIf="i == 3" src="{{user.avatar}}" width="35" height="35" style="border-radius: 44px">
-            <img *ngIf="i == 4" src="{{user.avatar}}" width="30" height="30" style="border-radius: 44px">
+            <span class="number">{{i + 1}} </span>
+            <img *ngIf="i == 0" src="{{user.avatar}}" width="50" height="50"
+                 style="border-radius: 44px;margin-left: 1px; border: #fa0217 solid" ngbTooltip="Top 1">
+            <img *ngIf="i == 1" src="{{user.avatar}}" width="45" height="45"
+                 style="border-radius: 44px;margin-left: 3px; border: #fc2e46 solid" ngbTooltip="Top 2">
+            <img *ngIf="i == 2" src="{{user.avatar}}" width="40" height="40"
+                 style="border-radius: 44px;margin-left: 5px; border: #f64e6d solid" ngbTooltip="Top 3">
+            <img *ngIf="i == 3" src="{{user.avatar}}" width="35" height="35"
+                 style="border-radius: 44px;margin-left: 7px; border: #ec6f7e solid" ngbTooltip="Top 4">
+            <img *ngIf="i == 4" src="{{user.avatar}}" width="30" height="30"
+                 style="border-radius: 44px;margin-left: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
           </div>
           <div class="col-md-7">
             <br>
-            <span class="fa fa-fire"> {{user.username}}</span>
+            <span class="fa fa-fire" ngbTooltip="{{user.name}}"> {{user.username}}</span>
           </div>
           <br>
           <br>
@@ -210,9 +239,9 @@
       </div>
     </div>
   </div>
+
 </div>
-<div class="d-flex justify" style="margin-left: 35%" >
+<div class="d-flex justify" style="margin-left: 35%">
   <pagination-controls previousLabel="Back" nextLabel="Next" (pageChange)="tabSize($event)">
   </pagination-controls>
 </div>
-

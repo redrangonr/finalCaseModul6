@@ -2,6 +2,22 @@
 <div align="center" *ngIf="postInstand.user.id === idUser"><button class="btn btn-outline-primary" routerLink="/post/edit/{{postInstand.id}}">abc</button></div>
 <div id="main">
   <section class="blog-detail">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-7">
+        </div>
+        <div class="col-md-1">
+          <img src="https://cdn-icons-png.flaticon.com/128/889/889140.png" width="30" height="30" style="margin-left:95px; position: fixed">
+          <br>
+          <br>
+          <img src="https://cdn-icons-png.flaticon.com/128/3925/3925158.png" width="30" height="30" style="margin-left:95px;float: right; position: fixed">
+        </div>
+        <div class="col-md-1"></div>
+      </div>
+    </div>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
@@ -12,7 +28,7 @@
                 <h5>#{{postInstand.hashtag.name}}</h5>
                 <p>{{postInstand.date | date : ' EEEE,  dd-mm-yyyy,  hh:mm OOOO'}}</p>
               </div>
-            </div><img style="width: 990; height: 550px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
+            </div><img style="width: 990; height: 550px; border-radius: 5px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
             <h4>{{postInstand.description}}</h4>
             <br>
             <p class="blog-pragraph" [innerHTML]="postInstand.content"></p>

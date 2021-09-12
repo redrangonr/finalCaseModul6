@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {Post} from '../../model/post';
 import {Hashtag} from '../../admin/model/hashtag';
+import {User} from '../../admin/model/user';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -18,6 +19,11 @@ export class PostService {
   getAll(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(API_URL + '/api/posts/public');
   }
+
+  getAllPostLock(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + '/api/posts/lock');
+  }
+
   getAllOfAdmin(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(API_URL + '/api/posts/public/lock');
   }
