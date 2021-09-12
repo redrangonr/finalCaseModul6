@@ -82,4 +82,7 @@ export class PostService {
   shareEmail(id: number, email: string): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/email/' + id + '/' + email);
   }
+  findTop(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + '/api/posts/search/date/'+ 4)
+  }
 }

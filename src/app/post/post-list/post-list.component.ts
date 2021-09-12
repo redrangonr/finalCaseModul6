@@ -189,4 +189,5 @@ export class PostListComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
+
 }
