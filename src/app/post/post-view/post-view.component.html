@@ -12,7 +12,7 @@
                 <h5>#{{postInstand.hashtag.name}}</h5>
                 <p>{{postInstand.date | date : ' EEEE,  dd-mm-yyyy,  hh:mm OOOO'}}</p>
               </div>
-            </div><img style="width: 990; height: 550px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
+            </div><img style="width: 990px; height: 550px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
             <h4>{{postInstand.description}}</h4>
             <br>
             <p class="blog-pragraph" [innerHTML]="postInstand.content"></p>
@@ -34,7 +34,12 @@
               <div class="col-sm-6 text-sm-right">
                 <div class="post-share">
                   <p>Share: </p>
-                  <div class="socials"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
+                  <div class="socials">
+                    <button><i class="fas fa-thumbs-up" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="createLike()"> </i></button>
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                    <a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
                 </div>
               </div>
             </div>
@@ -123,6 +128,11 @@
   <!--        </div></a></div>-->
   <!--    </div>-->
   <!--  </section>&lt;!&ndash;End instagram&ndash;&gt;-->
+
+
+
+
+
   <footer>
     <div class="container">
       <div class="row">
@@ -179,15 +189,24 @@
       </div>
     </div>
   </footer><!--End footer-->
-  <script src="assets/js/jquery-3.4.0.min.js"></script>
-  <script src="assets/js/jquery-ui.min.js"></script>
-  <script src="assets/js/slick.min.js"></script>
-  <script src="assets/js/plyr.min.js"></script>
-  <script src="assets/js/aos.js"></script>
-  <script src="assets/js/jquery.scrollUp.min.js"></script>
-  <script src="assets/js/masonry.pkgd.min.js"></script>
-  <script src="assets/js/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/js/numscroller-1.0.js"></script>
-  <script src="assets/js/jquery.countdown.min.js"></script>
-  <script src="assets/js/main.js"></script>
+
 </div>
+
+<! --Modal -->
+<div *ngIf="check()"  class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        You are not logged in !
+      </div>
+      <div class="modal-footer">
+        <app-login></app-login>
+      </div>
+    </div>
+  </div>
+</div>
+

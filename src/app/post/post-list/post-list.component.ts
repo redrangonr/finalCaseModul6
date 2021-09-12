@@ -4,13 +4,17 @@ import {Post} from '../../model/post';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {Hashtag} from '../../admin/model/hashtag';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import {LikeService} from "../../services/like.service";
 
 @Component({
   selector: 'app-post-list',
   templateUrl: './post-list.component.html',
   styleUrls: ['./post-list.component.css']
 })
+
 export class PostListComponent implements OnInit {
+  id =0;
+ like=0;
   posts: Post[] = [];
   page = 1;
   count = 0;
@@ -23,14 +27,16 @@ export class PostListComponent implements OnInit {
   fromDate: NgbDate | null;
   toDate: NgbDate | null;
 
-  constructor(private postService: PostService, private hashtagService: HashtagService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
+  constructor(private postService: PostService, private hashtagService: HashtagService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter, private likeservice: LikeService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
   ngOnInit(): void {
+
     this.getAll();
     this.getAllHashtag()
+    this.getlikesByIdpost(this.id)
   }
   // tslint:disable-next-line:typedef
   getAll() {
@@ -38,6 +44,7 @@ export class PostListComponent implements OnInit {
     this.postService.getAll().subscribe(data => {
       console.log(data)
       this.posts = data;
+
     });
   }
   searchByTitle(){
@@ -56,6 +63,8 @@ export class PostListComponent implements OnInit {
     this.postService.findAllByHashtag(id).subscribe(data =>{
       // @ts-ignore
       this.posts = data
+      // @ts-ignore
+      console.log(data)
     })
 
   }
@@ -138,5 +147,14 @@ export class PostListComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
+  // getlikesByIdpost(id: any): any{
+  //  let a = 0
+  //   this.likeservice.findLikeByIdPost(id).subscribe(data=>{
+  //     console.log(data)
+  //    a = + data.length;
+  //   });
+  //   console.log(a)
+  //   return a
+  // }
 
 }

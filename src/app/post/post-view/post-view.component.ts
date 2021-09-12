@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PostService} from '../service/post.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Post} from '../../model/post';
+import {LikeService} from "../../services/like.service";
+import {Like} from "../../model/like";
 
 
 @Component({
@@ -11,6 +13,9 @@ import {Post} from '../../model/post';
   styleUrls: ['./post-view.component.css']
 })
 export class PostViewComponent implements OnInit {
+
+
+
   postInstand: Post = {
     user: {},
     hashtag: {}
@@ -32,7 +37,8 @@ export class PostViewComponent implements OnInit {
 
   constructor(private postService: PostService,
               private activatedRoute: ActivatedRoute,
-              private router: Router) {
+              private router: Router,
+              private likeService: LikeService) {
     this.activatedRoute.paramMap.subscribe(data => {
       // @ts-ignore
       this.id = +data.get('id');
@@ -42,6 +48,7 @@ export class PostViewComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   // tslint:disable-next-line:typedef
   getById(id: number) {
     this.postService.get(id).subscribe(data => {
@@ -73,4 +80,29 @@ export class PostViewComponent implements OnInit {
     });
   }
 
+createLike(){
+if(sessionStorage.getItem('Id_key')) {
+  const like: Like={
+    post: {
+     id: this.id},
+    user: {
+      id: this.idUser
+    }
+  }
+  this.likeService.create(like).subscribe(data => {
+    console.log(data);
+      alert("thanh cong")
+  },error => {alert("loi")}
+    )
+}
+  }
+
+
+  check() {
+    if (sessionStorage.getItem('Id_key')) {
+      return false;
+    } else {
+      return true
+    }
+  }
 }

@@ -10,6 +10,7 @@ import {EditorModule} from '@tinymce/tinymce-angular';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {PostEditComponent} from './post-edit/post-edit.component';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {LoginModule} from "../authentication/module/login.module";
 
 
 
@@ -24,15 +25,16 @@ import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap'
   exports: [
     PostListComponent
   ],
-  imports: [
-    CommonModule,
-    PostRoutingModule,
-    ReactiveFormsModule,
-    EditorModule,
-    NgxPaginationModule,
-    NgbTooltipModule,
-    NgbDatepickerModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        PostRoutingModule,
+        ReactiveFormsModule,
+        EditorModule,
+        NgxPaginationModule,
+        NgbTooltipModule,
+        NgbDatepickerModule,
+        FormsModule,
+        LoginModule
+    ]
 })
 export class PostModule { }
