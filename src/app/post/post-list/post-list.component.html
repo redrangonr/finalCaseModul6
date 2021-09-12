@@ -171,7 +171,7 @@
               </p>
             </div>
             <div class="text-muted small text-center align-self-center">
-              <span class="d-none d-sm-inline-block"><i class="fa fa-rate"></i> 19</span>
+              <span class="d-none d-sm-inline-block"><i class="fa fa-linkedin">19 </i></span>
               <span><i class="far fa-comment ml-2"></i> 3</span>
             </div>
           </div>
@@ -193,55 +193,108 @@
         </div>
       </div>
       <div class="card-body" id="tag"
-           style="background-color: #f3f5f5; height: 450px; border-bottom-right-radius: 10px; border-bottom-left-radius:10px">
-        <h5 class="topmember" style="text-align: center"><i class="fa fa-chess-king"> Top Post</i></h5>
+           style="background-color: #f3f5f5; height: 300px">
+        <ngb-accordion [closeOthers]="true">
+          <ngb-panel id="static-1">
+            <ng-template ngbPanelTitle >
+              <i class="fa fa-trophy"> Top Post</i>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <div class="row" *ngFor="let topLike of topLikePost index as i">
+                <div class="col-md-5">
+                  <span class="number">{{i + 1}} </span>
+                  <img *ngIf="i == 0" src="{{topLike.post.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #fa0217 solid" ngbTooltip="Top 1">
+                  <img *ngIf="i == 1" src="{{topLike.post.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #fc2e46 solid" ngbTooltip="Top 2">
+                  <img *ngIf="i == 2" src="{{topLike.post.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #f64e6d solid" ngbTooltip="Top 3">
+                  <img *ngIf="i == 3" src="{{topLike.post.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #ec6f7e solid" ngbTooltip="Top 4">
+                  <img *ngIf="i == 4" src="{{topLike.post.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
+                </div>
+                <div class="col-md-7">
+                  <br>
+                  <span class="contentTop" ngbTooltip="{{topLike.post.title}}"><small><a style="text-decoration: none; color: #0b2e13" routerLink="/post/view/{{topLike.post.id}}"> {{topLike.post.title}}</a></small></span>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-2">
+            <ng-template ngbPanelTitle >
+              <i class="fa fa-star"> Top Member</i>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <div class="row" *ngFor="let user of topUser index as i">
+                <div class="col-md-5">
+                  <span class="number">{{i + 1}} </span>
+                  <img *ngIf="i == 0" src="{{user.avatar}}" width="47" height="47"
+                       style="border-radius: 44px;margin-left: 1px; border: #fa0217 solid" ngbTooltip="Top 1">
+                  <img *ngIf="i == 1" src="{{user.avatar}}" width="45" height="45"
+                       style="border-radius: 44px;margin-left: 3px; border: #fc2e46 solid" ngbTooltip="Top 2">
+                  <img *ngIf="i == 2" src="{{user.avatar}}" width="40" height="40"
+                       style="border-radius: 44px;margin-left: 5px; border: #f64e6d solid" ngbTooltip="Top 3">
+                  <img *ngIf="i == 3" src="{{user.avatar}}" width="35" height="35"
+                       style="border-radius: 44px;margin-left: 7px; border: #ec6f7e solid" ngbTooltip="Top 4">
+                  <img *ngIf="i == 4" src="{{user.avatar}}" width="30" height="30"
+                       style="border-radius: 44px;margin-left: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
+                </div>
+                <div class="col-md-7">
+                  <br>
+                  <span class="fa fa-fire" ngbTooltip="{{user.name}}"> {{user.username}}</span>
+                </div>
+                <br>
+                <br>
+                <br>
+              </div>
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-3">
+            <ng-template ngbPanelTitle >
+              <i class="fa fa-fire"> Top Comment</i>
+            </ng-template>
+            <ng-template ngbPanelContent>
 
+            </ng-template>
+          </ngb-panel>
+          <ngb-panel id="static-4">
+            <ng-template ngbPanelTitle >
+              <i class="fa fa-chess-king"> Top Category</i>
+            </ng-template>
+            <ng-template ngbPanelContent>
+              <div class="row" *ngFor="let topTag of topHashtag index as i">
+                <div class="col-md-5">
+                  <span class="number">{{i + 1}} </span>
+                  <img *ngIf="i == 0" src="{{topTag.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #fa0217 solid" ngbTooltip="Top 1">
+                  <img *ngIf="i == 1" src="{{topTag.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #fc2e46 solid" ngbTooltip="Top 2">
+                  <img *ngIf="i == 2" src="{{topTag.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #f64e6d solid" ngbTooltip="Top 3">
+                  <img *ngIf="i == 3" src="{{topTag.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #ec6f7e solid" ngbTooltip="Top 4">
+                  <img *ngIf="i == 4" src="{{topTag.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
+                </div>
+                <div class="col-md-7">
+                  <br>
+                  <span class="contentTop" ngbTooltip="{{topTag.name}}"><a style="text-decoration: none; color: #0b2e13" routerLink="/post/hashtag/{{topTag.id}}"><b><i class="fa fa-fire"></i> {{topTag.name}}</b></a></span>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
       </div>
-      <div class="card-header"
-           style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
-        <div class="row">
-          <div class="col-md-4">
-            <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
-          </div>
-          <div class="col-md-4 mt-3">
-          </div>
-          <div class="col-md-4">
-            <i class="fa fa-circle-notch" style="width: 100; height: 100; float: right"></i>
-          </div>
-        </div>
-      </div>
-      <div class="card-body" style="background-color: #f3f5f5; height: 600px;">
-        <h5 class="topmember" style="text-align: center"><i class="fa fa-chess-king"> Top Member</i></h5>
-        <br>
-        <div class="row" *ngFor="let user of topUser index as i">
-          <div class="col-md-5">
-            <span class="number">{{i + 1}} </span>
-            <img *ngIf="i == 0" src="{{user.avatar}}" width="50" height="50"
-                 style="border-radius: 44px;margin-left: 1px; border: #fa0217 solid" ngbTooltip="Top 1">
-            <img *ngIf="i == 1" src="{{user.avatar}}" width="45" height="45"
-                 style="border-radius: 44px;margin-left: 3px; border: #fc2e46 solid" ngbTooltip="Top 2">
-            <img *ngIf="i == 2" src="{{user.avatar}}" width="40" height="40"
-                 style="border-radius: 44px;margin-left: 5px; border: #f64e6d solid" ngbTooltip="Top 3">
-            <img *ngIf="i == 3" src="{{user.avatar}}" width="35" height="35"
-                 style="border-radius: 44px;margin-left: 7px; border: #ec6f7e solid" ngbTooltip="Top 4">
-            <img *ngIf="i == 4" src="{{user.avatar}}" width="30" height="30"
-                 style="border-radius: 44px;margin-left: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
-          </div>
-          <div class="col-md-7">
-            <br>
-            <span class="fa fa-fire" ngbTooltip="{{user.name}}"> {{user.username}}</span>
-          </div>
-          <br>
-          <br>
-          <br>
-        </div>
-        <a href="#" class="text-center">All Member</a>
+      <div class="card-footer"
+           style="background-color: #c0e8e8 ; height: 50px; border-bottom-right-radius:10px; border-bottom-left-radius: 10px ">
+
       </div>
     </div>
   </div>
+  <div class="d-flex justify" style="margin-left: 35%">
+    <pagination-controls previousLabel="Back" nextLabel="Next" (pageChange)="tabSize($event)">
+    </pagination-controls>
+  </div>
+</div>
 
-</div>
-<div class="d-flex justify" style="margin-left: 35%">
-  <pagination-controls previousLabel="Back" nextLabel="Next" (pageChange)="tabSize($event)">
-  </pagination-controls>
-</div>

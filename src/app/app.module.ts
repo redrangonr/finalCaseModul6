@@ -44,6 +44,10 @@ import {MypostComponent} from './user-detail/mypost/mypost.component';
 import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { ChangePasswordComponent } from './user-detail/change-password/change-password.component';
+import {CommentListComponent} from './commentpost/comment-list/comment-list.component';
+import {CommentCreateComponent} from './commentpost/comment-create/comment-create.component';
+import {CommentEditComponent} from './commentpost/comment-edit/comment-edit.component';
+import {CommentDeleteComponent} from './commentpost/comment-delete/comment-delete.component';
 
 
 @NgModule({
@@ -68,7 +72,10 @@ import { ChangePasswordComponent } from './user-detail/change-password/change-pa
     MypostComponent,
     HashtagPostComponent,
     ChangePasswordComponent,
-
+    CommentListComponent,
+    CommentCreateComponent,
+    CommentEditComponent,
+    CommentDeleteComponent
   ],
   imports: [
     BrowserModule,

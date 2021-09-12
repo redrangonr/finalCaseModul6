@@ -29,4 +29,7 @@ export class LikeService {
   findLikeByIdPost(idPost: number): Observable<any> {
     return  this.httpClient.get<any>(API_URL+ '/api/likes/search/'+idPost)
   }
+  findTop5Like(): Observable<Like[]>{
+    return this.httpClient.get<Like[]>(API_URL+'/api/likes/search/top5')
+  }
 }

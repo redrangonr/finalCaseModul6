@@ -9,7 +9,7 @@ import { PostCreateComponent } from './post-create/post-create.component';
 import {EditorModule} from '@tinymce/tinymce-angular';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {PostEditComponent} from './post-edit/post-edit.component';
-import {NgbDatepickerModule, NgbTooltipModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbAccordionModule, NgbDatepickerModule, NgbTooltipModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoginModule} from "../authentication/module/login.module";
 import {AutocompleteLibModule} from "angular-ng-autocomplete";
 import {PostListAuthorComponent} from './post-list-author/post-list-author.component';
@@ -28,17 +28,20 @@ import {PostListAuthorComponent} from './post-list-author/post-list-author.compo
   exports: [
     PostListComponent
   ],
-  imports: [
-    CommonModule,
-    PostRoutingModule,
-    ReactiveFormsModule,
-    EditorModule,
-    NgxPaginationModule,
-    NgbTooltipModule,
-    NgbDatepickerModule,
-    FormsModule,
-    NgbTypeaheadModule,
-    AutocompleteLibModule
-  ]
+    imports: [
+        CommonModule,
+        PostRoutingModule,
+        ReactiveFormsModule,
+        EditorModule,
+        NgxPaginationModule,
+        NgbTooltipModule,
+        NgbDatepickerModule,
+        FormsModule,
+        NgbTypeaheadModule,
+        AutocompleteLibModule,
+        LoginModule,
+        LoginModule,
+        NgbAccordionModule
+    ]
 })
 export class PostModule { }
