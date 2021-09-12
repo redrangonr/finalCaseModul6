@@ -18,6 +18,7 @@ export class PostListComponent implements OnInit {
   keyword = 'title';
   topLikePost: Like[] = [];
   topHashtag: Hashtag[] = [];
+  postTopComment: Post[] = [];
   id = 0;
   like = 0;
   topUser: User[] = [];
@@ -50,6 +51,7 @@ export class PostListComponent implements OnInit {
     this.getTopUser();
     this.getTopPost();
     this.getTopHashtag();
+    this.getTopComment();
   }
 
   selectEvent(item: any) {
@@ -115,6 +117,13 @@ export class PostListComponent implements OnInit {
     this.hashtagService.getTop().subscribe(data => {
       // @ts-ignore
       this.topHashtag = data;
+    });
+  }
+
+  getTopComment() {
+    this.postService.findTopComment().subscribe(data => {
+      // @ts-ignore
+      this.postTopComment = data;
     });
   }
 

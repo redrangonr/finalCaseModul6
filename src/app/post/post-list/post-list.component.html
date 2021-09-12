@@ -255,7 +255,25 @@
               <i class="fa fa-fire"> Top Comment</i>
             </ng-template>
             <ng-template ngbPanelContent>
-
+              <div class="row" *ngFor="let topComment of postTopComment index as i">
+                <div class="col-md-5">
+                  <span class="number">{{i + 1}} </span>
+                  <img *ngIf="i == 0" src="{{topComment.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #fa0217 solid" ngbTooltip="Top 1">
+                  <img *ngIf="i == 1" src="{{topComment.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #fc2e46 solid" ngbTooltip="Top 2">
+                  <img *ngIf="i == 2" src="{{topComment.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #f64e6d solid" ngbTooltip="Top 3">
+                  <img *ngIf="i == 3" src="{{topComment.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #ee8793 solid" ngbTooltip="Top 4">
+                  <img *ngIf="i == 4" src="{{topComment.image}}" width="45" height="45"
+                       style="border-radius: 10px; border: #f8d3d8 solid" ngbTooltip="Top 5">
+                </div>
+                <div class="col-md-7">
+                  <br>
+                  <span class="contentTop" ngbTooltip="{{topComment.title}}"><small><a style="text-decoration: none; color: #0b2e13" routerLink="/post/view/{{topComment.id}}"> {{topComment.title}}</a></small></span>
+                </div>
+              </div>
             </ng-template>
           </ngb-panel>
           <ngb-panel id="static-4">

@@ -85,4 +85,7 @@ export class PostService {
   findTop(): Observable<Post[]> {
     return this.httpClient.get<Post[]>(API_URL + '/api/posts/search/date/'+ 4)
   }
+  findTopComment():Observable<Post>{
+    return this.httpClient.get<Post>(API_URL+'/api/posts/comments/top')
+  }
 }
