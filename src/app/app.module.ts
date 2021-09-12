@@ -42,6 +42,8 @@ import { RecentViewComponent } from './home/recent-view/recent-view.component';
 import { TopNewPostComponent } from './home/top-new-post/top-new-post.component';
 import {MypostComponent} from './user-detail/mypost/mypost.component';
 import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { ChangePasswordComponent } from './user-detail/change-password/change-password.component';
 
 
 @NgModule({
@@ -65,6 +67,7 @@ import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-
     TopNewPostComponent,
     MypostComponent,
     HashtagPostComponent,
+    ChangePasswordComponent,
 
   ],
   imports: [
@@ -83,7 +86,8 @@ import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-
     LoginModule,
     NgbNavModule,
     FormsModule,
-    NgbTypeaheadModule
+    NgbTypeaheadModule,
+    AutocompleteLibModule
   ],
   providers: [],
     exports: [

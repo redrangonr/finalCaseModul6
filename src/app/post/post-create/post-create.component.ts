@@ -9,6 +9,7 @@ import {HashtagService} from '../../admin/service/hashtag.service';
 import {TokenService} from '../../authentication/service/token.service';
 
 
+
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
@@ -42,7 +43,8 @@ export class PostCreateComponent implements OnInit {
               private postService: PostService,
               private storage: AngularFireStorage,
               private router: Router,
-              private hashtagService: HashtagService) {
+              private hashtagService: HashtagService
+                                                 ) {
     this.hashtagService.getAll().subscribe(data => {
       this.hashtags = data;
       // console.log(this.hashtags);

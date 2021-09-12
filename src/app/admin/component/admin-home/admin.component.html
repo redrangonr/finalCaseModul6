@@ -12,13 +12,13 @@
   <div class="profile-page tx-13">
     <div class="row profile-body">
       <!-- left wrapper start -->
-      <div class="col-md-1 left-wrapper" >
-        <div class="card rounded" style="height: 1000px ; background-color: #e9ecef; border-radius: 5px">
+      <div class="col-md-1 left-wrapper">
+        <div class="card rounded" style="height: 1520px ; background-color: #e9ecef; border-radius: 5px">
           <div class="card-body">
-            <a href="home" class="w-60 pr-3 pb-4" >
+            <a href="admin" class="w-60 pr-3 pb-4" >
               <div class="card border-0 border-bottom-red shadow-lg shadow-hover" style="border-radius: 44px">
                 <div class="card-body text-center">
-                    <img src="https://cdn-icons-png.flaticon.com/128/1946/1946433.png" width="50" height="50" ngbTooltip="Home">
+                    <img src="https://cdn-icons-png.flaticon.com/128/1946/1946433.png" width="50" height="50" ngbTooltip="Admin">
                 </div>
               </div>
             </a>
@@ -68,7 +68,6 @@
 
             <div [ngbNavOutlet]="nav" class="mt-2"></div>
 
-            <pre>Active: {{ active }}</pre>
           </div>
         </div>
       </div>
@@ -78,7 +77,7 @@
         <div class="row">
           <div class="col-md-12 grid-margin">
             <div class="card rounded">
-              <div class="card-body" style="background-color: #e9ecef; height: 1000px; border-radius: 5px">
+              <div class="card-body" style="background-color: #e9ecef; height: 1000px; border-radius: 5px; position: fixed; width: 100%">
                 <router-outlet></router-outlet>
               </div>
             </div>

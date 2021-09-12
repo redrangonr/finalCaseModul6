@@ -1,11 +1,12 @@
-<div align="center" *ngIf="postInstand.user.id === idUser">
-  <button class="btn btn-outline-primary" routerLink="/post/edit/{{postInstand.id}}">abc</button>
-</div>
+
+<div align="center" *ngIf="postInstand.user.id === idUser"><button class="btn btn-outline-primary" routerLink="/post/edit/{{postInstand.id}}">abc</button></div>
 <div id="main">
   <section class="blog-detail">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
+          <div class="post-block" *ngIf="postInstand.status == 'public'" >
+            <h1 class="blog-detail-title" >{{postInstand.title}}</h1>
           <div class="post-block">
             <h1 class="blog-detail-title">{{postInstand.title}}</h1>
             <div class="blog-credit">
@@ -35,6 +36,44 @@
               bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
               aliquip ex ea com</p>
           </div>
+          <div *ngIf="postInstand.status == 'lock'" >
+            <div class="error-wrapper">
+              <div class="error-container error-500">
+                <div class="error">
+                  <div class="error-title">
+                    This post has been locked !!!
+                  </div>
+                  <div class="error-number">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </div>
+                  <div class="error-description">
+                    Contact Admin
+                  </div>
+                  <ul class="error-actions">
+                    <li>
+                      <a href="">
+                        <i class="pe-7s-left-arrow" data-toggle="tooltip" title="" data-original-title="BACK"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        <i class="pe-7s-home" data-toggle="tooltip" title="" data-original-title="HOME"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        <i class="pe-7s-mail" data-toggle="tooltip" title="" data-original-title="CONTACT US"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <br>
+          <br>
+          <br>
           <div class="post-footer">
             <div class="row">
               <div class="col-sm-6">
@@ -111,6 +150,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section><!--End posts-->
   <!--  <section class="instagram">-->
