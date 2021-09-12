@@ -10,7 +10,9 @@ import {EditorModule} from '@tinymce/tinymce-angular';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {PostEditComponent} from './post-edit/post-edit.component';
 import {NgbDatepickerModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+
 import {LoginModule} from "../authentication/module/login.module";
+import {AutocompleteLibModule} from "angular-ng-autocomplete";
 
 
 
@@ -34,7 +36,8 @@ import {LoginModule} from "../authentication/module/login.module";
         NgbTooltipModule,
         NgbDatepickerModule,
         FormsModule,
-        LoginModule
+        LoginModule,
+        AutocompleteLibModule
     ]
 })
 export class PostModule { }

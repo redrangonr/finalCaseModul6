@@ -17,21 +17,21 @@ export class LoginComponent implements OnInit {
   content: any;
   closeResult = '';
   submitted = false;
-  addresses : any[] = [];
+  addresses: any[] = [];
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  status :any = 'Please login your account';
-  statusRegister: any ='';
+  status: any = 'Please login your account';
+  statusRegister: any = '';
 
-  registerForm : any = this.fb.group({
+  registerForm: any = this.fb.group({
     username: ['', Validators.required ],
     name: ['', Validators.required ],
     password: ['', [Validators.required, Validators.minLength(6)]],
     email: ['', [Validators.required, Validators.email]],
-  })
+  });
 
   constructor(
               private loginService: LoginService,
@@ -41,18 +41,21 @@ export class LoginComponent implements OnInit {
               private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.getAddress()
+    this.getAddress();
   }
 
+  // tslint:disable-next-line:typedef
   get f() {return this.registerForm.controls; }
 
+  // tslint:disable-next-line:typedef
   getAddress(){
-    this.loginService.getAddress().subscribe(data =>{
-      this.addresses = data
-      console.log(data[0].name)
-    })
+    this.loginService.getAddress().subscribe(data => {
+      this.addresses = data;
+      console.log(data[0].name);
+    });
   }
 
+  // tslint:disable-next-line:typedef
   open(content: any)
   {
     this.modalService.open(content , {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
@@ -72,75 +75,88 @@ export class LoginComponent implements OnInit {
   }
 
 
+  // tslint:disable-next-line:typedef
   login(){
     const loginForm = {
       username: this.loginForm.value.username,
       password: this.loginForm.value.password,
     };
-    this.loginService.login(loginForm).subscribe(data =>{
+    this.loginService.login(loginForm).subscribe(data => {
       if (data.token){
-        this.tokenService.setToken(data.token)
-        this.tokenService.setName(data.name)
-        this.tokenService.setUserName(data.username)
-        this.tokenService.setId(data.id)
-        this.tokenService.setAvartar(data.avatar)
-        this.tokenService.setRoles(data.roles)
-        console.log(this.tokenService.setRoles(data.roles))
+        this.tokenService.setToken(data.token);
+        this.tokenService.setName(data.name);
+        this.tokenService.setUserName(data.username);
+        this.tokenService.setId(data.id);
+        this.tokenService.setAvartar(data.avatar);
+        this.tokenService.setRoles(data.roles);
+        console.log(this.tokenService.setRoles(data.roles));
+        // tslint:disable-next-line:prefer-for-of
         for (let i = 0; i < this.tokenService.getRoles().length; i++) {
-          console.log(this.tokenService.getRoles()[i])
+          console.log(this.tokenService.getRoles()[i]);
+          // tslint:disable-next-line:triple-equals
           if (this.tokenService.getRoles()[i] == 'ADMIN'){
+            // tslint:disable-next-line:only-arrow-functions typedef
            this.router.navigate(['/admin']).then(function(){
              location.reload();
-           })
+           });
           }
+          // tslint:disable-next-line:triple-equals
           if (this.tokenService.getRoles()[i] == 'USER'){
-            location.reload()
+            location.reload();
           }
         }
       }
-    },err => {
-      console.log(err.status)
-      console.log(err)
-      console.log(err.statusText)
+    }, err => {
+      console.log(err.status);
+      console.log(err);
+      console.log(err.statusText);
+      // tslint:disable-next-line:triple-equals
       if (err.status == '401' || err.status == '400') {
         console.log('Sai tk');
         this.status = ' <img src="../assets/images/wrong' +
-          '.gif" width="30" height="30"> Please check your account or password'
-        this.loginForm.reset()
+          '.gif" width="30" height="30"> Please check your account or password';
+        this.loginForm.reset();
       }
+      // tslint:disable-next-line:triple-equals
       if (err.status == '423') {
         // @ts-ignore
-        this.status = `<img src="../assets/images/lock.gif" width="30" height="30"> Your account has been locked`
-        this.loginForm.reset()
+        this.status = `<img src="../assets/images/lock.gif" width="30" height="30"> Your account has been locked`;
+        this.loginForm.reset();
       }
-    })
+    });
   }
+  // tslint:disable-next-line:typedef
   isValidated(register: RegisterForm ){
-    return register.name != '' && register.username != '' && register.email != '' && register.password != '' && register.roles != []
+    // tslint:disable-next-line:triple-equals
+    return register.name != '' && register.username != '' && register.email != '' && register.password != '' && register.roles != [];
   }
+  // tslint:disable-next-line:typedef
   register() {
     this.submitted = true;
-    const registerForm : any = {
+    const registerForm: any = {
       username: this.registerForm.value.username,
       name: this.registerForm.value.name,
       password: this.registerForm.value.password,
       email: this.registerForm.value.email,
-      roles: ["user"]
-    }
+      roles: ['user']
+    };
     if (this.isValidated(registerForm)) {
       this.loginService.register(registerForm).subscribe(
         (data) => {
+          // tslint:disable-next-line:triple-equals
           if (data.message == 'nouser'){
-            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Username is duplicate !</span>'
+            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Username is duplicate !</span>';
+            // tslint:disable-next-line:align triple-equals
           }if (data.message == 'noemail'){
-            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Email is duplicate !</span>'
+            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Email is duplicate !</span>';
+            // tslint:disable-next-line:align triple-equals
           }if (data.message == 'yes'){
-            this.statusRegister = '<span  class="alert alert-success"><img src="../../../../assets/images/success.gif" width="35" height="35"> Success </span> '
+            this.statusRegister = '<span  class="alert alert-success"><img src="../../../../assets/images/success.gif" width="35" height="35"> Success </span> ';
           }
-        }, err=> {
-          console.log(err)
+        }, err => {
+          console.log(err);
         }
-      )
+      );
     }
   }
 }

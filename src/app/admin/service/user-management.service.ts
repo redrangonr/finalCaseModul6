@@ -25,4 +25,7 @@ export class UserManagementService {
   searchByUserName(username: string):Observable<User>{
     return this.http.get<User>(`${API_URL}/api/auth/admin/users/search/${username}`)
   }
+  findTopUserByPost():Observable<User>{
+    return this.http.get<User>(API_URL+"/api/auth/admin/users/top")
+  }
 }

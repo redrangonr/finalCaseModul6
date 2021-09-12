@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
-          <div class="post-block">
+          <div class="post-block" *ngIf="postInstand.status == 'public'" >
             <h1 class="blog-detail-title" >{{postInstand.title}}</h1>
             <div class="blog-credit">
               <div class="blog-credit_wrapper">
@@ -23,9 +23,45 @@
             <div class="row">
               <div class="col-12"><img style ="height: 150px;width: 970px" src="https://media0.giphy.com/media/xUOrwafTKBZR78xeyQ/200w.webp?cid=ecf05e476zxax8udkxpqo58eh92dxti6v5rpq4x7xkznf8ra&rid=200w.webp&ct=g" ></div>
             </div>
-            <h3 class="post-title">You Can Buy For Less Than A College Degree</h3>
-            <p class="blog-pragraph">Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut Aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum bore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com</p>
           </div>
+          <div *ngIf="postInstand.status == 'lock'" >
+            <div class="error-wrapper">
+              <div class="error-container error-500">
+                <div class="error">
+                  <div class="error-title">
+                    This post has been locked !!!
+                  </div>
+                  <div class="error-number">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                  </div>
+                  <div class="error-description">
+                    Contact Admin
+                  </div>
+                  <ul class="error-actions">
+                    <li>
+                      <a href="">
+                        <i class="pe-7s-left-arrow" data-toggle="tooltip" title="" data-original-title="BACK"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        <i class="pe-7s-home" data-toggle="tooltip" title="" data-original-title="HOME"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="">
+                        <i class="pe-7s-mail" data-toggle="tooltip" title="" data-original-title="CONTACT US"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <br>
+          <br>
+          <br>
           <div class="post-footer">
             <div class="row">
               <div class="col-sm-6">

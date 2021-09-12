@@ -15,6 +15,13 @@ content text-secondarybody{
   -webkit-box-orient: vertical;
   display: -webkit-box;
 }
+.titleSearch {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
 .career-form .form-control {
   background-color: rgba(105, 101, 101, 0.2);
   border: 0;
@@ -185,4 +192,23 @@ ul {
 }
 .mb-30 {
   margin-bottom: 30px;
+}
+.number {
+  color: #545b62;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-shadow: 0 3px 0 #292929, 0 14px 10px rgba(0, 0, 0, .15), 0 24px 2px rgba(0, 0, 0, .1), 0 34px 30px rgba(0, 0, 0, .1)
+}
+
+.name {
+  color: #545b62;
+  font-size: 15px;
+  font-weight: 700;
+  margin-left: 5px;
+}
+
+.topmember {
+  color: #525656;
+  font-size: 30px;
 }
