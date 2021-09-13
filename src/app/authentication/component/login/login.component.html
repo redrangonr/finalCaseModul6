@@ -32,12 +32,12 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button [disabled]="!loginForm.valid" class="btn btn-outline-danger" style="background-color: #e7a3a9">Login</button>
+        <button [disabled]="!loginForm.valid" class="btn btn-outline-primary">Login</button>
       </div>
     </form>
   </div>
     <div class="modal-footer">
-      <img src="https://images.pexels.com/photos/701816/pexels-photo-701816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" width="450" height="315" style="border-radius: 5px">
+      <img src="https://images.pexels.com/photos/2002719/pexels-photo-2002719.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="450" height="315" style="border-radius: 5px">
     </div>
   </div>
 </ng-template>
@@ -55,12 +55,14 @@
       <img src="https://cdn-icons-png.flaticon.com/128/4020/4020004.png" width="30" height="30" alt="logo">
       <img src="https://cdn-icons-png.flaticon.com/128/5243/5243185.png" width="30" height="30" alt="logo">
     </h3>
-    <span [innerHTML]="statusRegister"></span>
     <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
       <i class="fa fa-times"></i>
     </button>
   </div>
   <div class="modal-body">
+    <span [innerHTML]="statusRegister"></span>
+    <br>
+    <br>
     <form [formGroup]="registerForm" (ngSubmit)  = "register()">
       <div class="form-row">
         <div class="form-group col">
@@ -102,6 +104,7 @@
                 </div>
               </div>
             </div>
+
            </div>
          </div>
       <div class="modal-footer">
@@ -110,7 +113,7 @@
     </form>
   </div>
     <div class="modal-footer">
-      <img src="https://images.pexels.com/photos/673535/pexels-photo-673535.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="450" height="300" style="border-radius: 5px">
+      <img src="https://images.pexels.com/photos/942317/pexels-photo-942317.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="450" height="300" style="border-radius: 5px">
     </div>
   </div>
 </ng-template>
