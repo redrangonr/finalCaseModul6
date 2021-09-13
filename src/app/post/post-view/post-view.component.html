@@ -255,12 +255,21 @@
       </div>
       <form [formGroup]="email">
         <div class="modal-body">
-          <p>{{message}}</p>
+          <div class="row">
+            <div align="center" class="col-12">
+              <img src="{{img}}" alt="">
+            </div>
+          </div>
+          <div class="row">
+            <div align="center" class="col-12">
+              <p>{{message}}</p>
+            </div>
+          </div>
           <div class="row">
             <div class="col-3">
               <img width="100%" src="https://img.icons8.com/external-justicon-flat-justicon/2x/external-email-notifications-justicon-flat-justicon-1.png" alt="">
             </div>
-            <div class="col-9">
+            <div class="col-9 mt-4">
               <input  formControlName="detail" id="receiver-email" type="email" class="form-control">
             </div>
           </div>

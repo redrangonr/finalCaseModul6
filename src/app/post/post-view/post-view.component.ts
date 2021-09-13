@@ -13,6 +13,7 @@ import {Like} from '../../model/like';
   styleUrls: ['./post-view.component.css']
 })
 export class PostViewComponent implements OnInit {
+  img = '';
   message = '';
   email = new FormGroup({
     detail: new FormControl('', [Validators.required, Validators.email])
@@ -86,15 +87,18 @@ export class PostViewComponent implements OnInit {
   // tslint:disable-next-line:typedef
   sendEmail() {
 
-    if (this.email.controls?.detail.errors?.required) {
+    if (this.email.controls?.detail.errors?.required || this.email.value.detail.trim() === '') {
       console.log('required');
       this.message = 'Please fill in the form ';
+      this.img = 'https://img.icons8.com/color/2x/error--v3.gif';
       // @ts-ignore
     } else if (this.email.controls?.detail.errors?.email) {
       console.log('pattern');
       this.message = 'Wrong email';
+      this.img = 'https://img.icons8.com/color/2x/error--v3.gif';
     } else {
       this.message = 'Success';
+      this.img = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
       this.postService.shareEmail(this.id, this.email.value.detail).subscribe(() => {
         console.log('ok');
         window.location.reload();
@@ -104,9 +108,11 @@ export class PostViewComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   resetModal() {
+    this.img = '';
     this.message = '';
     // @ts-ignore
     document.getElementById('receiver-email').value = '';
+    this.email.value.detail = '';
   }
 
   // tslint:disable-next-line:typedef
@@ -123,13 +129,13 @@ export class PostViewComponent implements OnInit {
 
       this.likeService.create(like, this.id).subscribe(data => {
           console.log(data);
-          alert('thanh cong');
+          // alert('thanh cong');
           this.getById(this.id);
           // @ts-ignore
           document.getElementById('like-icon').style.color = 'blue';
         }, error => {
           this.getById(this.id);
-          alert(error);
+          // alert(error);
           // @ts-ignore
           document.getElementById('like-icon').style.color = '#9f9696';
         }
