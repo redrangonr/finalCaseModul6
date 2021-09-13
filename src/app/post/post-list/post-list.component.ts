@@ -96,7 +96,6 @@ export class PostListComponent implements OnInit {
       // @ts-ignore
       this.posts = data;
     });
-
   }
 
   getTopUser() {
@@ -237,18 +236,14 @@ export class PostListComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
-
-  // getlikesByIdpost(id: any){
-  //   this.likeservice.findLikeByIdPost(id).subscribe(data=>{
-  //     console.log(data)
-  //     console.log("0k")
-  //     for (let i = 0; i < data.length; i++) {
-  //       if (data.post.id == id){
-  //         this.likePost = data.length
-  //       }
-  //
-  //     }
-  //   });
-  // }
+  getlikesByIdpost(id: any): any{
+   let a = 0
+    this.likeservice.findLikeByIdPost(id).subscribe(data=>{
+      console.log(data)
+     a = + data.length;
+    });
+    console.log(a)
+    return a
+  }
 
 }

@@ -14,8 +14,8 @@ export class LikeService {
   getAll(): Observable<Like[]> {
     return this.httpClient.get<Like[]>(API_URL + '/api/likes');
   }
-  create(like: Like): Observable<any> {
-    return this.httpClient.post<Like>(API_URL + '/api/likes/create', like);
+  create(like: Like,id : number): Observable<any> {
+    return this.httpClient.post<Like>(API_URL + '/api/likes/create/'+id, like);
   }
   delete(id: number): Observable<any> {
     return this.httpClient.delete<any>(API_URL + '/api/likes/delete/' + id);

@@ -43,10 +43,7 @@ const routes: Routes = [
     path: 'user/:id',
     component: UserDetailComponent
   }
-  // {
-  //   path: '**',
-  //   component: ErrorComponent
-  // }
+
 ];
 
 @NgModule({

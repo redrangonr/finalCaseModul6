@@ -9,4 +9,5 @@ export interface Post {
   user?: any;
   hashtag?: any;
   comment_count ?: any;
+  count?: any;
 }
