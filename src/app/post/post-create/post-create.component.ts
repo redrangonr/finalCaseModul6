@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+  import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../service/post.service';
 import {Observable} from 'rxjs';

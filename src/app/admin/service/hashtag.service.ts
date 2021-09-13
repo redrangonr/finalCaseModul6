@@ -15,6 +15,10 @@ export class HashtagService {
     return this.http.get<Hashtag>(API_URL+"/api/auth/hashtags")
   }
 
+  getTop(): Observable<Hashtag>{
+    return this.http.get<Hashtag>(API_URL+"/api/auth/hashtags/top")
+  }
+
   findById(id: number): Observable<Hashtag>{
     return this.http.get<Hashtag>(`${API_URL}/api/auth/hashtags/${id}`);
   }

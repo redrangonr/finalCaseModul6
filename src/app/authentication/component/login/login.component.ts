@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  status: any = 'Please login your account';
+  status: any = '<i class="fa fa-keyboard"></i>  Please login your account';
   statusRegister: any = '';
 
   registerForm: any = this.fb.group({
@@ -145,13 +145,13 @@ export class LoginComponent implements OnInit {
         (data) => {
           // tslint:disable-next-line:triple-equals
           if (data.message == 'nouser'){
-            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Username is duplicate !</span>';
+            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="30" width="30"> Your Username is duplicate !</span>';
             // tslint:disable-next-line:align triple-equals
           }if (data.message == 'noemail'){
-            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="35" width="35"> Your Email is duplicate !</span>';
+            this.statusRegister = '<span  class="alert alert-danger"><img src="../../../../assets/images/sad1.gif" height="30" width="30"> Your Email is duplicate !</span>';
             // tslint:disable-next-line:align triple-equals
           }if (data.message == 'yes'){
-            this.statusRegister = '<span  class="alert alert-success"><img src="../../../../assets/images/success.gif" width="35" height="35"> Success </span> ';
+            this.statusRegister = '<span  class="alert alert-success"><img src="../../../../assets/images/success.gif" width="30" height="35"> Success </span> ';
           }
         }, err => {
           console.log(err);

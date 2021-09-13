@@ -4,6 +4,7 @@ import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {Post} from '../../model/post';
 import {Hashtag} from '../../admin/model/hashtag';
+import {User} from '../../admin/model/user';
 
 const API_URL = `${environment.apiUrl}`;
 
@@ -80,5 +81,11 @@ export class PostService {
   }
   shareEmail(id: number, email: string): Observable<any> {
     return this.httpClient.get<any>(API_URL + '/api/email/' + id + '/' + email);
+  }
+  findTop(): Observable<Post[]> {
+    return this.httpClient.get<Post[]>(API_URL + '/api/posts/search/date/'+ 4)
+  }
+  findTopComment():Observable<Post>{
+    return this.httpClient.get<Post>(API_URL+'/api/posts/comments/top')
   }
 }

@@ -1,4 +1,4 @@
-body{
+content text-secondarybody{
   background:#f5f5f5;
   margin-top:20px;}
 
@@ -211,4 +211,11 @@ ul {
 .topmember {
   color: #525656;
   font-size: 30px;
+}
+.contentTop{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }

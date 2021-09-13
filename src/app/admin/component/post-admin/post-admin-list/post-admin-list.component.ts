@@ -54,7 +54,7 @@ export class PostAdminListComponent implements OnInit {
   }
 
   findPostById(id: any) {
-    this.postService.get(id).subscribe(data => {
+    this.postService.get(id).subscribe(data=>{
       this.postForm = new FormGroup({
         id: new FormControl(data.id),
         title: new FormControl(data.title, [Validators.required]),
@@ -65,36 +65,35 @@ export class PostAdminListComponent implements OnInit {
         date: new FormControl(data.date),
         user: new FormControl(data.user.id),
         hashtag: new FormControl(data.hashtag.id)
-      });
-    });
+      })
+    })
 
   }
-
-  updateStatus() {
-    const post = {
+   updateStatus(){
+    const post ={
       id: this.postForm.value.id,
-      title: this.postForm.value.title,
-      image: this.postForm.value.image,
-      status: this.postForm.value.status,
-      description: this.postForm.value.description,
-      content: this.postForm.value.content,
-      date: this.postForm.value.date,
+      title: this.postForm.value.title ,
+      image: this.postForm.value.image ,
+      status: this.postForm.value.status ,
+      description: this.postForm.value.description ,
+      content: this.postForm.value.content ,
+      date: this.postForm.value.date ,
       user: {
         id: this.postForm.value.user
       },
       hashtag: {
         id: this.postForm.value.hashtag
       }
-    };
-    this.postService.edit(post).subscribe(data => {
-      this.status = 'Update Success ! <img src=\'https://cdn-icons-png.flaticon.com/128/845/845646.png\' height=\'40\' width=\'40\'>';
-      this.getAll();
+    }
+    this.postService.edit(post).subscribe(data =>{
+      this.status = "Update Success ! <img src='https://cdn-icons-png.flaticon.com/128/845/845646.png' height='40' width='40'>"
+      this.getAll()
     }, error => {
-      this.status = 'False !';
-    });
+      this.status = "False !"
+    })
 
 
-  }
+   }
 
 
   selectEvent(item: any) {
@@ -153,7 +152,7 @@ export class PostAdminListComponent implements OnInit {
         this.posts = data
       })
     }if (status == ''){
-        this.getAll()
+      this.getAll()
     }
   }
 
@@ -179,13 +178,17 @@ export class PostAdminListComponent implements OnInit {
     });
   }
 
+
+
   tabSize(event: any) {
     this.page = event;
+    this.getAll();
   }
 
   tableData(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
+    this.getAll();
   }
 
   infoPost(id: any) {

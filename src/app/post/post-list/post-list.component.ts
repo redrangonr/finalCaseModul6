@@ -4,12 +4,11 @@ import {Post} from '../../model/post';
 import {HashtagService} from '../../admin/service/hashtag.service';
 import {Hashtag} from '../../admin/model/hashtag';
 import {NgbCalendar, NgbDate, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
-import {Observable, Subject} from 'rxjs';
-import {startWith} from 'rxjs/internal/operators/startWith';
-import {map} from 'rxjs/operators';
-import {FormControl} from '@angular/forms';
+import {LikeService} from '../../services/like.service';
 import {UserManagementService} from '../../admin/service/user-management.service';
 import {User} from '../../admin/model/user';
+import {Like} from 'src/app/model/like';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-post-list',
@@ -17,7 +16,13 @@ import {User} from '../../admin/model/user';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-  topUser: User[] =[];
+  keyword = 'title';
+  topLikePost: Like[] = [];
+  topHashtag: Hashtag[] = [];
+  postTopComment: Post[] = [];
+  id = 0;
+  like = 0;
+  topUser: User[] = [];
   posts: Post[] = [];
   page = 1;
   count = 0;
@@ -28,26 +33,26 @@ export class PostListComponent implements OnInit {
   hoveredDate: NgbDate | null = null;
 
   fromDate: NgbDate | null;
-  toDate: NgbDate | null;
-
-  keyword = 'title';
-
   data: Post[] = [];
+  toDate: NgbDate | null;
 
   constructor(private postService: PostService,
               private hashtagService: HashtagService,
               private calendar: NgbCalendar,
               public formatter: NgbDateParserFormatter,
-              private userService: UserManagementService) {
+              private userService: UserManagementService,
+              private likeservice: LikeService) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
   }
 
-
   ngOnInit(): void {
     this.getAll();
     this.getAllHashtag();
-    this.getTopUser()
+    this.getTopUser();
+    this.getTopPost();
+    this.getTopHashtag();
+    this.getTopComment();
   }
 
   selectEvent(item: any) {
@@ -91,13 +96,36 @@ export class PostListComponent implements OnInit {
       // @ts-ignore
       this.posts = data;
     });
+
   }
 
-  getTopUser(){
-    this.userService.findTopUserByPost().subscribe(data=>{
+  getTopUser() {
+    this.userService.findTopUserByPost().subscribe(data => {
       // @ts-ignore
-      this.topUser = data
-    })
+      this.topUser = data;
+    });
+  }
+
+  getTopPost() {
+    this.likeservice.findTop5Like().subscribe(data => {
+      // @ts-ignore
+      this.topLikePost = data;
+      console.log(data);
+    });
+  }
+
+  getTopHashtag() {
+    this.hashtagService.getTop().subscribe(data => {
+      // @ts-ignore
+      this.topHashtag = data;
+    });
+  }
+
+  getTopComment() {
+    this.postService.findTopComment().subscribe(data => {
+      // @ts-ignore
+      this.postTopComment = data;
+    });
   }
 
   getAllHashtag() {
@@ -105,6 +133,18 @@ export class PostListComponent implements OnInit {
       // @ts-ignore
       this.hashtags = data;
     });
+  }
+
+  addBookmark(id: any){
+    sessionStorage.setItem('bookmark',id);
+  }
+
+  getBookmark(){
+    // @ts-ignore
+    const id = +sessionStorage.getItem('bookmark')
+    this.postService.get(id).subscribe(data=>{
+      this.posts = [data]
+    })
   }
 
   // tslint:disable-next-line:typedef
@@ -124,11 +164,13 @@ export class PostListComponent implements OnInit {
 
   tabSize(event: any) {
     this.page = event;
+    this.getAll();
   }
 
   tableData(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
+    this.getAll();
   }
 
   infoPost(id: any) {
@@ -150,13 +192,13 @@ export class PostListComponent implements OnInit {
     if (dayStart == '' && dayEnd == '') {
       location.reload();
     }
-    if (dayEnd == ''){
+    if (dayEnd == '') {
       this.postService.findByDate(timeStart, timeStart1).subscribe(data => {
         // @ts-ignore
         this.posts = data;
       });
     }
-    if (dayEnd == ''){
+    if (dayEnd == '') {
       this.postService.findByDate(timeStartDefault, timeEnd).subscribe(data => {
         // @ts-ignore
         this.posts = data;
@@ -195,4 +237,18 @@ export class PostListComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
+
+  // getlikesByIdpost(id: any){
+  //   this.likeservice.findLikeByIdPost(id).subscribe(data=>{
+  //     console.log(data)
+  //     console.log("0k")
+  //     for (let i = 0; i < data.length; i++) {
+  //       if (data.post.id == id){
+  //         this.likePost = data.length
+  //       }
+  //
+  //     }
+  //   });
+  // }
+
 }
