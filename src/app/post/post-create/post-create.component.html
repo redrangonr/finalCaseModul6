@@ -79,9 +79,14 @@
           </nav>
         </div>
       </div>
-      <div class=""><img  style="width: 100%"  src="{{fb}}" alt=""></div>
-      <div><img src="https://img.icons8.com/office/2x/upload-to-cloud.gif" alt=""></div>
-      <div>{{progress}}</div>
+      <div id="upload">
+      <div *ngIf="!uploading" class=""><img  style="width: 100%"  src="{{fb}}" alt=""></div>
+      <div *ngIf="uploading" style="color: #1aafff; font-size: 25px">
+      <div align="center"><img src="https://img.icons8.com/office/2x/upload-to-cloud.gif" alt=""></div>
+      <div align="center">{{progress}}%</div>
+      </div>
+      <div *ngIf="fb === 'wrong' && !uploading" align="center"><img src="https://img.icons8.com/ios/2x/laptop-alert--v3.gif" alt=""></div>
+      </div>
     </div>
     <div class="col-md-8">
       <div class="card">
@@ -302,13 +307,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">{{notification}}</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
       </div>
       <div class="modal-body">
 
         <div align="center"><img src="{{notificationImg}}" alt=""></div>
       </div>
       <div class="modal-footer">
+        <button *ngIf="fb === 'wrong'" (click)="setDefaultImg()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Default</button>
         <button type="button" routerLink="/post/list" class="btn btn-primary" data-bs-dismiss="modal">Home</button>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>

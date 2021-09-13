@@ -19,7 +19,7 @@ export class PostCreateComponent implements OnInit {
   // @ts-ignore
   selectedFile: File = null;
   // @ts-ignore
-  fb = '';
+  fb = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
   // @ts-ignore
   downloadURL: Observable<string>;
   // @ts-ignore
@@ -38,6 +38,7 @@ export class PostCreateComponent implements OnInit {
   notification = '';
   notificationImg = '';
   progress = 0;
+  uploading = false;
 
   constructor(private tokenService: TokenService,
               private postService: PostService,
@@ -123,9 +124,9 @@ export class PostCreateComponent implements OnInit {
       newPost.date = new Date();
       newPost.hashtag = {id: this.post.value.hashtag};
       newPost.image = this.fb;
-      if (newPost.image === '') {
-        newPost.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
-      }
+      // if (newPost.image === '') {
+      //   newPost.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
+      // }
       console.log(newPost);
       if (newPost.title.trim() === '' || newPost.title === null) {
         this.notification = 'Thiếu title';
@@ -178,9 +179,17 @@ export class PostCreateComponent implements OnInit {
       )
       .subscribe(url => {
         if (url) {
-          this.progress = url.bytesTransferred / url.totalBytes * 100;
+          this.uploading = true;
+          this.progress = Math.round(url.bytesTransferred / url.totalBytes * 100) ;
+          if (this.progress === 100) {
+            this.uploading = false;
+          }
         }
       });
+  }
+  // tslint:disable-next-line:typedef
+  setDefaultImg() {
+    this.fb = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
   }
 
   // tslint:disable-next-line:typedef
