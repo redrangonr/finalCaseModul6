@@ -28,4 +28,7 @@ export class UserManagementService {
   findTopUserByPost(): Observable<User>{
     return this.http.get<User>(API_URL+"/api/auth/admin/users/top")
   }
+  changePassword(changePasswordForm: any):Observable<User>{
+    return this.http.post<User>(API_URL+"/api/auth/password",changePasswordForm)
+  }
 }
