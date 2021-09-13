@@ -197,14 +197,14 @@ export class PostListComponent implements OnInit {
     const parsed = this.formatter.parse(input);
     return parsed && this.calendar.isValid(NgbDate.from(parsed)) ? NgbDate.from(parsed) : currentValue;
   }
-  // getlikesByIdpost(id: any): any{
-  //  let a = 0
-  //   this.likeservice.findLikeByIdPost(id).subscribe(data=>{
-  //     console.log(data)
-  //    a = + data.length;
-  //   });
-  //   console.log(a)
-  //   return a
-  // }
+  getlikesByIdpost(id: any): any{
+   let a = 0
+    this.likeservice.findLikeByIdPost(id).subscribe(data=>{
+      console.log(data)
+     a = + data.length;
+    });
+    console.log(a)
+    return a
+  }
 
 }

@@ -89,7 +89,7 @@ if(sessionStorage.getItem('Id_key')) {
       id: this.idUser
     }
   }
-  this.likeService.create(like).subscribe(data => {
+  this.likeService.create(like,this.id).subscribe(data => {
     console.log(data);
       alert("thanh cong")
   },error => {alert("loi")}
