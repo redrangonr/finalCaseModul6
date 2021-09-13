@@ -22,8 +22,8 @@ import { FollowUsHomeComponent } from './home/follow-us-home/follow-us-home.comp
 import { RecentPostComponent } from './home/recent-post/recent-post.component';
 import { SignupEmailAdsComponent } from './home/signup-email-ads/signup-email-ads.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import {NgbNavModule, NgbToastModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
-import {ReactiveFormsModule} from '@angular/forms';
+import {NgbNavModule, NgbToastModule, NgbTooltipModule, NgbTypeaheadModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {PostModule} from './post/post.module';
 import {EditorModule} from '@tinymce/tinymce-angular';
@@ -44,6 +44,10 @@ import {MypostComponent} from './user-detail/mypost/mypost.component';
 import { HashtagPostComponent } from './home/slide-hashtag/hashtag-post/hashtag-post.component';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { ChangePasswordComponent } from './user-detail/change-password/change-password.component';
+import {CommentListComponent} from './commentpost/comment-list/comment-list.component';
+import {CommentCreateComponent} from './commentpost/comment-create/comment-create.component';
+import {CommentEditComponent} from './commentpost/comment-edit/comment-edit.component';
+import {CommentDeleteComponent} from './commentpost/comment-delete/comment-delete.component';
 
 
 @NgModule({
@@ -68,25 +72,29 @@ import { ChangePasswordComponent } from './user-detail/change-password/change-pa
     MypostComponent,
     HashtagPostComponent,
     ChangePasswordComponent,
-
+    CommentListComponent,
+    CommentCreateComponent,
+    CommentEditComponent,
+    CommentDeleteComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        LoginModule,
-        NgxPaginationModule,
-        NgbNavModule,
-        ReactiveFormsModule,
-        NgbTooltipModule,
-        HttpClientModule,
-        PostModule,
-        EditorModule,
-        AngularFireStorageModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
-        LoginModule,
-        NgbNavModule,
-        AutocompleteLibModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    LoginModule,
+    NgxPaginationModule,
+    NgbNavModule,
+    ReactiveFormsModule,
+    NgbTooltipModule,
+    HttpClientModule,
+    EditorModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
+    LoginModule,
+    NgbNavModule,
+    FormsModule,
+    NgbTypeaheadModule,
+    AutocompleteLibModule
+  ],
   providers: [],
     exports: [
         NavbarComponent

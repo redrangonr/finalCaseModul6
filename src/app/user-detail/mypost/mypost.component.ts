@@ -4,7 +4,7 @@ import {Post} from '../../model/post';
 import {updatePlaceholderMap} from '@angular/compiler/src/render3/view/i18n/util';
 import {HashtagService} from '../../admin/service/hashtag.service';
 
-// @ts-ignore
+
 @Component({
   selector: 'app-mypost',
   templateUrl: './mypost.component.html',
