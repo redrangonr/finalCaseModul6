@@ -122,6 +122,7 @@
             <p>day la comment </p>
 
             <div *ngFor="let commment of listComment">
+
               <div>{{commment.text}}
                 <button *ngIf="idUser == commment.user.id" (click)="deleteComment(commment.id)">delete</button>
               </div>

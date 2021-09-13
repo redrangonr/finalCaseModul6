@@ -138,6 +138,7 @@ export class PostViewComponent implements OnInit {
     // console.log( this.comments);
   }
 
+  // tslint:disable-next-line:typedef
   deleteComment(id: any) {
     // console.log(id);
     this.commentService.deleteComment(id).subscribe(
