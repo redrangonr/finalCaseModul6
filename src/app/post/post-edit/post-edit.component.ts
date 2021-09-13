@@ -41,6 +41,8 @@ export class PostEditComponent implements OnInit {
   // @ts-ignore
   idPost: number;
   navigateTo = '';
+  progress = 0;
+  uploading = false;
 
   constructor(private postService: PostService,
               private storage: AngularFireStorage,
@@ -106,9 +108,10 @@ export class PostEditComponent implements OnInit {
     this.blockLink();
   }
 
-  blockLink(){
-    if (!this.tokenService.getToken()){
-      this.router.navigate(['/home'])
+  // tslint:disable-next-line:typedef
+  blockLink() {
+    if (!this.tokenService.getToken()) {
+      this.router.navigate(['/home']);
     }
   }
 
@@ -147,7 +150,11 @@ export class PostEditComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              this.fb = url;
+              if (file.name[file.name.length - 1] !== 'g'){
+                this.fb = 'wrong';
+              }else {
+                this.fb = url;
+              }
             }
             console.log(this.fb);
           });
@@ -155,7 +162,11 @@ export class PostEditComponent implements OnInit {
       )
       .subscribe(url => {
         if (url) {
-          console.log(url);
+          this.uploading = true;
+          this.progress = Math.round(url.bytesTransferred / url.totalBytes * 100);
+          if (this.progress === 100) {
+            this.uploading = false;
+          }
         }
       });
   }
@@ -171,24 +182,25 @@ export class PostEditComponent implements OnInit {
     if (newPost.title.trim() === '') {
       this.notification = 'Thiếu title';
       this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
-      this.navigateTo = '/post/edit/' + this.idPost;
-    } else { // @ts-ignore
-      if (newPost.content.trim() === '') {
-        this.notification = 'Thiếu content';
-        this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
-        this.navigateTo = '/post/edit/' + this.idPost;
-      } else {
-        this.postService.edit(newPost).subscribe(data => {
-          console.log(data);
-          this.notification = 'success';
-          this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
-          this.navigateTo = '/user/' + this.idUser;
-          // this.router.navigate(['/user/' + this.idUser]);
-        });
-      }
+    } else if (newPost.content?.trim() === '') {
+      this.notification = 'Thiếu content';
+      this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
+    } else if (this.fb === 'wrong') {
+      this.notification = 'File tải lên không phải ảnh, Thử lại !';
+      this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
+    } else {
+      this.postService.edit(newPost).subscribe(data => {
+        console.log(data);
+        this.notification = 'success';
+        this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
+        this.navigateTo = '/user/' + this.idUser;
+        // this.router.navigate(['/user/' + this.idUser]);
+      });
     }
+
     console.log(newPost);
   }
+
   // tslint:disable-next-line:typedef
   // reset() {
   //   this.getById(this.idPost);

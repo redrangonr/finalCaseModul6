@@ -9,7 +9,6 @@ import {HashtagService} from '../../admin/service/hashtag.service';
 import {TokenService} from '../../authentication/service/token.service';
 
 
-
 @Component({
   selector: 'app-post-create',
   templateUrl: './post-create.component.html',
@@ -20,7 +19,7 @@ export class PostCreateComponent implements OnInit {
   // @ts-ignore
   selectedFile: File = null;
   // @ts-ignore
-  fb = '';
+  fb = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
   // @ts-ignore
   downloadURL: Observable<string>;
   // @ts-ignore
@@ -38,13 +37,15 @@ export class PostCreateComponent implements OnInit {
   hashtags: any;
   notification = '';
   notificationImg = '';
+  progress = 0;
+  uploading = false;
 
   constructor(private tokenService: TokenService,
               private postService: PostService,
               private storage: AngularFireStorage,
               private router: Router,
               private hashtagService: HashtagService
-                                                 ) {
+  ) {
     this.hashtagService.getAll().subscribe(data => {
       this.hashtags = data;
       // console.log(this.hashtags);
@@ -98,8 +99,8 @@ export class PostCreateComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  blockLink(){
-    if (!this.tokenService.getToken()){
+  blockLink() {
+    if (!this.tokenService.getToken()) {
       this.router.navigate(['/home']);
     }
   }
@@ -123,15 +124,18 @@ export class PostCreateComponent implements OnInit {
       newPost.date = new Date();
       newPost.hashtag = {id: this.post.value.hashtag};
       newPost.image = this.fb;
-      if (newPost.image === '') {
-        newPost.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
-      }
+      // if (newPost.image === '') {
+      //   newPost.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
+      // }
       console.log(newPost);
       if (newPost.title.trim() === '' || newPost.title === null) {
-       this.notification = 'Thiếu title';
-       this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
+        this.notification = 'Thiếu title';
+        this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
       } else if (newPost.content.trim() === '' || newPost.content === null) {
         this.notification = 'Thiếu content';
+        this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
+      } else if (this.fb === 'wrong') {
+        this.notification = 'File tải lên không phải ảnh, Thử lại !';
         this.notificationImg = 'https://img.icons8.com/color/2x/error--v3.gif';
       } else {
         this.postService.create(newPost).subscribe(() => {
@@ -140,7 +144,7 @@ export class PostCreateComponent implements OnInit {
         this.notificationImg = 'https://img.icons8.com/color/2x/good-quality--v2.gif';
         this.reset();
       }
-    }else {
+    } else {
       console.log('qq, đăng nhập đê');
     }
   }
@@ -152,6 +156,7 @@ export class PostCreateComponent implements OnInit {
 
     const n = Date.now();
     const file = event.target.files[0];
+    console.log(file.name);
     const filePath = `RoomsImages/${n}`;
     const fileRef = this.storage.ref(filePath);
     const task = this.storage.upload(`RoomsImages/${n}`, file);
@@ -162,7 +167,11 @@ export class PostCreateComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              this.fb = url;
+              if (file.name[file.name.length - 1] !== 'g'){
+                this.fb = 'wrong';
+              }else {
+                this.fb = url;
+              }
             }
             console.log(this.fb);
           });
@@ -170,10 +179,19 @@ export class PostCreateComponent implements OnInit {
       )
       .subscribe(url => {
         if (url) {
-          console.log(url);
+          this.uploading = true;
+          this.progress = Math.round(url.bytesTransferred / url.totalBytes * 100) ;
+          if (this.progress === 100) {
+            this.uploading = false;
+          }
         }
       });
   }
+  // tslint:disable-next-line:typedef
+  setDefaultImg() {
+    this.fb = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
+  }
+
   // tslint:disable-next-line:typedef
   reset() {
     this.post = new FormGroup({
