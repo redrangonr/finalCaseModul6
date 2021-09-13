@@ -114,6 +114,7 @@ if(sessionStorage.getItem('Id_key')) {
       id: this.idUser
     }
   }
+
   this.likeService.create(like,this.id).subscribe(data => {
     console.log(data);
       alert("thanh cong")
@@ -121,7 +122,6 @@ if(sessionStorage.getItem('Id_key')) {
     )
 }
   }
-
 
   check() {
     if (sessionStorage.getItem('Id_key')) {
