@@ -36,6 +36,7 @@ export class PostViewComponent implements OnInit {
   // @ts-ignore
   idUser = +sessionStorage.getItem('Id_key');
 
+
   constructor(private postService: PostService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -72,7 +73,8 @@ export class PostViewComponent implements OnInit {
         content: data.content,
         date: data.date,
         user: data.user,
-        hashtag: data.hashtag
+        hashtag: data.hashtag,
+        count: data.count
       };
       if (this.postInstand.image === null) {
         this.postInstand.image = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';
@@ -95,7 +97,7 @@ export class PostViewComponent implements OnInit {
       this.message = 'Success';
       this.postService.shareEmail(this.id, this.email.value.detail).subscribe(() => {
         console.log('ok');
-        // window.location.reload();
+        window.location.reload();
       });
     }
   }
@@ -122,9 +124,11 @@ export class PostViewComponent implements OnInit {
       this.likeService.create(like, this.id).subscribe(data => {
           console.log(data);
           alert('thanh cong');
+          this.getById(this.id);
           // @ts-ignore
           document.getElementById('like-icon').style.color = 'blue';
         }, error => {
+          this.getById(this.id);
           alert(error);
           // @ts-ignore
           document.getElementById('like-icon').style.color = '#9f9696';
