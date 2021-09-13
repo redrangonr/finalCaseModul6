@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
     console.log(this.role)
   }
   logout(){
-    let cf = confirm('You want to sign out')
+    let cf = confirm('You want to sign out?')
     if (cf){
       sessionStorage.clear()
       this.router.navigate(['/home']).then(function(){
