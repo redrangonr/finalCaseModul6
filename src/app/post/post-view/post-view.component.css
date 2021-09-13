@@ -136,6 +136,7 @@
   background-color: #34b5dc
 }
 
+
 @media only screen and (max-width:600px) {
   .error-wrapper {
     padding-top: 5%

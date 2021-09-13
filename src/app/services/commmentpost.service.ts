@@ -24,6 +24,10 @@ export class CommmentpostService {
 
   // lay list comment theo id bai post
   getListComment(id: any): Observable<any>{
-    return this.httpClient.get<any[]>(API_URL + '/api/auth/comment/' + `${id}`);
+    return this.httpClient.get<any[]>(API_URL + '/api/auth/comment/' + id);
+  }
+
+  findById(id: any): Observable<any>{
+    return  this.httpClient.get<any>(API_URL+ "/api/auth/comment/comment/"+id);
   }
 }
