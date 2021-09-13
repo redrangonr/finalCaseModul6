@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', Validators.required),
   });
 
-  status: any = '<i class="fa fa-keyboard"></i>  Please login your account';
+  status: any = 'Please login your account';
   statusRegister: any = '';
 
   registerForm: any = this.fb.group({
