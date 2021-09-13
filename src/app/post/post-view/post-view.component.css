@@ -135,6 +135,9 @@
 .error-wrapper .error-container.error-401 .error .error-or .or {
   background-color: #34b5dc
 }
+i{
+  color: blue;
+}
 
 @media only screen and (max-width:600px) {
   .error-wrapper {
@@ -155,4 +158,5 @@
     transform: skew(0deg, 5deg);
     width: auto
   }
+
 }

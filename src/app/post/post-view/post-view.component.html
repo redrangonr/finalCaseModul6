@@ -34,7 +34,7 @@
             <p class="blog-pragraph" [innerHTML]="postInstand.content"></p>
             <div class="blog-quote">
               <q> end !!!</q>
-              <a href="#id-author-info" style="text-decoration: none" class="quote-author">{{postInstand.user.name}}</a>
+              <a href="#id-author-info" style="text-decoration: none" class="quote-author" routerLink="/post/list/{{postInstand.user.id}}" >{{postInstand.user.name}}</a>
             </div>
             <div class="row">
               <div class="col-12"><img style ="height: 150px;width: 970px" src="https://media0.giphy.com/media/xUOrwafTKBZR78xeyQ/200w.webp?cid=ecf05e476zxax8udkxpqo58eh92dxti6v5rpq4x7xkznf8ra&rid=200w.webp&ct=g" ></div>
@@ -86,8 +86,9 @@
               <div class="col-sm-6 text-sm-right">
                 <div class="post-share">
                   <p data-bs-toggle="modal" data-bs-target="#exampleModal1" >Share: </p>
+
                   <div class="socials">
-                    <button><i class="fas fa-thumbs-up" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="createLike()"> </i></button>
+                    <button><i class="fas fa-thumbs-up" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="createLike()" > </i></button>
                     <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
@@ -122,11 +123,11 @@
 
                 <!--                author description-->
 
-                <div class="author-avatar"><img src="https://img.icons8.com/ios-filled/2x/user.png"></div>
+                <div class="author-avatar"><img src="{{postInstand.user.avatar}}"></div>
               </div>
               <div class="col-sm-7 col-md-9">
                 <div  class="author-info">
-                  <h5 id="id-author-info">{{postInstand.user.name}}</h5>
+                  <h5 id="id-author-info" routerLink="/post/list/{{postInstand.user.id}}">{{postInstand.user.name}}</h5>
                   <p>This is something about author </p>
                   <div class="author-social"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
                 </div>
