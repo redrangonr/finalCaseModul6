@@ -75,11 +75,12 @@ export class UserEditComponent implements OnInit {
     }
     console.log(user)
     this.userService.update(id,user).subscribe(()=>{
-        alert("Update success")
-      this.router.navigate(['/admin']).then(function(){
-        location.reload()
-      });
+
     })
+  }
+
+  reload(){
+    location.reload()
   }
 
   ngOnInit(): void {

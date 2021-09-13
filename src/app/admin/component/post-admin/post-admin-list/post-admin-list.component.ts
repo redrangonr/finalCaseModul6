@@ -28,7 +28,7 @@ export class PostAdminListComponent implements OnInit {
 
   page = 1;
   count = 0;
-  tableSize = 5;
+  tableSize = 6;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = [];
@@ -51,6 +51,10 @@ export class PostAdminListComponent implements OnInit {
     this.getAll();
     this.getAllHashtag();
 
+  }
+
+  pinPost(id: any){
+    sessionStorage.setItem('pin_post',id)
   }
 
   findPostById(id: any) {

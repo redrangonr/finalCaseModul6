@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-outline-info" (click)="modal.close('Save click')" style="width: 100px">Save</button>
+        <button class="btn btn-outline-info" (click)="modal.close('Save click')" style="width: 100px" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
       </div>
     </form>
   </div>
@@ -153,3 +153,23 @@
     </div>
   </div>
 </form>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        Update Success <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" width="40" height="40">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reload()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

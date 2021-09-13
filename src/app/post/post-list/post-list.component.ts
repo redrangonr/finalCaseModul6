@@ -98,6 +98,13 @@ export class PostListComponent implements OnInit {
     });
   }
 
+  findTagById(id: any){
+    this.postService.findAllByHashtag(id).subscribe(data=>{
+      // @ts-ignore
+      this.posts = data
+    })
+  }
+
   getTopUser() {
     this.userService.findTopUserByPost().subscribe(data => {
       // @ts-ignore

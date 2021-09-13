@@ -14,7 +14,7 @@ export class HashtagPostComponent implements OnInit {
   posts: Post[] = [];
   page = 1;
   count = 0;
-  tableSize = 8 ;
+  tableSize =6 ;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = []

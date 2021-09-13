@@ -67,6 +67,10 @@ export class UserDetailComponent implements OnInit {
     this.getUser(this.id);
   }
 
+  reset(){
+    location.reload()
+  }
+
   blockLink() {
     if (+this.id != this.idOther) {
       this.router.navigate(['/home']);

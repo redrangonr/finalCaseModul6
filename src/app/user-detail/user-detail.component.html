@@ -8,8 +8,8 @@
 
         <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center" style="border-radius: 10px;background-color: #eff2f5">
           <div class="team-single-img">
-            <img [hidden]="fb" src="{{avatar}}" width="86%" height="100" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
-            <img [hidden]="!fb" src="{{fb}}" width="86%" height="100" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
+            <img [hidden]="fb" src="{{avatar}}" width="100%" height="90" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
+            <img [hidden]="!fb" src="{{fb}}" width="100%" height="100" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
 
               <form [formGroup]="userForm" (ngSubmit)="updateAvatar()">
                 <input type ="hidden"  formControlName="name">
@@ -25,6 +25,7 @@
                 <input [hidden]="fb" type="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off"  class="form-control-file" id="file">
                 <br>
                 <button type="submit" [hidden]="!fb" class="btn btn-outline-success">Save</button>
+                <button type="submit" (click)="reset()" [hidden]="!fb" class="btn btn-outline-secondary">Cancel</button>
               </form>
 
           </div>
@@ -248,4 +249,6 @@
     </div>
   </div>
 </div>
-
+<br>
+<br>
+<br>

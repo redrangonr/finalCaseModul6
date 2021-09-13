@@ -14,13 +14,7 @@
             <form action="#" class="career-form mb-60">
               <div class="row">
                 <div class="col-md-6 col-lg-3 my-3" style="float: left;">
-                  <div class="select-container">
-                    <select class="custom-select">
-                      <option selected="">Sort By</option>
-                      <option value="1">Title</option>
-                      <option value="2">Username</option>
-                    </select>
-                  </div>
+
                 </div>
                 <div class="col-md-6 col-lg-3 my-3"></div>
 
@@ -30,7 +24,7 @@
                   </div>
                 </div>
                 <div class="col-md-6 col-lg-1 my-3" >
-                  <button type="button" class="btn btn-secondary" (click)="findByTitle()" style="width: 80px; height: 47px; float: right" id="contact-submit">
+                  <button type="button" class="btn btn-secondary" (click)="findByTitle()" style="width: 72px; height: 47px; float: right" id="contact-submit">
                     <i class="fa fa-search"></i>
                   </button>
                 </div>
@@ -67,7 +61,7 @@
       </div>
     </div>
     <div class="col-md-3">
-      <div class="card-header" style="background-color: #8eb9b9 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
+      <div class="card-header" style="background-color: #b4e8e3 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
         <div class="row">
           <div class="col-md-4">
             <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
@@ -90,7 +84,7 @@
           </div>
         </div>
       </div>
-      <div class="card-header"  style="background-color: #8eb9b9 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
+      <div class="card-header"  style="background-color: #b4e8e3 ; height: 50px; border-top-left-radius:10px; border-top-right-radius: 10px;margin-top: 10px ">
         <div class="row">
           <div class="col-md-4">
             <i class="fa fa-circle-notch" style="width: 100; height: 100; float: left"></i>
@@ -104,7 +98,7 @@
       </div>
       <div class="card-body" style="background-color: #f3f5f5; height: 700px;" >
         &nbsp; <h5><i class="fa fa-list" style="color: #404348"> Category :</i></h5><br>
-        <a *ngFor="let hashtag of hashtags" class="btn btn-outline-secondary" style="margin-left: 5px; margin-bottom: 5px" routerLink="/post/hashtag/{{hashtag.id}}"><i class="fa fa-tag">{{hashtag.name}}</i></a>
+        <a *ngFor="let hashtag of hashtags" class="btn btn-outline-info btn-sm" style="margin-left: 5px; margin-bottom: 5px" routerLink="/post/hashtag/{{hashtag.id}}"><i class="fa fa-tag">{{hashtag.name}}</i></a>
       </div>
       </div>
   </div>
