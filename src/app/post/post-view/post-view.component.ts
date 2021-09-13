@@ -3,8 +3,8 @@ import {PostService} from '../service/post.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Post} from '../../model/post';
-import {LikeService} from "../../services/like.service";
-import {Like} from "../../model/like";
+import {LikeService} from '../../services/like.service';
+import {Like} from '../../model/like';
 
 
 @Component({
@@ -80,6 +80,7 @@ export class PostViewComponent implements OnInit {
       console.log(this.postInstand);
     });
   }
+
   // tslint:disable-next-line:typedef
   sendEmail() {
 
@@ -87,7 +88,7 @@ export class PostViewComponent implements OnInit {
       console.log('required');
       this.message = 'Please fill in the form ';
       // @ts-ignore
-    } else if ( this.email.controls?.detail.errors?.email ) {
+    } else if (this.email.controls?.detail.errors?.email) {
       console.log('pattern');
       this.message = 'Wrong email';
     } else {
@@ -98,6 +99,7 @@ export class PostViewComponent implements OnInit {
       });
     }
   }
+
   // tslint:disable-next-line:typedef
   resetModal() {
     this.message = '';
@@ -105,29 +107,38 @@ export class PostViewComponent implements OnInit {
     document.getElementById('receiver-email').value = '';
   }
 
-createLike(){
-if(sessionStorage.getItem('Id_key')) {
-  const like: Like={
-    post: {
-     id: this.id},
-    user: {
-      id: this.idUser
+  // tslint:disable-next-line:typedef
+  createLike() {
+    if (sessionStorage.getItem('Id_key')) {
+      const like: Like = {
+        post: {
+          id: this.id
+        },
+        user: {
+          id: this.idUser
+        }
+      };
+
+      this.likeService.create(like, this.id).subscribe(data => {
+          console.log(data);
+          alert('thanh cong');
+          // @ts-ignore
+          document.getElementById('like-icon').style.color = 'blue';
+        }, error => {
+          alert(error);
+          // @ts-ignore
+          document.getElementById('like-icon').style.color = '#9f9696';
+        }
+      );
     }
   }
 
-  this.likeService.create(like,this.id).subscribe(data => {
-    console.log(data);
-      alert("thanh cong")
-  },error => {alert("loi")}
-    )
-}
-  }
-
+  // tslint:disable-next-line:typedef
   check() {
     if (sessionStorage.getItem('Id_key')) {
       return false;
     } else {
-      return true
+      return true;
     }
   }
 }

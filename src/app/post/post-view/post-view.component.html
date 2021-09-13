@@ -2,22 +2,6 @@
 <div align="center" *ngIf="postInstand.user.id === idUser"><button class="btn btn-outline-primary" routerLink="/post/edit/{{postInstand.id}}">abc</button></div>
 <div id="main">
   <section class="blog-detail">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-7">
-        </div>
-        <div class="col-md-1">
-          <img src="https://cdn-icons-png.flaticon.com/128/889/889140.png" width="30" height="30" style="margin-left:95px; position: fixed">
-          <br>
-          <br>
-          <img src="https://cdn-icons-png.flaticon.com/128/3925/3925158.png" width="30" height="30" style="margin-left:95px;float: right; position: fixed">
-        </div>
-        <div class="col-md-1"></div>
-      </div>
-    </div>
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 col-lg-10">
@@ -28,7 +12,7 @@
                 <h5>#{{postInstand.hashtag.name}}</h5>
                 <p>{{postInstand.date | date : ' EEEE,  dd-mm-yyyy,  hh:mm OOOO'}}</p>
               </div>
-            </div><img style="width: 990; height: 550px; border-radius: 5px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
+            </div><img style="width: 990px; height: 550px; border-radius: 5px" class="blog-cover img-fluid" src="{{postInstand.image}}" alt="blog image">
             <h4>{{postInstand.description}}</h4>
             <br>
             <p class="blog-pragraph" [innerHTML]="postInstand.content"></p>
@@ -85,13 +69,14 @@
               </div>
               <div class="col-sm-6 text-sm-right">
                 <div class="post-share">
-                  <p data-bs-toggle="modal" data-bs-target="#exampleModal">Share: </p>
+                  <a style="cursor: pointer"><p style="color: blue;font-weight: bold" data-bs-toggle="modal" data-bs-target="#exampleModal1">Share : </p></a>
                   <div class="socials">
-                    <button><i class="fas fa-thumbs-up" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="createLike()"> </i></button>
-                    <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
-                    <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                    <a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
+                    <a><i></i></a>
+                    <a><i style="color: #9f9696" id="like-icon" class="fas fa-thumbs-up" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="createLike()"> </i></a>
+                    <a><i class="fab fa-facebook-f"></i></a>
+                    <a><i class="fab fa-instagram"></i></a>
+                    <a><i class="fab fa-twitter"></i></a>
+                    <a><i class="fab fa-dribbble"></i></a></div>
                 </div>
               </div>
             </div>
@@ -126,9 +111,9 @@
               </div>
               <div class="col-sm-7 col-md-9">
                 <div  class="author-info">
-                  <h5 id="id-author-info" routerLink="/post/list/{{postInstand.user.id}}">{{postInstand.user.name}}</h5>
+                  <h5 style="cursor: pointer" id="id-author-info" routerLink="/post/list/{{postInstand.user.id}}">{{postInstand.user.name}}</h5>
                   <p>This is something about author </p>
-                  <div class="author-social"><a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a><a href="https://dribbble.com/"><i class="fab fa-dribbble"></i></a></div>
+                  <div class="author-social"><a><i class="fab fa-facebook-f"></i></a><a><i class="fab fa-instagram"></i></a><a><i class="fab fa-twitter"></i></a><a><i class="fab fa-dribbble"></i></a></div>
                 </div>
               </div>
             </div>
@@ -271,7 +256,16 @@
       <form [formGroup]="email">
         <div class="modal-body">
           <p>{{message}}</p>
-          <input formControlName="detail" id="receiver-email" type="email" class="form-control">
+          <div class="row">
+            <div class="col-3">
+              <img width="100%" src="https://img.icons8.com/external-justicon-flat-justicon/2x/external-email-notifications-justicon-flat-justicon-1.png" alt="">
+            </div>
+            <div class="col-9">
+              <input  formControlName="detail" id="receiver-email" type="email" class="form-control">
+            </div>
+          </div>
+
+
 
         </div>
         <div class="modal-footer">
