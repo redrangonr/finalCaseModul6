@@ -8,6 +8,7 @@ import {LikeService} from '../../services/like.service';
 import {UserManagementService} from '../../admin/service/user-management.service';
 import {User} from '../../admin/model/user';
 import {Like} from 'src/app/model/like';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: 'app-post-list',
@@ -132,6 +133,18 @@ export class PostListComponent implements OnInit {
       // @ts-ignore
       this.hashtags = data;
     });
+  }
+
+  addBookmark(id: any){
+    sessionStorage.setItem('bookmark',id);
+  }
+
+  getBookmark(){
+    // @ts-ignore
+    const id = +sessionStorage.getItem('bookmark')
+    this.postService.get(id).subscribe(data=>{
+      this.posts = [data]
+    })
   }
 
   // tslint:disable-next-line:typedef
