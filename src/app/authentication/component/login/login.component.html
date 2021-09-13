@@ -3,7 +3,13 @@
 <ng-template #content id="modal"  let-modal >
   <div class="container" style=" height: 800px">
   <div class="modal-header">
-    <h3 class="modal-title" id="modal-basic-title"><b><i style="color: #e88c95" class="fa fa-star"> Login</i></b></h3>
+    <h3 class="modal-title" id="modal-basic-title">
+        <img src="https://cdn-icons-png.flaticon.com/128/5240/5240892.png" width="30" height="30" alt="logo">
+        <img src="https://cdn-icons-png.flaticon.com/128/4019/4019879.png" width="30" height="30" alt="logo">
+        <img src="https://cdn-icons-png.flaticon.com/128/4019/4019785.png" width="30" height="30" alt="logo">
+        <img src="https://cdn-icons-png.flaticon.com/128/4019/4019803.png" width="30" height="30" alt="logo">
+        <img src="https://cdn-icons-png.flaticon.com/128/4019/4019858.png" width="30" height="30" alt="logo">
+    </h3>
     <button type="button" class="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
       <i class="fa fa-times"></i>
     </button>
@@ -31,7 +37,7 @@
     </form>
   </div>
     <div class="modal-footer">
-      <img src="https://images.pexels.com/photos/701816/pexels-photo-701816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" width="450" height="300" style="border-radius: 5px">
+      <img src="https://images.pexels.com/photos/701816/pexels-photo-701816.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" width="450" height="315" style="border-radius: 5px">
     </div>
   </div>
 </ng-template>
@@ -39,7 +45,16 @@
 <ng-template #content1 id="modal1"  let-modal>
   <div class="container">
   <div class="modal-header">
-    <h3 class="modal-title" id="modal-basic-test"><i class="fa fa-star" style="color: #9197d9"></i> Register</h3>
+    <h3 class="modal-title" id="modal-basic-test">
+      <img src="https://cdn-icons-png.flaticon.com/128/5226/5226021.png" width="30" height="30" alt="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/4020/4020004.png" width="30" height="30" alt="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/4019/4019785.png" width="30" height="30" alt="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/4019/4019803.png" width="30" height="30" alt="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/5243/5243202.png" width="30" height="30" alt="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/4019/4019932.png" width="30" height="30" alt="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/4020/4020004.png" width="30" height="30" alt="logo">
+      <img src="https://cdn-icons-png.flaticon.com/128/5243/5243185.png" width="30" height="30" alt="logo">
+    </h3>
     <span [innerHTML]="statusRegister"></span>
     <button type="button" class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2" aria-label="Close" (click)="modal.dismiss('Cancel')" style="border-radius: 44px">
       <i class="fa fa-times"></i>
