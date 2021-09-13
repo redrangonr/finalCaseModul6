@@ -219,3 +219,6 @@ ul {
   -webkit-box-orient: vertical;
   display: -webkit-box;
 }
+.myClass{
+  color : red;
+}

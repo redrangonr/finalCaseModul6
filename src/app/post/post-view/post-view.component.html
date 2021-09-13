@@ -1,4 +1,5 @@
 
+
 <div align="center" *ngIf="postInstand.user.id === idUser"><button class="btn btn-outline-primary" routerLink="/post/edit/{{postInstand.id}}">abc</button></div>
 <div id="main">
   <section class="blog-detail">
@@ -87,8 +88,11 @@
                 <div class="post-share">
                   <p data-bs-toggle="modal" data-bs-target="#exampleModal1" >Share: </p>
 
+                                    <!--   share   ơi dây             -->
+
+
                   <div class="socials">
-                    <button><i class="fas fa-thumbs-up" data-bs-toggle="modal" data-bs-target="#exampleModal"  (click)="createLike()" > </i></button>
+                <a> <i class="fas fa-thumbs-up" data-bs-toggle="modal" data-bs-target="#exampleModal" id="like"  (click)="createLike()" > </i></a>
                     <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
                     <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
                     <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>

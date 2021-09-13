@@ -7,7 +7,7 @@ itemsPerPage: tableSize,
   <div class="post-mini_block" ><img src="{{like.post.image}}" alt="post image">
     <div class="post-detail">
       <div class="post-credit">
-        <div class="post-tag"><a >{{like.post.hashtag.name}}</a></div>
+        <div class="post-tag"><a routerLink="/post/hashtag/{{like.post.hashtag.id}}">{{like.post.hashtag.name}}</a></div>
       </div><a class="post-title" routerLink="/post/view/{{like.post.id}}">{{like.post.title}}</a>
       <p class="post-describe content ">{{like.post.description}} </p>
       <div class="post-credit">

@@ -13,6 +13,7 @@ import {Like} from "../../model/like";
   styleUrls: ['./post-view.component.css']
 })
 export class PostViewComponent implements OnInit {
+
   message = '';
   email = new FormGroup({
     detail: new FormControl('', [Validators.required, Validators.email])
@@ -106,6 +107,7 @@ export class PostViewComponent implements OnInit {
   }
 
 createLike(){
+
 if(sessionStorage.getItem('Id_key')) {
   const like: Like={
     post: {

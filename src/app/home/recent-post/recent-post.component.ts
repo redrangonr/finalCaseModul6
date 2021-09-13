@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PostService} from "../../post/service/post.service";
+import {Post} from "../../model/post";
 
 @Component({
   selector: 'app-recent-post',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recent-post.component.css']
 })
 export class RecentPostComponent implements OnInit {
+posts: Post[] = [];
 
-  constructor() { }
+  constructor(private postService: PostService) { }
 
   ngOnInit(): void {
+    this.getAll()
   }
-
+getAll(){
+    this.postService.findTopComment().subscribe(data=>{
+      console.log(data);
+      // @ts-ignore
+      this.posts = data;
+    },error => {console.log(error)})
+}
 }
