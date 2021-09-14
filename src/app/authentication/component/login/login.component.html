@@ -84,6 +84,7 @@
                        [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Username"/>
                 <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                   <div *ngIf="f.username.errors.required">Username is required</div>
+                  <div *ngIf="f.username.errors.minlength">Username must be at least 6 characters</div>
                   <div *ngIf="f.username.errors.pattern">Username must be a valid date in the format abcdef</div>
                 </div>
               </div>

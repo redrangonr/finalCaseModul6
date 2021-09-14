@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   statusRegister: any = '';
 
   registerForm: FormGroup = this.fb.group({
-    username: ['', Validators.required, Validators.pattern(/^(.|\s)*\S(.|\s)*$/)],
+    username: ['',Validators.required,Validators.minLength(6)],
     name: ['', Validators.required],
     password: ['', [Validators.required, Validators.minLength(6),Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/)]],
     confirmPassword: ['', Validators.required],
@@ -145,7 +145,7 @@ export class LoginComponent implements OnInit {
       roles: ['user']
     };
     if (this.registerForm.invalid){
-      this.statusRegister = '<span class="alert alert-danger"> Registration failed</span>>'
+      this.statusRegister = '<span class="alert alert-danger"> Registration failed</span>'
       return ;
     }if (this.registerForm.value.password != this.registerForm.value.confirmPassword){
       this.statusRegister = '<span class="alert alert-danger"> Registration failed</span>'
