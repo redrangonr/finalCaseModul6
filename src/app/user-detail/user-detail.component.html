@@ -24,7 +24,7 @@
                 <label for="file"></label>
                 <input [hidden]="fb" type="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off"  class="form-control-file" id="file">
                 <br>
-                <button type="submit" [hidden]="!fb" class="btn btn-outline-success">Save</button>
+                <button type="submit" [hidden]="!fb" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
                 <button type="submit" (click)="reset()" [hidden]="!fb" class="btn btn-outline-secondary">Cancel</button>
               </form>
 
@@ -130,7 +130,7 @@
                   </select>
                 </div>
                 <div class="modal-footer">
-                  <button class="btn btn-outline-info" (click)="modal.close('Save click')" style="width: 100px">Save</button>
+                  <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="modal.close('Save click')" style="width: 100px">Save</button>
                 </div>
               </form>
               </div>
@@ -252,3 +252,38 @@
 <br>
 <br>
 <br>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center" [innerHTML]="message" ></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center" [innerHTML]="message" ></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

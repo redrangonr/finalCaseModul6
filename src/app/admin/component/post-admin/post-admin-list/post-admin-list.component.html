@@ -4,7 +4,7 @@
       integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous"/>
 <div class="container">
   <div class="row">
-    <div class="col-md-12" style="height: 1000px">
+    <div class="col-md-12" style="height: 1350px">
       <div class="row">
         <div class="col-lg-12 mx-auto">
           <div class="career-search mb-60">
@@ -138,6 +138,7 @@
           </div>
         </div>
       </div>
+
       <h3 style="margin-top: 30px" class="text-secondary text-center" *ngIf="posts.length == 0 "> Không có kết quả bạn
         muốn tìm <img src="https://img.icons8.com/ios/2x/nerd--v3.gif" height="40" width="40"></h3>
       <div class="card mb-2" *ngFor="let post of posts  | paginate :{
@@ -155,17 +156,15 @@
               <h6 style="color: #495057"><a routerLink="/post/view/{{post.id}}" style="text-decoration: none"
                                             data-toggle="collapse" data-target=".forum-content"
                                             class="content"><i class="fa fa-play"></i> {{post.title}}</a></h6>
+              <br>
               <small><p class="content text-secondary">
                 <i class="fa fa-audio-description"></i> {{post.description}}
               </p></small>
+              <br>
               <p class="text-muted"><a><i class="fa fa-user"> {{post.user.name}}</i></a> &nbsp;&nbsp;&nbsp; <span
                 class="text-secondary font-weight-bold"><a><i class="fa fa-tag"> {{post.hashtag.name}}</i></a></span>
                 &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i
                   class="fa fa-clock"> {{post.date | date}}</i></a></span>
-                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" style="float: right" (click)="pinPost(post.id)">
-                  <i class="fa fa-chess-knight"> Pin</i>
-                </button>
                 <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop" style="float: right" (click)="findPostById(post.id)">
                   <i class="fa fa-pen"> Change Status</i>
@@ -206,11 +205,8 @@
         <form [formGroup]="postForm" (ngSubmit)="updateStatus()">
           <b>You want to lock Post :</b><br>
           <b>{{postForm.value.title}}</b>
-          <hr>
           <h3 class="text-center" [innerHTML]="status"></h3>
-          <!--          <p>Of: {{postForm.value.user.name}}</p>-->
           <hr>
-
           <input type="hidden" formControlName="title">
           <input type="hidden" formControlName="id">
           <input type="hidden" formControlName="description">

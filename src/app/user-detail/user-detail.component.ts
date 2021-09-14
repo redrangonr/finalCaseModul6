@@ -18,6 +18,7 @@ export class UserDetailComponent implements OnInit {
   // @ts-ignore
   url: firebase.storage.UploadTaskSnapshot;
   title = 'cloudsSorage';
+  message: any = '';
   // @ts-ignore
   selectedFile: File = null;
   // @ts-ignore
@@ -56,7 +57,7 @@ export class UserDetailComponent implements OnInit {
               private loginService: LoginService,
               private activated: ActivatedRoute,
               private router: Router,
-              ) {
+  ) {
     this.activated.paramMap.subscribe((data: ParamMap) => {
       // @ts-ignore
       this.idOther = +data.get('id');
@@ -67,8 +68,8 @@ export class UserDetailComponent implements OnInit {
     this.getUser(this.id);
   }
 
-  reset(){
-    location.reload()
+  reset() {
+    location.reload();
   }
 
   blockLink() {
@@ -137,7 +138,7 @@ export class UserDetailComponent implements OnInit {
     // @ts-ignore
     this.userService.update(this.id, userUpdate).subscribe((data) => {
       sessionStorage.setItem('Avatar_key', this.fb);
-      location.reload();
+      this.message = 'Update Success <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" height="40" width="40">'
     }, error => {
       console.log(error);
     });
@@ -164,8 +165,9 @@ export class UserDetailComponent implements OnInit {
     console.log(userUpdate);
     // @ts-ignore
     this.userService.update(this.id, userUpdate).subscribe(() => {
-      alert("Update Success")
-      location.reload()
+      this.message = 'Update Success <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" height="40" width="40">'
+    },error => {
+      this.message = '<img src="https://cdn-icons-png.flaticon.com/512/1636/1636054.png" width="40" height="40"> Update failed  '
     });
   }
 

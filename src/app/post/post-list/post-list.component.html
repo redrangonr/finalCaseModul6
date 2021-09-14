@@ -101,18 +101,18 @@
                                        (inputFocused)='onFocused($event)'
                                        [itemTemplate]="itemTemplate"
                                        [notFoundTemplate]="notFoundTemplate"
-                                       style="width: 258px;float: left; margin-left: 54px; margin-top: 5px" id="key">
+                                       style="width: 311px;float: left; margin-left: px; margin-top: 5px" id="key">
                       </ng-autocomplete>
                       <ng-template #itemTemplate let-item>
                         <a href="javascript:void(0)" style="height: 140px">
                           <div class="row">
                             <div class="col-md-3">
                               <span><img src="{{item.image}}" width="70" height="70"
-                                         style="border-radius: 44px; border: #4e5454 solid"></span>&nbsp;
+                                         style="border-radius: 10px; border: #4e5454 solid"></span>&nbsp;
                             </div>
                             <div class="col-md-9">
                               <div class="col-sm-12">
-                                <span class="content"><i [innerHTML]="' ' + item.title" style="color: #070707"
+                                <span class="content" [innerHTML]="' ' + item.title"><i  style="color: #070707"
                                                              class="fa fa-play" aria-hidden="true"> </i></span>
                               </div>
                               <div class="col-sm-12">
@@ -121,10 +121,6 @@
                               <div class="col-sm-12">
                                 <a href="/post/view/{{item.id}}" style="color: #0b2e13; float: left"><i
                                   class="fa fa-eye"><small> View more</small></i></a>
-                              </div>
-                              <div class="col-sm-12">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="getBookmark()" style="color: #0b2e13; float: left"><i
-                                  class="fa fa-bookmark"><small> Bookmark</small></i></a>
                               </div>
                             </div>
                           </div>
@@ -166,9 +162,11 @@
             <div class="media-body">
               <h5 style="color: #445464"><a routerLink="/post/view/{{post.id}}" style="text-decoration: none; color: #343d4f" data-toggle="collapse"
                                             data-target=".forum-content" class="content"><small><small class="fa fa-play"></small></small> {{post.title}}</a></h5>
+              <br>
               <small class="content text-secondary">
                 <small class="fa fa-audio-description"></small> {{post.description}}
               </small>
+              <br>
               <p class="text-muted"><a><i class="fa fa-user"> {{post.user.name}}</i></a> &nbsp;&nbsp;&nbsp; <span
                 class="text-secondary font-weight-bold"><a><i class="fa fa-tag"> {{post.hashtag.name}}</i></a></span>
                 &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i
