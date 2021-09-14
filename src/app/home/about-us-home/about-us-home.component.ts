@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/app/admin/model/user';
+import {UserManagementService} from '../../admin/service/user-management.service';
 
 @Component({
   selector: 'app-about-us-home',
@@ -6,10 +8,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about-us-home.component.css']
 })
 export class AboutUsHomeComponent implements OnInit {
-
-  constructor() { }
+  users : User[]= []
+  constructor(private userService: UserManagementService) { }
 
   ngOnInit(): void {
+    this.findTopUser()
+  }
+
+  findTopUser(){
+    this.userService.findTopUserByPost().subscribe(data=>{
+      // @ts-ignore
+      this.users = data
+    })
   }
 
 }
