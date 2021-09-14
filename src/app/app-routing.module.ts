@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {DetalComponent} from './detail/detal.component';
 import {UserDetailComponent} from './user-detail/user-detail.component';
 import {HashtagPostComponent} from './home/slide-hashtag/hashtag-post/hashtag-post.component';
+import {Error403Component} from './shared-module/error403/error403.component';
 
 
 
@@ -13,6 +14,10 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'error403',
+    component: Error403Component
   },
   {
     path: 'user/:id',

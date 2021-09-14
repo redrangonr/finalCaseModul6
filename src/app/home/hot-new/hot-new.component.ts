@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PostService} from '../../post/service/post.service';
+import {Post} from '../../model/post';
 
 @Component({
   selector: 'app-hot-new',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HotNewComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private postService: PostService) { }
+  posts: Post[] = []
   ngOnInit(): void {
+    this.findTop()
+  }
+
+  findTop(){
+    this.postService.findTopComment().subscribe(data=>{
+      // @ts-ignore
+      this.posts = data
+    })
   }
 
 }

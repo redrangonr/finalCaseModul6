@@ -75,7 +75,7 @@
           <br>
           <br>
           <br>
-          <div class="post-footer">
+          <div class="post-footer" [hidden]="postInstand.status=='lock'">
             <div class="row">
               <div class="col-sm-6">
                 <div class="post-tags"><a href="index.html"><i class="fa fa-tag">{{postInstand.hashtag.name}}</i></a>
@@ -115,7 +115,7 @@
           <!--              </div>-->
           <!--            </div>-->
           <!--          </div>-->
-          <div class="post-author-detail">
+          <div [hidden]="postInstand.status=='lock'" class="post-author-detail">
             <div class="row no-gutters align-items-center">
               <div class="col-sm-5 col-md-3" >
 
@@ -138,7 +138,7 @@
           <div [hidden]="idUser">
             <b>You need to login or register before commenting <img src="https://cdn-icons-png.flaticon.com/128/556/556232.png" height="30" width="30"></b> <app-login></app-login>
           </div>
-          <div [hidden]="!idUser" class="post-comment">
+          <div [hidden]="!idUser||postInstand.status=='lock'" class="post-comment">
             <h2>Leave a comment</h2>
 
             <form [formGroup]="commentpost" (ngSubmit)="createComment()">
@@ -152,7 +152,7 @@
             </form>
           </div>
           <hr>
-          <div class="card-body">
+          <div class="card-body" [hidden]="postInstand.status=='lock'">
             <div class="list-comment">
               <div class="card mb-2" style="border: none" *ngFor="let comment of listComment | paginate :{
                 itemsPerPage: tableSize,

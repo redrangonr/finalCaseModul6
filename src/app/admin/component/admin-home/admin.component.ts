@@ -21,7 +21,7 @@ export class AdminComponent implements OnInit {
 
   checkRole(){
     if (this.role[0] !== 'ADMIN'){
-      this.router.navigate(['/home'])
+      this.router.navigate(['error403'])
     }
     console.log(this.role[0])
   }

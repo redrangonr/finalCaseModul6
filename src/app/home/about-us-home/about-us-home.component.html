@@ -1,23 +1,41 @@
-<div class="angency-sidebar_block about-us-sidebar-block">
-  <h2 class="sidebar-block-title">About us</h2>
+<div class="angency-sidebar_block about-us-sidebar-block" >
+  <h2 class="sidebar-block-title"><i class="fa fa-chess-king"></i> Top Member </h2>
   <div class="post-block post-classic_wrapper">
-    <div class="post-block post-classic mini-post-classic">
-      <div class="post-img"><img src="assets/images/homepage2/post-1.png" alt="post image"></div>
-      <div class="post-detail"><a class="post-title" href="blog_detail.html">Pisen Agency</a>
-        <p class="post-describe">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="post-block post-classic mini-post-classic" >
+      <div><img src="{{topUser[0].avatar}}" width="370" height="410" alt="post image" style="border-radius: 5px; border: #a6c1d0 solid"></div>
+      <br>
+      <div class="post-detail"><a class="post-title" routerLink="/post/list/{{topUser[0].id}}" >{{topUser[0].name}}</a>
+        <p class="post-describe"><i class="fa fa-fire" ></i> Member Top 1</p>
       </div>
     </div>
-    <div class="post-block post-classic mini-post-classic">
-      <div class="post-img"><img src="assets/images/homepage2/post-2.png" alt="post image"></div>
-      <div class="post-detail"><a class="post-title" href="blog_detail.html">Pisen Agency</a>
-        <p class="post-describe">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="post-block post-classic mini-post-classic" >
+      <div><img src="{{topUser[1].avatar}}" width="370" height="410" alt="post image" style="border-radius: 5px;border: #a0bdcc solid"></div>
+      <br>
+      <div class="post-detail"><a class="post-title" routerLink="/post/list/{{topUser[1].id}}"  >{{topUser[1].name}}</a>
+        <p class="post-describe"><i class="fa fa-fire" ></i> Member Top 2</p>
       </div>
     </div>
-    <div class="post-block post-classic mini-post-classic">
-      <div class="post-img"><img src="assets/images/homepage2/post-3.png" alt="post image"></div>
-      <div class="post-detail"><a class="post-title" href="blog_detail.html">Pisen Agency</a>
-        <p class="post-describe">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="post-block post-classic mini-post-classic" >
+      <div><img src="{{topUser[2].avatar}}" width="370" height="410" alt="post image" style="border-radius: 5px;border: #98bed3 solid"></div>
+      <br>
+      <div class="post-detail"><a class="post-title" routerLink="/post/list/{{topUser[2].id}}" >{{topUser[2].name}}</a>
+        <p class="post-describe"><i class="fa fa-fire" ></i> Member Top 3</p>
       </div>
     </div>
+    <div class="post-block post-classic mini-post-classic" >
+      <div ><img src="{{topUser[3].avatar}}" width="370" height="410" alt="post image" style="border-radius: 5px;border: #90b8ce solid"></div>
+      <br>
+      <div class="post-detail"><a class="post-title" routerLink="/post/list/{{topUser[3].id}}">{{topUser[3].name}}</a>
+        <p class="post-describe"><i class="fa fa-fire" ></i> Member Top 4</p>
+      </div>
+    </div>
+    <div class="post-block post-classic mini-post-classic" >
+      <div><img src="{{topUser[4].avatar}}" width="370" height="410" alt="post image" style="border-radius: 5px;border: #92b8cc solid"></div>
+      <br>
+      <div class="post-detail"><a class="post-title" routerLink="/post/list/{{topUser[4].id}}" >{{topUser[4].name}}</a>
+        <p class="post-describe"><i class="fa fa-fire" ></i> Member Top 5</p>
+      </div>
+    </div>
+
   </div>
 </div>

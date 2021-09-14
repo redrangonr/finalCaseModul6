@@ -31,7 +31,7 @@ export class PostListComponent implements OnInit {
   currentIndex = 1;
   hashtags: Hashtag[] = [];
   hoveredDate: NgbDate | null = null;
-
+  idUser = sessionStorage.getItem('Id_key')
   fromDate: NgbDate | null;
   data: Post[] = [];
   toDate: NgbDate | null;
