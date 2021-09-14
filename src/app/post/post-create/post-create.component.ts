@@ -1,4 +1,4 @@
-  import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PostService} from '../service/post.service';
 import {Observable} from 'rxjs';
@@ -167,9 +167,9 @@ export class PostCreateComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              if (file.name[file.name.length - 1] !== 'g'){
+              if (file.name[file.name.length - 1] !== 'g') {
                 this.fb = 'wrong';
-              }else {
+              } else {
                 this.fb = url;
               }
             }
@@ -180,13 +180,14 @@ export class PostCreateComponent implements OnInit {
       .subscribe(url => {
         if (url) {
           this.uploading = true;
-          this.progress = Math.round(url.bytesTransferred / url.totalBytes * 100) ;
+          this.progress = Math.round(url.bytesTransferred / url.totalBytes * 100);
           if (this.progress === 100) {
             this.uploading = false;
           }
         }
       });
   }
+
   // tslint:disable-next-line:typedef
   setDefaultImg() {
     this.fb = 'https://photo-cms-bizlive.zadn.vn/uploaded/ngant/2020_04_05/blog_cwsd_geds.jpg';

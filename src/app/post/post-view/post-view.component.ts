@@ -78,6 +78,18 @@ export class PostViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCommentList();
+    this.checkLike();
+  }
+
+  // tslint:disable-next-line:typedef
+  checkLike() {
+    this.likeService.checkLike(this.idUser, this.id).subscribe(data => {
+      // @ts-ignore
+      document.getElementById('like-icon').style.color = 'blue';
+    }, error => {
+      // @ts-ignore
+      document.getElementById('like-icon').style.color = '#9f9696';
+    });
   }
 
   // tslint:disable-next-line:typedef
