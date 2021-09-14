@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {UserManagementService} from '../../admin/service/user-management.service';
-import {User} from '../../admin/model/user';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about-us-home',
@@ -8,19 +6,10 @@ import {User} from '../../admin/model/user';
   styleUrls: ['./about-us-home.component.css']
 })
 export class AboutUsHomeComponent implements OnInit {
-  topUser: User[] = [];
 
-  constructor(private userService: UserManagementService) {
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    this.findTop();
   }
 
-  findTop() {
-    this.userService.findTopUserByPost().subscribe(data => {
-      // @ts-ignore
-      this.topUser = data;
-    });
-  }
 }

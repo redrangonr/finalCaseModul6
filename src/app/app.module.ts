@@ -75,7 +75,7 @@ import {CommentDeleteComponent} from './commentpost/comment-delete/comment-delet
     CommentListComponent,
     CommentCreateComponent,
     CommentEditComponent,
-    CommentDeleteComponent,
+    CommentDeleteComponent
   ],
   imports: [
     BrowserModule,
