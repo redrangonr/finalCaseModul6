@@ -26,7 +26,7 @@ export class PostListComponent implements OnInit {
   posts: Post[] = [];
   page = 1;
   count = 0;
-  tableSize = 6;
+  tableSize = 5;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = [];
@@ -96,6 +96,13 @@ export class PostListComponent implements OnInit {
       // @ts-ignore
       this.posts = data;
     });
+  }
+
+  findTagById(id: any){
+    this.postService.findAllByHashtag(id).subscribe(data=>{
+      // @ts-ignore
+      this.posts = data
+    })
   }
 
   getTopUser() {

@@ -26,12 +26,16 @@ export class LoginComponent implements OnInit {
   status: any = '<i class="fa fa-keyboard"></i>  Please login your account';
   statusRegister: any = '';
 
-  registerForm: any = this.fb.group({
-    username: ['', Validators.required ],
-    name: ['', Validators.required ],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-    email: ['', [Validators.required, Validators.email]],
+  registerForm: FormGroup = this.fb.group({
+    username: ['',Validators.required,Validators.minLength(6)],
+    name: ['', Validators.required],
+    password: ['', [Validators.required, Validators.minLength(6),Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/)]],
+    confirmPassword: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]]
+  },{
+    validator: this.loginService.MustMatch('password', 'confirmPassword')
   });
+
 
   constructor(
               private loginService: LoginService,
@@ -140,6 +144,13 @@ export class LoginComponent implements OnInit {
       email: this.registerForm.value.email,
       roles: ['user']
     };
+    if (this.registerForm.invalid){
+      this.statusRegister = '<span class="alert alert-danger"> Registration failed</span>'
+      return ;
+    }if (this.registerForm.value.password != this.registerForm.value.confirmPassword){
+      this.statusRegister = '<span class="alert alert-danger"> Registration failed</span>'
+      return ;
+    }
     if (this.isValidated(registerForm)) {
       this.loginService.register(registerForm).subscribe(
         (data) => {

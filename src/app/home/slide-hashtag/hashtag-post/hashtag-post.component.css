@@ -4,7 +4,7 @@ body{
 
 /* ===== Career ===== */
 .career-form {
-  background-color: #8eb9b9;
+  background-color: #b4e8e3;
   border-radius: 5px;
   padding: 0 16px;
 }
@@ -16,7 +16,7 @@ body{
   display: -webkit-box;
 }
 .career-form .form-control {
-  background-color: rgba(105, 101, 101, 0.2);
+  background-color: rgba(182, 173, 173, 0.2);
   border: 0;
   padding: 12px 15px;
   color: #fff;

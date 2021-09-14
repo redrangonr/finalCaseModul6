@@ -83,13 +83,13 @@
                   </div>
                 </div>
                 <div class="col-md-4 col-lg-3 my-3">
-                  <div>
-                    <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select"
-                            style="background-color: #abd5cf;margin-top: 5px; margin-left: 130px;  height: 42px;width: 70%">
-                      <option value="">Select Categories</option>
-                      <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>
-                    </select>
-                  </div>
+<!--                  <div>-->
+<!--                    <select (change)="getAllByHashtag()" id="selectHashtag" class="custom-select"-->
+<!--                            style="background-color: #abd5cf;margin-top: 5px; margin-left: 155px;  height: 42px;width: 100px">-->
+<!--                      <option value="">Tag</option>-->
+<!--                      <option *ngFor="let hashtag of hashtags" value="{{hashtag.id}}">{{hashtag.name}}</option>-->
+<!--                    </select>-->
+<!--                  </div>-->
                 </div>
                 <div class="col-md-6 col-lg-6 my-3">
                   <div class="input-group ">
@@ -101,18 +101,18 @@
                                        (inputFocused)='onFocused($event)'
                                        [itemTemplate]="itemTemplate"
                                        [notFoundTemplate]="notFoundTemplate"
-                                       style="width: 321px;float: left; margin-left: 54px; margin-top: 5px" id="key">
+                                       style="width: 311px;float: left; margin-left: px; margin-top: 5px" id="key">
                       </ng-autocomplete>
                       <ng-template #itemTemplate let-item>
                         <a href="javascript:void(0)" style="height: 140px">
                           <div class="row">
                             <div class="col-md-3">
-                              <span><img src="{{item.image}}" width="80" height="80"
-                                         style="border-radius: 44px; border: #4e5454 solid"></span>&nbsp;
+                              <span><img src="{{item.image}}" width="70" height="70"
+                                         style="border-radius: 10px; border: #4e5454 solid"></span>&nbsp;
                             </div>
                             <div class="col-md-9">
                               <div class="col-sm-12">
-                                <span class="titleSearch"><i [innerHTML]="' ' + item.title" style="color: #070707"
+                                <span class="content" [innerHTML]="' ' + item.title"><i  style="color: #070707"
                                                              class="fa fa-play" aria-hidden="true"> </i></span>
                               </div>
                               <div class="col-sm-12">
@@ -121,10 +121,6 @@
                               <div class="col-sm-12">
                                 <a href="/post/view/{{item.id}}" style="color: #0b2e13; float: left"><i
                                   class="fa fa-eye"><small> View more</small></i></a>
-                              </div>
-                              <div class="col-sm-12">
-                                <a data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="getBookmark()" style="color: #0b2e13; float: left"><i
-                                  class="fa fa-bookmark"><small> Bookmark</small></i></a>
                               </div>
                             </div>
                           </div>
@@ -166,9 +162,11 @@
             <div class="media-body">
               <h5 style="color: #445464"><a routerLink="/post/view/{{post.id}}" style="text-decoration: none; color: #343d4f" data-toggle="collapse"
                                             data-target=".forum-content" class="content"><small><small class="fa fa-play"></small></small> {{post.title}}</a></h5>
+              <br>
               <small class="content text-secondary">
                 <small class="fa fa-audio-description"></small> {{post.description}}
               </small>
+              <br>
               <p class="text-muted"><a><i class="fa fa-user"> {{post.user.name}}</i></a> &nbsp;&nbsp;&nbsp; <span
                 class="text-secondary font-weight-bold"><a><i class="fa fa-tag"> {{post.hashtag.name}}</i></a></span>
                 &nbsp;&nbsp;&nbsp; <span class="text-secondary font-weight-bold"><a><i
@@ -207,16 +205,16 @@
            style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
         <div class="row">
           <div class="col-md-4">
-            <i class="fa fa-circle-notch" style="width: 100px; height: 100px; float: left"></i>
+            <i class="fa fa-circle-notch" style="width: 100px; height: 100px; margin-top: 6px ;float: left"></i>
           </div>
-          <div class="col-md-4 mt-3">
+          <div class="col-md-4 ">
           </div>
           <div class="col-md-4">
-            <i class="fa fa-circle-notch" style="width: 100px; height: 100px; float: right"></i>
+            <i class="fa fa-circle-notch" style="width: 100px; height: 100px; margin-left:42px"></i>
           </div>
         </div>
       </div>
-      <div class="card-body" id="tag"
+      <div class="card-body" id="tag2"
            style="background-color: #f3f5f5; height: 300px">
         <ngb-accordion [closeOthers]="true">
           <ngb-panel id="static-1">
@@ -225,23 +223,25 @@
             </ng-template>
             <ng-template ngbPanelContent>
               <div class="row" *ngFor="let topLike of topLikePost index as i">
-                <div class="col-md-5">
+                <div class="col-md-6">
                   <span class="number">{{i + 1}} </span>
-                  <img *ngIf="i == 0" src="{{topLike.post.image}}" width="45" height="45"
+                  <span>
+                  <img *ngIf="i == 0" src="{{topLike.post.image}}" width="35" height="35"
                        style="border-radius: 10px; border: #fa0217 solid" ngbTooltip="Top 1">
-                  <img *ngIf="i == 1" src="{{topLike.post.image}}" width="45" height="45"
+                  <img *ngIf="i == 1" src="{{topLike.post.image}}" width="35" height="35"
                        style="border-radius: 10px; border: #fc2e46 solid" ngbTooltip="Top 2">
-                  <img *ngIf="i == 2" src="{{topLike.post.image}}" width="45" height="45"
+                  <img *ngIf="i == 2" src="{{topLike.post.image}}" width="35" height="35"
                        style="border-radius: 10px; border: #f64e6d solid" ngbTooltip="Top 3">
-                  <img *ngIf="i == 3" src="{{topLike.post.image}}" width="45" height="45"
+                  <img *ngIf="i == 3" src="{{topLike.post.image}}" width="35" height="35"
                        style="border-radius: 10px; border: #ec6f7e solid" ngbTooltip="Top 4">
-                  <img *ngIf="i == 4" src="{{topLike.post.image}}" width="45" height="45"
+                  <img *ngIf="i == 4" src="{{topLike.post.image}}" width="35" height="35"
                        style="border-radius: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
+                  </span>
                 </div>
-                <div class="col-md-7">
-                  <br>
+                <div class="col-md-6">
                   <span class="contentTop" ngbTooltip="{{topLike.post.title}}"><small><a style="text-decoration: none; color: #0b2e13" routerLink="/post/view/{{topLike.post.id}}"> {{topLike.post.title}}</a></small></span>
                 </div>
+                <br>
               </div>
             </ng-template>
           </ngb-panel>
@@ -251,8 +251,7 @@
             </ng-template>
             <ng-template ngbPanelContent>
               <div class="row" *ngFor="let user of topUser index as i">
-                <div class="col-md-5">
-                  <span class="number">{{i + 1}} </span>
+                <div class="col-md-4">
                   <img *ngIf="i == 0" src="{{user.avatar}}" width="47" height="47"
                        style="border-radius: 44px;margin-left: 1px; border: #fa0217 solid" ngbTooltip="Top 1">
                   <img *ngIf="i == 1" src="{{user.avatar}}" width="45" height="45"
@@ -264,15 +263,14 @@
                   <img *ngIf="i == 4" src="{{user.avatar}}" width="30" height="30"
                        style="border-radius: 44px;margin-left: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
                 </div>
-                <div class="col-md-7">
-                  <br>
+                <div class="col-md-8">
                   <span class="fa fa-fire" ngbTooltip="{{user.name}}"> {{user.username}}</span>
                 </div>
                 <br>
                 <br>
                 <br>
               </div>
-            </ng-template>
+              </ng-template>
           </ngb-panel>
           <ngb-panel id="static-3">
             <ng-template ngbPanelTitle >
@@ -281,7 +279,6 @@
             <ng-template ngbPanelContent>
               <div class="row" *ngFor="let topComment of postTopComment index as i">
                 <div class="col-md-5">
-                  <span class="number">{{i + 1}} </span>
                   <img *ngIf="i == 0" src="{{topComment.image}}" width="45" height="45"
                        style="border-radius: 10px; border: #fa0217 solid" ngbTooltip="Top 1">
                   <img *ngIf="i == 1" src="{{topComment.image}}" width="45" height="45"
@@ -294,9 +291,10 @@
                        style="border-radius: 10px; border: #f8d3d8 solid" ngbTooltip="Top 5">
                 </div>
                 <div class="col-md-7">
-                  <br>
                   <span class="contentTop" ngbTooltip="{{topComment.title}}"><small><a style="text-decoration: none; color: #0b2e13" routerLink="/post/view/{{topComment.id}}"> {{topComment.title}}</a></small></span>
                 </div>
+                <br>
+                <br>
               </div>
             </ng-template>
           </ngb-panel>
@@ -307,7 +305,6 @@
             <ng-template ngbPanelContent>
               <div class="row" *ngFor="let topTag of topHashtag index as i">
                 <div class="col-md-5">
-                  <span class="number">{{i + 1}} </span>
                   <img *ngIf="i == 0" src="{{topTag.image}}" width="45" height="45"
                        style="border-radius: 10px; border: #fa0217 solid" ngbTooltip="Top 1">
                   <img *ngIf="i == 1" src="{{topTag.image}}" width="45" height="45"
@@ -320,13 +317,29 @@
                        style="border-radius: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
                 </div>
                 <div class="col-md-7">
-                  <br>
                   <span class="contentTop" ngbTooltip="{{topTag.name}}"><a style="text-decoration: none; color: #0b2e13" routerLink="/post/hashtag/{{topTag.id}}"><b><i class="fa fa-fire"></i> {{topTag.name}}</b></a></span>
                 </div>
+                <br>
+                <br>
+                <br>
               </div>
             </ng-template>
           </ngb-panel>
         </ngb-accordion>
+      </div>
+      <div class="card-footer"
+           style="background-color: #c0e8e8 ; height: 50px; border-bottom-right-radius:10px; border-bottom-left-radius: 10px ">
+      </div>
+      <br>
+      <div class="card-header"
+           style="background-color: #c0e8e8 ; height: 80px; border-top-left-radius:10px; border-top-right-radius: 10px ">
+
+      </div>
+      <div class="card-body" id="tag"
+           style="background-color: #f3f5f5; height: 340px">
+        <h5><i class="fa fa-list" style="color: #404348"> Category :</i></h5><br>
+        <small> <a *ngFor="let hashtag of hashtags" class="btn btn-outline-info btn-sm" style="margin-left: 5px; margin-bottom: 5px" (click)="findTagById(hashtag.id)"><i class="fa fa-tag">{{hashtag.name}}</i></a></small>
+
       </div>
       <div class="card-footer"
            style="background-color: #c0e8e8 ; height: 50px; border-bottom-right-radius:10px; border-bottom-left-radius: 10px ">

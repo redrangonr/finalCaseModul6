@@ -142,6 +142,7 @@ i:hover{
   cursor: pointer;
 }
 
+
 @media only screen and (max-width:600px) {
   .error-wrapper {
     padding-top: 5%

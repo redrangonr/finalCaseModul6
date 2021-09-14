@@ -8,8 +8,8 @@
 
         <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center" style="border-radius: 10px;background-color: #eff2f5">
           <div class="team-single-img">
-            <img [hidden]="fb" src="{{avatar}}" width="86%" height="100" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
-            <img [hidden]="!fb" src="{{fb}}" width="86%" height="100" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
+            <img [hidden]="fb" src="{{avatar}}" width="100%" height="90" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
+            <img [hidden]="!fb" src="{{fb}}" width="100%" height="100" alt="" style="border-radius: 150px;border: #7ab1c0 solid; height: 305px">
 
               <form [formGroup]="userForm" (ngSubmit)="updateAvatar()">
                 <input type ="hidden"  formControlName="name">
@@ -24,7 +24,8 @@
                 <label for="file"></label>
                 <input [hidden]="fb" type="file" #userPhoto (change)="onFileSelected($event)" name="image" autocomplete="off"  class="form-control-file" id="file">
                 <br>
-                <button type="submit" [hidden]="!fb" class="btn btn-outline-success">Save</button>
+                <button type="submit" [hidden]="!fb" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Save</button>
+                <button type="submit" (click)="reset()" [hidden]="!fb" class="btn btn-outline-secondary">Cancel</button>
               </form>
 
           </div>
@@ -129,7 +130,7 @@
                   </select>
                 </div>
                 <div class="modal-footer">
-                  <button class="btn btn-outline-info" (click)="modal.close('Save click')" style="width: 100px">Save</button>
+                  <button class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModal2" (click)="modal.close('Save click')" style="width: 100px">Save</button>
                 </div>
               </form>
               </div>
@@ -248,4 +249,41 @@
     </div>
   </div>
 </div>
+<br>
+<br>
+<br>
+<!-- Button trigger modal -->
 
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center" [innerHTML]="message" ></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Notification</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h4 class="text-center" [innerHTML]="message" ></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="reset()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {LoginForm} from '../model/login-form';
 import {JwtResponse} from '../model/jwt-response';
 import {RegisterForm} from '../model/register-form';
+import { FormGroup } from '@angular/forms';
 const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,23 @@ export class LoginService {
   getAddress():Observable<any>{
     return this.http.get<any>('https://provinces.open-api.vn/api/')
   }
+
+  MustMatch(controlName: string, matchingControlName: string) {
+    return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        // return if another validator has already found an error on the matchingControl
+        return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
+    }
+}
 }

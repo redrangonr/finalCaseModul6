@@ -6,13 +6,7 @@
   <app-hashtag-create></app-hashtag-create>
 </div>
 <div>
-  <div class="p-2 bd-highlight" >
-    <select (change)="tableData($event)" class="custom-select" style="border-radius: 44px">
-      <option *ngFor="let size of tableSizesArr" [value]="size">
-        {{ size }}
-      </option>
-    </select>
-  </div>
+
 </div>
 <div class="row" style="height: 480px">
   <div class="col-4" style="float: left; padding: 20px 20px 20px 20px" *ngFor="let hashtag of hashtags | paginate :{

@@ -28,7 +28,7 @@ export class PostAdminListComponent implements OnInit {
 
   page = 1;
   count = 0;
-  tableSize = 5;
+  tableSize = 6;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   hashtags: Hashtag[] = [];
@@ -40,7 +40,6 @@ export class PostAdminListComponent implements OnInit {
   keyword = 'title';
 
   data: Post[] = [];
-
   constructor(private postService: PostService, private hashtagService: HashtagService, private calendar: NgbCalendar, public formatter: NgbDateParserFormatter) {
     this.fromDate = calendar.getToday();
     this.toDate = calendar.getNext(calendar.getToday(), 'd', 10);
@@ -50,8 +49,8 @@ export class PostAdminListComponent implements OnInit {
   ngOnInit(): void {
     this.getAll();
     this.getAllHashtag();
-
   }
+
 
   findPostById(id: any) {
     this.postService.get(id).subscribe(data=>{
