@@ -101,7 +101,7 @@
                                        (inputFocused)='onFocused($event)'
                                        [itemTemplate]="itemTemplate"
                                        [notFoundTemplate]="notFoundTemplate"
-                                       style="width: 311px;float: left; margin-left: px; margin-top: 5px" id="key">
+                                       style="width: 311px;float: left; margin-left: 0px; margin-top: 5px" id="key">
                       </ng-autocomplete>
                       <ng-template #itemTemplate let-item>
                         <a href="javascript:void(0)" style="height: 140px">
@@ -252,7 +252,7 @@
             <ng-template ngbPanelContent>
               <div class="row" *ngFor="let user of topUser index as i">
                 <div class="col-md-4">
-                  <img *ngIf="i == 0" src="{{user.avatar}}" width="47" height="47"
+                  <img *ngIf="i == 0" src="{{user.avatar}}" routerLink="/post/list/{{user.id}}" width="47" height="47"
                        style="border-radius: 44px;margin-left: 1px; border: #fa0217 solid" ngbTooltip="Top 1">
                   <img *ngIf="i == 1" src="{{user.avatar}}" width="45" height="45"
                        style="border-radius: 44px;margin-left: 3px; border: #fc2e46 solid" ngbTooltip="Top 2">
@@ -264,7 +264,7 @@
                        style="border-radius: 44px;margin-left: 10px; border: #f1afb9 solid" ngbTooltip="Top 5">
                 </div>
                 <div class="col-md-8">
-                  <span class="fa fa-fire" ngbTooltip="{{user.name}}"> {{user.username}}</span>
+                  <span routerLink="/post/list/{{user.id}}" class="fa fa-fire" ngbTooltip="{{user.name}}"> {{user.username}}</span>
                 </div>
                 <br>
                 <br>

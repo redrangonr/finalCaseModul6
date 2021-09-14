@@ -135,9 +135,9 @@
 .error-wrapper .error-container.error-401 .error .error-or .or {
   background-color: #34b5dc
 }
-i{
-  color: blue;
-}
+/*i{*/
+/*  color: blue;*/
+/*}*/
 i:hover{
   cursor: pointer;
 }

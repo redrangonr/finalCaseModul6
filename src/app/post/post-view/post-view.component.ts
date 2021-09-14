@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Post} from '../../model/post';
 import {LikeService} from '../../services/like.service';
 import {Like} from '../../model/like';
+import {CommmentpostService} from '../../services/commmentpost.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class PostViewComponent implements OnInit {
   };
   page = 1;
   count = 0;
-  tableSize = 6 ;
+  tableSize = 6;
   tableSizesArr = [4, 8, 12];
   currentIndex = 1;
   post: FormGroup = new FormGroup({
@@ -42,19 +43,19 @@ export class PostViewComponent implements OnInit {
   // @ts-ignore
   idUser = +sessionStorage.getItem('Id_key');
   comment: any;
-  status: any = ''
+  status: any = '';
   listComment: any;
 
   commentpost: FormGroup = new FormGroup({
     messages: new FormControl()
   });
 
-  commentNew: FormGroup =new FormGroup({
+  commentNew: FormGroup = new FormGroup({
     id: new FormControl(''),
     text: new FormControl(''),
     user: new FormControl(''),
     post: new FormControl('')
-  })
+  });
 
 
   constructor(private postService: PostService,
@@ -72,11 +73,11 @@ export class PostViewComponent implements OnInit {
   // @ts-ignore
   comments: IComment = {
     text: '',
-    id : ''
+    id: ''
   };
 
   ngOnInit(): void {
-    this.getCommentList()
+    this.getCommentList();
   }
 
   // tslint:disable-next-line:typedef
@@ -110,6 +111,7 @@ export class PostViewComponent implements OnInit {
       console.log(this.postInstand);
     });
   }
+
   // tslint:disable-next-line:typedef
   sendEmail() {
 
@@ -174,17 +176,19 @@ export class PostViewComponent implements OnInit {
     if (sessionStorage.getItem('Id_key')) {
       return false;
     } else {
-      return true
+      return true;
     }
   }
 
+  // tslint:disable-next-line:typedef
   getCommentList() {
-    this.commentService.getListComment(this.id).subscribe(data=>{
+    this.commentService.getListComment(this.id).subscribe(data => {
       this.listComment = data;
-      console.log(this.comments)
-    })
+      console.log(this.comments);
+    });
   }
 
+  // tslint:disable-next-line:typedef
   createComment() {
     // console.log(this.id);
     this.comments.text = this.commentpost.controls.messages.value;
@@ -196,7 +200,7 @@ export class PostViewComponent implements OnInit {
         this.commentpost.reset();
         this.getById(this.id);
         this.getCommentList();
-        this.status =  'Submitted successfully <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" height="35" width="35">';
+        this.status = 'Submitted successfully <img src="https://cdn-icons-png.flaticon.com/128/845/845646.png" height="35" width="35">';
       }, (error: any) => {
         console.log('errrorr');
         this.commentpost.reset();
@@ -206,6 +210,7 @@ export class PostViewComponent implements OnInit {
     // console.log( this.comments);
   }
 
+  // tslint:disable-next-line:typedef
   deleteComment(id: any) {
     // console.log(id);
     this.commentService.deleteComment(id).subscribe(
@@ -220,6 +225,7 @@ export class PostViewComponent implements OnInit {
       }
     );
   }
+
   //
   // getCommentUpdate(id: any){
   //     this.commentService.findById(id).subscribe(data=>{
@@ -247,9 +253,11 @@ export class PostViewComponent implements OnInit {
   //     this.status = "Update False"
   //   })
   // }
+  // tslint:disable-next-line:typedef
   tabSize(event: any) {
     this.page = event;
   }
+
   tableData(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
